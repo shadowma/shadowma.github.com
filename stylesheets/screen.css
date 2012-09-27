@@ -769,22 +769,6 @@ left:0;
 	padding-right: 5px;
 }
 
-.archives .year
-{
-	line-height: 35px;
-	padding-top: 15px;
-	position: absolute;
-	top: 0;
-	width: 80px;
-}
-.archives .year:before
-{
-	content: "";
-	position: absolute;
-	top: -2px;
-	width: 100%;
-}
-
 .archives article
 {
 	margin-left: 80px;
