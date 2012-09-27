@@ -222,7 +222,7 @@ header a:hover
 header h1
 {
 	position:absolute; 
-	right:42px; 
+	right:30px; 
 	bottom:160px; 
 	margin:0; 
 	z-index:10;
@@ -232,12 +232,12 @@ header h1
 header .site {
 	position: absolute;	
 	bottom: 50px;
-	right: 42px;
+	right: 30px;
 	margin-bottom: 15px;	
 }
 
 header .site #logo {
-	padding: 30px 0 0 200px;
+	padding: 50px 0 0 200px;
 	background: url(/images/logo.png) no-repeat center right;
 }
 
@@ -246,7 +246,6 @@ header .site a:hover {
 }
 
 header .site  p {
-	color: #747474;
 	font-size: 14px;
 	font-family: Arial, "Microsoft JhengHei", \5fae\8edf\6b63\9ed1\9ad4, "Microsoft Yahei", \5FAE\8F6F\96C5\9ED1, "LiHei Pro", "\5137\9ED1 Pro", sans-serif;
 	text-transform: uppercase;
@@ -256,26 +255,19 @@ header .site  p {
 header .copyright
 {
     bottom: 0;
-    color: #747474;
     font-size: 12px;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    padding-bottom: 15px;
     position: absolute;
-    right: 42px;
-    line-height: 20px;
+    right: 30px;
+    line-height: 15px;
     text-align: right;
-}
-
-header .copyright a
-{
-  color: #747474;
 }
 
 nav>ul {
 	display: block;
 	margin: 0;
 	position: absolute;
-	right: 42px;
+	right: 30px;
 	top: 95px;
 	animation:myanim 1 ease-in-out 1.8s;
 	-moz-animation:myanim 1 ease-in-out 1.8s;
