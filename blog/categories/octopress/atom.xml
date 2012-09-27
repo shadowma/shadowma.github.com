@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Octopress | 雨吁]]></title>
-  <link href="shadow.ma/blog/categories/octopress/atom.xml" rel="self"/>
-  <link href="shadow.ma/"/>
-  <updated>2012-09-27T17:24:19+08:00</updated>
-  <id>shadow.ma/</id>
+  <link href="shadowma.github.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="shadowma.github.com/"/>
+  <updated>2012-09-27T17:35:33+08:00</updated>
+  <id>shadowma.github.com/</id>
   <author>
     <name><![CDATA[Shadow Ma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hello Octopress!]]></title>
-    <link href="shadow.ma/blog/2012/09/26/hello-octopress/"/>
+    <link href="shadowma.github.com/blog/2012/09/26/hello-octopress/"/>
     <updated>2012-09-26T17:16:00+08:00</updated>
-    <id>shadow.ma/blog/2012/09/26/hello-octopress</id>
+    <id>shadowma.github.com/blog/2012/09/26/hello-octopress</id>
     <content type="html"><![CDATA[<p>近幾個月一真沒更新過博客，也沒登錄過，上一次登錄還是因爲升級 Wordpress ，懶得再折騰 Wordpress 了，最近收到了主機的續費通知就想換個平臺，很久以前就想試試 Octopress，在主機到期前正好嘗試下。</p>
 
 <!-- more -->
