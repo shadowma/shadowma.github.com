@@ -305,17 +305,6 @@ nav>ul>li>a
 {
   color: #258FB8;
 }
-nav>ul>li>a:after
-{
-	color: #ccc;
-	content: "\f078";
-	font: 12px FontAwesome;
-}
-nav>ul>li>a:only-child:after
-{
-	content: "";
-}
-
 nav>ul li
 {
 	position: relative;
