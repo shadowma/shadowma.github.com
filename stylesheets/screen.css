@@ -119,7 +119,7 @@ body
 	font-family: Arial,"LiHei Pro","\5137\9ED1  Pro","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
 	font-size: 14px;
 	font-weight: 300;
-	text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+	text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
 }
 
 h1
@@ -713,12 +713,12 @@ left:0;
 {
 	position: relative;
 	line-height: 2;
-	color: $color-gray02;
+	color: #ccc;
 }
 
 .post .meta a
 {
-	color: #999;
+	color: #ccc;
 	moz-transition: 0.3s;
 	o-transition: 0.3s;
 	transition: 0.3s;
