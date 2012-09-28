@@ -174,12 +174,14 @@ a
 	float: right;
 	width: 70%;
 }
+
 .right-con
 {
     padding: 30px 10px 30px 30px;
     position: relative;
-    width: 670px;
+    width: 80%;
 }
+
 .right {
     float: right;
 }
@@ -329,16 +331,16 @@ nav>ul li:hover>ul
 	font: 13px Arial,"Lucida Grande","LiHei Pro","\5137\9ED1  Pro","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
 	padding: 6px 15px 6px 35px;
 	width: 80px;
-	-webkit-transition-duration:400ms;
+	-webkit-transition-duration:300ms;
 	-webkit-transition-property:width,background;
 	-webkit-transition-timing-function:ease;
-	-moz-transition-duration:400ms;
+	-moz-transition-duration:300ms;
 	-moz-transition-property:width,background;
 	-moz-transition-timing-function:ease;
-	-o-transition-duration:400ms;
+	-o-transition-duration:300ms;
 	-o-transition-property:width,background;
 	-o-transition-timing-function:ease;
-	-ms-transition-duration:400ms;
+	-ms-transition-duration:300ms;
 	-ms-transition-property:width,background;
 	-ms-transition-timing-function:ease;	
 }
@@ -348,7 +350,7 @@ nav>ul li:hover>ul
 	border-top: 1px solid #ccc;
 	color: #666;
 	outline: none;
-	width: 150px;
+	width: 120px;
 }
 
 .right-con .social a
@@ -369,6 +371,7 @@ nav>ul li:hover>ul
 	width: 28px;
 	zoom: 1;
 }
+
 .right-con .social a:hover
 {
 	opacity: 1;
@@ -505,12 +508,12 @@ article
 {
 	padding: 30px 10px 30px 30px;
 	position: relative;
-	width: 670px;
+	width: 80%;
 	animation:myanim 1 ease-in-out 1s;
 	-moz-animation:myanim 1 ease-in-out 1s;
 	-webkit-animation:myanim 1 ease-in-out 1s;
 	-ms-animation:myanim 1 ease-in-out 1s;
-	-o-animation:myanim 1 ease-in-out 1s
+	-o-animation:myanim 1 ease-in-out 1s;
 }
 
 article h1.title
@@ -711,7 +714,6 @@ left:0;
 	position: relative;
 	line-height: 2;
 	color: $color-gray02;
-	width: 67%;
 }
 
 .post .meta a
@@ -815,8 +817,9 @@ left:0;
 #comment
 {
 	padding: 30px 10px 30px 30px;
-	width: 670px;
+	width: 80%;
 }
+
 #comment h1.title
 {
 	font-size: 25px;
