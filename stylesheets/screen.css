@@ -713,12 +713,12 @@ left:0;
 {
 	position: relative;
 	line-height: 2;
-	color: #ccc;
+	color: #999;
 }
 
 .post .meta a
 {
-	color: #ccc;
+	color: #999;
 	moz-transition: 0.3s;
 	o-transition: 0.3s;
 	transition: 0.3s;
@@ -736,11 +736,11 @@ left:0;
 	vertical-align: middle;
 	zoom: 1;
 	position: relative;
-	color: #CCCCCC;
+	color: #999;
 }
 .post .meta .date:before,.post .meta .tags:before,.post .meta .comments:before
 {
-	color: #ccc;
+	color: #999;
 	font: 1.3em FontAwesome;
 }
 
