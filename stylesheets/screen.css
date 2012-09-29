@@ -454,9 +454,18 @@ nav>ul li:hover>ul
     position: absolute;
     top: 32px;
 }
-#content .page ul li
+
+#content .links ul li
 {
   	list-style: none;
+	display: inline;
+	float: left;
+	width: 33%;
+}
+
+#content .links h2
+{
+  clear: both;
 }
 #pagenavi
 {
@@ -580,6 +589,7 @@ article .entry-content h2
 	font-weight: 300;
 	position: relative;
 }
+
 article .entry-content h2:before
 {
 	border-bottom: 1px solid #fff;
@@ -588,6 +598,7 @@ article .entry-content h2:before
 	position: absolute;
 	width: 100%;
 }
+
 article .entry-content img,article .entry-content video
 {
 	height: auto;
@@ -760,9 +771,15 @@ left:0;
 	padding-right: 5px;
 }
 
+.archives .year
+{
+	border-bottom: 1px solid #DDDDDD;
+	line-height: 2;
+}
+
 .archives article
 {
-	padding: 15px 0;
+	padding: 5px 0 0 60px;
 }
 
 .archives article .title
@@ -787,7 +804,7 @@ left:0;
 }
 .archives article .meta span:before
 {
-	color: #ccc;
+	color: #999;
 	font: 1.3em FontAwesome;
 	padding-right: 10px;
 }
