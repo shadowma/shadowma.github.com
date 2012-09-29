@@ -1,5 +1,2 @@
 User-agent: *
-Disallow: /404.html
-Allow: / 
-
-Sitemap: http://shadow.ma/sitemap.xml
+Disallow: /
