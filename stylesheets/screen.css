@@ -1550,3 +1550,21 @@ fancybox-title-float-wrap .child
 	padding: 10px;
 	position: absolute;
 }
+
+@media screen and (max-width:768px) {
+    .social {
+	display: none;
+    }
+}
+
+@media screen and (max-width:640px) {
+    header .site,header .copyright {
+	display: none;
+    }
+}
+
+@media screen and (max-width:480px) {
+    #banner .plusone {
+    display: none;
+    }
+}
