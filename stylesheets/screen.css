@@ -265,6 +265,12 @@ header .copyright
     text-align: right;
 }
 
+@media screen and (max-width:640px) {
+    header .site,header .copyright {
+	display: none;
+    }
+}
+
 nav>ul {
 	display: block;
 	margin: 0;
@@ -449,10 +455,22 @@ nav>ul li:hover>ul
 	border: 1px solid #cf5d0f;
 }
 
+@media screen and (max-width:768px) {
+ .right-con .social {
+	display: none;
+    }
+}
+
 .plusone{
     left: 30px;
     position: absolute;
     top: 32px;
+}
+
+@media screen and (max-width:480px) {
+    .plusone {
+    display: none;
+    }
 }
 
 #content .links ul li
@@ -869,16 +887,11 @@ article code
 }
 article pre
 {
-	border-radius: 5px;
 	font-size: 1/0.9em;
 	line-height: 1.5;
 	margin-top: 10px;
-	moz-border-radius: 5px;
-	ms-border-radius: 5px;
-	o-border-radius: 5px;
 	overflow-x: auto;
 	padding: 5px 15px;
-	webkit-border-radius: 5px;
 }
 article pre code
 {
@@ -896,13 +909,8 @@ figure.code
 {
 	background: #ddd;
 	border: 1px solid #ccc;
-	border-radius: 5px;
 	margin-top: 10px;
-	moz-border-radius: 5px;
-	ms-border-radius: 5px;
-	o-border-radius: 5px;
 	padding: 5px 15px;
-	webkit-border-radius: 5px;
 }
 figure.code figcaption
 {
@@ -1549,22 +1557,4 @@ fancybox-title-float-wrap .child
 	left: 0;
 	padding: 10px;
 	position: absolute;
-}
-
-@media screen and (max-width:768px) {
-    .social {
-	display: none;
-    }
-}
-
-@media screen and (max-width:640px) {
-    header .site,header .copyright {
-	display: none;
-    }
-}
-
-@media screen and (max-width:480px) {
-    #banner .plusone {
-    display: none;
-    }
 }

@@ -1,0 +1,195 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>買了 Hellohost 的 VPS - 雨吁</title>
+	<meta name="author" content="Shadow Ma">
+
+	
+	<meta name="description" content="快用了一年 Hellohost 的主機，這個月就要到期，轉到 Octopress 後，這 PHP 主機就沒必要再續費了，現在 Blog 放 GitHub 上最大的缺點就是隻支持綁定一個域名，以前 RSS 定閱的子域名必須用其它主機反向代理或重定向，還有很多鏈接也要重定向，而且只要不直接在 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+	<link href="/favicon.gif" rel="icon" type="image/gif">
+	<link href="/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="left-col"><nav><ul class="main">
+	<li><a href="/">日誌</a></li>
+	<li><a href="/blog/archives">存檔</a></li>
+	<li><a href="/blog/links">鏈接</a></li>
+	<li><a href="/blog/about">關於</a></li>
+</ul>
+</nav>
+<div class="site">
+	<a id="logo" href="/"></a>
+	<p>何以言知</p>
+</div>
+<div class=copyright>
+<p><a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank" title="CC BY-SA 3.0">Copyleft</a>
+&nbsp2011-2012
+雨吁 - 何以言知</p>
+</div>
+
+</header>
+	
+		<div id="banner" class="right-col">
+	<div class="right-con">
+	
+	<form class="search right" action="http://google.com/search" method="get">
+		<input class="left" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:shadow.ma">
+	</form>
+	<div class="social right">
+		
+		
+		<a class="google" href="https://plus.google.com/101910642500012990972?rel=author" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/shadow_ma" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/shadowma" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feed.shadow.ma" title="RSS">RSS</a>
+		
+	</div>
+	
+</div>
+<div class=plusone><g:plusone></g:plusone></div>
+</div>
+	
+	<div id="ajax-container"><div id="ajax-inner">
+	<div id="content" class="right-col"><article class="post">
+	<h1 class="title">買了 Hellohost 的 VPS</h1>
+	
+	<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-02T14:48:00+08:00" pubdate data-updated="true">2012年10月02日</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/vps/'>VPS</a>
+
+
+</div>
+	
+		<span class="comments"><a href="/blog/2012/10/02/bought-hellohost-vps/#disqus_thread">Comments</a></span>
+	
+	</div>
+	
+	<div class="entry-content"><p>快用了一年 Hellohost 的主機，這個月就要到期，轉到 Octopress 後，這 PHP 主機就沒必要再續費了，現在 Blog 放 GitHub 上最大的缺點就是隻支持綁定一個域名，以前 RSS 定閱的子域名必須用其它主機反向代理或重定向，還有很多鏈接也要重定向，而且只要不直接在 GitHub 上綁定域名的話，就可以直接使用 Page 的鏈接訪問，正好可以讓牆內的朋友用這個。</p>
+
+<!-- more -->
+
+
+<p>之前幫朋友弄了個阿里雲主機，就試着把域名先解析到這主機上，解析成功後這被封的域名竟然能在牆內訪問不再被重置了，當時着實讓我興奮了一把，以爲這麼簡單就解封了，但之後用 Cloudflare 的 CDN 確顯示「 Website unreachable」，掛着 VPN 試了一下發現被重置，才明白根本就沒解封，牆是雙向的，把被封的域名解析到國內 ip 是能讓牆內正常訪問，但反過來會封鎖牆外的訪問，得不償失，看來還得弄個牆外的主機。</p>
+
+<p>虛擬主機不太適合了，VPS 也只需要低階的就行，看 Hellohost 有賣就先買了一個月試試，用了她這一年的虛擬主機還算穩定，只買了個 64M 的，其實若是不再搞其它東西的話，只是純靜態的 Octopress 放上來也是夠的 ，但爲了方便管理還是放 GitHub 上吧。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># free -m
+</span><span class='line'>             total       used       free     shared    buffers     cached
+</span><span class='line'>Mem:            64         10         53          0          0          0
+</span><span class='line'>-/+ buffers/cache:         10         53
+</span><span class='line'>Swap:            0          0          0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>用的 Nginx，只拿來作重定向和反向代理的確是有點浪費。</p>
+</div>
+</article>
+
+	<li id="share-container" class="share-container">
+<div class="share-tip" id="share-tip">分享到</div>
+<div class="share-panel" id="share-panel">
+<a target="_blank" href="http://service.weibo.com/share/share.php?url=http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/&title=買了 Hellohost 的 VPS&appkey=608332473&ralateUid=1672835792" class="icon icon-sina" title="新浪微博">新浪微博</a>
+<a target="_blank" href="http://share.renren.com/share/buttonshare.do?title=買了 Hellohost 的 VPS&link=http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/&content=_blank" class="icon icon-renren" title="人人">人人</a>
+<a target="_blank" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/" class="icon icon-qzone" title="QQ 空間">QQ 空間</a>
+<a target="_blank" href="http://v.t.qq.com/share/share.php?appkey=801076915&title=買了 Hellohost 的 VPS&url=http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/&assname=shadow-ma&site=http://shadow.ma" class="icon icon-tencent" title="騰訊微博">騰訊微博</a>
+<a target="_blank" href="http://shuo.douban.com/!service/share?name=買了 Hellohost 的 VPS&href=http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/" class="icon icon-douban" title="豆瓣">豆瓣</a>
+<a target="_blank" href="http://www.kaixin001.com/repaste/share.php?rtitle=買了 Hellohost 的 VPS&rurl=http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/&rcontent=_blank" class="icon icon-kaixin" title="開心網">開心網</a>
+<a target="_blank" href="http://www.facebook.com/share.php?u=http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/" class="icon icon-facebook" title="facebook">facebook</a>
+<a target="_blank" href="http://twitter.com/home?status=買了 Hellohost 的 VPS http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/" class="icon icon-twitter" title="twitter">twitter</a>
+</div>
+</li>
+
+
+
+<section id="comment">
+    <h1 class="title">評論</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	</div></div>
+	<footer id="footer" class="right-col">
+</footer>
+	<script src="/javascripts/shadow.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'shadowma';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/';
+        var disqus_url = 'http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+</body>
+</html>

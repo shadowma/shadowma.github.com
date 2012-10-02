@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[雨吁]]></title>
-  <link href="http://shadow.ma/atom.xml" rel="self"/>
+  <title><![CDATA[Category: VPS | 雨吁]]></title>
+  <link href="http://shadow.ma/blog/categories/vps/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
   <updated>2012-10-02T16:59:47+08:00</updated>
   <id>http://shadow.ma/</id>
@@ -27,33 +27,19 @@
 
 <p>虛擬主機不太適合了，VPS 也只需要低階的就行，看 Hellohost 有賣就先買了一個月試試，用了她這一年的虛擬主機還算穩定，只買了個 64M 的，其實若是不再搞其它東西的話，只是純靜態的 Octopress 放上來也是夠的 ，但爲了方便管理還是放 GitHub 上吧。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># free -m
-</span><span class='line'>             total       used       free     shared    buffers     cached
-</span><span class='line'>Mem:            64         10         53          0          0          0
-</span><span class='line'>-/+ buffers/cache:         10         53
-</span><span class='line'>Swap:            0          0          0</span></code></pre></td></tr></table></div></figure>
+<p>```</p>
 
+<h1>free -m</h1>
+
+<pre><code>         total       used       free     shared    buffers     cached
+</code></pre>
+
+<p>Mem:            64         10         53          0          0          0
+-/+ buffers/cache:         10         53
+Swap:            0          0          0
+```</p>
 
 <p>用的 Nginx，只拿來作重定向和反向代理的確是有點浪費。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello Octopress!]]></title>
-    <link href="http://shadow.ma/blog/2012/09/26/hello-octopress/"/>
-    <updated>2012-09-26T17:16:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/09/26/hello-octopress</id>
-    <content type="html"><![CDATA[<p>近幾個月一真沒更新過博客，也沒登錄過，上一次登錄還是因爲升級 Wordpress ，懶得再折騰 Wordpress 了，最近收到了主機的續費通知就想換個平臺，很久以前就想試試 Octopress，在主機到期前正好嘗試下。</p>
-
-<!-- more -->
-
-
-<p>花兩天改造了下模板，佈局弄得和以前一樣了，之前的文章因爲以前的爛習慣鏈接格式亂七八糟的，全部處理太麻煩所以不想轉過來了，先用段時間看吧。</p>
 ]]></content>
   </entry>
   
