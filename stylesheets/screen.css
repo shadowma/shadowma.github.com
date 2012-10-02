@@ -120,6 +120,7 @@ body
 	font-family: "Pontano Sans","Hiragino Sans GB","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
 	font-size: 14px;
 	font-weight: 300;
+	text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
 }
 
 h1
