@@ -271,7 +271,7 @@ header .copyright
     text-align: right;
 }
 
-@media screen and (max-width:710px) {
+@media screen and (max-width:720px) {
     header .copyright {
 	display: none;
     }
@@ -801,7 +801,7 @@ left:0;
 	padding-right: 5px;
 }
 
-@media screen and (max-width:710px) {
+@media screen and (max-width:720px) {
     .post .meta .comments {
 	display: none;
     }
