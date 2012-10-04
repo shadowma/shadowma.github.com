@@ -254,8 +254,7 @@ header .site a:hover {
 }
 
 header .site  p {
-	font-size: 14px;
-	font-family: "Pontano Sans","Hiragino Sans GB"，"Microsoft JhengHei", \5fae\8edf\6b63\9ed1\9ad4, "Microsoft Yahei", \5FAE\8F6F\96C5\9ED1, sans-serif;
+	font-family: "Pontano Sans","Hiragino Sans GB","Hiragino Sans GB W3","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
 	text-transform: uppercase;
 	text-align: right;
 }
@@ -263,7 +262,7 @@ header .site  p {
 header .copyright
 {
     bottom: 0;
-    font-size: 12px;
+    font-size: 13px;
     padding-bottom: 15px;
     position: absolute;
     right: 30px;
@@ -322,8 +321,8 @@ nav>ul>li>a
 	z-index:10; 
 	display:block; 
 	float:right; 
-	font-size: 44px;
-	line-height: 46px;
+	font-size: 3em;
+	line-height: 1em;
 	position:relative; 
 	overflow:hidden; 
 }
@@ -352,7 +351,7 @@ nav>ul li:hover>ul
 	background: url('/images/search.png?1334434922') 10px center no-repeat #f2f2f2;
 	border: 1px solid #ddd;
 	color: #999;
-	font: 13px "Pontano Sans","Hiragino Sans GB","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
+	font: 13px "Pontano Sans","Hiragino Sans GB","Hiragino Sans GB W3","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
 	padding: 6px 15px 6px 35px;
 	width: 80px;
 	-webkit-transition-duration:300ms;
@@ -1030,7 +1029,7 @@ figure.code td.code
 	background: -o-linear-gradient(top, #dddddd,#cccccc);
 	background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd), color-stop(100%, #cccccc));
 	background: -webkit-linear-gradient(top, #dddddd,#cccccc);
-	font: 300 0.9em "Pontano Sans","Hiragino Sans GB","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
+	font: 300 0.9em "Pontano Sans","Hiragino Sans GB","Hiragino Sans GB W3","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
 	line-height: 1.5;
 	margin: 0 -16px -6px;
 	padding: 5px 15px;
@@ -1394,7 +1393,7 @@ fancybox-inner
 .fancybox-error
 {
 	color: #444;
-	font: 14px/20px "Pontano Sans","Hiragino Sans GB","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
+	font: 14px/20px "Pontano Sans","Hiragino Sans GB","Hiragino Sans GB W3","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
 	margin: 0;
 	padding: 10px;
 }
@@ -1517,7 +1516,7 @@ images/fancybox/blank.gif?1348572286');
 }
 .fancybox-title
 {
-	font: normal 13px/20px "Pontano Sans","Hiragino Sans GB","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
+	font: normal 13px/20px "Pontano Sans","Hiragino Sans GB","Hiragino Sans GB W3","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
 	position: relative;
 	text-shadow: none;
 	visibility: hidden;
