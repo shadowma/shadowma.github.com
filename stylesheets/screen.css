@@ -754,6 +754,8 @@ left:0;
 	position: relative;
 	line-height: 2;
 	color: #999;
+	font-size: 0.9em;
+	margin-left: 3px;
 }
 
 .post .meta a
@@ -782,22 +784,20 @@ left:0;
 {
 	color: #999;
 	font: 1.3em FontAwesome;
+	padding-right: 5px;
 }
 
 .post .meta .date:before
 {
 	content: "\f073";
-	padding-right: 5px;
 }
 .post .meta .tags:before
 {
 	content: "\f02c";
-	padding-right: 5px;
 }
 .post .meta .comments:before
 {
 	content: "\f075";
-	padding-right: 5px;
 }
 
 @media screen and (max-width:720px) {
@@ -824,6 +824,8 @@ left:0;
 {
 	color: #999;
 	line-height: 2;
+	font-size: 0.9em;
+	margin-left: 3px;
 }
 
 .archives article .meta span
@@ -831,7 +833,7 @@ left:0;
 	display: inline;
 	display: inline-block;
 	display: -moz-inline-stack;
-	margin-right: 30px;
+	margin-right: 25px;
 	vertical-align: auto;
 	vertical-align: middle;
 	zoom: 1;
@@ -840,7 +842,7 @@ left:0;
 {
 	color: #999;
 	font: 1.3em FontAwesome;
-	padding-right: 10px;
+	padding-right: 5px;
 }
 .archives article .meta a
 {
