@@ -813,7 +813,8 @@ left:0;
 
 .archives article
 {
-	padding: 5px 0 0 60px;
+	padding: 5px 0 10px 60px;
+	line-height: 1em;
 }
 
 .archives article .title
@@ -894,14 +895,9 @@ article code,article pre
 }
 article code
 {
-	border-radius: 5px;
 	font-size: 0.9em;
 	margin: 0 3px;
-	moz-border-radius: 5px;
-	ms-border-radius: 5px;
-	o-border-radius: 5px;
 	padding: 1px 3px;
-	webkit-border-radius: 5px;
 }
 article pre
 {

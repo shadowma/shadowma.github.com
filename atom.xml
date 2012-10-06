@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-10-06T17:35:36+08:00</updated>
+  <updated>2012-10-06T20:37:31+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[切換到了 systemd]]></title>
+    <link href="http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd/"/>
+    <updated>2012-10-06T19:35:00+08:00</updated>
+    <id>http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd</id>
+    <content type="html"><![CDATA[<p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。</p>
+
+<!-- more -->
+
+
+<p>照着 wiki 來，選擇了純 systemd 安裝，完全替代了 sysvinit 和 initscripts，因爲 systemd 有自帶 journal 所以幹掉了 syslog-ng，服務配置完後還啓用了 readahead。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ systemd-analyze 
+</span><span class='line'>Startup finished in 3608ms (kernel) + 3562ms (userspace) = 7170ms</span></code></pre></td></tr></table></div></figure>
+
+
+<p>效果顯著，fbsplash 一閃而過，進度都沒走 KDM 就出來了。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[買了 Hellohost 的 VPS]]></title>
