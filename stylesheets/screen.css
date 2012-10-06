@@ -5,7 +5,7 @@
 	font-style: normal;
 	font-weight: normal;
 	src: url("/font/fontawesome-webfont.eot");
-	src: url("/font/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),url("/font/fontawesome-webfont.woff") format("woff"),url("/font/fontawesome-webfont.ttf") format("truetype"),url("/font/fontawesome-webfont.svgz#FontAwesomeRegular") format("svg"),url("/font/fontawesome-webfont.svg#FontAwesomeRegular") format("svg");
+	src: url("/font/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),url("/font/fontawesome-webfont.woff") format("woff"),url("/font/fontawesome-webfont.ttf") format("truetype"),url("/font/fontawesome-webfont.svg#FontAwesome") format("svg");
 }
 @keyframes myanim{
 	0%{
@@ -270,7 +270,7 @@ header .copyright
     text-align: right;
 }
 
-@media screen and (max-width:720px) {
+@media screen and (max-width:768px) {
     header .copyright {
 	display: none;
     }
@@ -386,7 +386,6 @@ nav>ul li:hover>ul
 	moz-transition: 0.3s;
 	opacity: 0.5;
 	o-transition: 0.3s;
-	text-indent: -9999px;
 	transition: 0.3s;
 	vertical-align: auto;
 	vertical-align: middle;
@@ -401,7 +400,7 @@ nav>ul li:hover>ul
 }
 .right-con .social a.facebook
 {
-	background: url('/images/social/facebook.png?1348572286') center no-repeat #3b5998;
+	background: center no-repeat #3b5998;
 	border: 1px solid #3B5998;
 }
 .right-con .social a.facebook:hover
@@ -410,7 +409,7 @@ nav>ul li:hover>ul
 }
 .right-con .social a.google
 {
-	background: url('/images/social/google.png?1348572286') center no-repeat #c83d20;
+	background: center no-repeat #c83d20;
 	border: 1px solid #C83D20;
 }
 .right-con .social a.google:hover
@@ -419,7 +418,7 @@ nav>ul li:hover>ul
 }
 .right-con .social a.twitter
 {
-	background: url('/images/social/twitter.png?1348572286') center no-repeat #55cff8;
+	background: center no-repeat #55cff8;
 	border: 1px solid #55CFF8;
 }
 .right-con .social a.twitter:hover
@@ -428,7 +427,7 @@ nav>ul li:hover>ul
 }
 .right-con .social a.github
 {
-	background: url('/images/social/github.png?1348572286') center no-repeat #afb6ca;
+	background: center no-repeat #afb6ca;
 	border: 1px solid #afb6ca;
 }
 .right-con .social a.github:hover
@@ -437,7 +436,7 @@ nav>ul li:hover>ul
 }
 .right-con .social a.linkedin
 {
-	background: url('/images/social/linkedin.png?1348572286') center no-repeat #005a87;
+	background: center no-repeat #005a87;
 	border: 1px solid #005A87;
 }
 .right-con .social a.linkedin:hover
@@ -446,30 +445,64 @@ nav>ul li:hover>ul
 }
 .right-con .social a.pinterest
 {
-	background: url('/images/social/pinterest.png?1348572286') center no-repeat #be4037;
+	background: center no-repeat #be4037;
 	border: 1px solid #be4037;
 }
 .right-con .social a.pinterest:hover
 {
 	border: 1px solid #96332c;
 }
-.right-con .social a.delicious
-{
-	background: url('/images/social/delicious.png?1348572286') center no-repeat #3271cb;
-	border: 1px solid #3271cb;
-}
-.right-con .social a.delicious:hover
-{
-	border: 1px solid #285aa2;
-}
+
 .right-con .social a.rss
 {
-	background: url('/images/social/rss.png?1348572286') center no-repeat #ef7522;
+	background: center no-repeat #ef7522;
 	border: 1px solid #EF7522;
 }
 .right-con .social a.rss:hover
 {
 	border: 1px solid #cf5d0f;
+}
+
+.right-con .social a.facebook::before, .right-con .social a.google::before, .right-con .social a.twitter::before, .right-con .social a.github::before, .right-con .social a.linkedin::before, .right-con .social a.pinterest::before, .right-con .social a.rss::before
+{
+      	color: #fff;
+	font: 1.3em FontAwesome;
+	vertical-align: middle;
+}
+
+.right-con .social a.facebook::before
+{
+	content: "\f09a";
+}
+
+.right-con .social a.google::before
+{
+	content: "\f0d5";
+}
+
+.right-con .social a.twitter::before
+{
+	content: "\f099";
+}
+
+.right-con .social a.github::before
+{
+	content: "\f09b";
+}
+
+.right-con .social a.linkedin::before
+{
+	content: "\f0e1";
+}
+
+.right-con .social a.pinterest::before
+{
+	content: "\f0d2";
+}
+
+.right-con .social a.rss::before
+{
+	content: "\f09e";
 }
 
 @media screen and (max-width:768px) {
@@ -518,7 +551,7 @@ nav>ul li:hover>ul
 }
 #pagenavi .prev:before
 {
-	content: "\f060";
+	content: "\f0a8";
 	font: 1.3em FontAwesome;
 	left: 0;
 	position: absolute;
@@ -530,7 +563,7 @@ nav>ul li:hover>ul
 }
 #pagenavi .next:before
 {
-	content: "\f061";
+	content: "\f0a9";
 	font: 1.3em FontAwesome;
 	position: absolute;
 	right: 0;
@@ -574,18 +607,20 @@ article .entry-content a:hover
 }
 article .entry-content .more-link
 {
-	display: block;
+	display: inline-block;
 	margin-top: 10px;
-	padding-left: 20px;
 	position: relative;
 }
-article .entry-content .more-link:before
+article .entry-content .more-link:hover
 {
-	content: "\f061";
-	font: 1.3em FontAwesome;
-	left: 0;
+	text-decoration: none;
+}
+article .entry-content .more-link:after
+{
+	content: "\f0a9";
+	font: 1em FontAwesome;
+	padding-left: 5px;
 	line-height: 1.6em;
-	position: absolute;
 }
 article .entry-content p,article .entry-content blockquote,article .entry-content ul,article .entry-content ol,article .entry-content dl,article .entry-content table,article .entry-content iframe,article .entry-content h1,article .entry-content h2,article .entry-content h3,article .entry-content h4,article .entry-content h5,article .entry-content h6,article .entry-content .video-container
 {
@@ -651,8 +686,7 @@ article .entry-content iframe
 article .entry-content table
 {
 	background: #ddd;
-	border: 1px 
-solid #ccc;
+	border: 1px solid #ccc;
 	border-spacing: 0;
 	margin-top: 10px;
 }
@@ -805,6 +839,42 @@ left:0;
 	display: none;
     }
 }
+
+#alignment
+{
+	padding: 0 10px 0 30px;
+	margin-bottom: 25px;
+	width: 80%;
+}
+
+#alignment .left-alignment
+{
+	margin-right: 1.5em;  
+}
+
+#alignment .right-alignment
+{
+	margin-left: 1.5em;  
+}
+
+#alignment .left-alignment::before, #alignment .right-alignment::after
+{
+        color: #258FB8;
+	font: 1em FontAwesome;
+}
+
+#alignment .left-alignment::before
+{
+    	content: "\f0a8";
+	padding-right: 5px;
+}
+
+#alignment .right-alignment::after
+{
+	content: "\f0a9";
+	padding-left: 5px;
+}
+
 .archives .year
 {
 	border-bottom: 1px solid #DDDDDD;
@@ -1279,7 +1349,7 @@ figure.code .s1,.gist-highlight .s1
 #banner
 {
 	color: #999;
-	line-height: 30px;
+	line-height: 28px;
 	padding: 0;
 	position: relative;
 	text-align: center;
@@ -1298,43 +1368,9 @@ figure.code .s1,.gist-highlight .s1
 }
 #banner a:hover
 {
-	text-decoration: underline;
+	text-decoration: none;
 }
-#banner small
-{
-	bottom: 0;
-	position: absolute;
-	right: 0;
-}
-#banner .loading
-{
-	background: url('/images/
-loading_pacman.gif?1348572286') center no-repeat;
-	text-indent: -9999px;
-}
-#banner .container
-{
-	display: none;
-	height: 30px;
-	overflow: hidden;
-	position: relative;
-}
-#banner .container .feed
-{
-	list-style: none;
-	position: absolute;
-	top: 0;
-	width: 100%;
-}
-#banner .container .feed li
-{
-	position: relative;
-}
-#banner .container .feed li small
-{
-	position: absolute;
-	right: 0;
-}
+
 .fancybox-tmp iframe,.fancybox-tmp object
 {
 	margin: 0;

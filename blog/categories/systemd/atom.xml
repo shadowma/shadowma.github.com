@@ -4,7 +4,7 @@
   <title><![CDATA[Category: systemd | 雨吁]]></title>
   <link href="http://shadow.ma/blog/categories/systemd/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-10-06T20:37:31+08:00</updated>
+  <updated>2012-10-07T03:46:57+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma]]></name>
@@ -30,7 +30,7 @@ $ systemd-analyze
 Startup finished in 3608ms (kernel) + 3562ms (userspace) = 7170ms
 </code></p>
 
-<p>效果顯著，fbsplash 一閃而過，進度都沒走 KDM 就出來了。</p>
+<p>效果顯著，fbsplash 一閃而過，進度都沒走完 KDM 就出來了。</p>
 ]]></content>
   </entry>
   
