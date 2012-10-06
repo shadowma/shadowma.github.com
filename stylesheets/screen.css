@@ -160,7 +160,7 @@ a
 }
 
 .left-col {
-    background: url('/images/bg.png') repeat-y scroll right top transparent;
+    border-right: 1px solid #CCC;
     float: left;
     position: fixed;
     width: 30%;
