@@ -369,11 +369,11 @@ nav>ul li:hover>ul
 	font: 13px "Pontano Sans","Hiragino Sans GB","Hiragino Sans GB W3","Microsoft JhengHei",\5fae\8edf\6b63\9ed1\9ad4,"Microsoft Yahei",\5FAE\8F6F\96C5\9ED1,sans-serif;
 	padding: 6px 15px 6px 35px;
 	width: 80px;
-	-moz-transition: all 0.5s ease 0s;
-	-o-transition: all 0.5s ease 0s;
-	transition: all 0.5s ease 0s;
+	-moz-transition: all 0.4s ease 0s;
+	-o-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s;
 	-webkit-transition: all 0.5s ease 0s;
-	-ms-transition: all 0.5 ease 0s;
+	-ms-transition: all 0.4 ease 0s;
 }
 .right-con .search input[type="text"]:focus,.right-con .search input[type="text"]:active
 {
