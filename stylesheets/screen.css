@@ -1610,3 +1610,28 @@ fancybox-title-float-wrap .child
 	padding: 10px;
 	position: absolute;
 }
+/* srollingbar */
+::-webkit-scrollbar-track-piece{
+	background-color:#fff;
+	border-left:1px solid #fff;
+	-webkit-border-radius: 0px;
+}
+::-webkit-scrollbar{
+	width:14px;
+	height:14px;
+}
+::-webkit-scrollbar-thumb
+{ 
+	background-color: #c2c2c2; 
+	background-clip:padding-box;
+	border:1px solid #979797
+	-webkit-border-radius: 6px;
+	outline: 3px solid #fff;
+	outline-offset: -3px;
+	min-height:28px
+}
+::-webkit-scrollbar-thumb:hover {
+	border:1px solid #636363;
+	background-color:#929292;
+	-webkit-border-radius: 6px;
+}
