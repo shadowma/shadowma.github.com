@@ -1,5 +1,7 @@
 User-agent: *
 Disallow: /404.html
-Allow: / 
+Disallow: /atom.xml
+Disallow: /*/archives
+Disallow: /*/categories
 
 Sitemap: http://shadow.ma/sitemap.xml
