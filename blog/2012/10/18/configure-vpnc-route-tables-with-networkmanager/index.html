@@ -1,0 +1,233 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>使用 NetworkManager 設置 VPNC 和路由表 - 雨吁</title>
+	<meta name="author" content="Shadow Ma,i@shadow.ma">
+
+	
+	<meta name="description" content="昨晚看到個 VPN 服務 IQLink，免費用戶每月有 100G 流量，測了下速度還不錯，可以留着以備不時之需。 用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 chnroutes，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。 IQLink &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+	<link href="/favicon.gif" rel="icon" type="image/gif">
+	<link href="/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="left-col"><nav><ul class="main">
+	<li><a href="/">日誌</a></li>
+	<li><a href="/blog/archives">存檔</a></li>
+	<li><a href="/blog/tags">標籤</a></li>
+	<li><a href="/blog/links">鏈接</a></li>
+	<li><a href="/blog/about">關於</a></li>
+</ul>
+</nav>
+<div class="site">
+	<a id="logo" href="/"></a>
+	<p>何以言知</p>
+</div>
+<div class=copyright>
+<p><a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank" title="CC BY-SA 3.0">Copyleft</a>
+&nbsp2011-2012
+雨吁 - 何以言知</p>
+</div>
+
+</header>
+	
+		<div id="banner" class="right-col">
+	<div class="right-con">
+	
+	<form class="search right" action="http://google.com/search" method="get">
+		<input class="left" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:shadow.ma">
+	</form>
+	<div class="social right">
+		
+		
+		<a class="google" href="https://plus.google.com/101910642500012990972?rel=author" title="Google+"><i class="icon-google-plus"></i></a>
+		
+		
+		<a class="twitter" href="http://twitter.com/shadow_ma" title="Twitter"><i class="icon-twitter"></i></a>
+		
+		
+		<a class="github" href="https://github.com/shadowma" title="GitHub"><i class="icon-github"></i></a>
+		
+		
+		
+		
+		<a class="rss" href="http://feed.shadow.ma" title="RSS"><i class="icon-rss"></i></a>
+		
+	</div>
+	
+</div>
+<div class=plusone><g:plusone></g:plusone></div>
+</div>
+	
+	<div id="ajax-container"><div id="ajax-inner">
+	<div id="content" class="right-col"><article class="post">
+	<h1 class="title">使用 NetworkManager 設置 VPNC 和路由表</h1>
+	
+	<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-18T01:20:00+08:00" pubdate data-updated="true">2012年10月18日</time></div>
+	<div class="tags">
+
+
+	<a class='tag' href='/blog/tags/networkmanager/'>NetworkManager</a>, <a class='tag' href='/blog/tags/vpnc/'>VPNC</a>, <a class='tag' href='/blog/tags/chnroutes/'>chnroutes</a>
+
+
+</div>
+	
+		<span class="comments"><a href="/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/#disqus_thread">評論</a></span>
+	
+	</div>
+	
+	<div class="entry-content"><p>昨晚看到個 VPN 服務 <a href="http://106.187.44.5/home?referral=70588D95C2F9DF00D908B3CC2282F650" title="IQLink">IQLink</a>，免費用戶每月有 100G 流量，測了下速度還不錯，可以留着以備不時之需。</p>
+
+<p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。</p>
+
+<!-- more -->
+
+
+<p>IQLink 提供的是 Cisco VPN，Linux 下要用 VPNC 連接，chnroutes 網站上提供了 PPTP 和 OpenVPN 的設置教程，唯獨沒有 VPNC，還好 VPNC 支持連接腳本，默認配置的 <code>/etc/vpnc/vpnc-script</code> 能在執行 <code>pre-init</code>、<code>connect</code>、<code>post-connect</code>、<code>disconnect</code>、<code>post-disconnect</code> 和 <code>reconnect</code> 六種 action 時調用自定義腳本，只要把 <code>python chnroutes.py -p linux</code> 生成的腳本 <code>ip-pre-up</code> 和 <code>ip-down</code> 分別放入 <code>/etc/vpnc/pre-init.d</code> 和 <code>/etc/vpnc/post-disconnect.d</code> 就能在連接 VPN 前後成功添加恢復路由表，但在使用 NetworkManager 連接 VPNC 時，發現這些腳本根本就沒有被執行，NM 的 VPNC 插件用自帶的 <code>nm-vpnc-service-vpnc-helper</code> 替代了 <code>vpnc-script</code>，完全不讀取 <code>/etc/vpnc</code> 下的配置，而且這東西是二進制文件沒法改，試過直接替換成 <code>vpnc-script</code> 也不行，正準備放棄時突然想起 NetworkManager 也支持連接腳本，直接用 NetworkManager 配置的話就不用再爲每種 VPN 都設定路由表了。</p>
+
+<p>把下面的腳本（根據自己實際情況修改）放入 <code>/etc/NetworkManager/dispatcher.d</code>，腳本中在觸發 <code>vpn-down</code> 恢復路由表時我排除了正在配置的 VPNC 連接的 UUID，因爲斷開連接時路由表已經被恢復，導致腳本返回一大串錯誤，這應該是 <code>nm-vpnc-service-vpnc-helper</code> 中定義的操作。</p>
+
+<figure class='code'><figcaption><span>99-chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">INTERFACE</span><span class="o">=</span><span class="nv">$1</span>
+</span><span class='line'><span class="nv">STATUS</span><span class="o">=</span><span class="nv">$2</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$STATUS&quot;</span> in
+</span><span class='line'>        <span class="s1">&#39;vpn-up&#39;</span><span class="o">)</span>
+</span><span class='line'>                <span class="nb">exec</span> /etc/chnroutes/vpnup
+</span><span class='line'>                ;;
+</span><span class='line'>        <span class="s1">&#39;vpn-down&#39;</span><span class="o">)</span>
+</span><span class='line'>                <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$CONNECTION_UUID&quot;</span> !<span class="o">=</span> <span class="s2">&quot;1f2c647b-dd70-4f97-8300-0cf6cd4a2e4c&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+</span><span class='line'><span class="k">                </span><span class="nb">exec</span> /etc/chnroutes/vpndown
+</span><span class='line'>                <span class="k">fi</span>
+</span><span class='line'>                ;;
+</span><span class='line'><span class="k">esac</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>重新連接，測試發現路由表並沒有被成功設置，手動執行腳本發現必須在連接前設置路由表才行，而腳本中的 <code>vpn-up</code> 在連接建立後才觸發自然無效了，解決方法是把設置路由表的腳本（我這裏是 <code>/etc/chnroutes/vpnup</code>）中的：</p>
+
+<pre><code>OLDGW=`ip route show | grep '^default' | sed -e 's/default via \([^ ]*\).*/\1/'`
+</code></pre>
+
+<p>修改爲：</p>
+
+<pre><code>OLDGW=`ip route show | grep '^[^d].*proto static'|sed -e 's/.*via \([^ ]*\) .*/\1/'`
+</code></pre>
+
+<p>重新連接，問題解決。現在用 NetworkManager 連接的 VPN 都會自動設置路由表了，以前給 PPTP 設置的撥號腳本可以移除了。</p>
+</div>
+</article>
+
+	<li id="share-container" class="share-container">
+<div class="share-tip" id="share-tip">分享到</div>
+<div class="share-panel" id="share-panel">
+<a target="_blank" href="http://service.weibo.com/share/share.php?url=http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/&title=使用 NetworkManager 設置 VPNC 和路由表&appkey=608332473&ralateUid=1672835792" class="icon icon-sina" title="新浪微博">新浪微博</a>
+<a target="_blank" href="http://share.renren.com/share/buttonshare.do?title=使用 NetworkManager 設置 VPNC 和路由表&link=http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/&content=_blank" class="icon icon-renren" title="人人">人人</a>
+<a target="_blank" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" class="icon icon-qzone" title="QQ 空間">QQ 空間</a>
+<a target="_blank" href="http://v.t.qq.com/share/share.php?appkey=801076915&title=使用 NetworkManager 設置 VPNC 和路由表&url=http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/&assname=shadow-ma&site=http://shadow.ma" class="icon icon-tencent" title="騰訊微博">騰訊微博</a>
+<a target="_blank" href="http://shuo.douban.com/!service/share?name=使用 NetworkManager 設置 VPNC 和路由表&href=http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" class="icon icon-douban" title="豆瓣">豆瓣</a>
+<a target="_blank" href="http://www.kaixin001.com/repaste/share.php?rtitle=使用 NetworkManager 設置 VPNC 和路由表&rurl=http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/&rcontent=_blank" class="icon icon-kaixin" title="開心網">開心網</a>
+<a target="_blank" href="http://www.facebook.com/share.php?u=http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" class="icon icon-facebook" title="facebook">facebook</a>
+<a target="_blank" href="http://twitter.com/home?status=使用 NetworkManager 設置 VPNC 和路由表 http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" class="icon icon-twitter" title="twitter">twitter</a>
+</div>
+</li>
+
+
+    <section id="alignment">
+      
+        <a class="left-alignment left" href="/blog/2012/10/06/switched-arch-to-systemd/" title="前一篇日誌: 切換到了 systemd">切換到了 systemd</a>
+      
+      
+    </section>
+
+<section id="comment">
+    <h1 class="title">評論</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	</div></div>
+	<footer id="footer" class="right-col">
+</footer>
+	<script src="/javascripts/shadow.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'shadowma';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/';
+        var disqus_url = 'http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+</body>
+</html>
