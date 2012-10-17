@@ -965,6 +965,10 @@ left:0;
 {
 	content: "\f075";
 }
+#tag-cloud a {
+	margin-right: 15px;
+}
+
 #comment
 {
 	padding: 30px 10px 30px 30px;
