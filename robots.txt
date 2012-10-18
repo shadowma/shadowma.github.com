@@ -1,6 +1,7 @@
 User-agent: *
 Disallow: /404.html
 Disallow: /atom.xml
+Disallow: /sitemap.xml
 Disallow: /*/archives
 Disallow: /*/tags
 
