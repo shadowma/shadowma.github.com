@@ -160,7 +160,7 @@
 <pre><code>OLDGW=`ip route show | grep '^[^d].*proto static'|sed -e 's/.*via \([^ ]*\).*/\1/'`
 </code></pre>
 
-<p>重新連接，測試成功。現在用 NetworkManager 連接的 VPN 都會自動設置路由表了，以前給 PPTP 設置的撥號腳本可以移除了。</p>
+<p>重新連接，測試成功。現在用 NetworkManager 連接的 VPN 都會自動設置路由表，以前給 PPTP 設置的撥號腳本可以移除了。</p>
 
 <p>其實沒必要像我一樣把 <code>ip-pre-up</code> 和 <code>ip-down</code> 改成 <code>vpnup</code> 和 <code>vpndown</code>，只是這裏 <code>vpnup</code> 已經不是 pre-up 了，看着不爽而已。</p>
 </div>
