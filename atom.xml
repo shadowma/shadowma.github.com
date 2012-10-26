@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-10-27T01:48:32+08:00</updated>
+  <updated>2012-10-27T03:28:49+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
@@ -42,7 +42,7 @@
 <!-- more -->
 
 
-<p>結合<a href="http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">上篇</a>，<code>chnroutes.py</code> 已經在 <code>/etc/chnroutes</code> 下，把腳本放到 <code>/etc/cron.weekly</code> 下</p>
+<p>結合<a href="http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">上篇</a>，<code>chnroutes.py</code> 已經在 <code>/etc/chnroutes</code> 下，把腳本放到 <code>/etc/cron.weekly</code> 下會每周執行一次。</p>
 
 <figure class='code'><figcaption><span>/etc/cron.weekly/chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

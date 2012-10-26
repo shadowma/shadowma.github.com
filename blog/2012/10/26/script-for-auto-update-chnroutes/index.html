@@ -7,7 +7,7 @@
 	<meta name="author" content="Shadow Ma,i@shadow.ma">
 
 	
-	<meta name="description" content="沒學過 bash 編程，當批處理寫的，ugly 但有效，作個備份吧。 需要開啓 cron 服務 systemctl enable cronie.service 結合上篇，chnroutes.py 已經在 /etc/chnroutes 下，把腳本放到 /etc/cron.weekly 下 /etc/ &hellip;">
+	<meta name="description" content="沒學過 bash 編程，當批處理寫的，ugly 但有效，作個備份吧。 需要開啓 cron 服務 systemctl enable cronie.service 結合上篇，chnroutes.py 已經在 /etc/chnroutes 下，把腳本放到 /etc/cron.weekly &hellip;">
 	<meta name="keywords" content="chnroutes, script">
 
 	<meta name="HandheldFriendly" content="True">
@@ -116,7 +116,7 @@
 <!-- more -->
 
 
-<p>結合<a href="/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">上篇</a>，<code>chnroutes.py</code> 已經在 <code>/etc/chnroutes</code> 下，把腳本放到 <code>/etc/cron.weekly</code> 下</p>
+<p>結合<a href="/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">上篇</a>，<code>chnroutes.py</code> 已經在 <code>/etc/chnroutes</code> 下，把腳本放到 <code>/etc/cron.weekly</code> 下會每周執行一次。</p>
 
 <figure class='code'><figcaption><span>/etc/cron.weekly/chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
