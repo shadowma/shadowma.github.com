@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-10-26T22:23:46+08:00</updated>
+  <updated>2012-10-26T22:25:42+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
@@ -18,7 +18,7 @@
     <link href="http://shadow.ma/blog/2012/10/26/blog-start-over-again/"/>
     <updated>2012-10-26T22:12:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/10/26/blog-start-over-again</id>
-    <content type="html"><![CDATA[<p>之前放棄了把以前 WordPress 博客的文章轉過來，一是因爲麻煩，還有就是的確沒什麼人看，都是自己的筆記，想着就算原始頁面全404了，也還有 Google 的快照，隨便查查沒關係，今天要找段代碼才發現之前收錄的文章都沒剩幾篇了，沒想到 Google 會自動刪死鏈！</p>
+    <content type="html"><![CDATA[<p>之前放棄了把以前 WordPress 博客的文章轉過來，一是因爲麻煩，還有就是的確沒什麼人看，都是自己的筆記，想着就算原始頁面全404了，也還有 Google 的快照，自己隨便查查沒關係，今天要找段代碼才發現之前收錄的文章都沒剩幾篇了，沒想到 Google 會自動刪死鏈！</p>
 
 <!-- more -->
 
