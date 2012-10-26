@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: chnroutes | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/chnroutes/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-10-23T02:22:57+08:00</updated>
+  <updated>2012-10-26T21:46:14+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[自動更新 chnroutes 的腳本]]></title>
+    <link href="http://shadow.ma/blog/2012/10/26/script-for-auto-update-chnroutes/"/>
+    <updated>2012-10-26T20:35:00+08:00</updated>
+    <id>http://shadow.ma/blog/2012/10/26/script-for-auto-update-chnroutes</id>
+    <content type="html"><![CDATA[<p>沒學過 bash 編程，當批處理寫的，ugly 但有效，作個備份吧。</p>
+
+<p>需要開啓 cron 服務</p>
+
+<pre><code>systemctl enable cronie.service
+</code></pre>
+
+<!-- more -->
+
+
+<p>結合<a href="/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">上篇</a>，<code>chnroutes.py</code> 已經在 <code>/etc/chnroutes</code> 下，把腳本放到 <code>/etc/cron.weekly</code> 下</p>
+
+<p>```bash /etc/cron.weekly/chnroutes</p>
+
+<h1>!/bin/bash</h1>
+
+<p>cd /etc/chnroutes
+python2 chnroutes.py -p linux 2>&amp;1 >/dev/null</p>
+
+<h1>echo "Fetching data from apnic.net, it might take a few minutes, please wait..."</h1>
+
+<p>mv ip-pre-up vpnup &amp;&amp; mv ip-down vpndown
+sed -i 's/default/[<sup>d].*proto</sup> static/' vpnup &amp;&amp; sed -i 's/default\ /.<em>/' vpnup
+chmod +x vpn</em>
+```</p>
+
+<p>最後別忘記 <code>chmod +x /etc/cron.weekly/chnroutes</code>。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用 NetworkManager 設置 VPNC 和路由表]]></title>

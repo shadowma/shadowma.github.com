@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-10-23T02:22:57+08:00</updated>
+  <updated>2012-10-26T21:46:14+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[自動更新 chnroutes 的腳本]]></title>
+    <link href="http://shadow.ma/blog/2012/10/26/script-for-auto-update-chnroutes/"/>
+    <updated>2012-10-26T20:35:00+08:00</updated>
+    <id>http://shadow.ma/blog/2012/10/26/script-for-auto-update-chnroutes</id>
+    <content type="html"><![CDATA[<p>沒學過 bash 編程，當批處理寫的，ugly 但有效，作個備份吧。</p>
+
+<p>需要開啓 cron 服務</p>
+
+<pre><code>systemctl enable cronie.service
+</code></pre>
+
+<!-- more -->
+
+
+<p>結合<a href="http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">上篇</a>，<code>chnroutes.py</code> 已經在 <code>/etc/chnroutes</code> 下，把腳本放到 <code>/etc/cron.weekly</code> 下</p>
+
+<figure class='code'><figcaption><span>/etc/cron.weekly/chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'><span class="nb">cd</span> /etc/chnroutes
+</span><span class='line'>python2 chnroutes.py -p linux 2&gt;&amp;1 &gt;/dev/null
+</span><span class='line'><span class="c">#echo &quot;Fetching data from apnic.net, it might take a few minutes, please wait...&quot;</span>
+</span><span class='line'>mv ip-pre-up vpnup <span class="o">&amp;&amp;</span> mv ip-down vpndown
+</span><span class='line'>sed -i <span class="s1">&#39;s/default/[^d].*proto static/&#39;</span> vpnup <span class="o">&amp;&amp;</span> sed -i <span class="s1">&#39;s/default\ /.*/&#39;</span> vpnup
+</span><span class='line'>chmod +x vpn*
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最後別忘記 <code>chmod +x /etc/cron.weekly/chnroutes</code>。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用 NetworkManager 設置 VPNC 和路由表]]></title>
