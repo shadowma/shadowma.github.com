@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[標籤: VPS | 雨吁]]></title>
-  <link href="http://shadow.ma//blog/tags/vps/atom.xml" rel="self"/>
-  <link href="http://shadow.ma//"/>
-  <updated>2012-10-28T18:29:25+08:00</updated>
-  <id>http://shadow.ma//</id>
+  <link href="http://shadow.ma/blog/tags/vps/atom.xml" rel="self"/>
+  <link href="http://shadow.ma/"/>
+  <updated>2012-10-28T18:54:15+08:00</updated>
+  <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[買了 Hellohost 的 VPS]]></title>
-    <link href="http://shadow.ma//blog/2012/10/02/bought-hellohost-vps/"/>
+    <link href="http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/"/>
     <updated>2012-10-02T14:48:00+08:00</updated>
-    <id>http://shadow.ma//blog/2012/10/02/bought-hellohost-vps</id>
+    <id>http://shadow.ma/blog/2012/10/02/bought-hellohost-vps</id>
     <content type="html"><![CDATA[<p>快用了一年 Hellohost 的主機，這個月就要到期，轉到 Octopress 後，這 PHP 主機就沒必要再續費了，現在 Blog 放 GitHub 上最大的缺點就是隻支持綁定一個域名，以前 RSS 定閱的子域名必須用其它主機反向代理或重定向，還有很多鏈接也要重定向，而且只要不直接在 GitHub 上綁定域名的話，就可以直接使用 Page 的鏈接訪問，正好可以讓牆內的朋友用這個。</p>
 
 <!-- more -->
