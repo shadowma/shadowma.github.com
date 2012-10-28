@@ -1,49 +1,49 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://shadow.ma/blog/2012/09/26/hello-octopress/</loc>
+        <loc>http://shadow.ma//blog/2012/09/26/hello-octopress/</loc>
         <lastmod>2012-10-26T22:22:21+08:00</lastmod>
     </url>
     <url>
-        <loc>http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/</loc>
+        <loc>http://shadow.ma//blog/2012/10/02/bought-hellohost-vps/</loc>
         <lastmod>2012-10-17T12:48:02+08:00</lastmod>
     </url>
     <url>
-        <loc>http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd/</loc>
+        <loc>http://shadow.ma//blog/2012/10/06/switched-arch-to-systemd/</loc>
         <lastmod>2012-10-17T12:48:04+08:00</lastmod>
     </url>
     <url>
         <loc>
-            http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/
+            http://shadow.ma//blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/
         </loc>
         <lastmod>2012-10-19T20:07:02+08:00</lastmod>
     </url>
     <url>
-        <loc>http://shadow.ma/blog/2012/10/26/script-for-auto-update-chnroutes/</loc>
+        <loc>http://shadow.ma//blog/2012/10/26/script-for-auto-update-chnroutes/</loc>
         <lastmod>2012-10-27T03:26:31+08:00</lastmod>
     </url>
     <url>
-        <loc>http://shadow.ma/blog/2012/10/26/blog-start-over-again/</loc>
+        <loc>http://shadow.ma//blog/2012/10/26/blog-start-over-again/</loc>
         <lastmod>2012-10-27T01:48:17+08:00</lastmod>
     </url>
     <url>
-        <loc>http://shadow.ma/blog/about/</loc>
-        <lastmod>2012-10-19T10:50:51+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://shadow.ma/blog/tags/</loc>
+        <loc>http://shadow.ma//blog/archives/</loc>
         <lastmod>2012-10-27T03:26:31+08:00</lastmod>
     </url>
     <url>
-        <loc>http://shadow.ma/blog/links/</loc>
+        <loc>http://shadow.ma//blog/links/</loc>
         <lastmod>2012-10-19T10:49:45+08:00</lastmod>
     </url>
     <url>
-        <loc>http://shadow.ma/blog/archives/</loc>
+        <loc>http://shadow.ma//blog/about/</loc>
+        <lastmod>2012-10-19T10:50:51+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shadow.ma//blog/tags/</loc>
         <lastmod>2012-10-27T03:26:31+08:00</lastmod>
     </url>
     <url>
-        <loc>http://shadow.ma/</loc>
+        <loc>http://shadow.ma//</loc>
         <lastmod>2012-10-27T03:26:31+08:00</lastmod>
     </url>
 </urlset>

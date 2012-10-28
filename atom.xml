@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[雨吁]]></title>
-  <link href="http://shadow.ma/atom.xml" rel="self"/>
-  <link href="http://shadow.ma/"/>
-  <updated>2012-10-27T03:28:49+08:00</updated>
-  <id>http://shadow.ma/</id>
+  <link href="http://shadow.ma//atom.xml" rel="self"/>
+  <link href="http://shadow.ma//"/>
+  <updated>2012-10-28T18:29:25+08:00</updated>
+  <id>http://shadow.ma//</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[完全從頭開始了]]></title>
-    <link href="http://shadow.ma/blog/2012/10/26/blog-start-over-again/"/>
+    <link href="http://shadow.ma//blog/2012/10/26/blog-start-over-again/"/>
     <updated>2012-10-26T22:12:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/26/blog-start-over-again</id>
+    <id>http://shadow.ma//blog/2012/10/26/blog-start-over-again</id>
     <content type="html"><![CDATA[<p>之前放棄了把以前 WordPress 博客的文章轉過來，一是因爲麻煩，還有就是的確沒什麼人看，都是自己的筆記，想着就算原始頁面全404了，也還有 Google 的快照，自己隨便查查沒關係，今天要找段代碼才發現之前收錄的文章都沒剩幾篇了，沒想到 Google 會自動刪死鏈！</p>
 
 <!-- more -->
@@ -29,9 +29,9 @@
   
   <entry>
     <title type="html"><![CDATA[自動更新 chnroutes 的腳本]]></title>
-    <link href="http://shadow.ma/blog/2012/10/26/script-for-auto-update-chnroutes/"/>
+    <link href="http://shadow.ma//blog/2012/10/26/script-for-auto-update-chnroutes/"/>
     <updated>2012-10-26T20:35:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/26/script-for-auto-update-chnroutes</id>
+    <id>http://shadow.ma//blog/2012/10/26/script-for-auto-update-chnroutes</id>
     <content type="html"><![CDATA[<p>沒學過 bash 編程，當批處理寫的，ugly 但有效，作個備份吧。</p>
 
 <p>需要開啓 cron 服務</p>
@@ -42,7 +42,7 @@
 <!-- more -->
 
 
-<p>結合<a href="http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">上篇</a>，<code>chnroutes.py</code> 已經在 <code>/etc/chnroutes</code> 下，把腳本放到 <code>/etc/cron.weekly</code> 下會每周執行一次。</p>
+<p>結合<a href="http://shadow.ma//blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">上篇</a>，<code>chnroutes.py</code> 已經在 <code>/etc/chnroutes</code> 下，把腳本放到 <code>/etc/cron.weekly</code> 下會每周執行一次。</p>
 
 <figure class='code'><figcaption><span>/etc/cron.weekly/chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -67,9 +67,9 @@
   
   <entry>
     <title type="html"><![CDATA[使用 NetworkManager 設置 VPNC 和路由表]]></title>
-    <link href="http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/"/>
+    <link href="http://shadow.ma//blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/"/>
     <updated>2012-10-18T01:20:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager</id>
+    <id>http://shadow.ma//blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager</id>
     <content type="html"><![CDATA[<p>昨晚看到個 VPN 服務 <a href="http://106.187.44.5/home?referral=70588D95C2F9DF00D908B3CC2282F650" title="IQLink">IQLink</a>，免費用戶每月有 100G 流量，測了下速度還不錯，可以留着以備不時之需。</p>
 
 <p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。</p>
@@ -132,9 +132,9 @@
   
   <entry>
     <title type="html"><![CDATA[切換到了 systemd]]></title>
-    <link href="http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd/"/>
+    <link href="http://shadow.ma//blog/2012/10/06/switched-arch-to-systemd/"/>
     <updated>2012-10-06T19:35:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd</id>
+    <id>http://shadow.ma//blog/2012/10/06/switched-arch-to-systemd</id>
     <content type="html"><![CDATA[<p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。</p>
 
 <!-- more -->
@@ -154,9 +154,9 @@
   
   <entry>
     <title type="html"><![CDATA[買了 Hellohost 的 VPS]]></title>
-    <link href="http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/"/>
+    <link href="http://shadow.ma//blog/2012/10/02/bought-hellohost-vps/"/>
     <updated>2012-10-02T14:48:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/02/bought-hellohost-vps</id>
+    <id>http://shadow.ma//blog/2012/10/02/bought-hellohost-vps</id>
     <content type="html"><![CDATA[<p>快用了一年 Hellohost 的主機，這個月就要到期，轉到 Octopress 後，這 PHP 主機就沒必要再續費了，現在 Blog 放 GitHub 上最大的缺點就是隻支持綁定一個域名，以前 RSS 定閱的子域名必須用其它主機反向代理或重定向，還有很多鏈接也要重定向，而且只要不直接在 GitHub 上綁定域名的話，就可以直接使用 Page 的鏈接訪問，正好可以讓牆內的朋友用這個。</p>
 
 <!-- more -->
@@ -184,9 +184,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hello Octopress!]]></title>
-    <link href="http://shadow.ma/blog/2012/09/26/hello-octopress/"/>
+    <link href="http://shadow.ma//blog/2012/09/26/hello-octopress/"/>
     <updated>2012-09-26T17:16:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/09/26/hello-octopress</id>
+    <id>http://shadow.ma//blog/2012/09/26/hello-octopress</id>
     <content type="html"><![CDATA[<p>近幾個月一真沒更新過博客，也沒登錄過，上一次登錄還是因爲升級 Wordpress ，懶得再折騰 Wordpress 了，最近收到了主機的續費通知就想換個平臺，很久以前就想試試 Octopress，在主機到期前正好嘗試下。</p>
 
 <!-- more -->
