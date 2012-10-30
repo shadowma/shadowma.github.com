@@ -156,7 +156,7 @@
     </section>
 
 <section id="comment">
-    <h1 class="title">評論</h1>
+    <a href="#" class="disqus_container" onclick="return false;"><strong>點擊查看評論</strong></a>
     <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
 </section>
@@ -182,11 +182,13 @@
         var disqus_url = 'http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/';
         var disqus_script = 'embed.js';
       
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
+    jQuery(document).ready(function(){        
+	    jQuery('#comment .disqus_container').on('click',function(){
+		jQuery(this).html('加載中...');
+		var that = this;
+		shadow.src('http://' + disqus_shortname + '.disqus.com/' + disqus_script,function(){jQuery(that).remove()});
+	    });
+    });
 </script>
 
 
@@ -203,5 +205,30 @@
 
 
 
+<script type="text/javascript">
+var shadow = {};
+shadow.src = function(file,callback){
+            var _doc = document.getElementsByTagName('head')[0];
+            var js = document.createElement('script');
+            js.setAttribute('type', 'text/javascript');
+            js.setAttribute('src', file);
+            _doc.appendChild(js);
+
+            if (!/*@cc_on!@*/0) { //if not IE
+                //Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload
+                js.onload = function () {
+                    callback();
+                }
+            } else {
+                //IE6、IE7 support js.onreadystatechange
+                js.onreadystatechange = function () {
+                    if (js.readyState == 'loaded' || js.readyState == 'complete') {
+                        callback();
+                    }
+                }
+            }
+            return false;
+}
+</script>
 </body>
 </html>

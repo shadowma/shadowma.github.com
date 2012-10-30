@@ -95,6 +95,12 @@ about.me：<a href="http://about.me/shadow" title="about.me">about:shadow</a></p
 </article>
 
 
+
+<section id="comment">
+    <a href="/blog/about#" class="disqus_container" onclick="return true;"><strong>點擊查看留言</strong></a>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
 	</div></div>
 	<footer id="footer" class="right-col">
@@ -107,6 +113,24 @@ about.me：<a href="http://about.me/shadow" title="about.me">about:shadow</a></p
 })(jQuery);
 </script> <!-- Delete or comment this line to disable Fancybox -->
 
+
+<script type="text/javascript">
+      var disqus_shortname = 'shadowma';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shadow.ma/blog/about/index.html';
+        var disqus_url = 'http://shadow.ma/blog/about/index.html';
+        var disqus_script = 'embed.js';
+      
+    jQuery(document).ready(function(){        
+	    jQuery('#comment .disqus_container').on('click',function(){
+		jQuery(this).html('加載中...');
+		var that = this;
+		shadow.src('http://' + disqus_shortname + '.disqus.com/' + disqus_script,function(){jQuery(that).remove()});
+	    });
+    });
+</script>
 
 
 
@@ -122,5 +146,30 @@ about.me：<a href="http://about.me/shadow" title="about.me">about:shadow</a></p
 
 
 
+<script type="text/javascript">
+var shadow = {};
+shadow.src = function(file,callback){
+            var _doc = document.getElementsByTagName('head')[0];
+            var js = document.createElement('script');
+            js.setAttribute('type', 'text/javascript');
+            js.setAttribute('src', file);
+            _doc.appendChild(js);
+
+            if (!/*@cc_on!@*/0) { //if not IE
+                //Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload
+                js.onload = function () {
+                    callback();
+                }
+            } else {
+                //IE6、IE7 support js.onreadystatechange
+                js.onreadystatechange = function () {
+                    if (js.readyState == 'loaded' || js.readyState == 'complete') {
+                        callback();
+                    }
+                }
+            }
+            return false;
+}
+</script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 	<meta name="author" content="Shadow Ma,i@shadow.ma">
 
 	
-	<meta name="description" content="看看最近有沒有您所感興趣的： 完全從頭開始了 Oct 26 Blog Comments ">
+	<meta name="description" content="看看最近有沒有您所感興趣的： 完全從頭開始了 Oct 26 Blog 評論 ">
 	<meta name="keywords" content="互聯網,Linux,Personal,部落格,Blog">
 
 	<meta name="HandheldFriendly" content="True">
@@ -102,7 +102,7 @@
 
 </span>
 	    
-	    <span class="comments"><a href="/blog/2012/10/26/blog-start-over-again/#disqus_thread">Comments</a></span>
+	    <span class="comments"><a href="/blog/2012/10/26/blog-start-over-again/#disqus_thread">評論</a></span>
 	    
 	</div>
 </article>
@@ -122,7 +122,7 @@
 
 </span>
 	    
-	    <span class="comments"><a href="/blog/2012/10/26/script-for-auto-update-chnroutes/#disqus_thread">Comments</a></span>
+	    <span class="comments"><a href="/blog/2012/10/26/script-for-auto-update-chnroutes/#disqus_thread">評論</a></span>
 	    
 	</div>
 </article>
@@ -142,7 +142,7 @@
 
 </span>
 	    
-	    <span class="comments"><a href="/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/#disqus_thread">Comments</a></span>
+	    <span class="comments"><a href="/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/#disqus_thread">評論</a></span>
 	    
 	</div>
 </article>
@@ -162,7 +162,7 @@
 
 </span>
 	    
-	    <span class="comments"><a href="/blog/2012/10/06/switched-arch-to-systemd/#disqus_thread">Comments</a></span>
+	    <span class="comments"><a href="/blog/2012/10/06/switched-arch-to-systemd/#disqus_thread">評論</a></span>
 	    
 	</div>
 </article>
@@ -182,7 +182,7 @@
 
 </span>
 	    
-	    <span class="comments"><a href="/blog/2012/10/02/bought-hellohost-vps/#disqus_thread">Comments</a></span>
+	    <span class="comments"><a href="/blog/2012/10/02/bought-hellohost-vps/#disqus_thread">評論</a></span>
 	    
 	</div>
 </article>
@@ -218,5 +218,30 @@
 
 
 
+<script type="text/javascript">
+var shadow = {};
+shadow.src = function(file,callback){
+            var _doc = document.getElementsByTagName('head')[0];
+            var js = document.createElement('script');
+            js.setAttribute('type', 'text/javascript');
+            js.setAttribute('src', file);
+            _doc.appendChild(js);
+
+            if (!/*@cc_on!@*/0) { //if not IE
+                //Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload
+                js.onload = function () {
+                    callback();
+                }
+            } else {
+                //IE6、IE7 support js.onreadystatechange
+                js.onreadystatechange = function () {
+                    if (js.readyState == 'loaded' || js.readyState == 'complete') {
+                        callback();
+                    }
+                }
+            }
+            return false;
+}
+</script>
 </body>
 </html>
