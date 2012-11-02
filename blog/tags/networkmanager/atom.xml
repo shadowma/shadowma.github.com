@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: NetworkManager | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/networkmanager/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-11-02T18:25:20+08:00</updated>
+  <updated>2012-11-02T18:38:29+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
@@ -64,6 +64,13 @@ STATUS=$2</p>
 <p>重新連接，測試成功。現在用 NetworkManager 連接的 VPN 都會自動設置路由表，以前給 PPTP 設置的撥號腳本可以移除了。</p>
 
 <p>其實沒必要像我一樣把 <code>ip-pre-up</code> 和 <code>ip-down</code> 改成 <code>vpnup</code> 和 <code>vpndown</code>，只是這裏 <code>vpnup</code> 已經不是 pre-up 了，看着不爽而已。</p>
+
+<h2>參考資料</h2>
+
+<ul>
+<li><a href="http://blog.xuming.net/2010/04/openvpn.html" title="Ubuntu 9.10下使用Network-manager 配置openvpn">Ubuntu 9.10下使用Network-manager 配置openvpn</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
