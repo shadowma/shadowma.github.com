@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: NetworkManager | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/networkmanager/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-11-02T18:51:00+08:00</updated>
+  <updated>2012-11-02T19:06:32+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
@@ -51,7 +51,7 @@ STATUS=$2</p>
 <p>esac
 ```</p>
 
-<p>到此處還不能正常使用，chnroutes 生成的腳本是給 PPTP 用的，默認是要在 PPP 撥號前執行，在 VPN 鏈接前路由表就設置好了，而 NetworkManager 連接腳本中的 <code>vpn-up</code> 要在連接建立後才會被觸發，像我正在配置的 VPNC 因爲之前提到的 <s><code>nm-vpnc-service-vpnc-helper</code> 中有對路由表的操作</s> VPN 服務有修改路由表的話，腳本中的 <code>OLDGW</code> 得到的值會會是 VPN 網關的地址，路由表會被設成讓所有國內 ip 都走 VPN，解決方法是把 chnroutes 生成的設置腳本 <code>ip-pre-up</code>（上面腳本中的 <code>vpnup</code>）中的：</p>
+<p>到此處還不能正常使用，chnroutes 生成的腳本是給 PPTP 用的，默認是要在 PPP 撥號前執行，在 VPN 鏈接前路由表就設置好了，而 NetworkManager 連接腳本中的 <code>vpn-up</code> 要在連接建立後才會被觸發，<s>像我正在配置的 VPNC 因爲之前提到的 <code>nm-vpnc-service-vpnc-helper</code> 中有對路由表的操作</s> VPN 服務有修改路由表的話，腳本中的 <code>OLDGW</code> 得到的值會會是 VPN 網關的地址，路由表會被設成讓所有國內 ip 都走 VPN，解決方法是把 chnroutes 生成的設置腳本 <code>ip-pre-up</code>（上面腳本中的 <code>vpnup</code>）中的：</p>
 
 <pre><code>OLDGW=`ip route show | grep '^default' | sed -e 's/default via \([^ ]*\).*/\1/'`
 </code></pre>
