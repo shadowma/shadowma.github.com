@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-10-30T17:37:05+08:00</updated>
+  <updated>2012-11-02T17:31:16+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
@@ -51,12 +51,16 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
 </span><span class='line'><span class="nb">cd</span> /etc/chnroutes
 </span><span class='line'>python2 chnroutes.py -p linux 2&gt;&amp;1 &gt;/dev/null
 </span><span class='line'><span class="c">#echo &quot;Fetching data from apnic.net, it might take a few minutes, please wait...&quot;</span>
 </span><span class='line'>mv ip-pre-up vpnup <span class="o">&amp;&amp;</span> mv ip-down vpndown
-</span><span class='line'>sed -i <span class="s1">&#39;s/default/[^d].*proto static/&#39;</span> vpnup <span class="o">&amp;&amp;</span> sed -i <span class="s1">&#39;s/default\ /.*/&#39;</span> vpnup
+</span><span class='line'>
+</span><span class='line'>sed -i <span class="s1">&#39;/^OLDGW/d&#39;</span> vpnup <span class="o">&amp;&amp;</span> sed -i <span class="s1">&#39;/export/a OLDGW=`ip route show | sed &quot;/.*tun.*/d&quot;  | grep &quot;^[^d].*proto static&quot; | sed -e &quot;s/.*via \\([^ ]*\\).*/\\1/&quot;`&#39;</span> vpnup
+</span><span class='line'>
 </span><span class='line'>chmod +x vpn*
 </span></code></pre></td></tr></table></div></figure>
 
@@ -121,7 +125,7 @@
 
 <p>修改爲：</p>
 
-<pre><code>OLDGW=`ip route show | grep '^[^d].*proto static'|sed -e 's/.*via \([^ ]*\).*/\1/'`
+<pre><code>OLDGW=`ip route show | sed '/.*tun.*/d'  | grep '^[^d].*proto static' | sed -e 's/.*via \([^ ]*\).*/\1/'`
 </code></pre>
 
 <p>重新連接，測試成功。現在用 NetworkManager 連接的 VPN 都會自動設置路由表，以前給 PPTP 設置的撥號腳本可以移除了。</p>

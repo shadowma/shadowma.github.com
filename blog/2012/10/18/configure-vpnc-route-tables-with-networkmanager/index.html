@@ -154,7 +154,7 @@
 
 <p>修改爲：</p>
 
-<pre><code>OLDGW=`ip route show | grep '^[^d].*proto static'|sed -e 's/.*via \([^ ]*\).*/\1/'`
+<pre><code>OLDGW=`ip route show | sed '/.*tun.*/d'  | grep '^[^d].*proto static' | sed -e 's/.*via \([^ ]*\).*/\1/'`
 </code></pre>
 
 <p>重新連接，測試成功。現在用 NetworkManager 連接的 VPN 都會自動設置路由表，以前給 PPTP 設置的撥號腳本可以移除了。</p>
