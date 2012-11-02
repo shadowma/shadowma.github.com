@@ -112,7 +112,7 @@
 
 <p>IQLink 提供的是 Cisco VPN，Linux 下要用 VPNC 連接，chnroutes 網站上提供了 PPTP 和 OpenVPN 的設置教程，唯獨沒有 VPNC，還好 VPNC 支持連接腳本，默認配置的 <code>/etc/vpnc/vpnc-script</code> 能在執行 <code>pre-init</code>、<code>connect</code>、<code>post-connect</code>、<code>disconnect</code>、<code>post-disconnect</code> 和 <code>reconnect</code> 六種 action 時調用自定義腳本，只要把 <code>python chnroutes.py -p linux</code> 生成的腳本 <code>ip-pre-up</code> 和 <code>ip-down</code> 分別放入 <code>/etc/vpnc/pre-init.d</code> 和 <code>/etc/vpnc/post-disconnect.d</code> 就能在連接 VPN 前後成功添加恢復路由表，但在使用 NetworkManager 連接 VPNC 時，發現這些腳本根本就沒有被執行，NM 的 VPNC 插件用自帶的 <code>nm-vpnc-service-vpnc-helper</code> 替代了 <code>vpnc-script</code>，完全不讀取 <code>/etc/vpnc</code> 下的配置，而且這東西是二進制文件沒法改，試過直接替換成 <code>vpnc-script</code> 也不行，正準備放棄時突然想起 NetworkManager 也支持連接腳本，直接用 NetworkManager 配置的話就不用再爲每種 VPN 都設定路由表了。</p>
 
-<p>把下面的腳本（根據自己實際情況修改）放入 <code>/etc/NetworkManager/dispatcher.d</code>，腳本中在觸發 <code>vpn-down</code> 恢復路由表的操作中我排除了正在配置的 VPNC 連接的 UUID，因爲斷開連接時路由表已經被恢復，導致腳本返回一大串錯誤，這應該是 <code>nm-vpnc-service-vpnc-helper</code> 中有對路由表的操作的原因。</p>
+<p>把下面的腳本（根據自己實際情況修改）放入 <code>/etc/NetworkManager/dispatcher.d</code>，腳本中在觸發 <code>vpn-down</code> 恢復路由表的操作中我排除了正在配置的 VPNC 連接的 UUID，因爲斷開連接時路由表已經被恢復，導致腳本返回一大串錯誤，這<s>應該是 <code>nm-vpnc-service-vpnc-helper</code> 中有對路由表的操作的原因</s> 是 VPN 服務端設置決定的，VPN 服務有添加網關的話會自動修改路由表，斷開連接後路由表被恢復，chnroutes 的條目也一起被清除，其實是個無傷大雅的問題。</p>
 
 <figure class='code'><figcaption><span>99-chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -139,9 +139,9 @@
 </span><span class='line'>                <span class="nb">exec</span> /etc/chnroutes/vpnup <span class="c">#chnroutes 生成的 ip-pre-up</span>
 </span><span class='line'>                ;;
 </span><span class='line'>        <span class="s1">&#39;vpn-down&#39;</span><span class="o">)</span>
-</span><span class='line'>                <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$CONNECTION_UUID&quot;</span> !<span class="o">=</span> <span class="s2">&quot;1f2c647b-dd70-4f97-8300-0cf6cd4a2e4c&quot;</span> <span class="o">]</span>; <span class="k">then</span>
-</span><span class='line'><span class="k">                </span><span class="nb">exec</span> /etc/chnroutes/vpndown <span class="c">#chnroutes 生成的 ip-down</span>
-</span><span class='line'>                <span class="k">fi</span>
+</span><span class='line'>                <span class="c"># if [ &quot;$CONNECTION_UUID&quot; != &quot;1f2c647b-dd70-4f97-8300-0cf6cd4a2e4c&quot; ]; then</span>
+</span><span class='line'>                <span class="nb">exec</span> /etc/chnroutes/vpndown <span class="c">#chnroutes 生成的 ip-down</span>
+</span><span class='line'>                <span class="c"># fi</span>
 </span><span class='line'>                ;;
 </span><span class='line'><span class="k">esac</span>
 </span></code></pre></td></tr></table></div></figure>
