@@ -1,24 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[雨吁]]></title>
-  <link href="http://shadow.ma/atom.xml" rel="self"/>
-  <link href="http://shadow.ma/"/>
-  <updated>2012-11-04T05:18:37+08:00</updated>
-  <id>http://shadow.ma/</id>
-  <author>
-    <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Linux 下使用 pdnsd 避免 DNS 污染 - 雨吁</title>
+	<meta name="author" content="Shadow Ma,i@shadow.ma">
+
+	
+	<meta name="description" content="使用公共 DNS 服務可以避免運營商的 DNS 劫持，但除了這個外在兲朝還存在着 DNS 緩存污染的問題，以前使用 GoAgent 等工具時沒有注意到這個，一直在運行着的 dnsmasq 也只用來作簡單的緩存服務，最近開始長時間掛着 VPN 有時卻打不開 Twitter，才發現是這個問題在作怪。 &hellip;">
+	<meta name="keywords" content="DNS, pdnsd">
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="480">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	
+	<link rel="canonical" href="http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/">
+	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+	<link href="/favicon.gif" rel="icon" type="image/gif">
+	<link href="/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="left-col"><nav><ul class="main">
+	<li><a href="/">日誌</a></li>
+	<li><a href="/blog/archives">存檔</a></li>
+	<li><a href="/blog/tags">標籤</a></li>
+	<li><a href="/blog/links">鏈接</a></li>
+	<li><a href="/blog/about">關於</a></li>
+</ul>
+</nav>
+<div class="site">
+	<a id="logo" href="/"></a>
+	<p>何以言知</p>
+</div>
+<div class=copyright>
+<p><a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank" title="CC BY-SA 3.0">Copyleft</a>
+&nbsp2011-2012
+雨吁 - 何以言知</p>
+</div>
+
+</header>
+	
+		<div id="banner" class="right-col">
+	<div class="right-con">
+	
+	<form class="search right" action="http://google.com/search" method="get">
+		<input class="left" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:shadow.ma">
+	</form>
+	<div class="social right">
+		
+		
+		<a class="google" href="https://plus.google.com/101910642500012990972?rel=author" title="Google+"><i class="icon-google-plus"></i></a>
+		
+		
+		<a class="twitter" href="http://twitter.com/shadow_ma" title="Twitter"><i class="icon-twitter"></i></a>
+		
+		
+		<a class="github" href="https://github.com/shadowma" title="GitHub"><i class="icon-github"></i></a>
+		
+		
+		
+		
+		<a class="rss" href="http://feed.shadow.ma" title="RSS"><i class="icon-rss"></i></a>
+		
+	</div>
+	
+</div>
+<div class=plusone><g:plusone></g:plusone></div>
+</div>
+	
+	<div id="ajax-container"><div id="ajax-inner">
+	<div id="content" class="right-col"><article class="post">
+	<h1 class="title">Linux 下使用 Pdnsd 避免 DNS 污染</h1>
+	
+	<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
 
   
-  <entry>
-    <title type="html"><![CDATA[Linux 下使用 pdnsd 避免 DNS 污染]]></title>
-    <link href="http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/"/>
-    <updated>2012-11-04T02:46:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd</id>
-    <content type="html"><![CDATA[<p>使用公共 DNS 服務可以避免運營商的 DNS 劫持，但除了這個外在兲朝還存在着 <a href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93#.E9.98.B2.E7.81.AB.E9.95.B7.E5.9F.8E.E7.9A.84.E7.B7.A9.E5.AD.98.E6.B1.A1.E6.9F.93.E6.94.BB.E6.93.8A">DNS 緩存污染</a>的問題，以前使用 GoAgent 等工具時沒有注意到這個，一直在運行着的 dnsmasq 也只用來作簡單的緩存服務，最近開始長時間掛着 VPN 有時卻打不開 Twitter，才發現是這個問題在作怪。</p>
+
+
+<time datetime="2012-11-04T02:46:00+08:00" pubdate data-updated="true">2012年11月04日</time></div>
+	<div class="tags">
+
+
+	<a class='tag' href='/blog/tags/dns/'>DNS</a>, <a class='tag' href='/blog/tags/pdnsd/'>pdnsd</a>
+
+
+</div>
+	</div>
+	
+	<div class="entry-content"><p>使用公共 DNS 服務可以避免運營商的 DNS 劫持，但除了這個外在兲朝還存在着 <a href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93#.E9.98.B2.E7.81.AB.E9.95.B7.E5.9F.8E.E7.9A.84.E7.B7.A9.E5.AD.98.E6.B1.A1.E6.9F.93.E6.94.BB.E6.93.8A">DNS 緩存污染</a>的問題，以前使用 GoAgent 等工具時沒有注意到這個，一直在運行着的 dnsmasq 也只用來作簡單的緩存服務，最近開始長時間掛着 VPN 有時卻打不開 Twitter，才發現是這個問題在作怪。</p>
 
 <!-- more -->
 
@@ -32,7 +117,7 @@
 <h2>思路</h2>
 
 <ol>
-<li>連接 VPN 後重啓 DNS 緩存服務，只對於像我這樣使用 VPN 且本地有緩存服務的，只需要在<a href="http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">之前</a>設置的連接腳本裏加上重啓服務的命令就行（當然還需要把緩存服務的上遊 DNS 設成牆外的服務器）</li>
+<li>連接 VPN 後重啓 DNS 緩存服務，只對於像我這樣使用 VPN 且本地有緩存服務的，只需要在<a href="/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">之前</a>設置的連接腳本裏加上重啓服務的命令就行（當然還需要把緩存服務的上遊 DNS 設成牆外的服務器）</li>
 <li>使用 tcp 方式查詢，tcp 的 DNS 請求會出現被 reset 的情況</li>
 <li>把 DNS 服務轉發到非標準端口，這個需要自己有牆外的服務器資源</li>
 <li>使用提供非標準端口服務的 DNS，只有很少的服務器支持</li>
@@ -430,201 +515,102 @@
 <h2>最後</h2>
 
 <p>完工，廢那麼多事，心情不爽睡前<a href="http://www.fangbinxing.com/">扎一下</a>。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[完全從頭開始了]]></title>
-    <link href="http://shadow.ma/blog/2012/10/26/blog-start-over-again/"/>
-    <updated>2012-10-26T22:12:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/26/blog-start-over-again</id>
-    <content type="html"><![CDATA[<p>之前放棄了把以前 WordPress 博客的文章轉過來，一是因爲麻煩，還有就是的確沒什麼人看，都是自己的筆記，想着就算原始頁面全404了，也還有 Google 的快照，自己隨便查查沒關係，今天要找段代碼才發現之前收錄的文章都沒剩幾篇了，沒想到 Google 會自動刪死鏈！</p>
+</div>
+</article>
 
-<!-- more -->
-
-
-<p>現在不能再去把文章導出來了，手裏只有數據庫備份，打開看了下太雜亂，沒辦法，也不是什麼困難的東西，再寫唄。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[自動更新 chnroutes 的腳本]]></title>
-    <link href="http://shadow.ma/blog/2012/10/26/script-for-auto-update-chnroutes/"/>
-    <updated>2012-10-26T20:35:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/26/script-for-auto-update-chnroutes</id>
-    <content type="html"><![CDATA[<p>沒學過 bash 編程，當批處理寫的，ugly 但有效，作個備份吧。</p>
-
-<p>需要開啓 cron 服務</p>
-
-<pre><code>systemctl enable cronie.service
-</code></pre>
-
-<!-- more -->
+	<li id="share-container" class="share-container">
+<div class="share-tip" id="share-tip">分享到</div>
+<div class="share-panel" id="share-panel">
+<a target="_blank" href="http://service.weibo.com/share/share.php?url=http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/&title=Linux 下使用 pdnsd 避免 DNS 污染&appkey=608332473&ralateUid=1672835792" class="icon icon-sina" title="新浪微博">新浪微博</a>
+<a target="_blank" href="http://share.renren.com/share/buttonshare.do?title=Linux 下使用 pdnsd 避免 DNS 污染&link=http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/&content=_blank" class="icon icon-renren" title="人人">人人</a>
+<a target="_blank" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/" class="icon icon-qzone" title="QQ 空間">QQ 空間</a>
+<a target="_blank" href="http://v.t.qq.com/share/share.php?appkey=801076915&title=Linux 下使用 pdnsd 避免 DNS 污染&url=http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/&assname=shadow-ma&site=http://shadow.ma" class="icon icon-tencent" title="騰訊微博">騰訊微博</a>
+<a target="_blank" href="http://shuo.douban.com/!service/share?name=Linux 下使用 pdnsd 避免 DNS 污染&href=http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/" class="icon icon-douban" title="豆瓣">豆瓣</a>
+<a target="_blank" href="http://www.kaixin001.com/repaste/share.php?rtitle=Linux 下使用 pdnsd 避免 DNS 污染&rurl=http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/&rcontent=_blank" class="icon icon-kaixin" title="開心網">開心網</a>
+<a target="_blank" href="http://www.facebook.com/share.php?u=http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/" class="icon icon-facebook" title="facebook">facebook</a>
+<a target="_blank" href="http://twitter.com/home?status=Linux 下使用 pdnsd 避免 DNS 污染 http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/" class="icon icon-twitter" title="twitter">twitter</a>
+</div>
+</li>
 
 
-<p>結合<a href="http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">上篇</a>，<code>chnroutes.py</code> 已經在 <code>/etc/chnroutes</code> 下，把腳本放到 <code>/etc/cron.weekly</code> 下會每周執行一次。</p>
+    <section id="alignment">
+      
+        <a class="left-alignment left" href="/blog/2012/10/26/blog-start-over-again/" title="前一篇日誌: 完全從頭開始了">完全從頭開始了</a>
+      
+      
+    </section>
 
-<figure class='code'><figcaption><span>/etc/cron.weekly/chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
-</span><span class='line'><span class="nb">cd</span> /etc/chnroutes
-</span><span class='line'>python2 chnroutes.py -p linux 2&gt;&amp;1 &gt;/dev/null
-</span><span class='line'><span class="c">#echo &quot;Fetching data from apnic.net, it might take a few minutes, please wait...&quot;</span>
-</span><span class='line'>mv ip-pre-up vpnup <span class="o">&amp;&amp;</span> mv ip-down vpndown
-</span><span class='line'>
-</span><span class='line'>sed -i <span class="s1">&#39;/^OLDGW/d&#39;</span> vpnup <span class="o">&amp;&amp;</span> sed -i <span class="s1">&#39;/export/a OLDGW=`ip route show | sed &quot;/tun*/d&quot;  | grep &quot;^[^d].*proto static&quot; | sed -e &quot;s/.*via \\([^ ]*\\).*/\\1/&quot;`&#39;</span> vpnup
-</span><span class='line'>
-</span><span class='line'>chmod +x vpn*
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>最後別忘記 <code>chmod +x /etc/cron.weekly/chnroutes</code>。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用 NetworkManager 設置 VPNC 和路由表]]></title>
-    <link href="http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/"/>
-    <updated>2012-10-18T01:20:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager</id>
-    <content type="html"><![CDATA[<p>昨晚看到個 VPN 服務 <a href="http://106.187.44.5/home?referral=70588D95C2F9DF00D908B3CC2282F650" title="IQLink">IQLink</a>，免費用戶每月有 100G 流量，測了下速度還不錯，可以留着以備不時之需。</p>
-
-<p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。</p>
-
-<!-- more -->
+<section id="comment">
+    <a href="#" class="disqus_container" onclick="return false;">點擊查看評論</a>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	</div></div>
+	<footer id="footer" class="right-col">
+</footer>
+	<script src="/javascripts/shadow.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
 
 
-<p>IQLink 提供的是 Cisco VPN，Linux 下要用 VPNC 連接，chnroutes 網站上提供了 PPTP 和 OpenVPN 的設置教程，唯獨沒有 VPNC，還好 VPNC 支持連接腳本，默認配置的 <code>/etc/vpnc/vpnc-script</code> 能在執行 <code>pre-init</code>、<code>connect</code>、<code>post-connect</code>、<code>disconnect</code>、<code>post-disconnect</code> 和 <code>reconnect</code> 六種 action 時調用自定義腳本，只要把 <code>python chnroutes.py -p linux</code> 生成的腳本 <code>ip-pre-up</code> 和 <code>ip-down</code> 分別放入 <code>/etc/vpnc/pre-init.d</code> 和 <code>/etc/vpnc/post-disconnect.d</code> 就能在連接 VPN 前後成功添加恢復路由表，但在使用 NetworkManager 連接 VPNC 時，發現這些腳本根本就沒有被執行，NM 的 VPNC 插件用自帶的 <code>nm-vpnc-service-vpnc-helper</code> 替代了 <code>vpnc-script</code>，完全不讀取 <code>/etc/vpnc</code> 下的配置，而且這東西是二進制文件沒法改，試過直接替換成 <code>vpnc-script</code> 也不行，正準備放棄時突然想起 NetworkManager 也支持連接腳本，直接用 NetworkManager 配置的話就不用再爲每種 VPN 都設定路由表了。</p>
-
-<p>把下面的腳本（根據自己實際情況修改）放入 <code>/etc/NetworkManager/dispatcher.d</code>，腳本中在觸發 <code>vpn-down</code> 恢復路由表的操作中我排除了正在配置的 VPNC 連接的 UUID，因爲斷開連接時路由表已經被恢復，導致腳本返回一大串錯誤，這<s>應該是 <code>nm-vpnc-service-vpnc-helper</code> 中有對路由表的操作的原因</s> 是 VPN 服務端設置決定的，VPN 服務有添加網關的話會自動修改路由表，斷開連接後路由表被恢復，chnroutes 的條目也一起被清除，其實是個無傷大雅的問題。</p>
-
-<figure class='code'><figcaption><span>99-chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">INTERFACE</span><span class="o">=</span><span class="nv">$1</span>
-</span><span class='line'><span class="nv">STATUS</span><span class="o">=</span><span class="nv">$2</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$STATUS&quot;</span> in
-</span><span class='line'>        <span class="s1">&#39;vpn-up&#39;</span><span class="o">)</span>
-</span><span class='line'>                <span class="nb">exec</span> /etc/chnroutes/vpnup <span class="c">#chnroutes 生成的 ip-pre-up</span>
-</span><span class='line'>                ;;
-</span><span class='line'>        <span class="s1">&#39;vpn-down&#39;</span><span class="o">)</span>
-</span><span class='line'>                <span class="c"># if [ &quot;$CONNECTION_UUID&quot; != &quot;1f2c647b-dd70-4f97-8300-0cf6cd4a2e4c&quot; ]; then</span>
-</span><span class='line'>                <span class="nb">exec</span> /etc/chnroutes/vpndown <span class="c">#chnroutes 生成的 ip-down</span>
-</span><span class='line'>                <span class="c"># fi</span>
-</span><span class='line'>                ;;
-</span><span class='line'><span class="k">esac</span>
-</span></code></pre></td></tr></table></div></figure>
+<script type="text/javascript">
+      var disqus_shortname = 'shadowma';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/';
+        var disqus_url = 'http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/';
+        var disqus_script = 'embed.js';
+    jQuery(document).ready(function(){        
+	    jQuery('#comment .disqus_container').on('click',function(){
+		jQuery(this).html('加載中...');
+		var that = this;
+		shadow.src('http://' + disqus_shortname + '.disqus.com/' + disqus_script,function(){jQuery(that).remove()});
+	    });
+    });
+</script>
 
 
-<p>到此處還不能正常使用，chnroutes 生成的腳本是給 PPTP 用的，默認是要在 PPP 撥號前執行，在 VPN 鏈接前路由表就設置好了，而 NetworkManager 連接腳本中的 <code>vpn-up</code> 要在連接建立後才會被觸發，<s>像我正在配置的 VPNC 因爲之前提到的 <code>nm-vpnc-service-vpnc-helper</code> 中有對路由表的操作</s> VPN 服務有修改路由表的話，腳本中的 <code>OLDGW</code> 得到的值會會是 VPN 網關的地址，路由表會被設成讓所有國內 ip 都走 VPN，解決方法是把 chnroutes 生成的設置腳本 <code>ip-pre-up</code>（上面腳本中的 <code>vpnup</code>）中的：</p>
-
-<pre><code>OLDGW=`ip route show | grep '^default' | sed -e 's/default via \([^ ]*\).*/\1/'`
-</code></pre>
-
-<p>修改爲：</p>
-
-<pre><code>OLDGW=`ip route show | sed '/tun*/d'  | grep '^[^d].*proto static' | sed -e 's/.*via \([^ ]*\).*/\1/'`
-</code></pre>
-
-<p>重新連接，測試成功。現在用 NetworkManager 連接的 VPN 都會自動設置路由表，以前給 PPTP 設置的撥號腳本可以移除了。</p>
-
-<p>其實沒必要像我一樣把 <code>ip-pre-up</code> 和 <code>ip-down</code> 改成 <code>vpnup</code> 和 <code>vpndown</code>，只是這裏 <code>vpnup</code> 已經不是 pre-up 了，看着不爽而已。</p>
-
-<h2>參考資料</h2>
-
-<ul>
-<li><a href="http://blog.xuming.net/2010/04/openvpn.html" title="Ubuntu 9.10下使用Network-manager 配置openvpn">Ubuntu 9.10下使用Network-manager 配置openvpn</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[切換到了 systemd]]></title>
-    <link href="http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd/"/>
-    <updated>2012-10-06T19:35:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd</id>
-    <content type="html"><![CDATA[<p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。</p>
-
-<!-- more -->
 
 
-<p>照着 wiki 來，選擇了純 systemd 安裝，完全替代了 sysvinit 和 initscripts，因爲 systemd 有自帶 journal 所以幹掉了 syslog-ng，服務配置完後還啓用了 readahead。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ systemd-analyze 
-</span><span class='line'>Startup finished in 3608ms (kernel) + 3562ms (userspace) = 7170ms</span></code></pre></td></tr></table></div></figure>
-
-
-<p>效果顯著，fbsplash 一閃而過，進度都沒走完 KDM 就出來了。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[買了 Hellohost 的 VPS]]></title>
-    <link href="http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/"/>
-    <updated>2012-10-02T14:48:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/02/bought-hellohost-vps</id>
-    <content type="html"><![CDATA[<p>快用了一年 Hellohost 的主機，這個月就要到期，轉到 Octopress 後，這 PHP 主機就沒必要再續費了，現在 Blog 放 GitHub 上最大的缺點就是隻支持綁定一個域名，以前 RSS 定閱的子域名必須用其它主機反向代理或重定向，還有很多鏈接也要重定向，而且只要不直接在 GitHub 上綁定域名的話，就可以直接使用 Page 的鏈接訪問，正好可以讓牆內的朋友用這個。</p>
-
-<!-- more -->
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
 
 
-<p>之前幫朋友弄了個阿里雲主機，就試着把域名先解析到這主機上，解析成功後這被封的域名竟然能在牆內訪問不再被重置了，當時着實讓我興奮了一把，以爲這麼簡單就解封了，但之後用 Cloudflare 的 CDN 確顯示「 Website unreachable」，掛着 VPN 試了一下發現被重置，才明白根本就沒解封，牆是雙向的，把被封的域名解析到國內 ip 是能讓牆內正常訪問，但反過來會封鎖牆外的訪問，得不償失，看來還得弄個牆外的主機。</p>
 
-<p>虛擬主機不太適合了，VPS 也只需要低階的就行，看 Hellohost 有賣就先買了一個月試試，用了她這一年的虛擬主機還算穩定，只買了個 64M 的，其實若是不再搞其它東西的話，只是純靜態的 Octopress 放上來也是夠的 ，但爲了方便管理還是放 GitHub 上吧。</p>
+<script type="text/javascript">
+var shadow = {};
+shadow.src = function(file,callback){
+            var _doc = document.getElementsByTagName('head')[0];
+            var js = document.createElement('script');
+            js.setAttribute('type', 'text/javascript');
+            js.setAttribute('src', file);
+            _doc.appendChild(js);
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># free -m
-</span><span class='line'>             total       used       free     shared    buffers     cached
-</span><span class='line'>Mem:            64         10         53          0          0          0
-</span><span class='line'>-/+ buffers/cache:         10         53
-</span><span class='line'>Swap:            0          0          0</span></code></pre></td></tr></table></div></figure>
-
-
-<p>用的 Nginx，只拿來作重定向和反向代理的確是有點浪費。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello Octopress!]]></title>
-    <link href="http://shadow.ma/blog/2012/09/26/hello-octopress/"/>
-    <updated>2012-09-26T17:16:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/09/26/hello-octopress</id>
-    <content type="html"><![CDATA[<p>近幾個月一真沒更新過博客，也沒登錄過，上一次登錄還是因爲升級 Wordpress ，懶得再折騰 Wordpress 了，最近收到了主機的續費通知就想換個平臺，很久以前就想試試 Octopress，在主機到期前正好嘗試下。</p>
-
-<!-- more -->
-
-
-<p>花兩天改造了下模板，佈局弄得和以前一樣了，之前的文章因爲以前的爛習慣鏈接格式亂七八糟的，全部處理太麻煩所以不想轉過來了，先用段時間看吧。</p>
-]]></content>
-  </entry>
-  
-</feed>
+            if (!/*@cc_on!@*/0) { //if not IE
+                //Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload
+                js.onload = function () {
+                    callback();
+                }
+            } else {
+                //IE6、IE7 support js.onreadystatechange
+                js.onreadystatechange = function () {
+                    if (js.readyState == 'loaded' || js.readyState == 'complete') {
+                        callback();
+                    }
+                }
+            }
+            return false;
+}
+</script>
+</body>
+</html>

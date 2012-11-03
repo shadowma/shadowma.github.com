@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[標籤: DNS | 雨吁]]></title>
+  <link href="http://shadow.ma/blog/tags/dns/atom.xml" rel="self"/>
+  <link href="http://shadow.ma/"/>
+  <updated>2012-11-04T05:18:37+08:00</updated>
+  <id>http://shadow.ma/</id>
+  <author>
+    <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Linux 下使用 pdnsd 避免 DNS 污染]]></title>
+    <link href="http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/"/>
+    <updated>2012-11-04T02:46:00+08:00</updated>
+    <id>http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd</id>
+    <content type="html"><![CDATA[<p>使用公共 DNS 服務可以避免運營商的 DNS 劫持，但除了這個外在兲朝還存在着 <a href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93#.E9.98.B2.E7.81.AB.E9.95.B7.E5.9F.8E.E7.9A.84.E7.B7.A9.E5.AD.98.E6.B1.A1.E6.9F.93.E6.94.BB.E6.93.8A">DNS 緩存污染</a>的問題，以前使用 GoAgent 等工具時沒有注意到這個，一直在運行着的 dnsmasq 也只用來作簡單的緩存服務，最近開始長時間掛着 VPN 有時卻打不開 Twitter，才發現是這個問題在作怪。</p>
+
+<!-- more -->
+
+
+<h2>分析</h2>
+
+<blockquote><p>在中國大陸，對於所有經過防火長城的在UDP的53埠上的域名查詢進行IDS入侵檢測，一經發現與黑名單關鍵詞相匹配的域名查詢請求，其會馬上偽裝成標的域名的解析伺服器給查詢者返回虛假結果。由於通常的域名查詢沒有任何認證機制，而且域名查詢通常基於的UDP協議是無連線不可靠的協議，查詢者只能接受最先到達的格式正確結果，並丟棄之後的結果。</p></blockquote>
+
+<p>也就是說就算使用的是牆外的 DNS 服務器也仍然會被污染。像我的情況，因爲使用了本地的 DNS 緩存服務和 chnroutes 的原因，不是所有的 DNS 記錄都是使用 VPN 通道的 DNS 服務器查詢的，所以出現了掛着 VPN 卻打不開 Twitter 的情況，DNS 查詢到的是錯誤的 ip。</p>
+
+<h2>思路</h2>
+
+<ol>
+<li>連接 VPN 後重啓 DNS 緩存服務，只對於像我這樣使用 VPN 且本地有緩存服務的，只需要在<a href="/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">之前</a>設置的連接腳本裏加上重啓服務的命令就行（當然還需要把緩存服務的上遊 DNS 設成牆外的服務器）</li>
+<li>使用 tcp 方式查詢，tcp 的 DNS 請求會出現被 reset 的情況</li>
+<li>把 DNS 服務轉發到非標準端口，這個需要自己有牆外的服務器資源</li>
+<li>使用提供非標準端口服務的 DNS，只有很少的服務器支持</li>
+</ol>
+
+
+<p>因爲提供非標準端口服務的 DNS 太少，而且在我這兒速度都不快，權衡來看，可以優先使用不算太穩定的 tcp 方式查詢，把非標準端口的 upd 查詢作爲 fallback，對於 linux 來說可以通過設置防火牆規則定義 DNS 存取方式，不過還是推介配置本地的 DNS 轉發服務更爲簡單方便。</p>
+
+<p>因爲之前一直用的 dnsmasq 不支持 tcp 方式查詢，Google 發現了 pdnsd 後就立即換了上來，相對於 dnsmasq 來說功能單一，但更爲強大，單就作 DNS 緩存來說 dnsmasq 就不能修改 TTL。</p>
+
+<h2>操作</h2>
+
+<p>對於 Arch 來說直接 <code>yaourt -S pdnsd</code> 安裝就好，然後創建配置文件</p>
+
+<pre><code>sudo cp /etc/pdnsd.conf.sample /etc/pdnsd.conf
+</code></pre>
+
+<p>修改配置文件</p>
+
+<p>```bash /etc/pdnsd.conf
+global {</p>
+
+<pre><code>    perm_cache=4096;
+    cache_dir="/var/cache/pdnsd";
+</code></pre>
+
+<h1>pid_file = /var/run/pdnsd.pid;</h1>
+
+<pre><code>    run_as="nobody";
+    server_ip = 127.0.0.1;  # Use eth0 here if you want to allow other
+                            # machines on your network to query pdnsd.
+    status_ctl = on;
+    paranoid=on;            # This option reduces the chance of cache poisoning
+                            # but may make pdnsd less efficient, unfortunately.
+    query_method=tcp_udp;   # 優先使用 tcp 方式查詢
+    min_ttl=1d;             # 緩存記錄最少保存一天
+    max_ttl=1w;             # One week.
+    timeout=10;             # Global timeout option (10 seconds).
+    neg_domain_pol=on;
+    udpbufsize=1024;        # Upper limit on the size of UDP messages.
+    tcp_qtimeout=1;         # tcp 查詢超時
+    par_queries=2;          # 同時從兩組服務器查詢
+</code></pre>
+
+<p>}</p>
+
+<p>server {</p>
+
+<pre><code>    label= "myisp";
+    ip = 192.168.1.1, 114.114.114.114; 
+    timeout=4;
+    uptest=ping;
+    ping_timeout = 100;
+    interval=10m;
+    purge_cache=off;
+    edns_query=no;
+    policy=excluded;
+    include=.cn,
+            .xn--fiqs8s,   # .中国
+            .115.com,
+            .126.com,
+            .126.net,
+            .163.com,
+            .17173.com,
+            .17cdn.com,
+            .51.la,
+            .6rooms.com,
+            .91.com,
+            .alimama.com,
+            .alipay.com,
+            .atpanel.com,
+            .baidu.com,
+            .bdimg.com,
+            .bilibili.tv,
+            .ccb.com,
+            .cdn20.com,
+            .cnepub.com,
+            .cnzz.com,
+            .douban.com,
+            .douban.fm,
+            .duomi.com,
+            .gtimg.com,
+            .hdslb.com,
+            .hiapk.com,
+            .hoopchina.com,
+            .hupu.com,
+            .iask.com,
+            .ifeng.com,
+            .ifengimg.com,
+            .ijinshan.com,
+            .iqiyi.com,
+            .jing.fm,
+            .kandian.com,
+            .kandian.net,
+            .kanimg.com,
+            .kdnet.net,
+            .koudai8.com,
+            .ku6cdn.com,
+            .ku6.com,
+            .letv.com,
+            .loli.mg,
+            .loli.vg,
+            .lxdns.com,
+            .mapbar.com,
+            .microsoft.com,
+            .mop.com,
+            .mydrivers.com,
+            .netease.com,
+            .pengyou.com,
+            .qiyi.com,
+            .qiyipic.com,
+            .qq.com,
+            .qqmail.com,
+            .qstatic.com,
+            .renren.com,
+            .sdo.com,
+            .sina.com,
+            .sinaedge.com,
+            .sogou.com,
+            .sohu.com,
+            .soso.com,
+            .tanx.com,
+            .taobaocdn.com,
+            .taobao.com,
+            .tbcache.com,
+            .tdimg.com,
+            .tencent.com,
+            .thawte.com,
+            .tianyaui.com,
+            .tmall.com,
+            .tudou.com,
+            .tudouui.com,
+            .weibo.com,
+            .wrating.com,
+            .xiami.com,
+            .xiami.net,
+            .xiaonei.com,
+            .xlpan.com,
+            .xunlei.com,
+            .ydstatic.com,
+            .ykimg.com,
+            .youdao.com,
+            .youku.com,
+            .zbjimg.com,
+            .zhubajie.com;
+</code></pre>
+
+<p>}</p>
+
+<h1>The servers provided by OpenDNS are fast, but they do not reply with</h1>
+
+<h1>NXDOMAIN for non-existant domains, instead they supply you with an</h1>
+
+<h1>address of one of their search engines. They also lie about the addresses of</h1>
+
+<h1>of the search engines of google, microsoft and yahoo.</h1>
+
+<h1>If you do not like this behaviour the "reject" option may be useful.</h1>
+
+<p>server {</p>
+
+<pre><code>    label = "opendns";
+    ip = 208.67.222.222, 208.67.220.220;
+    reject = 208.69.32.0/24,  # You may need to add additional address ranges
+             208.69.34.0/24,  # here if the addresses of their search engines
+             208.67.219.0/24; # change.
+    reject_policy = fail;     # If you do not provide any alternative server
+                              # sections, like the following root-server
+                              # example, "negate" may be more appropriate here.
+    port = 5353;              # 指定支持的非標準端口
+    timeout = 4;
+    uptest = ping;            # Test availability using ICMP echo requests.
+    ping_timeout = 100;       # ping test will time out after 10 seconds.
+    interval = 15m;           # Test every 15 minutes.
+    preset = off;
+</code></pre>
+
+<p>}</p>
+
+<p>server {</p>
+
+<pre><code>    label= "v2ex";
+    ip = 199.91.73.222;       # v2ex 只有這個地址有非標準端口所以單獨放出來
+    port = 3389;              # 指定支持的非標準端口
+    timeout=4;
+    uptest=ping;
+    ping_timeout = 100;
+    interval=10m;
+    purge_cache=off;
+    edns_query=no;
+</code></pre>
+
+<p>}</p>
+
+<p>server {</p>
+
+<pre><code>    label= "hinet";
+    ip = 168.95.1.1, 168.95.192.1, 168.95.192.2;
+    timeout=4;
+    uptest=ping;
+    ping_timeout = 100;
+    interval=10m;
+    purge_cache=off;
+    edns_query=no;
+</code></pre>
+
+<p>}</p>
+
+<p>server {</p>
+
+<pre><code>    label= "google dns";
+    ip = 8.8.8.8, 8.8.4.4;
+    timeout=4;
+    uptest=ping;
+    ping_timeout = 100;
+    interval=10m;
+    purge_cache=off;
+    edns_query=no;
+</code></pre>
+
+<p>}
+<code>``
+全局配置中</code>query_method<code>可以設爲</code>tcp_only<code>，我設置成</code>tcp_udp<code>優先使用 tcp 方式查詢所以還得設置</code>tcp_qtimeout`，tcp 方式查詢超時就放棄。</p>
+
+<p>我把 ISP 或者國內的 DNS 服務器放到了最前面，只查詢指定的域名，解決某些國內網站因爲是國外 DNS 請求而返回了過慢的 CDN 線路的 ip，網站列表來源於 <a href="http://felixc.at/Dnsmasq">http://felixc.at/Dnsmasq</a> ，之後先放上提供非標準端口服務的 DNS 服務器，在 tcp 無法查詢轉而使用 udp 方式時使用非標準端口避免 DNS 污染，最後放上我常用的中華電信和 Google 的 DNS，都支持 tcp 方式查詢。</p>
+
+<p>啓動服務</p>
+
+<pre><code>sudo systemctl start pdnsd.service
+</code></pre>
+
+<p>設爲開機啓動</p>
+
+<pre><code>sudo systemctl enable pdnsd.service
+</code></pre>
+
+<h2>測試</h2>
+
+<p><img src="http://static.xind.in/Blog/Pic/2012/11/dns-spoofing.png" alt="DNS 被污染，返回了錯誤的 ip" /></p>
+
+<p><img src="http://static.xind.in/Blog/Pic/2012/11/dns-spoofing-sloved.png" alt="成功得到正確 ip" /></p>
+
+<p>使用本地的轉發服務查詢 twitter.com 返回正確 ip，說明在服務器最前列的國內的 DNS 的確沒查詢列表外的域名。</p>
+
+<h2>最後</h2>
+
+<p>完工，廢那麼多事，心情不爽睡前<a href="http://www.fangbinxing.com/">扎一下</a>。</p>
+]]></content>
+  </entry>
+  
+</feed>
