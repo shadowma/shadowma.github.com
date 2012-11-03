@@ -308,185 +308,177 @@
 <span class='line-number'>169</span>
 <span class='line-number'>170</span>
 <span class='line-number'>171</span>
-<span class='line-number'>172</span>
-<span class='line-number'>173</span>
-<span class='line-number'>174</span>
-<span class='line-number'>175</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>global <span class="o">{</span>
-</span><span class='line'>        <span class="nv">perm_cache</span><span class="o">=</span>4096;
-</span><span class='line'>        <span class="nv">cache_dir</span><span class="o">=</span><span class="s2">&quot;/var/cache/pdnsd&quot;</span>;
-</span><span class='line'><span class="c">#       pid_file = /var/run/pdnsd.pid;</span>
-</span><span class='line'>        <span class="nv">run_as</span><span class="o">=</span><span class="s2">&quot;nobody&quot;</span>;
-</span><span class='line'>        <span class="nv">server_ip</span> <span class="o">=</span> 127.0.0.1;  <span class="c"># Use eth0 here if you want to allow other</span>
-</span><span class='line'>                                <span class="c"># machines on your network to query pdnsd.</span>
-</span><span class='line'>        <span class="nv">status_ctl</span> <span class="o">=</span> on;
-</span><span class='line'>        <span class="nv">paranoid</span><span class="o">=</span>on;            <span class="c"># This option reduces the chance of cache poisoning</span>
-</span><span class='line'>                                <span class="c"># but may make pdnsd less efficient, unfortunately.</span>
-</span><span class='line'>        <span class="nv">query_method</span><span class="o">=</span>tcp_udp;   <span class="c"># 優先使用 tcp 方式查詢</span>
-</span><span class='line'>        <span class="nv">min_ttl</span><span class="o">=</span>1d;             <span class="c"># 緩存記錄最少保存一天</span>
-</span><span class='line'>        <span class="nv">max_ttl</span><span class="o">=</span>1w;             <span class="c"># One week.</span>
-</span><span class='line'>        <span class="nv">timeout</span><span class="o">=</span>10;             <span class="c"># Global timeout option (10 seconds).</span>
-</span><span class='line'>        <span class="nv">neg_domain_pol</span><span class="o">=</span>on;
-</span><span class='line'>        <span class="nv">udpbufsize</span><span class="o">=</span>1024;        <span class="c"># Upper limit on the size of UDP messages.</span>
-</span><span class='line'>        <span class="nv">tcp_qtimeout</span><span class="o">=</span>1;         <span class="c"># tcp 查詢超時</span>
-</span><span class='line'>        <span class="nv">par_queries</span><span class="o">=</span>2;          <span class="c"># 同時從兩組服務器查詢</span>
-</span><span class='line'><span class="o">}</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">global</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">perm_cache</span><span class="o">=</span><span class="mi">4096</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">cache_dir</span><span class="o">=</span><span class="s">&quot;/var/cache/pdnsd&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="cp">#       pid_file = /var/run/pdnsd.pid;</span>
+</span><span class='line'>        <span class="n">run_as</span><span class="o">=</span><span class="s">&quot;nobody&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">server_ip</span> <span class="o">=</span> <span class="mf">127.0.0.1</span><span class="p">;</span>  <span class="err">#</span> <span class="n">Use</span> <span class="n">eth0</span> <span class="n">here</span> <span class="k">if</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">allow</span> <span class="n">other</span> <span class="n">machines</span> <span class="n">on</span> <span class="n">your</span> <span class="n">network</span> <span class="n">to</span> <span class="n">query</span> <span class="n">pdnsd</span><span class="p">.</span>
+</span><span class='line'>        <span class="n">status_ctl</span> <span class="o">=</span> <span class="n">on</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">paranoid</span><span class="o">=</span><span class="n">on</span><span class="p">;</span>            <span class="err">#</span> <span class="n">This</span> <span class="n">option</span> <span class="n">reduces</span> <span class="n">the</span> <span class="n">chance</span> <span class="n">of</span> <span class="n">cache</span> <span class="n">poisoning</span> <span class="n">but</span> <span class="n">may</span> <span class="n">make</span> <span class="n">pdnsd</span> <span class="n">less</span> <span class="n">efficient</span><span class="p">,</span> <span class="n">unfortunately</span><span class="p">.</span>
+</span><span class='line'>        <span class="n">query_method</span><span class="o">=</span><span class="n">tcp_udp</span><span class="p">;</span>   <span class="err">#</span> <span class="err">優先使用</span> <span class="n">tcp</span> <span class="err">方式查詢</span>
+</span><span class='line'>        <span class="n">min_ttl</span><span class="o">=</span><span class="mi">1</span><span class="n">d</span><span class="p">;</span>             <span class="err">#</span> <span class="err">緩存記錄最少保存一天</span>
+</span><span class='line'>        <span class="n">max_ttl</span><span class="o">=</span><span class="mi">1</span><span class="n">w</span><span class="p">;</span>             <span class="err">#</span> <span class="n">One</span> <span class="n">week</span><span class="p">.</span>
+</span><span class='line'>        <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>             <span class="err">#</span> <span class="n">Global</span> <span class="n">timeout</span> <span class="n">option</span> <span class="p">(</span><span class="mi">10</span> <span class="n">seconds</span><span class="p">).</span>
+</span><span class='line'>        <span class="n">neg_domain_pol</span><span class="o">=</span><span class="n">on</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">udpbufsize</span><span class="o">=</span><span class="mi">1024</span><span class="p">;</span>        <span class="err">#</span> <span class="n">Upper</span> <span class="n">limit</span> <span class="n">on</span> <span class="n">the</span> <span class="n">size</span> <span class="n">of</span> <span class="n">UDP</span> <span class="n">messages</span><span class="p">.</span>
+</span><span class='line'>        <span class="n">tcp_qtimeout</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>         <span class="err">#</span> <span class="n">tcp</span> <span class="err">查詢超時</span>
+</span><span class='line'>        <span class="n">par_queries</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>          <span class="err">#</span> <span class="err">同時從兩組服務器查詢</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>server <span class="o">{</span>
-</span><span class='line'>        <span class="nv">label</span><span class="o">=</span> <span class="s2">&quot;myisp&quot;</span>;
-</span><span class='line'>        <span class="nv">ip</span> <span class="o">=</span> 192.168.1.1, 114.114.114.114;
-</span><span class='line'>        <span class="nv">timeout</span><span class="o">=</span>4;
-</span><span class='line'>        <span class="nv">uptest</span><span class="o">=</span>ping;
-</span><span class='line'>        <span class="nv">ping_timeout</span> <span class="o">=</span> 100;
-</span><span class='line'>        <span class="nv">interval</span><span class="o">=</span>10m;
-</span><span class='line'>        <span class="nv">purge_cache</span><span class="o">=</span>off;
-</span><span class='line'>        <span class="nv">edns_query</span><span class="o">=</span>no;
-</span><span class='line'>        <span class="nv">policy</span><span class="o">=</span>excluded;
-</span><span class='line'>        <span class="nv">include</span><span class="o">=</span>.cn,
-</span><span class='line'>                .xn--fiqs8s,   <span class="c"># .中国</span>
-</span><span class='line'>                .115.com,
-</span><span class='line'>                .126.com,
-</span><span class='line'>                .126.net,
-</span><span class='line'>                .163.com,
-</span><span class='line'>                .17173.com,
-</span><span class='line'>                .17cdn.com,
-</span><span class='line'>                .51.la,
-</span><span class='line'>                .6rooms.com,
-</span><span class='line'>                .91.com,
-</span><span class='line'>                .alimama.com,
-</span><span class='line'>                .alipay.com,
-</span><span class='line'>                .atpanel.com,
-</span><span class='line'>                .baidu.com,
-</span><span class='line'>                .bdimg.com,
-</span><span class='line'>                .bilibili.tv,
-</span><span class='line'>                .ccb.com,
-</span><span class='line'>                .cdn20.com,
-</span><span class='line'>                .cnepub.com,
-</span><span class='line'>                .cnzz.com,
-</span><span class='line'>                .douban.com,
-</span><span class='line'>                .douban.fm,
-</span><span class='line'>                .duomi.com,
-</span><span class='line'>                .gtimg.com,
-</span><span class='line'>                .hdslb.com,
-</span><span class='line'>                .hiapk.com,
-</span><span class='line'>                .hoopchina.com,
-</span><span class='line'>                .hupu.com,
-</span><span class='line'>                .iask.com,
-</span><span class='line'>                .ifeng.com,
-</span><span class='line'>                .ifengimg.com,
-</span><span class='line'>                .ijinshan.com,
-</span><span class='line'>                .iqiyi.com,
-</span><span class='line'>                .jing.fm,
-</span><span class='line'>                .kandian.com,
-</span><span class='line'>                .kandian.net,
-</span><span class='line'>                .kanimg.com,
-</span><span class='line'>                .kdnet.net,
-</span><span class='line'>                .koudai8.com,
-</span><span class='line'>                .ku6cdn.com,
-</span><span class='line'>                .ku6.com,
-</span><span class='line'>                .letv.com,
-</span><span class='line'>                .loli.mg,
-</span><span class='line'>                .loli.vg,
-</span><span class='line'>                .lxdns.com,
-</span><span class='line'>                .mapbar.com,
-</span><span class='line'>                .microsoft.com,
-</span><span class='line'>                .mop.com,
-</span><span class='line'>                .mydrivers.com,
-</span><span class='line'>                .netease.com,
-</span><span class='line'>                .pengyou.com,
-</span><span class='line'>                .qiyi.com,
-</span><span class='line'>                .qiyipic.com,
-</span><span class='line'>                .qq.com,
-</span><span class='line'>                .qqmail.com,
-</span><span class='line'>                .qstatic.com,
-</span><span class='line'>                .renren.com,
-</span><span class='line'>                .sdo.com,
-</span><span class='line'>                .sina.com,
-</span><span class='line'>                .sinaedge.com,
-</span><span class='line'>                .sogou.com,
-</span><span class='line'>                .sohu.com,
-</span><span class='line'>                .soso.com,
-</span><span class='line'>                .tanx.com,
-</span><span class='line'>                .taobaocdn.com,
-</span><span class='line'>                .taobao.com,
-</span><span class='line'>                .tbcache.com,
-</span><span class='line'>                .tdimg.com,
-</span><span class='line'>                .tencent.com,
-</span><span class='line'>                .thawte.com,
-</span><span class='line'>                .tianyaui.com,
-</span><span class='line'>                .tmall.com,
-</span><span class='line'>                .tudou.com,
-</span><span class='line'>                .tudouui.com,
-</span><span class='line'>                .weibo.com,
-</span><span class='line'>                .wrating.com,
-</span><span class='line'>                .xiami.com,
-</span><span class='line'>                .xiami.net,
-</span><span class='line'>                .xiaonei.com,
-</span><span class='line'>                .xlpan.com,
-</span><span class='line'>                .xunlei.com,
-</span><span class='line'>                .ydstatic.com,
-</span><span class='line'>                .ykimg.com,
-</span><span class='line'>                .youdao.com,
-</span><span class='line'>                .youku.com,
-</span><span class='line'>                .zbjimg.com,
-</span><span class='line'>                .zhubajie.com;
-</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="n">server</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">label</span><span class="o">=</span> <span class="s">&quot;myisp&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">ip</span> <span class="o">=</span> <span class="mf">192.168.1.1</span><span class="p">,</span> <span class="mf">114.114.114.114</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">uptest</span><span class="o">=</span><span class="n">ping</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">ping_timeout</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">purge_cache</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">no</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">policy</span><span class="o">=</span><span class="n">excluded</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">include</span><span class="o">=</span><span class="p">.</span><span class="n">cn</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">xn</span><span class="o">--</span><span class="n">fiqs8s</span><span class="p">,</span>   <span class="err">#</span> <span class="p">.</span><span class="err">中国</span>
+</span><span class='line'>                <span class="mf">.115</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="mf">.126</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="mf">.126</span><span class="p">.</span><span class="n">net</span><span class="p">,</span>
+</span><span class='line'>                <span class="mf">.163</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="mf">.17173</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="mf">.17</span><span class="n">cdn</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="mf">.51</span><span class="p">.</span><span class="n">la</span><span class="p">,</span>
+</span><span class='line'>                <span class="mf">.6</span><span class="n">rooms</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="mf">.91</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">alimama</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">alipay</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">atpanel</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">bdimg</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">bilibili</span><span class="p">.</span><span class="n">tv</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">ccb</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">cdn20</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">cnepub</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">cnzz</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">douban</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">douban</span><span class="p">.</span><span class="n">fm</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">duomi</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">gtimg</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">hdslb</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">hiapk</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">hoopchina</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">hupu</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">iask</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">ifeng</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">ifengimg</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">ijinshan</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">iqiyi</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">jing</span><span class="p">.</span><span class="n">fm</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">kandian</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">kandian</span><span class="p">.</span><span class="n">net</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">kanimg</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">kdnet</span><span class="p">.</span><span class="n">net</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">koudai8</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">ku6cdn</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">ku6</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">letv</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">loli</span><span class="p">.</span><span class="n">mg</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">loli</span><span class="p">.</span><span class="n">vg</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">lxdns</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">mapbar</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">microsoft</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">mop</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">mydrivers</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">netease</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">pengyou</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">qiyi</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">qiyipic</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">qq</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">qqmail</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">qstatic</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">renren</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">sdo</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">sina</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">sinaedge</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">sogou</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">sohu</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">soso</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">tanx</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">taobaocdn</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">taobao</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">tbcache</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">tdimg</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">thawte</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">tianyaui</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">tmall</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">tudou</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">tudouui</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">weibo</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">wrating</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">xiami</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">xiami</span><span class="p">.</span><span class="n">net</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">xiaonei</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">xlpan</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">xunlei</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">ydstatic</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">ykimg</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">youdao</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">youku</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">zbjimg</span><span class="p">.</span><span class="n">com</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">.</span><span class="n">zhubajie</span><span class="p">.</span><span class="n">com</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="c"># The servers provided by OpenDNS are fast, but they do not reply with</span>
-</span><span class='line'><span class="c"># NXDOMAIN for non-existant domains, instead they supply you with an</span>
-</span><span class='line'><span class="c"># address of one of their search engines. They also lie about the addresses of </span>
-</span><span class='line'><span class="c"># of the search engines of google, microsoft and yahoo.</span>
-</span><span class='line'><span class="c"># If you do not like this behaviour the &quot;reject&quot; option may be useful.</span>
-</span><span class='line'>server <span class="o">{</span>
-</span><span class='line'>        <span class="nv">label</span> <span class="o">=</span> <span class="s2">&quot;opendns&quot;</span>;
-</span><span class='line'>        <span class="nv">ip</span> <span class="o">=</span> 208.67.222.222, 208.67.220.220;
-</span><span class='line'>        <span class="nv">reject</span> <span class="o">=</span> 208.69.32.0/24,  <span class="c"># You may need to add additional address ranges</span>
-</span><span class='line'>                 208.69.34.0/24,  <span class="c"># here if the addresses of their search engines</span>
-</span><span class='line'>                 208.67.219.0/24; <span class="c"># change.</span>
-</span><span class='line'>        <span class="nv">reject_policy</span> <span class="o">=</span> fail;     <span class="c"># If you do not provide any alternative server</span>
-</span><span class='line'>                                  <span class="c"># sections, like the following root-server</span>
-</span><span class='line'>                                  <span class="c"># example, &quot;negate&quot; may be more appropriate here.</span>
-</span><span class='line'>        <span class="nv">port</span> <span class="o">=</span> 5353;              <span class="c"># 指定支持的非標準端口</span>
-</span><span class='line'>        <span class="nv">timeout</span> <span class="o">=</span> 4;
-</span><span class='line'>        <span class="nv">uptest</span> <span class="o">=</span> ping;            <span class="c"># Test availability using ICMP echo requests.</span>
-</span><span class='line'>        <span class="nv">ping_timeout</span> <span class="o">=</span> 100;       <span class="c"># ping test will time out after 10 seconds.</span>
-</span><span class='line'>        <span class="nv">interval</span> <span class="o">=</span> 15m;           <span class="c"># Test every 15 minutes.</span>
-</span><span class='line'>        <span class="nv">preset</span> <span class="o">=</span> off;
-</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="cp"># The servers provided by OpenDNS are fast, but they do not reply with</span>
+</span><span class='line'><span class="cp"># NXDOMAIN for non-existant domains, instead they supply you with an</span>
+</span><span class='line'><span class="cp"># address of one of their search engines. They also lie about the addresses of </span>
+</span><span class='line'><span class="cp"># of the search engines of google, microsoft and yahoo.</span>
+</span><span class='line'><span class="cp"># If you do not like this behaviour the &quot;reject&quot; option may be useful.</span>
+</span><span class='line'><span class="n">server</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">label</span> <span class="o">=</span> <span class="s">&quot;opendns&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">ip</span> <span class="o">=</span> <span class="mf">208.67.222.222</span><span class="p">,</span> <span class="mf">208.67.220.220</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">reject</span> <span class="o">=</span> <span class="mf">208.69.32.0</span><span class="o">/</span><span class="mi">24</span><span class="p">,</span>  <span class="err">#</span> <span class="n">You</span> <span class="n">may</span> <span class="n">need</span> <span class="n">to</span> <span class="n">add</span> <span class="n">additional</span> <span class="n">address</span> <span class="n">ranges</span>
+</span><span class='line'>                 <span class="mf">208.69.34.0</span><span class="o">/</span><span class="mi">24</span><span class="p">,</span>  <span class="err">#</span> <span class="n">here</span> <span class="k">if</span> <span class="n">the</span> <span class="n">addresses</span> <span class="n">of</span> <span class="n">their</span> <span class="n">search</span> <span class="n">engines</span>
+</span><span class='line'>                 <span class="mf">208.67.219.0</span><span class="o">/</span><span class="mi">24</span><span class="p">;</span> <span class="err">#</span> <span class="n">change</span><span class="p">.</span>
+</span><span class='line'>        <span class="n">reject_policy</span> <span class="o">=</span> <span class="n">fail</span><span class="p">;</span>     <span class="err">#</span> <span class="n">If</span> <span class="n">you</span> <span class="k">do</span> <span class="n">not</span> <span class="n">provide</span> <span class="n">any</span> <span class="n">alternative</span> <span class="n">server</span> <span class="n">sections</span><span class="p">,</span> <span class="n">like</span> <span class="n">the</span> <span class="n">following</span> <span class="n">root</span><span class="o">-</span><span class="n">server</span> <span class="n">example</span><span class="p">,</span> <span class="s">&quot;negate&quot;</span> <span class="n">may</span> <span class="n">be</span> <span class="n">more</span> <span class="n">appropriate</span> <span class="n">here</span><span class="p">.</span>
+</span><span class='line'>        <span class="n">port</span> <span class="o">=</span> <span class="mi">5353</span><span class="p">;</span>              <span class="err">#</span> <span class="err">指定支持的非標準端口</span>
+</span><span class='line'>        <span class="n">timeout</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">uptest</span> <span class="o">=</span> <span class="n">ping</span><span class="p">;</span>            <span class="err">#</span> <span class="n">Test</span> <span class="n">availability</span> <span class="n">using</span> <span class="n">ICMP</span> <span class="n">echo</span> <span class="n">requests</span><span class="p">.</span>
+</span><span class='line'>        <span class="n">ping_timeout</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>       <span class="err">#</span> <span class="n">ping</span> <span class="n">test</span> <span class="n">will</span> <span class="n">time</span> <span class="n">out</span> <span class="n">after</span> <span class="mi">10</span> <span class="n">seconds</span><span class="p">.</span>
+</span><span class='line'>        <span class="n">interval</span> <span class="o">=</span> <span class="mi">15</span><span class="n">m</span><span class="p">;</span>           <span class="err">#</span> <span class="n">Test</span> <span class="n">every</span> <span class="mi">15</span> <span class="n">minutes</span><span class="p">.</span>
+</span><span class='line'>        <span class="n">preset</span> <span class="o">=</span> <span class="n">off</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>server <span class="o">{</span>
-</span><span class='line'>        <span class="nv">label</span><span class="o">=</span> <span class="s2">&quot;v2ex&quot;</span>;
-</span><span class='line'>        <span class="nv">ip</span> <span class="o">=</span> 199.91.73.222;       <span class="c"># v2ex 只有這個地址有非標準端口所以單獨放出來</span>
-</span><span class='line'>        <span class="nv">port</span> <span class="o">=</span> 3389;              <span class="c"># 指定支持的非標準端口</span>
-</span><span class='line'>        <span class="nv">timeout</span><span class="o">=</span>4;
-</span><span class='line'>        <span class="nv">uptest</span><span class="o">=</span>ping;
-</span><span class='line'>        <span class="nv">ping_timeout</span> <span class="o">=</span> 100;
-</span><span class='line'>        <span class="nv">interval</span><span class="o">=</span>10m;
-</span><span class='line'>        <span class="nv">purge_cache</span><span class="o">=</span>off;
-</span><span class='line'>        <span class="nv">edns_query</span><span class="o">=</span>no;
-</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="n">server</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">label</span><span class="o">=</span> <span class="s">&quot;v2ex&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">ip</span> <span class="o">=</span> <span class="mf">199.91.73.222</span><span class="p">;</span>       <span class="err">#</span> <span class="n">v2ex</span> <span class="err">只有這個地址有非標準端口所以單獨放出來</span>
+</span><span class='line'>        <span class="n">port</span> <span class="o">=</span> <span class="mi">3389</span><span class="p">;</span>              <span class="err">#</span> <span class="err">指定支持的非標準端口</span>
+</span><span class='line'>        <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">uptest</span><span class="o">=</span><span class="n">ping</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">ping_timeout</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">purge_cache</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">no</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>server <span class="o">{</span>
-</span><span class='line'>        <span class="nv">label</span><span class="o">=</span> <span class="s2">&quot;hinet&quot;</span>;
-</span><span class='line'>        <span class="nv">ip</span> <span class="o">=</span> 168.95.1.1, 168.95.192.1, 168.95.192.2;
-</span><span class='line'>        <span class="nv">timeout</span><span class="o">=</span>4;
-</span><span class='line'>        <span class="nv">uptest</span><span class="o">=</span>ping;
-</span><span class='line'>        <span class="nv">ping_timeout</span> <span class="o">=</span> 100;
-</span><span class='line'>        <span class="nv">interval</span><span class="o">=</span>10m;
-</span><span class='line'>        <span class="nv">purge_cache</span><span class="o">=</span>off;
-</span><span class='line'>        <span class="nv">edns_query</span><span class="o">=</span>no;
-</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="n">server</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">label</span><span class="o">=</span> <span class="s">&quot;hinet&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">ip</span> <span class="o">=</span> <span class="mf">168.95.1.1</span><span class="p">,</span> <span class="mf">168.95.192.1</span><span class="p">,</span> <span class="mf">168.95.192.2</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">uptest</span><span class="o">=</span><span class="n">ping</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">ping_timeout</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">purge_cache</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">no</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>server <span class="o">{</span>
-</span><span class='line'>        <span class="nv">label</span><span class="o">=</span> <span class="s2">&quot;google dns&quot;</span>;
-</span><span class='line'>        <span class="nv">ip</span> <span class="o">=</span> 8.8.8.8, 8.8.4.4;
-</span><span class='line'>        <span class="nv">timeout</span><span class="o">=</span>4;
-</span><span class='line'>        <span class="nv">uptest</span><span class="o">=</span>ping;
-</span><span class='line'>        <span class="nv">ping_timeout</span> <span class="o">=</span> 100;
-</span><span class='line'>        <span class="nv">interval</span><span class="o">=</span>10m;
-</span><span class='line'>        <span class="nv">purge_cache</span><span class="o">=</span>off;
-</span><span class='line'>        <span class="nv">edns_query</span><span class="o">=</span>no;
-</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="n">server</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">label</span><span class="o">=</span> <span class="s">&quot;google dns&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">ip</span> <span class="o">=</span> <span class="mf">8.8.8.8</span><span class="p">,</span> <span class="mf">8.8.4.4</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">uptest</span><span class="o">=</span><span class="n">ping</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">ping_timeout</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">purge_cache</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">no</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 

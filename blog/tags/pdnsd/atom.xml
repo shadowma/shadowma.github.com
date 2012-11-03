@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: pdnsd | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/pdnsd/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-11-04T05:18:37+08:00</updated>
+  <updated>2012-11-04T05:47:44+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
@@ -52,7 +52,7 @@
 
 <p>修改配置文件</p>
 
-<p>```bash /etc/pdnsd.conf
+<p>```c /etc/pdnsd.conf
 global {</p>
 
 <pre><code>    perm_cache=4096;
@@ -62,11 +62,9 @@ global {</p>
 <h1>pid_file = /var/run/pdnsd.pid;</h1>
 
 <pre><code>    run_as="nobody";
-    server_ip = 127.0.0.1;  # Use eth0 here if you want to allow other
-                            # machines on your network to query pdnsd.
+    server_ip = 127.0.0.1;  # Use eth0 here if you want to allow other machines on your network to query pdnsd.
     status_ctl = on;
-    paranoid=on;            # This option reduces the chance of cache poisoning
-                            # but may make pdnsd less efficient, unfortunately.
+    paranoid=on;            # This option reduces the chance of cache poisoning but may make pdnsd less efficient, unfortunately.
     query_method=tcp_udp;   # 優先使用 tcp 方式查詢
     min_ttl=1d;             # 緩存記錄最少保存一天
     max_ttl=1w;             # One week.
@@ -199,9 +197,7 @@ global {</p>
     reject = 208.69.32.0/24,  # You may need to add additional address ranges
              208.69.34.0/24,  # here if the addresses of their search engines
              208.67.219.0/24; # change.
-    reject_policy = fail;     # If you do not provide any alternative server
-                              # sections, like the following root-server
-                              # example, "negate" may be more appropriate here.
+    reject_policy = fail;     # If you do not provide any alternative server sections, like the following root-server example, "negate" may be more appropriate here.
     port = 5353;              # 指定支持的非標準端口
     timeout = 4;
     uptest = ping;            # Test availability using ICMP echo requests.
