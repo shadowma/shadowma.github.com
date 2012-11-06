@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: pdnsd | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/pdnsd/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-11-06T01:55:45+08:00</updated>
+  <updated>2012-11-06T12:33:07+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
@@ -200,7 +200,9 @@ global {</p>
     ip = 208.67.222.222, 208.67.220.220;
     reject = 208.69.32.0/24,  # You may need to add additional address ranges
              208.69.34.0/24,  # here if the addresses of their search engines
-             208.67.219.0/24; # change.
+             208.67.219.0/24, # change.
+             208.67.217.0/24,
+             208.67.216.0/24;
     reject_policy = fail;     # If you do not provide any alternative server sections, like the following root-server example, "negate" may be more appropriate here.
     port = 5353;              # 指定支持的非標準端口
     timeout = 4;
@@ -277,9 +279,11 @@ global {</p>
 
 <p>使用本地的轉發服務查詢 twitter.com 返回正確 ip，說明在服務器最前列的國內的 DNS 的確沒查詢列表外的域名。</p>
 
-<h2>最後</h2>
+<h2>後記</h2>
 
-<p>完工，廢那麼多事，心情不爽睡前<a href="http://www.fangbinxing.com/">扎一下</a>。</p>
+<p>從之後的測試來看上面的方案並不可靠，原本優先使用 tcp 的原因是希望有更好的速度，但爲了預防查詢失敗仍然不得不把支持非標準端口查詢但在我這兒速度較慢的服務器放在前列，這樣還不如直接用非標準端口的 udp 方式從這些服務器查詢，而且在 <code>tcp_udp</code> 模式下，tcp 查詢超時就會轉而使用 udp 方式，但 tcp 請求被重置，會被當作 negative 結果返回，這樣的話就要把 <code>neg_domain_pol</code> 設爲 <code>off</code>，不緩存 negative 結果，要不很長一段時間都無法訪問這域名，但所有的 negative 結果都不緩存的話，會增加不必要的查詢請求，耗費資源。</p>
+
+<p>總之，現階段最好的方案是直接使用非標準端口的 udp 查詢，把 <code>query_method</code> 設成 <code>udp_only</code>，刪去不支持非標準端口查詢的服務器，要是自已有境外的服務器資源的話，可以把自己要用的 DNS 服務器轉發到非標準端口來用。</p>
 ]]></content>
     
   </entry>
