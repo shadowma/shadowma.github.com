@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-11-06T12:33:07+08:00</updated>
+  <updated>2012-11-06T18:14:06+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
@@ -15,7 +15,7 @@
   
   <entry>
     
-	<title type="html"><![CDATA[Google 你個傻逼 &rArr;]]></title>
+	<title type="html"><![CDATA[Google 你個傻逼 &infin;]]></title>
 	<link href="https://plus.google.com/s/%23%E8%B0%B7%E6%AD%8C%E4%BD%A0%E4%B8%AA%E5%82%BB%E9%80%BC"/>
     
     <link href="http://shadow.ma/blog/2012/11/05/google-you-stupid-cunt/"/>
@@ -275,7 +275,7 @@
 </span><span class='line'>        <span class="n">ping_timeout</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">purge_cache</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">no</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">policy</span><span class="o">=</span><span class="n">excluded</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">include</span><span class="o">=</span><span class="p">.</span><span class="n">cn</span><span class="p">,</span>
 </span><span class='line'>                <span class="p">.</span><span class="n">xn</span><span class="o">--</span><span class="n">fiqs8s</span><span class="p">,</span>   <span class="err">#</span> <span class="p">.</span><span class="err">中国</span>
@@ -398,7 +398,7 @@
 </span><span class='line'>        <span class="n">ping_timeout</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">purge_cache</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">no</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">server</span> <span class="p">{</span>
@@ -409,7 +409,7 @@
 </span><span class='line'>        <span class="n">ping_timeout</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">purge_cache</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">no</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">server</span> <span class="p">{</span>
@@ -420,7 +420,7 @@
 </span><span class='line'>        <span class="n">ping_timeout</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">purge_cache</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">no</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">edns_query</span><span class="o">=</span><span class="n">off</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 

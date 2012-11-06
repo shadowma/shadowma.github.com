@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: pdnsd | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/pdnsd/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-11-06T12:33:07+08:00</updated>
+  <updated>2012-11-06T18:14:06+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma,i@shadow.ma]]></name>
@@ -90,7 +90,7 @@ global {</p>
     ping_timeout = 100;
     interval=10m;
     purge_cache=off;
-    edns_query=no;
+    edns_query=off;
     policy=excluded;
     include=.cn,
             .xn--fiqs8s,   # .中国
@@ -224,7 +224,7 @@ global {</p>
     ping_timeout = 100;
     interval=10m;
     purge_cache=off;
-    edns_query=no;
+    edns_query=off;
 </code></pre>
 
 <p>}</p>
@@ -238,7 +238,7 @@ global {</p>
     ping_timeout = 100;
     interval=10m;
     purge_cache=off;
-    edns_query=no;
+    edns_query=off;
 </code></pre>
 
 <p>}</p>
@@ -252,7 +252,7 @@ global {</p>
     ping_timeout = 100;
     interval=10m;
     purge_cache=off;
-    edns_query=no;
+    edns_query=off;
 </code></pre>
 
 <p>}
