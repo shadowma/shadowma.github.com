@@ -332,7 +332,7 @@
 </span><span class='line'>
 </span><span class='line'><span class="n">server</span> <span class="p">{</span>
 </span><span class='line'>        <span class="n">label</span><span class="o">=</span> <span class="s">&quot;myisp&quot;</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">ip</span> <span class="o">=</span> <span class="mf">192.168.1.1</span><span class="p">,</span> <span class="mf">114.114.114.114</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">ip</span> <span class="o">=</span> <span class="mf">114.114.114.114</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">uptest</span><span class="o">=</span><span class="n">ping</span><span class="p">;</span>
 </span><span class='line'>        <span class="n">ping_timeout</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
@@ -488,7 +488,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>全局配置中 <code>query_method</code> 可以設爲 <code>tcp_only</code>，我設置成 <code>tcp_udp</code> 優先使用 tcp 方式查詢所以還得設置 <code>tcp_qtimeout</code>，tcp 方式查詢超時就放棄。</p>
+<p>全局配置中 <code>query_method</code> 可以設爲 tcp_only，我設置成 tcp_udp 優先使用 tcp 方式查詢所以還得設置 <code>tcp_qtimeout</code>，tcp 方式查詢超時就放棄。</p>
 
 <p>我把 ISP 或者國內的 DNS 服務器放到了最前面，只查詢指定的域名，解決某些國內網站因爲是國外 DNS 請求而返回了過慢的 CDN 線路的 ip，網站列表來源於 <a href="http://felixc.at/Dnsmasq">http://felixc.at/Dnsmasq</a> ，之後先放上提供非標準端口服務的 DNS 服務器，在 tcp 無法查詢轉而使用 udp 方式時使用非標準端口避免 DNS 污染，最後放上我常用的中華電信和 Google 的 DNS，都支持 tcp 方式查詢。</p>
 
@@ -510,11 +510,17 @@
 
 <p>使用本地的轉發服務查詢 twitter.com 返回正確 ip，說明在服務器最前列的國內的 DNS 的確沒查詢列表外的域名。</p>
 
+<h2>疑難解答</h2>
+
+<h3>系統啓動時不可用</h3>
+
+<p>請將服務器中的 <code>uptest</code> 設爲 none，因爲 pdnsd 服務啓動時網絡還沒連接上，服務器無法通過檢測被忽略，導致無服務器可進行查詢。</p>
+
 <h2>後記</h2>
 
-<p>從之後的測試來看上面的方案並不可靠，原本優先使用 tcp 的原因是希望有更好的速度，但爲了預防查詢失敗仍然不得不把支持非標準端口查詢但在我這兒速度較慢的服務器放在前列，這樣還不如直接用非標準端口的 udp 方式從這些服務器查詢，而且在 <code>tcp_udp</code> 模式下，tcp 查詢超時就會轉而使用 udp 方式，但 tcp 請求被重置，會被當作 negative 結果返回，這樣的話就要把 <code>neg_domain_pol</code> 設爲 <code>off</code>，不緩存 negative 結果，要不很長一段時間都無法訪問這域名，但所有的 negative 結果都不緩存的話，會增加不必要的查詢請求，耗費資源。</p>
+<p>從之後的測試來看上面的方案並不可靠，原本優先使用 tcp 的原因是希望有更好的速度，但爲了預防查詢失敗仍然不得不把支持非標準端口查詢但在我這兒速度較慢的服務器放在前列，這樣還不如直接用非標準端口的 udp 方式從這些服務器查詢，而且在 tcp_udp 模式下，tcp 查詢超時就會轉而使用 udp 方式，但 tcp 請求被重置，會被當作 negative 結果返回，這樣的話就要把 <code>neg_domain_pol</code> 設爲 off，不緩存 negative 結果，要不很長一段時間都無法訪問這域名，但所有的 negative 結果都不緩存的話，會增加不必要的查詢請求，耗費資源。</p>
 
-<p>總之，現階段最好的方案是直接使用非標準端口的 udp 查詢，把 <code>query_method</code> 設成 <code>udp_only</code>，刪去不支持非標準端口查詢的服務器，要是自已有境外的服務器資源的話，可以把自己要用的 DNS 服務器轉發到非標準端口來用。</p>
+<p>總之，現階段最好的方案是直接使用非標準端口的 udp 查詢，把 <code>query_method</code> 設成 udp_only，刪去不支持非標準端口查詢的服務器，要是自已有境外的服務器資源的話，可以把自己要用的 DNS 服務器轉發到非標準端口來用。</p>
 </div>
 </article>
 
