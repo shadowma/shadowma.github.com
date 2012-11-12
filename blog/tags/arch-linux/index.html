@@ -32,7 +32,7 @@
 	<li><a href="/blog/archives">存檔</a></li>
 	<li><a href="/blog/tags">標籤</a></li>
 	<li><a href="/blog/links">鏈接</a></li>
-	<li><a href="/blog/about">關於</a></li>
+	<li><a class="noajax" href="/blog/about">關於</a></li>
 </ul>
 </nav>
 <div class="site">
@@ -83,10 +83,10 @@
 
 	
 	
-	<section class="archives right-con"><h1 class="year">2012</h1>
+	<section class="archives right-con"><h1 class="year">標籤: Arch Linux</h1>
 
 <article>
-	<!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+	
 	 	<h1 class="title"><a href="/blog/2012/10/06/switched-arch-to-systemd/">切換到了 systemd</a></h1>
 	
 	<div class="meta">
@@ -113,7 +113,12 @@
 	</div>
 </article>
 
-</div>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+	jQuery('#header nav ul li a').removeClass("active_menu");
+    	jQuery('#header nav ul li a:eq(2)').addClass("active_menu");
+  });
+</script></div>
 	</div></div>
 	<footer id="footer" class="right-col">
 </footer>

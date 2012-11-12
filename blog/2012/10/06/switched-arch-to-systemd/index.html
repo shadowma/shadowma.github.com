@@ -32,7 +32,7 @@
 	<li><a href="/blog/archives">存檔</a></li>
 	<li><a href="/blog/tags">標籤</a></li>
 	<li><a href="/blog/links">鏈接</a></li>
-	<li><a href="/blog/about">關於</a></li>
+	<li><a class="noajax" href="/blog/about">關於</a></li>
 </ul>
 </nav>
 <div class="site">
@@ -151,7 +151,13 @@
     <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
 </section>
-</div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+	jQuery('#header nav ul li a').removeClass("active_menu");
+    	jQuery('#header nav ul li:first a').addClass("active_menu");
+  });
+</script></div>
 	</div></div>
 	<footer id="footer" class="right-col">
 </footer>

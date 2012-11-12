@@ -36,16 +36,16 @@
 
 jQuery(document).ready(function($) {
   
-  	jQuery('#header nav ul li a').live('click', function(e){
+  	jQuery('#header nav ul li a:not(.noajax)').live('click', function(e){
 		e.preventDefault();
 		var link = jQuery(this).attr('href');
 		var height = jQuery('#ajax-container').height();
 		jQuery('#content .page').css('min-height', height + 'px');
 		jQuery('#ajax-container').fadeOut(300).load(link + ' #ajax-inner', function(){ jQuery('#ajax-container').fadeIn(300); });
 	});
-  
-	jQuery('#header nav ul li').click(function(){ 		
-		jQuery('#header nav ul li').removeClass("active_menu");
+	
+	jQuery('#header nav ul li a').click(function(){ 		
+		jQuery('#header nav ul li a').removeClass("active_menu");
 		jQuery(this).addClass("active_menu");
 	});
 });
