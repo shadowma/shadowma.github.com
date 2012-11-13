@@ -203,25 +203,9 @@
 		shadow.src(('https:' == document.location.protocol ? 'https://' : 'http://') + disqus_shortname + '.disqus.com/' + disqus_script,function(){jQuery(that).remove()});
 	    });
     });
-</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
-<script type="text/javascript">
-var shadow = {};
-shadow.src = function(file,callback){
+    
+    var shadow = {};
+    shadow.src = function(file,callback){
             var _doc = document.getElementsByTagName('head')[0];
             var js = document.createElement('script');
             js.setAttribute('type', 'text/javascript');
@@ -244,5 +228,20 @@ shadow.src = function(file,callback){
             return false;
 }
 </script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
 </body>
 </html>
