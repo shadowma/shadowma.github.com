@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-11-18T20:00:24+08:00</updated>
+  <updated>2012-11-19T01:57:05+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma]]></name>
@@ -54,7 +54,7 @@
   
   <entry>
     
-	<title type="html"><![CDATA[使用 Bundler 安裝 Gem 套件到主目錄中]]></title>
+	<title type="html"><![CDATA[讓 Bundler 把 Gem 套件安裝到主目錄]]></title>
 	<link href="http://shadow.ma/blog/2012/11/18/install-gems-in-home-directory-with-bundler/"/>
     
     <link href="http://shadow.ma/blog/2012/11/18/install-gems-in-home-directory-with-bundler/"/>
