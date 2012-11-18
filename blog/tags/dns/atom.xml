@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: DNS | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/dns/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-11-18T04:37:15+08:00</updated>
+  <updated>2012-11-18T18:09:16+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+	<title type="html"><![CDATA[添加 SRV 記錄啓用 Google Apps 網絡外聊天]]></title>
+	<link href="http://shadow.ma/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps/"/>
+    
+    <link href="http://shadow.ma/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps/"/>
+    <updated>2012-11-18T17:17:00+08:00</updated>
+    <id>http://shadow.ma/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps</id>
+    
+    <content type="html"><![CDATA[<p>雖然一直把託管在 Google Apps 的域名郵箱和 Gtalk 放聯繫方式裏，卻一直沒怎麼用，尤其是 Gtalk，最近要用它加個羣時才發現默認情況下只能添加 Gtalk 網絡中的用戶爲好友，要和網絡外的 XMPP 用戶聊天需要爲域名設置 SRV 記錄，參照 <a href="https://support.google.com/a/bin/answer.py?hl=zh-Hant&amp;answer=34143" title="在 Google Apps 之外啟用即時通訊">Google Apps 說明文檔</a>添加就行。</p>
+
+<!-- more -->
+
+
+<p>對於像我一樣使用 CloudFlare 管理 DNS 的，因爲 CloudFlare 不提供快速添加 Google Apps 相關記錄的工具和嚮導，如果覺得手動添加很麻煩，可以創建如下文件，然後在 DNS 設置中選擇附加這個 zone 文件就能快速添加好。</p>
+
+<p>Liquid error: ClassNotFound: no lexer for alias 'zone' found</p>
+
+<p>手動的話如圖把記錄都添加上就行：
+<img src="http://static.xind.in/blog/pic/2012/11/cloudflare-srv-record.png" alt="CloudFlare SRV Record" /></p>
+
+<p>等生效就能讓此域名的 Gtalk 用戶和公共 XMPP 網絡用戶聊天了。</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     

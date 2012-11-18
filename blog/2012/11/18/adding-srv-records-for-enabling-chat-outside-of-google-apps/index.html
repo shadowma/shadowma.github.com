@@ -3,19 +3,19 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>使用 Bundler 安裝 Gem 套件到主目錄中 - 雨吁</title>
+	<title>添加 SRV 記錄啓用 Google Apps 網絡外聊天 - 雨吁</title>
 	<meta name="author" content="Shadow Ma">
 
 	
-	<meta name="description" content="開始折騰 Octopress 後接觸到了 Ruby，相關的內容也記一下。 gem 命令可以使用 --user-install 的選項把套件安裝到主目錄下，但使用 bundle install 安裝套件時並不讀取在 .gemrc 中設置的選項，仍然會詢問 root 密碼要將套件安裝到系統中，雖然用 &hellip;">
-	<meta name="keywords" content="Bundler, Gem, Ruby">
+	<meta name="description" content="雖然一直把託管在 Google Apps 的域名郵箱和 Gtalk 放聯繫方式裏，卻一直沒怎麼用，尤其是 Gtalk，最近要用它加個羣時才發現默認情況下只能添加 Gtalk 網絡中的用戶爲好友，要和網絡外的 XMPP 用戶聊天需要爲域名設置 SRV 記錄，參照 Google Apps &hellip;">
+	<meta name="keywords" content="DNS, Google Apps, SRV">
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="480">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	
-	<link rel="canonical" href="http://shadow.ma/blog/2012/11/18/install-gems-in-home-directory-with-bundler/">
+	<link rel="canonical" href="http://shadow.ma/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps/">
 	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
 	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	<link href="/favicon.gif" rel="icon" type="image/gif">
@@ -79,7 +79,7 @@
 	<div id="ajax-container"><div id="ajax-inner">
 	<div id="content" class="right-col"><article class="post">
 	
-	      <h1 class="title">使用 Bundler 安裝 Gem 套件到主目錄中</h1>
+	      <h1 class="title">添加 SRV 記錄啓用 Google Apps 網絡外聊天</h1>
 	
 	
 	<div class="meta">
@@ -95,31 +95,42 @@
   
 
 
-<time datetime="2012-11-18T04:18:00+08:00" pubdate data-updated="true">2012年11月18日</time></div>
+<time datetime="2012-11-18T17:17:00+08:00" pubdate data-updated="true">2012年11月18日</time></div>
 	<div class="tags">
 
 
-	<a class='tag' href='/blog/tags/bundler/'>Bundler</a>, <a class='tag' href='/blog/tags/gem/'>Gem</a>, <a class='tag' href='/blog/tags/ruby/'>Ruby</a>
+	<a class='tag' href='/blog/tags/dns/'>DNS</a>, <a class='tag' href='/blog/tags/google-apps/'>Google Apps</a>, <a class='tag' href='/blog/tags/srv/'>SRV</a>
 
 
 </div>
 	</div>
 	
-	<div class="entry-content"><p>開始折騰 Octopress 後接觸到了 Ruby，相關的內容也記一下。</p>
-
-<p>gem 命令可以使用 <code>--user-install</code> 的選項把套件安裝到主目錄下，但使用 <code>bundle install</code> 安裝套件時並不讀取在 <code>.gemrc</code> 中設置的選項，仍然會詢問 root 密碼要將套件安裝到系統中，雖然用 gem 可以很方便的管理安裝的套件，但沒有用系統的包管理工具而安裝到系統中那麼多東西，讓人很不舒服，而且剛開始使用 gem 時我就設置了 <code>--user-install</code> 的選項，之前安裝的套件包括 bundler 本身都在主目錄中，所以得讓 bundler 把套件也安裝到相同的地方，便於管理。</p>
+	<div class="entry-content"><p>雖然一直把託管在 Google Apps 的域名郵箱和 Gtalk 放聯繫方式裏，卻一直沒怎麼用，尤其是 Gtalk，最近要用它加個羣時才發現默認情況下只能添加 Gtalk 網絡中的用戶爲好友，要和網絡外的 XMPP 用戶聊天需要爲域名設置 SRV 記錄，參照 <a href="https://support.google.com/a/bin/answer.py?hl=zh-Hant&amp;answer=34143" title="在 Google Apps 之外啟用即時通訊">Google Apps 說明文檔</a>添加就行。</p>
 
 <!-- more -->
 
 
-<p>方法很簡單，可以在執行 <code>bundle install</code> 時加上 <code>--path PATH</code> 的選項，其中參數 <code>PATH</code> 指定安裝目錄，也可以設置 <code>BUNDLE_PATH</code> 的環境變量，比如：</p>
+<p>對於像我一樣使用 CloudFlare 管理 DNS 的，因爲 CloudFlare 不提供快速添加 Google Apps 相關記錄的工具和嚮導，如果覺得手動添加很麻煩，可以創建如下文件，然後在 DNS 設置中選擇附加這個 zone 文件就能快速添加好。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">BUNDLE_PATH</span><span class="o">=</span><span class="s2">&quot;`ruby -rubygems -e &quot;</span>puts Gem.user_dir<span class="s2">&quot;`&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>google_apps_srv_records&#46;zone </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>; SRV
+</span><span class='line'>_xmpp-server._tcp.@   1   IN  SRV 5   0   5269    xmpp-server.l.google.com
+</span><span class='line'>_xmpp-server._tcp.@   1   IN  SRV 20  0   5269    alt1.xmpp-server.l.google.com
+</span><span class='line'>_xmpp-server._tcp.@   1   IN  SRV 20  0   5269    alt2.xmpp-server.l.google.com
+</span><span class='line'>_xmpp-server._tcp.@   1   IN  SRV 20  0   5269    alt3.xmpp-server.l.google.com
+</span><span class='line'>_xmpp-server._tcp.@   1   IN  SRV 20  0   5269    alt4.xmpp-server.l.google.com</span></code></pre></td></tr></table></div></figure>
 
 
-<p>以上。</p>
+<p>手動的話如圖把記錄都添加上就行：
+<img src="http://static.xind.in/blog/pic/2012/11/cloudflare-srv-record.png" alt="CloudFlare SRV Record" /></p>
+
+<p>等生效就能讓此域名的 Gtalk 用戶和公共 XMPP 網絡用戶聊天了。</p>
 </div>
 </article>
 
@@ -140,10 +151,8 @@
 
     <section id="alignment">
       
-        <a class="left-alignment left" href="/blog/2012/11/05/google-you-stupid-cunt/" title="前一篇日誌: Google 你個傻逼">Google 你個傻逼</a>
+        <a class="left-alignment left" href="/blog/2012/11/18/install-gems-in-home-directory-with-bundler/" title="前一篇日誌: 使用 Bundler 安裝 Gem 套件到主目錄中">使用 Bundler 安裝 Gem 套件到主目錄中</a>
       
-      
-        <a class="right-alignment right" href="/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps/" title="後一篇日誌: 添加 SRV 記錄啓用 Google Apps 網絡外聊天">添加 SRV 記錄啓用 Google Apps 網絡外聊天</a>
       
     </section>
 
@@ -174,8 +183,8 @@
 <script type="text/javascript">
       var disqus_shortname = 'shadowma';
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://shadow.ma/blog/2012/11/18/install-gems-in-home-directory-with-bundler/';
-        var disqus_url = 'http://shadow.ma/blog/2012/11/18/install-gems-in-home-directory-with-bundler/';
+        var disqus_identifier = 'http://shadow.ma/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps/';
+        var disqus_url = 'http://shadow.ma/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps/';
         var disqus_script = 'embed.js';
     jQuery(document).ready(function(){        
 	    jQuery('#comment .disqus_container').on('click',function(){
