@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: DNS | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/dns/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-11-18T18:09:16+08:00</updated>
+  <updated>2012-11-18T18:12:24+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma]]></name>
@@ -34,7 +34,7 @@
 <p>手動的話如圖把記錄都添加上就行：
 <img src="http://static.xind.in/blog/pic/2012/11/cloudflare-srv-record.png" alt="CloudFlare SRV Record" /></p>
 
-<p>等生效就能讓此域名的 Gtalk 用戶和公共 XMPP 網絡用戶聊天了。</p>
+<p>等 DNS 生效就能讓此域名的 Gtalk 用戶和公共 XMPP 網絡用戶聊天了。</p>
 ]]></content>
     
   </entry>
