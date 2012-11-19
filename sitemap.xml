@@ -2,53 +2,53 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://shadow.ma/blog/2012/09/26/hello-octopress/</loc>
-        <lastmod>2012-11-19T16:44:31+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/</loc>
-        <lastmod>2012-11-19T16:44:31+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd/</loc>
-        <lastmod>2012-11-19T16:44:31+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/
         </loc>
-        <lastmod>2012-11-19T16:44:31+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2012/10/26/script-for-auto-update-chnroutes/</loc>
-        <lastmod>2012-11-19T16:44:31+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2012/10/26/blog-start-over-again/</loc>
-        <lastmod>2012-11-19T16:44:31+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/</loc>
-        <lastmod>2012-11-19T16:44:31+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2012/11/05/google-you-stupid-cunt/</loc>
-        <lastmod>2012-11-19T16:44:31+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2012/11/18/install-gems-in-home-directory-with-bundler/</loc>
-        <lastmod>2012-11-19T16:44:31+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://shadow.ma/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps/
         </loc>
-        <lastmod>2012-11-19T16:44:31+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://shadow.ma/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category/
         </loc>
-        <lastmod>2012-11-19T17:07:19+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/archives/</loc>
@@ -68,6 +68,6 @@
     </url>
     <url>
         <loc>http://shadow.ma/</loc>
-        <lastmod>2012-11-19T17:07:19+08:00</lastmod>
+        <lastmod>2012-11-19T17:11:22+08:00</lastmod>
     </url>
 </urlset>
