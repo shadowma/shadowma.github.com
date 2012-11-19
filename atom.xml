@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-11-19T01:57:05+08:00</updated>
+  <updated>2012-11-19T17:08:00+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+	<title type="html"><![CDATA[爲 Octopress 分類添加中文支持]]></title>
+	<link href="http://shadow.ma/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category/"/>
+    
+    <link href="http://shadow.ma/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category/"/>
+    <updated>2012-11-19T15:46:00+08:00</updated>
+    <id>http://shadow.ma/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category</id>
+    
+    <content type="html"><![CDATA[<p>雖然講的是分類（Category），但現在我這兒沒有分類只有標籤（Tag），Octopress 自帶的分類根本就是當作標籤用，再加上自己很少用分類，就把所有分類相關的字樣全改成了標籤，這樣看着不那麼彆扭，插件什麼的全改了，改動過程十分蛋疼就不說了，這裏還是按本來的 Category 來說。</p>
+
+<!-- more -->
+
+
+<p>Octopress 自帶的分類生成插件「category_generator.rb」不能處理非 ASCII 字符分類，Google 到兩種修改插件方法，一種是<a href="https://geron.heroku.com/blog/2012/03/octo-cate-cn-spo" title="Octopress博客分类添加中文支持">直接把分類目錄名轉換爲 url 編碼</a>，另一種是<a href="http://blog.sprabbit.com/blog/2012/03/23/octopress/" title="关于在64位 Windows 7 中部署中文化的Octopress">分離分類顯示名和路徑名</a>，對比之後決定採用後一種方案，避免 url 中包含辨識度低的編碼。</p>
+
+<p>參照 <a href="http://www.sprabbit.com/" title="超科學兔耳中隊">SPRABBIT</a> 火霧宗師的<a href="https://github.com/denjones/denjones.github.com/commit/1d4f3b9433a4d77e31530c4d5f20611c9b9829e2#diff-1">修改</a>把分類格式改爲 <code>&lt;分類顯示名稱&gt;{&lt;分類目錄名稱&gt;}</code>，然後如此創建分類：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>categories:  隨筆{essay}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>就能把顯示爲「隨筆」的分類頁面保存在一個叫「essay」的目錄中。</p>
+
+<p>但這裏存在兩個問題，一是每次建立分類時都必須加上後面的分類目錄名稱，不然在 generate 時會報錯，二是爲了規範 url 原來的插件會先把分類中的大寫轉換爲小寫、空格替換爲「-」才作爲目錄名，但這個字符串處理也被作者去除了，雖然指定目錄名時稍加注意就好，但增強健壯性的話，就算以後隨意些也沒問題。</p>
+
+<p>第一個問題，在調用分類的地方加上條件判斷，指定了目錄名時先作相應處理，沒有指定目錄名就像原來一樣使用這個分類，比如:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">self</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;title&#39;</span><span class="o">]</span>       <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">title_prefix</span><span class="si">}#{</span><span class="k">if</span> <span class="p">(</span><span class="sr">/.*{.*}$/</span> <span class="o">===</span> <span class="n">category</span><span class="p">)</span> <span class="k">then</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="o">[</span><span class="sr">/[^{]*/</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">end</span><span class="si">}</span><span class="s2">&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在指定了目錄名時分類會變成 <code>&lt;分類顯示名稱&gt;{&lt;分類目錄名稱&gt;}</code> 的格式，需要用正則表達式 <code>category[/[ ^ { ]*/]</code> 取出 <code>&lt;分類顯示名稱&gt;</code> 這一部分用於顯示，沒有指定目錄名時直接就是 <code>&lt;分類顯示名稱&gt;</code>，這樣只有在分類是中文時才需要指定目錄名。</p>
+
+<p>目錄名的部分也作相應修改，比如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">self</span><span class="o">.</span><span class="n">write_category_index</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="k">if</span> <span class="p">(</span><span class="sr">/.*{.*}$/</span> <span class="o">===</span> <span class="n">category</span><span class="p">)</span> <span class="k">then</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="o">[</span><span class="sr">/(?&lt;={)[^}]*/</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">end</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/_|\P{Word}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/-{2,}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span><span class="p">),</span> <span class="n">category</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>正則表達式 <code>category[/(?&lt;={)[^}]*/]</code> 用於取出大括號中的分類目錄名稱，這裏保留 gsub 和 downcase 的字符串處理，在指定目錄名稱時可以不用在意空格和大小寫。</p>
+
+<p>其它部分可以參考我修改的<a href="https://gist.github.com/4109451#file_tag_generator.rb" title="tag_generator.rb">標籤插件</a>。</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     

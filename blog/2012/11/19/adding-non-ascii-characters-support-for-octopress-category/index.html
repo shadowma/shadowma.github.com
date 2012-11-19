@@ -1,0 +1,249 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>爲 Octopress 分類添加中文支持 - 雨吁</title>
+	<meta name="author" content="Shadow Ma">
+
+	
+	<meta name="description" content="雖然講的是分類（Category），但現在我這兒沒有分類只有標籤（Tag），Octopress 自帶的分類根本就是當作標籤用，再加上自己很少用分類，就把所有分類相關的字樣全改成了標籤，這樣看着不那麼彆扭，插件什麼的全改了，改動過程十分蛋疼就不說了，這裏還是按本來的 Category 來說。 &hellip;">
+	<meta name="keywords" content="Octopress">
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="480">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	
+	<link rel="canonical" href="http://shadow.ma/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category/">
+	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+	<link href="/favicon.gif" rel="icon" type="image/gif">
+	<link href="/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="left-col"><nav><ul class="main">
+	<li><a href="/">日誌</a></li>
+	<li><a href="/blog/archives">存檔</a></li>
+	<li><a href="/blog/tags">標籤</a></li>
+	<li><a href="/blog/links">鏈接</a></li>
+	<li><a class="noajax" href="/blog/about">關於</a></li>
+</ul>
+</nav>
+<div class="site">
+	<a class="logo" title="雨吁 - 何以言知" href="/"><i class="icon-yuxu"></i></a>
+	<p>何以言知</p>
+</div>
+<div class=copyright>
+<p><a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank" title="CC BY-SA 3.0">Copyleft</a>
+&nbsp2011-2012
+雨吁 - 何以言知</p>
+</div>
+
+</header>
+	
+		<div id="banner" class="right-col">
+	<div class="right-con">
+	
+	<form class="search right" action="http://google.com/search" method="get">
+		<input class="left" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:shadow.ma">
+	</form>
+	<div class="social right">
+		
+		
+		<a class="google" href="https://plus.google.com/101910642500012990972?rel=author" title="Google+"><i class="icon-google-plus"></i></a>
+		
+		
+		<a class="twitter" href="http://twitter.com/shadow_ma" title="Twitter"><i class="icon-twitter"></i></a>
+		
+		
+		<a class="github" href="https://github.com/shadowma" title="GitHub"><i class="icon-github"></i></a>
+		
+		
+		
+		
+		<a class="rss" href="http://feed.shadow.ma" title="RSS"><i class="icon-rss"></i></a>
+		
+	</div>
+	
+</div>
+<div class=plusone><g:plusone></g:plusone></div>
+</div>
+	
+	<div id="ajax-container"><div id="ajax-inner">
+	<div id="content" class="right-col"><article class="post">
+	
+	      <h1 class="title">爲 Octopress 分類添加中文支持</h1>
+	
+	
+	<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-19T15:46:00+08:00" pubdate data-updated="true">2012年11月19日</time></div>
+	<div class="tags">
+
+
+	<a class='tag' href='/blog/tags/octopress/'>Octopress</a>
+
+
+</div>
+	</div>
+	
+	<div class="entry-content"><p>雖然講的是分類（Category），但現在我這兒沒有分類只有標籤（Tag），Octopress 自帶的分類根本就是當作標籤用，再加上自己很少用分類，就把所有分類相關的字樣全改成了標籤，這樣看着不那麼彆扭，插件什麼的全改了，改動過程十分蛋疼就不說了，這裏還是按本來的 Category 來說。</p>
+
+<!-- more -->
+
+
+<p>Octopress 自帶的分類生成插件「category_generator.rb」不能處理非 ASCII 字符分類，Google 到兩種修改插件方法，一種是<a href="https://geron.heroku.com/blog/2012/03/octo-cate-cn-spo" title="Octopress博客分类添加中文支持">直接把分類目錄名轉換爲 url 編碼</a>，另一種是<a href="http://blog.sprabbit.com/blog/2012/03/23/octopress/" title="关于在64位 Windows 7 中部署中文化的Octopress">分離分類顯示名和路徑名</a>，對比之後決定採用後一種方案，避免 url 中包含辨識度低的編碼。</p>
+
+<p>參照 <a href="http://www.sprabbit.com/" title="超科學兔耳中隊">SPRABBIT</a> 火霧宗師的<a href="https://github.com/denjones/denjones.github.com/commit/1d4f3b9433a4d77e31530c4d5f20611c9b9829e2#diff-1">修改</a>把分類格式改爲 <code>&lt;分類顯示名稱&gt;{&lt;分類目錄名稱&gt;}</code>，然後如此創建分類：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>categories:  隨筆{essay}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>就能把顯示爲「隨筆」的分類頁面保存在一個叫「essay」的目錄中。</p>
+
+<p>但這裏存在兩個問題，一是每次建立分類時都必須加上後面的分類目錄名稱，不然在 generate 時會報錯，二是爲了規範 url 原來的插件會先把分類中的大寫轉換爲小寫、空格替換爲「-」才作爲目錄名，但這個字符串處理也被作者去除了，雖然指定目錄名時稍加注意就好，但增強健壯性的話，就算以後隨意些也沒問題。</p>
+
+<p>第一個問題，在調用分類的地方加上條件判斷，指定了目錄名時先作相應處理，沒有指定目錄名就像原來一樣使用這個分類，比如:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">self</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;title&#39;</span><span class="o">]</span>       <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">title_prefix</span><span class="si">}#{</span><span class="k">if</span> <span class="p">(</span><span class="sr">/.*{.*}$/</span> <span class="o">===</span> <span class="n">category</span><span class="p">)</span> <span class="k">then</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="o">[</span><span class="sr">/[^{]*/</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">end</span><span class="si">}</span><span class="s2">&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在指定了目錄名時分類會變成 <code>&lt;分類顯示名稱&gt;{&lt;分類目錄名稱&gt;}</code> 的格式，需要用正則表達式 <code>category[/[ ^ { ]*/]</code> 取出 <code>&lt;分類顯示名稱&gt;</code> 這一部分用於顯示，沒有指定目錄名時直接就是 <code>&lt;分類顯示名稱&gt;</code>，這樣只有在分類是中文時才需要指定目錄名。</p>
+
+<p>目錄名的部分也作相應修改，比如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">self</span><span class="o">.</span><span class="n">write_category_index</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="k">if</span> <span class="p">(</span><span class="sr">/.*{.*}$/</span> <span class="o">===</span> <span class="n">category</span><span class="p">)</span> <span class="k">then</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="o">[</span><span class="sr">/(?&lt;={)[^}]*/</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">end</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/_|\P{Word}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/-{2,}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span><span class="p">),</span> <span class="n">category</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>正則表達式 <code>category[/(?&lt;={)[^}]*/]</code> 用於取出大括號中的分類目錄名稱，這裏保留 gsub 和 downcase 的字符串處理，在指定目錄名稱時可以不用在意空格和大小寫。</p>
+
+<p>其它部分可以參考我修改的<a href="https://gist.github.com/4109451#file_tag_generator.rb" title="tag_generator.rb">標籤插件</a>。</p>
+</div>
+</article>
+
+	<li id="share-container" class="share-container">
+<div class="share-tip" id="share-tip">分享到</div>
+<div class="share-panel" id="share-panel">
+<a href="javascript:void(window.open('http://service.weibo.com/share/share.php?title='+encodeURI(document.title)+'&url='+encodeURIComponent(window.location)+'&appkey=608332473'+'&ralateUid=1672835792'));" class="share-link icon icon-sina" title="新浪微博">新浪微博</a>
+<a href="javascript:void(window.open('http://share.renren.com/share/buttonshare.do?title='+encodeURI(document.title)+'&link='+encodeURIComponent(window.location)));" class="share-link icon icon-renren" title="人人">人人</a>
+<a href="javascript:void(window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(window.location)));" class="share-link icon icon-qzone" title="QQ 空間">QQ 空間</a>
+<a href="javascript:void(window.open('http://v.t.qq.com/share/share.php?title='+encodeURI(document.title)+'&url='+encodeURIComponent(window.location)+'&appkey=801076915'));" class="share-link icon icon-tencent" title="騰訊微博">騰訊微博</a>
+<a href="javascript:void(window.open('http://shuo.douban.com/!service/share?name='+encodeURI(document.title)+'&href='+encodeURIComponent(window.location)));" class="share-link icon icon-douban" title="豆瓣">豆瓣</a>
+<a href="javascript:void(window.open('http://www.kaixin001.com/repaste/share.php?rtitle='+encodeURI(document.title)+'&rurl='+encodeURIComponent(window.location)));" class="share-link icon icon-kaixin" title="開心網">開心網</a>
+<a href="javascript:void(window.open('http://www.facebook.com/share.php?u='+encodeURIComponent(window.location)));" class="share-link icon icon-facebook" title="facebook">facebook</a>
+<a href="javascript:void(window.open('http://twitter.com/home?status='+encodeURI(document.title)+' '+encodeURIComponent(window.location)));" class="share-link icon icon-twitter" title="twitter">twitter</a>
+</div>
+</li>
+
+
+    <section id="alignment">
+      
+        <a class="left-alignment left" href="/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps/" title="前一篇日誌: 添加 SRV 記錄啓用 Google Apps 對外聊天">添加 SRV 記錄啓用 Google Apps 對外聊天</a>
+      
+      
+	<a class="right">已經是最新的</a>        
+      
+    </section>
+
+<section id="comment">
+    <a href="#" class="disqus_container" onclick="return false;">點擊查看評論</a>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+	jQuery('#header nav ul li a').removeClass("active_menu");
+    	jQuery('#header nav ul li:first a').addClass("active_menu");
+  });
+</script></div>
+	</div></div>
+	<footer id="footer" class="right-col">
+</footer>
+	<script src="/javascripts/shadow.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'shadowma';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shadow.ma/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category/';
+        var disqus_url = 'http://shadow.ma/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category/';
+        var disqus_script = 'embed.js';
+    jQuery(document).ready(function(){        
+	    jQuery('#comment .disqus_container').on('click',function(){
+		jQuery(this).html('加載中...');
+		var that = this;
+		shadow.src(('https:' == document.location.protocol ? 'https://' : 'http://') + disqus_shortname + '.disqus.com/' + disqus_script,function(){jQuery(that).remove()});
+	    });
+    });
+    
+    var shadow = {};
+    shadow.src = function(file,callback){
+            var _doc = document.getElementsByTagName('head')[0];
+            var js = document.createElement('script');
+            js.setAttribute('type', 'text/javascript');
+            js.setAttribute('src', file);
+            _doc.appendChild(js);
+
+            if (!/*@cc_on!@*/0) { //if not IE
+                //Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload
+                js.onload = function () {
+                    callback();
+                }
+            } else {
+                //IE6、IE7 support js.onreadystatechange
+                js.onreadystatechange = function () {
+                    if (js.readyState == 'loaded' || js.readyState == 'complete') {
+                        callback();
+                    }
+                }
+            }
+            return false;
+}
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+</body>
+</html>
