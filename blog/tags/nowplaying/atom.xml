@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[標籤: Nowplaying | 雨吁]]></title>
+  <link href="http://shadow.ma/blog/tags/nowplaying/atom.xml" rel="self"/>
+  <link href="http://shadow.ma/"/>
+  <updated>2012-11-21T17:25:55+08:00</updated>
+  <id>http://shadow.ma/</id>
+  <author>
+    <name><![CDATA[Shadow Ma]]></name>
+    <email><![CDATA[i@shadow.ma]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+	<title type="html"><![CDATA[通過「Nowplaying Share Page」分享音樂的 Amarok 腳本]]></title>
+	<link href="http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/"/>
+    
+    <link href="http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/"/>
+    <updated>2012-11-21T16:13:00+08:00</updated>
+    <id>http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page</id>
+    
+    <content type="html"><![CDATA[<p>最近經常在 G+ 上看到通過 <a href="https://plus.google.com/107719398594104739203/">Apollo Wayne</a> 的音樂<a href="http://music.wayshine.us/">分享服務</a> 分享的正在播放音樂，看着不錯想跟風弄，但看了下<a href="http://music.wayshine.us/readme.html">說明</a>發現還不支持 Linux 下的任何播放器（web 不算），看來只能自己動手。</p>
+
+<!-- more -->
+
+
+<p>在 KDE 下一直用 Amarok，知道它是支持腳本擴展的，實現這個簡單的功能應該不難，看了下<a href="http://amarok.kde.org/wiki/Development/Scripting_HowTo_2.0">文檔</a>發現可以用 JS 寫，雖然 JS 就在折騰 Blog 時瞭解了下但還是沒費多大精神就拼湊出這腳本，我已經上傳到了 <a href="https://opendesktop.org/content/show.php?content=155371">openDesktop.org</a>，現在通過百寶箱就能安裝，測試無問題，歡迎拍磚。</p>
+
+<p><img src="http://static.xind.in/blog/pic/2012/11/install_nowplaying_share.png" alt="安裝" /></p>
+
+<p><img src="http://static.xind.in/blog/pic/2012/11/amarok_share_nowplaying.png" alt="分享" /></p>
+
+<p><img src="http://static.xind.in/blog/pic/2012/11/nowplaying_share.png" alt="效果" /></p>
+]]></content>
+    
+  </entry>
+  
+</feed>

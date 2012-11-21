@@ -1,0 +1,225 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>通過「Nowplaying Share Page」分享音樂的 Amarok 腳本 - 雨吁</title>
+	<meta name="author" content="Shadow Ma">
+
+	
+	<meta name="description" content="最近經常在 G+ 上看到通過 Apollo Wayne 的音樂分享服務 分享的正在播放音樂，看着不錯想跟風弄，但看了下說明發現還不支持 Linux 下的任何播放器（web 不算），看來只能自己動手。 在 KDE 下一直用 Amarok，知道它是支持腳本擴展的，實現這個簡單的功能應該不難， &hellip;">
+	<meta name="keywords" content="Amarok, Nowplaying, Script">
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="480">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	
+	<link rel="canonical" href="http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/">
+	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+	<link href="/favicon.gif" rel="icon" type="image/gif">
+	<link href="/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="left-col"><nav><ul class="main">
+	<li><a href="/">日誌</a></li>
+	<li><a href="/blog/archives">存檔</a></li>
+	<li><a href="/blog/tags">標籤</a></li>
+	<li><a href="/blog/links">鏈接</a></li>
+	<li><a class="noajax" href="/blog/about">關於</a></li>
+</ul>
+</nav>
+<div class="site">
+	<a class="logo" title="雨吁 - 何以言知" href="/"><i class="icon-yuxu"></i></a>
+	<p>何以言知</p>
+</div>
+<div class=copyright>
+<p><a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank" title="CC BY-SA 3.0">Copyleft</a>
+&nbsp2011-2012
+雨吁 - 何以言知</p>
+</div>
+
+</header>
+	
+		<div id="banner" class="right-col">
+	<div class="right-con">
+	
+	<form class="search right" action="http://google.com/search" method="get">
+		<input class="left" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:shadow.ma">
+	</form>
+	<div class="social right">
+		
+		
+		<a class="google" href="https://plus.google.com/101910642500012990972?rel=author" title="Google+"><i class="icon-google-plus"></i></a>
+		
+		
+		<a class="twitter" href="http://twitter.com/shadow_ma" title="Twitter"><i class="icon-twitter"></i></a>
+		
+		
+		<a class="github" href="https://github.com/shadowma" title="GitHub"><i class="icon-github"></i></a>
+		
+		
+		
+		
+		<a class="rss" href="http://feed.shadow.ma" title="RSS"><i class="icon-rss"></i></a>
+		
+	</div>
+	
+</div>
+<div class=plusone><g:plusone></g:plusone></div>
+</div>
+	
+	<div id="ajax-container"><div id="ajax-inner">
+	<div id="content" class="right-col"><article class="post">
+	
+	      <h1 class="title">通過「Nowplaying Share Page」分享音樂的 Amarok 腳本</h1>
+	
+	
+	<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-21T16:13:00+08:00" pubdate data-updated="true">2012年11月21日</time></div>
+	<div class="tags">
+
+
+	<a class='tag' href='/blog/tags/amarok/'>Amarok</a>, <a class='tag' href='/blog/tags/nowplaying/'>Nowplaying</a>, <a class='tag' href='/blog/tags/script/'>Script</a>
+
+
+</div>
+	</div>
+	
+	<div class="entry-content"><p>最近經常在 G+ 上看到通過 <a href="https://plus.google.com/107719398594104739203/">Apollo Wayne</a> 的音樂<a href="http://music.wayshine.us/">分享服務</a> 分享的正在播放音樂，看着不錯想跟風弄，但看了下<a href="http://music.wayshine.us/readme.html">說明</a>發現還不支持 Linux 下的任何播放器（web 不算），看來只能自己動手。</p>
+
+<!-- more -->
+
+
+<p>在 KDE 下一直用 Amarok，知道它是支持腳本擴展的，實現這個簡單的功能應該不難，看了下<a href="http://amarok.kde.org/wiki/Development/Scripting_HowTo_2.0">文檔</a>發現可以用 JS 寫，雖然 JS 就在折騰 Blog 時瞭解了下但還是沒費多大精神就拼湊出這腳本，我已經上傳到了 <a href="https://opendesktop.org/content/show.php?content=155371">openDesktop.org</a>，現在通過百寶箱就能安裝，測試無問題，歡迎拍磚。</p>
+
+<p><img src="http://static.xind.in/blog/pic/2012/11/install_nowplaying_share.png" alt="安裝" /></p>
+
+<p><img src="http://static.xind.in/blog/pic/2012/11/amarok_share_nowplaying.png" alt="分享" /></p>
+
+<p><img src="http://static.xind.in/blog/pic/2012/11/nowplaying_share.png" alt="效果" /></p>
+</div>
+</article>
+
+	<li id="share-container" class="share-container">
+<div class="share-tip" id="share-tip">分享到</div>
+<div class="share-panel" id="share-panel">
+<a href="javascript:void(window.open('http://service.weibo.com/share/share.php?title='+encodeURI(document.title)+'&url='+encodeURIComponent(window.location)+'&appkey=608332473'+'&ralateUid=1672835792'));" class="share-link icon icon-sina" title="新浪微博">新浪微博</a>
+<a href="javascript:void(window.open('http://share.renren.com/share/buttonshare.do?title='+encodeURI(document.title)+'&link='+encodeURIComponent(window.location)));" class="share-link icon icon-renren" title="人人">人人</a>
+<a href="javascript:void(window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(window.location)));" class="share-link icon icon-qzone" title="QQ 空間">QQ 空間</a>
+<a href="javascript:void(window.open('http://v.t.qq.com/share/share.php?title='+encodeURI(document.title)+'&url='+encodeURIComponent(window.location)+'&appkey=801076915'));" class="share-link icon icon-tencent" title="騰訊微博">騰訊微博</a>
+<a href="javascript:void(window.open('http://shuo.douban.com/!service/share?name='+encodeURI(document.title)+'&href='+encodeURIComponent(window.location)));" class="share-link icon icon-douban" title="豆瓣">豆瓣</a>
+<a href="javascript:void(window.open('http://www.kaixin001.com/repaste/share.php?rtitle='+encodeURI(document.title)+'&rurl='+encodeURIComponent(window.location)));" class="share-link icon icon-kaixin" title="開心網">開心網</a>
+<a href="javascript:void(window.open('http://www.facebook.com/share.php?u='+encodeURIComponent(window.location)));" class="share-link icon icon-facebook" title="facebook">facebook</a>
+<a href="javascript:void(window.open('http://twitter.com/home?status='+encodeURI(document.title)+' '+encodeURIComponent(window.location)));" class="share-link icon icon-twitter" title="twitter">twitter</a>
+</div>
+</li>
+
+
+    <section id="alignment">
+      
+        <a class="left-alignment left" href="/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category/" title="前一篇日誌: 爲 Octopress 分類添加中文支持">爲 Octopress 分類添加中文支持</a>
+      
+      
+	<a class="right">已經是最新</a>        
+      
+    </section>
+
+<section id="comment">
+    <a href="#" class="disqus_container" onclick="return false;">點擊查看評論</a>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+	jQuery('#header nav ul li a').removeClass("active_menu");
+    	jQuery('#header nav ul li:first a').addClass("active_menu");
+  });
+</script></div>
+	</div></div>
+	<footer id="footer" class="right-col">
+</footer>
+	<script src="/javascripts/shadow.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'shadowma';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/';
+        var disqus_url = 'http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/';
+        var disqus_script = 'embed.js';
+    jQuery(document).ready(function(){        
+	    jQuery('#comment .disqus_container').on('click',function(){
+		jQuery(this).html('加載中...');
+		var that = this;
+		shadow.src(('https:' == document.location.protocol ? 'https://' : 'http://') + disqus_shortname + '.disqus.com/' + disqus_script,function(){jQuery(that).remove()});
+	    });
+    });
+    
+    var shadow = {};
+    shadow.src = function(file,callback){
+            var _doc = document.getElementsByTagName('head')[0];
+            var js = document.createElement('script');
+            js.setAttribute('type', 'text/javascript');
+            js.setAttribute('src', file);
+            _doc.appendChild(js);
+
+            if (!/*@cc_on!@*/0) { //if not IE
+                //Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload
+                js.onload = function () {
+                    callback();
+                }
+            } else {
+                //IE6、IE7 support js.onreadystatechange
+                js.onreadystatechange = function () {
+                    if (js.readyState == 'loaded' || js.readyState == 'complete') {
+                        callback();
+                    }
+                }
+            }
+            return false;
+}
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+</body>
+</html>
