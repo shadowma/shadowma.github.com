@@ -3,19 +3,19 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>通過「Nowplaying Share Page」分享音樂的 Amarok 腳本 - 雨吁</title>
+	<title>PulseAudio 導致 KDE 啓動後出現延遲 - 雨吁</title>
 	<meta name="author" content="Shadow Ma">
 
 	
-	<meta name="description" content="最近經常在 G+ 上看到通過 Apollo Wayne 的音樂分享服務分享的正在播放音樂，看着不錯想跟風弄，但看了下說明發現還不支持 Linux 下的任何播放器（web 不算），想玩只能自己動手。 在 KDE 下一直用 Amarok，知道它是支持腳本擴展的，實現這個簡單的功能應該不難， &hellip;">
-	<meta name="keywords" content="Amarok, Nowplaying, Script">
+	<meta name="description" content="準確來說是在 KDE 啓動的 Splash 結束後，桌面會僵住大約十秒鍾啓動音效才響起，托盤的 KMix 圖標最後出現才啓動完成，其間任何操作都沒響應。 很早就遇到這個問題，一直找不到根源，每次啓動都得多等十多秒，前段時間重裝系統後變正常了就以爲只是個人配置文件的問題，直到用 VirtualBox &hellip;">
+	<meta name="keywords" content="KDE, PulseAudio">
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="480">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	
-	<link rel="canonical" href="http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/">
+	<link rel="canonical" href="http://shadow.ma/blog/2012/11/23/delay-after-kde-login-caused-by-pulseaudio/">
 	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
 	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	<link href="/favicon.gif" rel="icon" type="image/gif">
@@ -79,7 +79,7 @@
 	<div id="ajax-container"><div id="ajax-inner">
 	<div id="content" class="right-col"><article class="post">
 	
-	      <h1 class="title">通過「Nowplaying Share Page」分享音樂的 Amarok 腳本</h1>
+	      <h1 class="title">PulseAudio 導致 KDE 啓動後出現延遲</h1>
 	
 	
 	<div class="meta">
@@ -95,32 +95,35 @@
   
 
 
-<time datetime="2012-11-21T16:13:00+08:00" pubdate data-updated="true">2012年11月21日</time></div>
+<time datetime="2012-11-23T01:27:00+08:00" pubdate data-updated="true">2012年11月23日</time></div>
 	<div class="tags">
 
 
-	<a class='tag' href='/blog/tags/amarok/'>Amarok</a>, <a class='tag' href='/blog/tags/nowplaying/'>Nowplaying</a>, <a class='tag' href='/blog/tags/script/'>Script</a>
+	<a class='tag' href='/blog/tags/kde/'>KDE</a>, <a class='tag' href='/blog/tags/pulseaudio/'>PulseAudio</a>
 
 
 </div>
 	</div>
 	
-	<div class="entry-content"><p>最近經常在 G+ 上看到通過 <a href="http://wayshine.us/">Apollo Wayne</a> 的音樂<a href="http://music.wayshine.us/">分享服務</a>分享的正在播放音樂，看着不錯想跟風弄，但看了下<a href="http://music.wayshine.us/readme.html">說明</a>發現還不支持 Linux 下的任何播放器（web 不算），想玩只能自己動手。</p>
+	<div class="entry-content"><p>準確來說是在 KDE 啓動的 Splash 結束後，桌面會僵住大約十秒鍾啓動音效才響起，托盤的 KMix 圖標最後出現才啓動完成，其間任何操作都沒響應。</p>
 
 <!-- more -->
 
 
-<p>在 KDE 下一直用 Amarok，知道它是支持腳本擴展的，實現這個簡單的功能應該不難，看了下<a href="http://amarok.kde.org/wiki/Development/Scripting_HowTo_2.0">文檔</a>發現可以用 JS 寫，雖然 JS 只在折騰 Blog 時瞭解過，不過參考現成的<a href="https://userscripts.org/scripts/show/152487" title="Nowplaying Share">用戶腳本</a>沒費多大力氣就拼湊出這腳本，測試無問題，我已經把它上傳到了 <a href="https://opendesktop.org/content/show.php?content=155371">openDesktop.org</a>，現在通過百寶箱就能安裝，也可以下載後手動解壓到 <code>~/.kde4/share/apps/amarok/scripts/</code> 文件夾下，重啓播放器後在工具菜單下就會出現「Share Nowplaying」的選項。</p>
+<p>很早就遇到這個問題，一直找不到根源，每次啓動都得多等十多秒，前段時間重裝系統後變正常了就以爲只是個人配置文件的問題，直到用 VirtualBox 遇到聲卡獨佔的老問題，裝上 Pulse 後延遲又出現了，試了幾次確定是 Pulse 的問題，但當時沒找到解決方案，不得不棄用它，Alsa 聲卡獨佔也不是總會出現，而且虛擬機只是網銀會用到沒聲音也沒關係，但那個延遲實在忍不了。</p>
 
-<p>使用截圖：
-<img src="http://static.xind.in/blog/pic/2012/11/install_nowplaying_share.png" alt="安裝" /></p>
+<p>之後一直只用 Alsa，直到今晚要用筆記本的外放，拔掉耳機竟然沒聲音，查了下可以通過設置內核模塊解決，因爲以前沒有這問題，不想這樣弄，如果只是當前內核的問題可能會給以後留下麻煩，之後試着把 Pulse 裝回來竟然正常了，然後又 Google 了一下之前那個延遲，這次一下子就找到了解決方案，以前搜索時用的關鍵詞太扯淡了，果然我的英文還是弱爆了。</p>
 
-<p><img src="http://static.xind.in/blog/pic/2012/11/amarok_share_nowplaying.png" alt="分享" /></p>
+<p>去年的<a href="https://bbs.archlinux.org/viewtopic.php?id=132765" title="KDE + Pulseaudio: delay after kdm login">帖子</a>了，原因是 <code>/etc/xdg/autostart/</code> 下有兩個自啓動 PulseAudio 的啓動器 <code>pulseaudio.desktop</code> 和 <code>pulseaudio-kde.desktop</code> 都會在 KDE 啓動時被啓用導致了那個延遲，刪除一個就能解決，在另外一個<a href="https://bbs.archlinux.org/viewtopic.php?id=149057" title="Long delay on KDE login caused by Pulseaudio">帖子</a>中有貼出一個來自 Ubuntu 的補丁給 <code>pulseaudio.desktop</code> 添加 <code>NotShowIn=KDE;</code> 的選項讓它不在 KDE 中被啓用，我覺得這個方法更好些。</p>
 
-<p><img src="http://static.xind.in/blog/pic/2012/11/nowplaying_share.png" alt="效果" /></p>
+<p>可以添加到文件最後：</p>
 
-<p>代碼放到了 <a href="https://github.com/shadowma/Nowplaying-Share">GitHub</a> 上，歡迎拍磚。
-最後，感謝  <a href="http://wayshine.us/">Apollo Wayne</a> 提供的<a href="http://music.wayshine.us/">服務</a>。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo</span> <span class="s1">&#39;echo &quot;NotShowIn=KDE;&quot; &gt;&gt; /etc/xdg/autostart/pulseaudio.desktop&#39;</span> | sudo sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>話說 <code>pulseaudio-kde.desktop</code> 中有 <code>OnlyShowIn=KDE;</code> 的選項，不會給其它環境造成問題。</p>
 </div>
 </article>
 
@@ -141,10 +144,10 @@
 
     <section id="alignment">
       
-        <a class="left-alignment left" href="/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category/" title="前一篇日誌: 爲 Octopress 分類添加中文支持">爲 Octopress 分類添加中文支持</a>
+        <a class="left-alignment left" href="/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/" title="前一篇日誌: 通過「Nowplaying Share Page」分享音樂的 Amarok 腳本">通過「Nowplaying Share Page」分享音樂的 Amarok 腳本</a>
       
       
-        <a class="right-alignment right" href="/blog/2012/11/23/delay-after-kde-login-caused-by-pulseaudio/" title="後一篇日誌: PulseAudio 導致 KDE 啓動後出現延遲">PulseAudio 導致 KDE 啓動後出現延遲</a>
+	<a class="right">已經是最新</a>        
       
     </section>
 
@@ -175,8 +178,8 @@
 <script type="text/javascript">
       var disqus_shortname = 'shadowma';
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/';
-        var disqus_url = 'http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/';
+        var disqus_identifier = 'http://shadow.ma/blog/2012/11/23/delay-after-kde-login-caused-by-pulseaudio/';
+        var disqus_url = 'http://shadow.ma/blog/2012/11/23/delay-after-kde-login-caused-by-pulseaudio/';
         var disqus_script = 'embed.js';
     jQuery(document).ready(function(){        
 	    jQuery('#comment .disqus_container').on('click',function(){
