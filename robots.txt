@@ -1,7 +1,14 @@
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: baiduspider
+Disallow: /
+
 User-agent: *
 Disallow: /404.html
 Disallow: /atom.xml
 Disallow: /sitemap.xml
-Disallow: /blog/page
+Disallow: /blog/page/
+Disallow: /blog/tags/*/
 
 Sitemap: http://shadow.ma/sitemap.xml
