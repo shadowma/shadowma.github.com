@@ -76,9 +76,9 @@
 </div>
 	
 	<div id="ajax-container"><div id="ajax-inner">
-	<div id="content" class="hfeed right-col"><article class="links">
+	<div id="content" class="hfeed right-col"><article class="hentry links">
     
-    <h1 class="title">鏈接</h1>
+    <h1 class="hide title entry-title">鏈接</h1>
     
 <div class="entry-content"><h2>Blogroll</h2>
 
@@ -106,7 +106,13 @@
 </ul>
 
 </div>
-</article></div>
+</article>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+	jQuery('#header nav ul li a').removeClass("active_menu");
+    	jQuery('#header nav ul li a:eq(3)').addClass("active_menu");
+  });
+</script></div>
 	</div></div>
 	<footer id="footer" class="right-col">
 </footer>
