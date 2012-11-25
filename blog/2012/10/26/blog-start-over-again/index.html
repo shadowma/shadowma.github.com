@@ -28,11 +28,11 @@
 
 <body>
 	<header id="header" class="left-col"><nav><ul class="main">
-	<li><a href="/">日誌</a></li>
-	<li><a href="/blog/archives">存檔</a></li>
-	<li><a href="/blog/tags">標籤</a></li>
-	<li><a href="/blog/links">鏈接</a></li>
-	<li><a class="noajax" href="/blog/about">關於</a></li>
+	<li><a href="/" title="主頁">主頁</a></li>
+	<li><a href="/blog/archives" title="存檔">存檔</a></li>
+	<li><a href="/blog/tags" title="標籤">標籤</a></li>
+	<li><a href="/blog/links" title="鏈接">鏈接</a></li>
+	<li><a class="noajax" href="/blog/about" title="關於">關於</a></li>
 </ul>
 </nav>
 <div class="site">
@@ -60,6 +60,9 @@
 		
 		
 		<a class="twitter" href="http://twitter.com/shadow_ma" title="Twitter"><i class="icon-twitter"></i></a>
+		
+		
+		<a class="weibo" href="http://weibo.com/shadowm" title="Weibo"><i class="icon-weibo"></i></a>
 		
 		
 		<a class="github" href="https://github.com/shadowma" title="GitHub"><i class="icon-github"></i></a>
@@ -103,7 +106,7 @@
 
 
 </div>
-	<div class="author vcard"><a rel="author" href="http://shadow.ma" class="url fn">Shadow Ma</a></div>
+	<div class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">Shadow Ma</a></div>
 	</div>
 	
 	<div class="entry-content"><p>之前放棄了把以前 WordPress 博客的文章轉過來，一是因爲麻煩，還有就是的確沒什麼人看，都是自己的筆記，想着就算原始頁面全404了，也還有 Google 的快照，自己隨便查查沒關係，今天要找段代碼才發現之前收錄的文章都沒剩幾篇了，沒想到 Google 會自動刪死鏈！</p>
@@ -145,13 +148,7 @@
     <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
 </section>
-
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-	jQuery('#header nav ul li a').removeClass("active_menu");
-    	jQuery('#header nav ul li:first a').addClass("active_menu");
-  });
-</script></div>
+</div>
 	</div></div>
 	<footer id="footer" class="right-col">
 </footer>

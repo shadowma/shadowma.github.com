@@ -28,11 +28,11 @@
 
 <body>
 	<header id="header" class="left-col"><nav><ul class="main">
-	<li><a href="/">日誌</a></li>
-	<li><a href="/blog/archives">存檔</a></li>
-	<li><a href="/blog/tags">標籤</a></li>
-	<li><a href="/blog/links">鏈接</a></li>
-	<li><a class="noajax" href="/blog/about">關於</a></li>
+	<li><a href="/" title="主頁">主頁</a></li>
+	<li><a href="/blog/archives" title="存檔">存檔</a></li>
+	<li><a href="/blog/tags" title="標籤">標籤</a></li>
+	<li><a href="/blog/links" title="鏈接">鏈接</a></li>
+	<li><a class="noajax" href="/blog/about" title="關於">關於</a></li>
 </ul>
 </nav>
 <div class="site">
@@ -60,6 +60,9 @@
 		
 		
 		<a class="twitter" href="http://twitter.com/shadow_ma" title="Twitter"><i class="icon-twitter"></i></a>
+		
+		
+		<a class="weibo" href="http://weibo.com/shadowm" title="Weibo"><i class="icon-weibo"></i></a>
 		
 		
 		<a class="github" href="https://github.com/shadowma" title="GitHub"><i class="icon-github"></i></a>
@@ -103,7 +106,7 @@
 
 
 </div>
-	<div class="author vcard"><a rel="author" href="http://shadow.ma" class="url fn">Shadow Ma</a></div>
+	<div class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">Shadow Ma</a></div>
 	</div>
 	
 	<div class="entry-content"><p>雖然一直把託管在 Google Apps 的域名郵箱和 Gtalk 放聯繫方式裏，卻一直沒怎麼用，尤其是 Gtalk，最近要用它加個羣時才發現默認情況下只能添加 Gtalk 網絡中的用戶爲好友，要和網絡外的 XMPP 用戶聊天需要爲域名設置 SRV 記錄，參照 <a href="https://support.google.com/a/bin/answer.py?hl=zh-Hant&amp;answer=34143" title="在 Google Apps 之外啟用即時通訊">Google Apps 說明文檔</a>添加就行。</p>
@@ -165,13 +168,7 @@
     <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
 </section>
-
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-	jQuery('#header nav ul li a').removeClass("active_menu");
-    	jQuery('#header nav ul li:first a').addClass("active_menu");
-  });
-</script></div>
+</div>
 	</div></div>
 	<footer id="footer" class="right-col">
 </footer>

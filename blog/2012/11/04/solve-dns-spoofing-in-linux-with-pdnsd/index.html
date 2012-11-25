@@ -28,11 +28,11 @@
 
 <body>
 	<header id="header" class="left-col"><nav><ul class="main">
-	<li><a href="/">日誌</a></li>
-	<li><a href="/blog/archives">存檔</a></li>
-	<li><a href="/blog/tags">標籤</a></li>
-	<li><a href="/blog/links">鏈接</a></li>
-	<li><a class="noajax" href="/blog/about">關於</a></li>
+	<li><a href="/" title="主頁">主頁</a></li>
+	<li><a href="/blog/archives" title="存檔">存檔</a></li>
+	<li><a href="/blog/tags" title="標籤">標籤</a></li>
+	<li><a href="/blog/links" title="鏈接">鏈接</a></li>
+	<li><a class="noajax" href="/blog/about" title="關於">關於</a></li>
 </ul>
 </nav>
 <div class="site">
@@ -60,6 +60,9 @@
 		
 		
 		<a class="twitter" href="http://twitter.com/shadow_ma" title="Twitter"><i class="icon-twitter"></i></a>
+		
+		
+		<a class="weibo" href="http://weibo.com/shadowm" title="Weibo"><i class="icon-weibo"></i></a>
 		
 		
 		<a class="github" href="https://github.com/shadowma" title="GitHub"><i class="icon-github"></i></a>
@@ -103,7 +106,7 @@
 
 
 </div>
-	<div class="author vcard"><a rel="author" href="http://shadow.ma" class="url fn">Shadow Ma</a></div>
+	<div class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">Shadow Ma</a></div>
 	</div>
 	
 	<div class="entry-content"><p>使用公共 DNS 服務可以避免運營商的 DNS 劫持，但除了這個外在兲朝還存在着 <a href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93#.E9.98.B2.E7.81.AB.E9.95.B7.E5.9F.8E.E7.9A.84.E7.B7.A9.E5.AD.98.E6.B1.A1.E6.9F.93.E6.94.BB.E6.93.8A">DNS 緩存污染</a>的問題，以前使用 GoAgent 等工具時沒有注意到這個，一直在運行着的 dnsmasq 也只用來作簡單的緩存服務，最近開始長時間掛着 VPN 有時卻打不開 Twitter，才發現是這個問題在作怪。</p>
@@ -555,13 +558,7 @@
     <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
 </section>
-
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-	jQuery('#header nav ul li a').removeClass("active_menu");
-    	jQuery('#header nav ul li:first a').addClass("active_menu");
-  });
-</script></div>
+</div>
 	</div></div>
 	<footer id="footer" class="right-col">
 </footer>
