@@ -7,7 +7,7 @@
 	<meta name="author" content="Shadow Ma">
 
 	
-	<meta name="description" content="使用公共 DNS 服務可以避免運營商的 DNS 劫持，但除了這個外在兲朝還存在着 DNS 緩存污染的問題，以前使用 GoAgent 等工具時沒有注意到這個，一直在運行着的 dnsmasq 也只用來作簡單的緩存服務，最近開始長時間掛着 VPN 有時卻打不開 Twitter，才發現是這個問題在作怪。 &hellip;">
+	<meta name="description" content="Linux 下使用 Pdnsd 避免 DNS 污染 2012年11月04日 DNS, pdnsd Shadow Ma 使用公共 DNS 服務可以避免運營商的 DNS 劫持，但除了這個外在兲朝還存在着 DNS 緩存污染的問題，以前使用 GoAgent 等工具時沒有注意到這個，一直在運行着的 &hellip;">
 	<meta name="keywords" content="DNS, pdnsd">
 
 	<meta name="HandheldFriendly" content="True">
@@ -525,8 +525,7 @@
 
 <p>總之，現階段最好的方案是直接使用非標準端口的 udp 查詢，把 <code>query_method</code> 設成 udp_only，刪去不支持非標準端口查詢的服務器，要是自已有境外的服務器資源的話，可以把自己要用的 DNS 服務器轉發到非標準端口來用。</p>
 </div>
-</article>
-</div>
+
 
 	<li id="share-container" class="share-container">
 <div class="share-tip" id="share-tip">分享到 ››</div>
@@ -543,14 +542,16 @@
 </li>
 
 
-    <section id="alignment">
+</article>
+</div>
+<section id="alignment">
       
         <a class="left-alignment left" href="/blog/2012/10/26/blog-start-over-again/" title="前一篇日誌: 完全從頭開始了">完全從頭開始了</a>
       
       
         <a class="right-alignment right" href="/blog/2012/11/05/google-you-stupid-cunt/" title="後一篇日誌: Google 你個傻逼">Google 你個傻逼</a>
       
-    </section>
+</section>
 
 <section id="comment" class="right-con">
     <a href="#" class="disqus_container" onclick="return false;">點擊查看評論</a>
