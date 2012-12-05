@@ -49,10 +49,6 @@
 		fadeduration: [500, 100]
 	    },
 	    controlHTML: '<a href="#top" class="top_stick">&nbsp;</a>',
-	    controlattrs: {
-		offsetx: parseInt($("#content").width() * 0.8) + 60,
-		offsety: 80
-	    },
 	    anchorkeyword: '#top',
 	    state: {
 		isvisible: false,
@@ -73,6 +69,16 @@
 		    easing: "easeInOutExpo"
 		})
 	    },
+	    controlattrs: function() {
+		var offsetx = parseInt($("#content").width() * 0.8) + 60;
+		var $window = jQuery(window);
+		var offsety = parseInt($window.height() * 0.15);
+		this.$control.css({
+		    'margin-left': (offsetx > 750)? 750 : offsetx,
+		    display: (offsetx < 420)? 'none' : 'block',
+		    bottom: offsety
+		});
+	    },
 	    togglecontrol: function() {
 		var scrolltop = jQuery(window).scrollTop();
 		this.state.shouldvisible = (scrolltop >= this.setting.startline) ? true: false;
@@ -88,25 +94,17 @@
 		    },
 		    this.setting.fadeduration[1]);
 		    this.state.isvisible = false
-		}
+		};
+		this.controlattrs()
 	    },
 	    init: function() {
 		jQuery(document).ready(function($) {
-		    offx_new = scrolltotop.controlattrs.offsetx;
-		    if (offx_new > 750) {
-			offx_new = 750
-		    };
 		    var mainobj = scrolltotop;
-		    var iebrws = document.all;
-		    mainobj.controlattrs.offsetx= offx_new;
 		    mainobj.$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
 		    mainobj.$control = $('<div id="topcontrol">' + mainobj.controlHTML + '</div>').css({
 			position: 'fixed',
-			bottom: mainobj.controlattrs.offsety,
-			'margin-left': mainobj.controlattrs.offsetx,
 			opacity: 0,
 			cursor: 'pointer',
-			display: (offx_new < 420)? 'none' : 'block'
 		    }).attr({
 			title: '返回頂部'
 		    }).click(function() {
