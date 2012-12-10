@@ -69,18 +69,9 @@
 		    easing: "easeInOutExpo"
 		})
 	    },
-	    controlattrs: function() {
-		var offsetx = parseInt($("#content").width() * 0.8) + 60;
-		var $window = jQuery(window);
-		var offsety = parseInt($window.height() * 0.15);
-		this.$control.css({
-		    'margin-left': (offsetx > 750)? 750 : offsetx,
-		    display: (offsetx < 420)? 'none' : 'block',
-		    bottom: offsety
-		});
-	    },
 	    togglecontrol: function() {
-		var scrolltop = jQuery(window).scrollTop();
+		var $window = jQuery(window);
+		var scrolltop = $window.scrollTop();
 		this.state.shouldvisible = (scrolltop >= this.setting.startline) ? true: false;
 		if (this.state.shouldvisible && !this.state.isvisible) {
 		    this.$control.stop().animate({
@@ -95,7 +86,13 @@
 		    this.setting.fadeduration[1]);
 		    this.state.isvisible = false
 		};
-		this.controlattrs()
+		var offsetx = parseInt($("#content").width() * 0.8) + 60;
+		var offsety = parseInt($window.height() * 0.15);
+		this.$control.css({
+		    'margin-left': (offsetx > 750)? 750 : offsetx,
+		    display: (offsetx < 420)? 'none' : 'block',
+		    bottom: offsety
+		});
 	    },
 	    init: function() {
 		jQuery(document).ready(function($) {
@@ -107,6 +104,10 @@
 			cursor: 'pointer',
 		    }).attr({
 			title: '返回頂部'
+		    }).mouseover(function(){
+			up();
+		    }).mouseout(function(){
+			clearTimeout(fq);
 		    }).click(function() {
 			mainobj.scrollup();
 			return false
@@ -119,30 +120,18 @@
 		    $(window).bind('scroll resize',
 		    function(e) {
 			mainobj.togglecontrol()
-		    })
+		    });
 		})
 	    }
 	};
-
-	var navAjax = function() {
-		jQuery(document).ready(function($) {
-			jQuery('#header nav ul li a:not(.noajax)').live('click', function(e){
-			    e.preventDefault();
-			    var link = jQuery(this).attr('href');
-			    var height = jQuery('#ajax-container').height();
-			    jQuery('#content .page').css('min-height', height + 'px');
-			    jQuery('#ajax-container').fadeOut(300).load(link + ' #ajax-inner', function(){ jQuery('#ajax-container').fadeIn(300); scrolltotop.init();});
-		    });
-		    jQuery('#header nav ul li a').click(function(){
-			    jQuery('#header nav ul li a').removeClass("active_menu");
-			    jQuery(this).addClass("active_menu");
-		    });
-		})
-	};
-
+	
 	scrolltotop.init();
 	externalLinks(); // Delete or comment this line to disable opening external links in new window
 	appendCaption(); // Delete or comment this line to disable caption
-	navAjax();
 })(jQuery);
 
+var up = function(){
+    $wd = jQuery(window);
+    $wd.scrollTop($wd.scrollTop() - 1);
+    fq = setTimeout("up()", 50);
+}

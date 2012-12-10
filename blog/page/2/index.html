@@ -32,7 +32,7 @@
 	<li><a href="/blog/archives" title="存檔">存檔</a></li>
 	<li><a href="/blog/tags" title="標籤">標籤</a></li>
 	<li><a href="/blog/links" title="鏈接">鏈接</a></li>
-	<li><a class="noajax" href="/blog/about" title="關於">關於</a></li>
+	<li><a href="/blog/about" title="關於">關於</a></li>
 </ul>
 </nav>
 <div class="site">
@@ -209,7 +209,12 @@
     
 	<a class="center hide" href="/sitemap.xml">Sitemap</a>
 </nav>
-</div>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+	jQuery('#header nav ul li a').removeClass("active_menu");
+    	jQuery('#header nav ul li a:first').addClass("active_menu");
+  });
+</script></div>
 	</div></div>
 	<footer id="footer" class="right-col">
 </footer>
