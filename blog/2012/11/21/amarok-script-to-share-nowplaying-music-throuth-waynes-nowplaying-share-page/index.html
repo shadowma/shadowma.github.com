@@ -7,7 +7,7 @@
 	<meta name="author" content="Shadow Ma">
 
 	
-	<meta name="description" content="通過「Nowplaying Share Page」分享音樂的 Amarok 腳本 2012年11月21日 Amarok, Nowplaying, script Shadow Ma 最近經常在 G+ 上看到通過 Apollo Wayne 的音樂分享服務分享的正在播放音樂，看着不錯想跟風弄， &hellip;">
+	<meta name="description" content="最近經常在 G+ 上看到通過 Apollo Wayne 的音樂分享服務分享的正在播放音樂，看着不錯想跟風弄，但看了下說明發現還不支持 Linux 下的任何播放器（web 不算），想玩只能自己動手。 在 KDE 下一直用 Amarok，知道它是支持腳本擴展的，實現這個簡單的功能應該不難， &hellip;">
 	<meta name="keywords" content="Amarok, Nowplaying, script">
 
 	<meta name="HandheldFriendly" content="True">
@@ -127,7 +127,7 @@
 </div>
 
 
-	<li id="share-container" class="share-container">
+	<div id="share-container" class="share-container">
 <div class="share-tip" id="share-tip">分享到 ››</div>
 <div class="share-panel" id="share-panel">
 <a href="javascript:void(window.open('http://service.weibo.com/share/share.php?title='+encodeURI(document.title)+'&url='+encodeURIComponent(window.location)+'&appkey=608332473'+'&ralateUid=1672835792'));" class="share-link" title="新浪微博"><i class="icon-weibo"></i></a>
@@ -139,7 +139,7 @@
 <a href="javascript:void(window.open('http://www.facebook.com/share.php?u='+encodeURIComponent(window.location)));" class="share-link" title="facebook"><i class="icon-facebook"></i></a>
 <a href="javascript:void(window.open('http://twitter.com/home?status='+encodeURI(document.title)+' '+encodeURIComponent(window.location)));" class="share-link" title="twitter"><i class="icon-twitter"></i></a>
 </div>
-</li>
+</div>
 
 
 </article>

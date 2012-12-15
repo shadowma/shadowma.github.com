@@ -3,19 +3,19 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>買了 Hellohost 的 VPS - 雨吁</title>
+	<title>修復 Gist 改版導致的 Octopress 嵌入 Gist 代碼錯誤 - 雨吁</title>
 	<meta name="author" content="Shadow Ma">
 
 	
-	<meta name="description" content="快用了一年 Hellohost 的主機，這個月就要到期，轉到 Octopress 後，這 PHP 主機就沒必要再續費了，現在 Blog 放 GitHub 上最大的缺點就是隻支持綁定一個域名，以前 RSS 定閱的子域名必須用其它主機反向代理或重定向，還有很多鏈接也要重定向，而且只要不直接在 &hellip;">
-	<meta name="keywords" content="VPS">
+	<meta name="description" content="翻以前的文章時發現嵌入的 Gist 代碼都沒了，第一反應就是 Github 悲劇了，設置全局代理再刷新還是一樣，測試了下發現網頁中引用 Gist 代碼的 JS 並沒有返回代碼內容，去掉 JS URL 後面的文件名參數才正常，看來是 Gist 前幾天的改版導致的。 之前引用 Gist &hellip;">
+	<meta name="keywords" content="Gist, Octopress">
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="480">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	
-	<link rel="canonical" href="http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/">
+	<link rel="canonical" href="http://shadow.ma/blog/2012/12/15/fixing-octopress-embed-gist-was-broken-caused-by-gist-changes/">
 	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
 	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	<link href="/favicon.gif" rel="icon" type="image/gif">
@@ -81,7 +81,7 @@
 	<div id="content" class="right-col"><div class="hfeed">
 <article class="hentry post">
 	
-	      <h1 class="title entry-title">買了 Hellohost 的 VPS</h1>
+	      <h1 class="title entry-title">修復 Gist 改版導致的 Octopress 嵌入 Gist 代碼錯誤</h1>
 	
 	
 	<div class="meta">
@@ -97,39 +97,25 @@
   
 
 
-<time datetime="2012-10-02T14:48:00+08:00" pubdate data-updated="true"><abbr class="published" title="2012-10-02 14:48:00 +0800">2012年10月02日</abbr></time></div>
+<time datetime="2012-12-15T19:06:00+08:00" pubdate data-updated="true"><abbr class="published" title="2012-12-15 19:06:00 +0800">2012年12月15日</abbr></time></div>
 	<div class="tags">
 
 
-	<a class='tag' rel='tag' title='查看 VPS 標籤的所有文章' href='/blog/tags/vps/'>VPS</a>
+	<a class='tag' rel='tag' title='查看 Gist 標籤的所有文章' href='/blog/tags/gist/'>Gist</a>, <a class='tag' rel='tag' title='查看 Octopress 標籤的所有文章' href='/blog/tags/octopress/'>Octopress</a>
 
 
 </div>
 	<div class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">Shadow Ma</a></div>
 	</div>
 	
-	<div class="entry-content"><p>快用了一年 Hellohost 的主機，這個月就要到期，轉到 Octopress 後，這 PHP 主機就沒必要再續費了，現在 Blog 放 GitHub 上最大的缺點就是隻支持綁定一個域名，以前 RSS 定閱的子域名必須用其它主機反向代理或重定向，還有很多鏈接也要重定向，而且只要不直接在 GitHub 上綁定域名的話，就可以直接使用 Page 的鏈接訪問，正好可以讓牆內的朋友用這個。</p>
+	<div class="entry-content"><p>翻以前的文章時發現嵌入的 Gist 代碼都沒了，第一反應就是 Github 悲劇了，設置全局代理再刷新還是一樣，測試了下發現網頁中引用 Gist 代碼的 JS 並沒有返回代碼內容，去掉 JS URL 後面的文件名參數才正常，看來是 Gist 前幾天的<a href="https://github.com/blog/1276-welcome-to-a-new-gist" title="Welcome to a New Gist">改版</a>導致的。</p>
 
 <!-- more -->
 
 
-<p>之前幫朋友弄了個阿里雲主機，就試着把域名先解析到這主機上，解析成功後這被封的域名竟然能在牆內訪問不再被重置了，當時着實讓我興奮了一把，以爲這麼簡單就解封了，但之後用 Cloudflare 的 CDN 確顯示「 Website unreachable」，掛着 VPN 試了一下發現被重置，才明白根本就沒解封，牆是雙向的，把被封的域名解析到國內 ip 是能讓牆內正常訪問，但反過來會封鎖牆外的訪問，得不償失，看來還得弄個牆外的主機。</p>
+<p>之前引用 Gist 代碼時都沒指定文件名，Octopress 的 Gist 插件在沒指定文件名時仍然會加上一個文件名參數，這個空的文件名導致了這個問題，到 Octopress 的 Github 上看了下已經有人給出了解決方法，參照這個 <a href="https://github.com/imathis/octopress/pull/849" title="Fix broken gist plugin">pull request</a> 修改插件後不指定文件名也能正常引用到代碼了，但內容是有了樣式卻錯亂了，因爲引用的 Gist 代碼塊的 HTML 結構和樣式也發生了改變，同樣也已經有一個 <a href="https://github.com/imathis/octopress/issues/847" title="GitHub gist changes break gist plugin formatting">issues</a> 在討論這個問題，雖然只是樣式的問題，但模板不同細節會有一些差異，參照嵌入的 Gist 代碼所引用的 <a href="https://gist.github.com/assets/embed-3634f6c602e8992c754bcfc7dad0a593.css">css</a> 很快就能找出問題，行號出現了並排的情況是因爲沒有清除浮動，代碼區域的大片空白以及不能對齊行號是因爲字體大小不同導致，疊加的 <code>font-size</code> 屬性造成了這個問題。</p>
 
-<p>虛擬主機不太適合了，VPS 也只需要低階的就行，看 Hellohost 有賣就先買了一個月試試，用了她這一年的虛擬主機還算穩定，只買了個 64M 的，其實若是不再搞其它東西的話，只是純靜態的 Octopress 放上來也是夠的 ，但爲了方便管理還是放 GitHub 上吧。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># free -m
-</span><span class='line'>             total       used       free     shared    buffers     cached
-</span><span class='line'>Mem:            64         10         53          0          0          0
-</span><span class='line'>-/+ buffers/cache:         10         53
-</span><span class='line'>Swap:            0          0          0</span></code></pre></td></tr></table></div></figure>
-
-
-<p>用的 Nginx，只拿來作重定向和反向代理的確是有點浪費。</p>
+<p>問題雖然解決，但就像在這個 <a href="https://github.com/imathis/octopress/issues/847" title="GitHub gist changes break gist plugin formatting">issues</a> 中作者所<a href="https://github.com/imathis/octopress/issues/847#issuecomment-11386079">說</a>的，在網頁中嵌入外部內容存在很多弊端，Octopress 中插入本地代碼可以設置標題而且可以指定鏈接，以後儘量用這種方式吧。</p>
 </div>
 
 
@@ -152,10 +138,10 @@
 </div>
 <section id="alignment">
       
-        <a class="left-alignment left" href="/blog/2012/09/26/hello-octopress/" title="前一篇日誌: Hello Octopress!">Hello Octopress!</a>
+        <a class="left-alignment left" href="/blog/2012/11/23/delay-after-kde-login-caused-by-pulseaudio/" title="前一篇日誌: PulseAudio 導致 KDE 啓動後出現延遲">PulseAudio 導致 KDE 啓動後出現延遲</a>
       
       
-        <a class="right-alignment right" href="/blog/2012/10/06/switched-arch-to-systemd/" title="後一篇日誌: 切換到了 systemd">切換到了 systemd</a>
+	<a class="right">已經是最新</a>        
       
 </section>
 
@@ -180,8 +166,8 @@
 <script type="text/javascript">
       var disqus_shortname = 'shadowma';
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/';
-        var disqus_url = 'http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/';
+        var disqus_identifier = 'http://shadow.ma/blog/2012/12/15/fixing-octopress-embed-gist-was-broken-caused-by-gist-changes/';
+        var disqus_url = 'http://shadow.ma/blog/2012/12/15/fixing-octopress-embed-gist-was-broken-caused-by-gist-changes/';
         var disqus_script = 'embed.js';
     jQuery(document).ready(function(){        
 	    jQuery('#comment .disqus_container').on('click',function(){

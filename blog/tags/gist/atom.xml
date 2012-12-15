@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[標籤: Gist | 雨吁]]></title>
+  <link href="http://shadow.ma/blog/tags/gist/atom.xml" rel="self"/>
+  <link href="http://shadow.ma/"/>
+  <updated>2012-12-15T19:32:44+08:00</updated>
+  <id>http://shadow.ma/</id>
+  <author>
+    <name><![CDATA[Shadow Ma]]></name>
+    <email><![CDATA[i@shadow.ma]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+	<title type="html"><![CDATA[修復 Gist 改版導致的 Octopress 嵌入 Gist 代碼錯誤]]></title>
+	<link href="http://shadow.ma/blog/2012/12/15/fixing-octopress-embed-gist-was-broken-caused-by-gist-changes/"/>
+    
+    <link href="http://shadow.ma/blog/2012/12/15/fixing-octopress-embed-gist-was-broken-caused-by-gist-changes/"/>
+    <updated>2012-12-15T19:06:00+08:00</updated>
+    <id>http://shadow.ma/blog/2012/12/15/fixing-octopress-embed-gist-was-broken-caused-by-gist-changes</id>
+    
+    <content type="html"><![CDATA[<p>翻以前的文章時發現嵌入的 Gist 代碼都沒了，第一反應就是 Github 悲劇了，設置全局代理再刷新還是一樣，測試了下發現網頁中引用 Gist 代碼的 JS 並沒有返回代碼內容，去掉 JS URL 後面的文件名參數才正常，看來是 Gist 前幾天的<a href="https://github.com/blog/1276-welcome-to-a-new-gist" title="Welcome to a New Gist">改版</a>導致的。</p>
+
+<!-- more -->
+
+
+<p>之前引用 Gist 代碼時都沒指定文件名，Octopress 的 Gist 插件在沒指定文件名時仍然會加上一個文件名參數，這個空的文件名導致了這個問題，到 Octopress 的 Github 上看了下已經有人給出了解決方法，參照這個 <a href="https://github.com/imathis/octopress/pull/849" title="Fix broken gist plugin">pull request</a> 修改插件後不指定文件名也能正常引用到代碼了，但內容是有了樣式卻錯亂了，因爲引用的 Gist 代碼塊的 HTML 結構和樣式也發生了改變，同樣也已經有一個 <a href="https://github.com/imathis/octopress/issues/847" title="GitHub gist changes break gist plugin formatting">issues</a> 在討論這個問題，雖然只是樣式的問題，但模板不同細節會有一些差異，參照嵌入的 Gist 代碼所引用的 <a href="https://gist.github.com/assets/embed-3634f6c602e8992c754bcfc7dad0a593.css">css</a> 很快就能找出問題，行號出現了並排的情況是因爲沒有清除浮動，代碼區域的大片空白以及不能對齊行號是因爲字體大小不同導致，疊加的 <code>font-size</code> 屬性造成了這個問題。</p>
+
+<p>問題雖然解決，但就像在這個 <a href="https://github.com/imathis/octopress/issues/847" title="GitHub gist changes break gist plugin formatting">issues</a> 中作者所<a href="https://github.com/imathis/octopress/issues/847#issuecomment-11386079">說</a>的，在網頁中嵌入外部內容存在很多弊端，Octopress 中插入本地代碼可以設置標題而且可以指定鏈接，以後儘量用這種方式吧。</p>
+]]></content>
+    
+  </entry>
+  
+</feed>
