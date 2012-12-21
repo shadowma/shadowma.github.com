@@ -3,19 +3,19 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>讓 Bundler 把 Gem 套件安裝到主目錄 - 雨吁</title>
+	<title>黑色風格的 Arch logo 主題集 - 雨吁</title>
 	<meta name="author" content="Shadow Ma">
 
 	
-	<meta name="description" content="開始折騰 Octopress 後接觸到了 Ruby，相關的內容也記一下。 gem 命令可以使用 --user-install 的選項把套件安裝到主目錄下，但使用 bundle install 安裝套件時並不讀取在 .gemrc 中設置的選項，仍然會詢問 root 密碼要將套件安裝到系統中，雖然用 &hellip;">
-	<meta name="keywords" content="Bundler, Gem, Ruby">
+	<meta name="description" content="收集整理了一套黑色風格的 Arch Linux 主題，包括 Grub2、Plymouth、KDM 和 KSplash 的主題，差不多統一爲如下的風格： 最初是因爲安裝了源中的 archlinux-themes-kdm，其所帶的兩個主題都非常簡潔，非常喜歡其中的黑色主題 Simply Black， &hellip;">
+	<meta name="keywords" content="Arch Linux, 主題">
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="480">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	
-	<link rel="canonical" href="http://shadow.ma/blog/2012/11/18/install-gems-in-home-directory-with-bundler/">
+	<link rel="canonical" href="http://shadow.ma/blog/2012/12/22/black-style-theme-pack-with-arch-logo/">
 	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
 	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	<link href="/favicon.gif" rel="icon" type="image/gif">
@@ -81,7 +81,7 @@
 	<div id="content" class="right-col"><div class="hfeed">
 <article class="hentry post">
 	
-	      <h1 class="title entry-title">讓 Bundler 把 Gem 套件安裝到主目錄</h1>
+	      <h1 class="title entry-title">黑色風格的 Arch Logo 主題集</h1>
 	
 	
 	<div class="meta">
@@ -97,32 +97,47 @@
   
 
 
-<time datetime="2012-11-18T04:18:00+08:00" pubdate data-updated="true"><abbr class="published" title="2012-11-18 04:18:00 +0800">2012年11月18日</abbr></time></div>
+<time datetime="2012-12-22T00:28:00+08:00" pubdate data-updated="true"><abbr class="published" title="2012-12-22 00:28:00 +0800">2012年12月22日</abbr></time></div>
 	<div class="tags">
 
 
-	<a class='tag' rel='tag' title='查看 Bundler 標籤的所有文章' href='/blog/tags/bundler/'>Bundler</a>, <a class='tag' rel='tag' title='查看 Gem 標籤的所有文章' href='/blog/tags/gem/'>Gem</a>, <a class='tag' rel='tag' title='查看 Ruby 標籤的所有文章' href='/blog/tags/ruby/'>Ruby</a>
+	<a class='tag' rel='tag' title='查看 Arch Linux 標籤的所有文章' href='/blog/tags/arch-linux/'>Arch Linux</a>, <a class='tag' rel='tag' title='查看 主題 標籤的所有文章' href='/blog/tags/theme/'>主題</a>
 
 
 </div>
 	<div class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">Shadow Ma</a></div>
 	</div>
 	
-	<div class="entry-content"><p>開始折騰 Octopress 後接觸到了 Ruby，相關的內容也記一下。</p>
+	<div class="entry-content"><p>收集整理了一套黑色風格的 Arch Linux 主題，包括 Grub2、Plymouth、KDM 和 KSplash 的主題，差不多統一爲如下的風格：</p>
 
-<p>gem 命令可以使用 <code>--user-install</code> 的選項把套件安裝到主目錄下，但使用 <code>bundle install</code> 安裝套件時並不讀取在 <code>.gemrc</code> 中設置的選項，仍然會詢問 root 密碼要將套件安裝到系統中，雖然用 gem 可以很方便的管理安裝的套件，但沒有用系統的包管理工具而安裝到系統中那麼多東西，讓人很不舒服，而且剛開始使用 gem 時我就設置了 <code>--user-install</code> 的選項，之前安裝的套件包括 bundler 本身都在主目錄中，所以得讓 bundler 把套件也安裝到相同的地方，便於管理。</p>
+<p><img src="http://static.xind.in/blog/pic/2012/12/arch-black-preview.png" alt="Arch logo black preview" /></p>
+
+<p>最初是因爲安裝了源中的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a>，其所帶的兩個主題都非常簡潔，非常喜歡其中的黑色主題 Simply Black，所以想找到此風格的系統其餘部件的主題。</p>
 
 <!-- more -->
 
 
-<p>方法很簡單，可以在執行 <code>bundle install</code> 時加上 <code>--path PATH</code> 的選項，其中參數 <code>PATH</code> 指定安裝目錄，也可以設置 <code>BUNDLE_PATH</code> 的環境變量，比如：</p>
+<h1>KSplash</h1>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">BUNDLE_PATH</span><span class="o">=</span><span class="s2">&quot;`ruby -rubygems -e &quot;</span>puts Gem.user_dir<span class="s2">&quot;`&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>相同風格的 KSplash 主題 kde-look 上就有，不過原始源掛了，不能直接搜索安裝，還好其<a href="http://kde-look.org/content/show.php?content=98805" title="OxyArch Splash Screen">頁面</a>評論裏還有人共享，可以從 AUR 安裝 <a href="https://aur.archlinux.org/packages/ksplash-oxyarch/">ksplash-oxyarch</a> 這個包。</p>
 
+<p>除了上面提到的，我還修改了 Charak 的默認 KSplash 主題 <a href="http://malcer.deviantart.com/art/Dharma-KSplash-QML-theme-323176827" title="Dharma KSplash-QML theme">Dharma KSplash-QML</a>，預覽如下：</p>
 
-<p>以上。</p>
+<p><img src="http://static.xind.in/blog/pic/2012/12/ksplash-dharma-arch-preview.png" alt="Dharma Arch KSplash preview" /></p>
+
+<p>這風火輪會讓我有啓動時間縮短的錯覺。這個我上傳到了 <a href="http://kde-look.org/content/show.php/Dharma+Arch?content=155983" title="Dharma Arch">kde-look</a> 上，AUR 上的包叫 <a href="https://aur.archlinux.org/packages/ksplash-dharma-arch/">ksplash-dharma-arch</a>。</p>
+
+<h1>Plymouth</h1>
+
+<p>之前一直用的 Fbsplash，AUR 上的 <a href="https://aur.archlinux.org/packages.php?ID=26966" title="fbsplash-themes-arch-banner">arch-banner</a> 主題就挺好的，但自從 systemd 取代 SysVinit 後就有些小問題，前段時間升級系統後直接不顯示了，所以就轉到了 Plymouth。</p>
+
+<p>Gnome-look 上有個差不多符合我要求的主題 <a href="http://gnome-look.org/content/show.php?content=141697" title="Arch-logo plymouth">Arch-logo plymouth</a>，就是 logo 有點那啥，我直接替換了它，這東西我沒法截圖，所以沒能像上面一樣共享，感興趣的在文章後下載吧。</p>
+
+<h1>Grub2</h1>
+
+<p>主題修改自 <a href="https://github.com/Generator/Grub2-themes">Archinox</a>，換了 logo 和圖標，背景改成了黑色的，這個也和上面一樣在文章後下載吧。</p>
+
+<p>以上除了源中已經有的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a> 我都打包在了一起，歡迎<a href="http://static.xind.in/blog/attachment/2012/12/arch-logo-block-themes.tar.gz">下載</a>拍磚。</p>
 </div>
 
 
@@ -145,10 +160,10 @@
 </div>
 <section id="alignment">
       
-        <a class="left-alignment left" href="/blog/2012/11/05/google-you-stupid-cunt/" title="前一篇日誌: Google 你個傻逼">Google 你個傻逼</a>
+        <a class="left-alignment left" href="/blog/2012/12/15/fixing-octopress-embed-gist-was-broken-caused-by-gist-changes/" title="前一篇日誌: 修復 Gist 改版導致的 Octopress 嵌入 Gist 代碼錯誤">修復 Gist 改版導致的 Octopress 嵌入 Gist 代碼錯誤</a>
       
       
-        <a class="right-alignment right" href="/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps/" title="後一篇日誌: 添加 SRV 記錄啓用 Google Apps 對外聊天">添加 SRV 記錄啓用 Google Apps 對外聊天</a>
+	<a class="right">已經是最新</a>        
       
 </section>
 
@@ -177,8 +192,8 @@
 <script type="text/javascript">
       var disqus_shortname = 'shadowma';
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://shadow.ma/blog/2012/11/18/install-gems-in-home-directory-with-bundler/';
-        var disqus_url = 'http://shadow.ma/blog/2012/11/18/install-gems-in-home-directory-with-bundler/';
+        var disqus_identifier = 'http://shadow.ma/blog/2012/12/22/black-style-theme-pack-with-arch-logo/';
+        var disqus_url = 'http://shadow.ma/blog/2012/12/22/black-style-theme-pack-with-arch-logo/';
         var disqus_script = 'embed.js';
     jQuery(document).ready(function(){        
 	    jQuery('#comment .disqus_container').on('click',function(){

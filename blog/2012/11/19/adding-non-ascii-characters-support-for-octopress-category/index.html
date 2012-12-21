@@ -97,6 +97,8 @@
   
 
 
+
+  
 <time datetime="2012-11-19T15:46:00+08:00" pubdate data-updated="true"><abbr class="published" title="2012-11-19 15:46:00 +0800">2012年11月19日</abbr></time></div>
 	<div class="tags">
 
@@ -321,6 +323,20 @@ module Jekyll
 end
 </code></pre></noscript></div>
 
+
+<p>更新：<br/>
+多個分類時要這樣寫：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">categories</span><span class="p">:</span>
+</span><span class='line'><span class="o">-</span> <span class="err">随笔</span><span class="p">{</span><span class="n">essay</span><span class="p">}</span>
+</span><span class='line'><span class="o">-</span> <span class="no">Octopress</span><span class="p">{</span><span class="n">octopress</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> 寫在方括號中會出問題，看有空能不能修好這個。</p>
 </div>
 
 
@@ -355,7 +371,11 @@ end
     <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
 </section>
-</div>
+
+<section id="goback" class="right-con">
+    <a href="/" class="back-home">返回首頁</a>
+    <a href="#top" class="right back-top">返回頂部</a>
+</section></div>
 	</div></div>
 	<footer id="footer" class="right-col">
 </footer>

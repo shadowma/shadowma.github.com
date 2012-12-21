@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-12-15T19:32:44+08:00</updated>
+  <updated>2012-12-22T01:27:34+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+	<title type="html"><![CDATA[黑色風格的 Arch logo 主題集]]></title>
+	<link href="http://shadow.ma/blog/2012/12/22/black-style-theme-pack-with-arch-logo/"/>
+    
+    <link href="http://shadow.ma/blog/2012/12/22/black-style-theme-pack-with-arch-logo/"/>
+    <updated>2012-12-22T00:28:00+08:00</updated>
+    <id>http://shadow.ma/blog/2012/12/22/black-style-theme-pack-with-arch-logo</id>
+    
+    <content type="html"><![CDATA[<p>收集整理了一套黑色風格的 Arch Linux 主題，包括 Grub2、Plymouth、KDM 和 KSplash 的主題，差不多統一爲如下的風格：</p>
+
+<p><img src="http://static.xind.in/blog/pic/2012/12/arch-black-preview.png" alt="Arch logo black preview" /></p>
+
+<p>最初是因爲安裝了源中的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a>，其所帶的兩個主題都非常簡潔，非常喜歡其中的黑色主題 Simply Black，所以想找到此風格的系統其餘部件的主題。</p>
+
+<!-- more -->
+
+
+<h1>KSplash</h1>
+
+<p>相同風格的 KSplash 主題 kde-look 上就有，不過原始源掛了，不能直接搜索安裝，還好其<a href="http://kde-look.org/content/show.php?content=98805" title="OxyArch Splash Screen">頁面</a>評論裏還有人共享，可以從 AUR 安裝 <a href="https://aur.archlinux.org/packages/ksplash-oxyarch/">ksplash-oxyarch</a> 這個包。</p>
+
+<p>除了上面提到的，我還修改了 Charak 的默認 KSplash 主題 <a href="http://malcer.deviantart.com/art/Dharma-KSplash-QML-theme-323176827" title="Dharma KSplash-QML theme">Dharma KSplash-QML</a>，預覽如下：</p>
+
+<p><img src="http://static.xind.in/blog/pic/2012/12/ksplash-dharma-arch-preview.png" alt="Dharma Arch KSplash preview" /></p>
+
+<p>這風火輪會讓我有啓動時間縮短的錯覺。這個我上傳到了 <a href="http://kde-look.org/content/show.php/Dharma+Arch?content=155983" title="Dharma Arch">kde-look</a> 上，AUR 上的包叫 <a href="https://aur.archlinux.org/packages/ksplash-dharma-arch/">ksplash-dharma-arch</a>。</p>
+
+<h1>Plymouth</h1>
+
+<p>之前一直用的 Fbsplash，AUR 上的 <a href="https://aur.archlinux.org/packages.php?ID=26966" title="fbsplash-themes-arch-banner">arch-banner</a> 主題就挺好的，但自從 systemd 取代 SysVinit 後就有些小問題，前段時間升級系統後直接不顯示了，所以就轉到了 Plymouth。</p>
+
+<p>Gnome-look 上有個差不多符合我要求的主題 <a href="http://gnome-look.org/content/show.php?content=141697" title="Arch-logo plymouth">Arch-logo plymouth</a>，就是 logo 有點那啥，我直接替換了它，這東西我沒法截圖，所以沒能像上面一樣共享，感興趣的在文章後下載吧。</p>
+
+<h1>Grub2</h1>
+
+<p>主題修改自 <a href="https://github.com/Generator/Grub2-themes">Archinox</a>，換了 logo 和圖標，背景改成了黑色的，這個也和上面一樣在文章後下載吧。</p>
+
+<p>以上除了源中已經有的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a> 我都打包在了一起，歡迎<a href="http://static.xind.in/blog/attachment/2012/12/arch-logo-block-themes.tar.gz">下載</a>拍磚。</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -317,6 +360,20 @@ module Jekyll
 end
 </code></pre></noscript></div>
 
+
+<p>更新：<br/>
+多個分類時要這樣寫：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">categories</span><span class="p">:</span>
+</span><span class='line'><span class="o">-</span> <span class="err">随笔</span><span class="p">{</span><span class="n">essay</span><span class="p">}</span>
+</span><span class='line'><span class="o">-</span> <span class="no">Octopress</span><span class="p">{</span><span class="n">octopress</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> 寫在方括號中會出問題，看有空能不能修好這個。</p>
 ]]></content>
     
   </entry>
@@ -451,7 +508,7 @@ end
 
 <p>修改配置文件</p>
 
-<figure class='code'><figcaption><span>/etc/pdnsd.conf</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>/etc</span><a href='http://shadow.ma/pdnsd.conf'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -877,7 +934,7 @@ end
 
 <p>結合<a href="http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">上篇</a>，<code>chnroutes.py</code> 已經在 <code>/etc/chnroutes</code> 下，把腳本放到 <code>/etc/cron.weekly</code> 下會每周執行一次。</p>
 
-<figure class='code'><figcaption><span>/etc/cron.weekly/chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>/etc</span><a href='http://shadow.ma/cron.weekly/chnroutes'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>

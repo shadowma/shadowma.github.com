@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Octopress | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/octopress/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-12-15T19:32:44+08:00</updated>
+  <updated>2012-12-22T01:27:34+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma]]></name>
@@ -249,6 +249,17 @@ module Jekyll
 end
 </code></pre></noscript></div>
 </p>
+
+<p>更新：<br/>
+多個分類時要這樣寫：</p>
+
+<p><code>
+categories:
+- 随笔{essay}
+- Octopress{octopress}
+</code></p>
+
+<p> 寫在方括號中會出問題，看有空能不能修好這個。</p>
 ]]></content>
     
   </entry>
