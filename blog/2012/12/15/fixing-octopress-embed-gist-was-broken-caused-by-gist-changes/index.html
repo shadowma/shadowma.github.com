@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>修復 Gist 改版導致的 Octopress 嵌入 Gist 代碼錯誤 - 雨吁</title>
-	<meta name="author" content="Shadow Ma">
+	<meta name="author" content="馬歆鼎">
 
 	
 	<meta name="description" content="翻以前的文章時發現嵌入的 Gist 代碼都沒了，第一反應就是 Github 悲劇了，設置全局代理再刷新還是一樣，測試了下發現網頁中引用 Gist 代碼的 JS 並沒有返回代碼內容，去掉 JS URL 後面的文件名參數才正常，看來是 Gist 前幾天的改版導致的。 之前引用 Gist &hellip;">
@@ -105,7 +105,7 @@
 
 
 </div>
-	<div class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">Shadow Ma</a></div>
+	<div class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">馬歆鼎</a></div>
 	</div>
 	
 	<div class="entry-content"><p>翻以前的文章時發現嵌入的 Gist 代碼都沒了，第一反應就是 Github 悲劇了，設置全局代理再刷新還是一樣，測試了下發現網頁中引用 Gist 代碼的 JS 並沒有返回代碼內容，去掉 JS URL 後面的文件名參數才正常，看來是 Gist 前幾天的<a href="https://github.com/blog/1276-welcome-to-a-new-gist" title="Welcome to a New Gist">改版</a>導致的。</p>
