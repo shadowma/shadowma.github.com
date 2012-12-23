@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-12-23T10:34:36+08:00</updated>
+  <updated>2012-12-23T17:50:56+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Shadow Ma]]></name>
@@ -24,7 +24,7 @@
     
     <content type="html"><![CDATA[<p>收集整理了一套黑色風格的 Arch Linux 主題，包括 Grub2、Plymouth、KDM 和 KSplash 的主題，差不多統一爲如下的風格：</p>
 
-<p><img src="http://static.xind.in/blog/pic/2012/12/arch-black-preview.png" alt="Arch logo black preview" /></p>
+<p><img src="https://static.xind.in/blog/pic/2012/12/arch-black-preview.png" alt="Arch logo black preview" /></p>
 
 <p>最初是因爲安裝了源中的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a>，其所帶的兩個主題都非常簡潔，非常喜歡其中的黑色主題 Simply Black，所以想找到此風格的系統其餘部件的主題。</p>
 
@@ -37,7 +37,7 @@
 
 <p>除了上面提到的，我還修改了 Charak 的默認 KSplash 主題 <a href="http://malcer.deviantart.com/art/Dharma-KSplash-QML-theme-323176827" title="Dharma KSplash-QML theme">Dharma KSplash-QML</a>，預覽如下：</p>
 
-<p><img src="http://static.xind.in/blog/pic/2012/12/ksplash-dharma-arch-preview.png" alt="Dharma Arch KSplash preview" /></p>
+<p><img src="https://static.xind.in/blog/pic/2012/12/ksplash-dharma-arch-preview.png" alt="Dharma Arch KSplash preview" /></p>
 
 <p>這風火輪會讓我有啓動時間縮短的錯覺。這個我上傳到了 <a href="http://kde-look.org/content/show.php/Dharma+Arch?content=155983" title="Dharma Arch">kde-look</a> 上，AUR 上的包叫 <a href="https://aur.archlinux.org/packages/ksplash-dharma-arch/">ksplash-dharma-arch</a>。</p>
 
@@ -126,11 +126,11 @@
 <p>在 KDE 下一直用 Amarok，知道它是支持腳本擴展的，實現這個簡單的功能應該不難，看了下<a href="http://amarok.kde.org/wiki/Development/Scripting_HowTo_2.0">文檔</a>發現可以用 JS 寫，雖然 JS 只在折騰 Blog 時瞭解過，不過參考現成的<a href="https://userscripts.org/scripts/show/152487" title="Nowplaying Share">用戶腳本</a>沒費多大力氣就拼湊出這腳本，測試無問題，我已經把它上傳到了 <a href="https://opendesktop.org/content/show.php?content=155371">openDesktop.org</a>，現在通過百寶箱就能安裝，也可以下載後手動解壓到 <code>~/.kde4/share/apps/amarok/scripts/</code> 文件夾下，重啓播放器後在工具菜單下就會出現「Share Nowplaying」的選項。</p>
 
 <p>使用截圖：<br/>
-<img src="http://static.xind.in/blog/pic/2012/11/install_nowplaying_share.png" alt="安裝" /></p>
+<img src="https://static.xind.in/blog/pic/2012/11/install_nowplaying_share.png" alt="安裝" /></p>
 
-<p><img src="http://static.xind.in/blog/pic/2012/11/amarok_share_nowplaying.png" alt="分享" /></p>
+<p><img src="https://static.xind.in/blog/pic/2012/11/amarok_share_nowplaying.png" alt="分享" /></p>
 
-<p><img src="http://static.xind.in/blog/pic/2012/11/nowplaying_share.png" alt="效果" /></p>
+<p><img src="https://static.xind.in/blog/pic/2012/11/nowplaying_share.png" alt="效果" /></p>
 
 <p>代碼放到了 <a href="https://github.com/shadowma/Nowplaying-Share">GitHub</a> 上，歡迎拍磚。
 最後，感謝  <a href="http://wayshine.us/">Apollo Wayne</a> 提供的<a href="http://music.wayshine.us/">服務</a>。</p>
@@ -410,7 +410,7 @@ end
 
 
 <p>手動的話如圖把記錄都添加上就行：<br/>
-<img src="http://static.xind.in/blog/pic/2012/11/cloudflare-srv-record.png" alt="CloudFlare SRV Record" /></p>
+<img src="https://static.xind.in/blog/pic/2012/11/cloudflare-srv-record.png" alt="CloudFlare SRV Record" /></p>
 
 <p>等 DNS 生效就能讓此域名的 Gtalk 用戶和公共 XMPP 網絡用戶聊天了。</p>
 ]]></content>
@@ -873,9 +873,9 @@ end
 
 <h2>測試</h2>
 
-<p><img src="http://static.xind.in/blog/pic/2012/11/dns-spoofing.png" alt="DNS 被污染，返回了錯誤的 ip" /></p>
+<p><img src="https://static.xind.in/blog/pic/2012/11/dns-spoofing.png" alt="DNS 被污染，返回了錯誤的 ip" /></p>
 
-<p><img src="http://static.xind.in/blog/pic/2012/11/dns-spoofing-sloved.png" alt="成功得到正確 ip" /></p>
+<p><img src="https://static.xind.in/blog/pic/2012/11/dns-spoofing-sloved.png" alt="成功得到正確 ip" /></p>
 
 <p>使用本地的轉發服務查詢 twitter.com 返回正確 ip，說明在服務器最前列的國內的 DNS 的確沒查詢列表外的域名。</p>
 
