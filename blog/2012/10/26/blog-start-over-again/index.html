@@ -175,7 +175,7 @@
 	    jQuery('#comment .disqus_container').on('click',function(){
 		jQuery(this).html('加載中...');
 		var that = this;
-		shadow.src(('https:' == document.location.protocol ? 'https://' : 'http://') + disqus_shortname + '.disqus.com/' + disqus_script,function(){jQuery(that).remove()});
+		shadow.src('https://' + disqus_shortname + '.disqus.com/' + disqus_script,function(){jQuery(that).remove()});
 	    });
     });
     
