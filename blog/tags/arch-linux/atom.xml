@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Arch Linux | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/arch-linux/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2012-12-29T00:32:43+08:00</updated>
+  <updated>2012-12-31T20:48:31+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -31,7 +31,7 @@
 <!-- more -->
 
 
-<h1>KSplash</h1>
+<h2>KSplash</h2>
 
 <p>相同風格的 KSplash 主題 kde-look 上就有，不過原始源掛了，不能直接搜索安裝，還好其<a href="http://kde-look.org/content/show.php?content=98805" title="OxyArch Splash Screen">頁面</a>評論裏還有人共享，可以從 AUR 安裝 <a href="https://aur.archlinux.org/packages/ksplash-oxyarch/">ksplash-oxyarch</a> 這個包。</p>
 
@@ -41,13 +41,13 @@
 
 <p>這風火輪會讓我有啓動時間縮短的錯覺。這個我上傳到了 <a href="http://kde-look.org/content/show.php/Dharma+Arch?content=155983" title="Dharma Arch">kde-look</a> 上，AUR 上的包叫 <a href="https://aur.archlinux.org/packages/ksplash-dharma-arch/">ksplash-dharma-arch</a>。</p>
 
-<h1>Plymouth</h1>
+<h2>Plymouth</h2>
 
 <p>之前一直用的 Fbsplash，AUR 上的 <a href="https://aur.archlinux.org/packages.php?ID=26966" title="fbsplash-themes-arch-banner">arch-banner</a> 主題就挺好的，但自從 systemd 取代 SysVinit 後就有些小問題，前段時間升級系統後直接不顯示了，所以就轉到了 Plymouth。</p>
 
 <p>Gnome-look 上有個差不多符合我要求的主題 <a href="http://gnome-look.org/content/show.php?content=141697" title="Arch-logo plymouth">Arch-logo plymouth</a>，就是 logo 有點那啥，我直接替換了它，這東西我沒法截圖，所以沒能像上面一樣共享，感興趣的在文章後下載吧。</p>
 
-<h1>Grub2</h1>
+<h2>Grub2</h2>
 
 <p>主題修改自 <a href="https://github.com/Generator/Grub2-themes">Archinox</a>，換了 logo 和圖標，背景改成了黑色的，這個也和上面一樣在文章後下載吧。</p>
 
