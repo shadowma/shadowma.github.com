@@ -3,19 +3,20 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>完全從頭開始了 - 雨吁</title>
+	<title>使用 obfsproxy 搭配 shadowsocks 安全高效的訪問互聯網 - 雨吁</title>
 	<meta name="author" content="Xinding Ma">
 
 	
-	<meta name="description" content="之前放棄了把以前 WordPress 博客的文章轉過來，一是因爲麻煩，還有就是的確沒什麼人看，都是自己的筆記，想着就算原始頁面全404了，也還有 Google 的快照，自己隨便查查沒關係，今天要找段代碼才發現之前收錄的文章都沒剩幾篇了，沒想到 Google 會自動刪死鏈！ &hellip;">
-	<meta name="keywords" content="Blog">
+	<meta name="description" content="通過 obfsproxy 混淆 shadowsocks 流量，避免代理被X，其它代理也可以舉一反三在中間加上一層 obfsproxy 來混淆數據，整理下思路： 服務端通過 obfsproxy 混淆轉發代理服務，服務器防火牆只需打開 obfsproxy 的轉發端口即可；
+客戶端用 obfsproxy &hellip;">
+	<meta name="keywords" content="obfsproxy, 代理, 鏈接">
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="480">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	
-	<link rel="canonical" href="http://shadow.ma/blog/2012/10/26/blog-start-over-again/">
+	<link rel="canonical" href="http://shadow.ma/blog/2013/01/01/getting-safe-and-high-performance-internet-access-through-shadowsocks-with-obfsproxy/">
 	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
 	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	<link href="/favicon.gif" rel="icon" type="image/gif">
@@ -81,8 +82,8 @@
 	<div id="content" class="right-col"><div class="hfeed">
 <article class="hentry post">
 	
-	      <h1 class="title entry-title">完全從頭開始了</h1>
-	
+	      <h1 class="title entry-title" ><a class="external" href="http://sae.chenshaoju.com/?p=14" title="鏈接到 http://sae.chenshaoju.com/?p=14">使用 Obfsproxy 搭配 Shadowsocks 安全高效的訪問互聯網</a></h1>
+	      
 	
 	<div class="meta">
 	<span class="date">
@@ -97,23 +98,26 @@
   
 
 
-<abbr class="published" title="2012-10-26T22:12:00+08:00">2012年10月26日</abbr></span>
+<abbr class="published" title="2013-01-01T18:20:00+08:00">2013年01月01日</abbr></span>
 	<span class="tags">
 
 
-	<a class='tag' rel='tag' title='查看 Blog 標籤的所有文章' href='/blog/tags/blog/'>Blog</a>
+	<a class='tag' rel='tag' title='查看 obfsproxy 標籤的所有文章' href='/blog/tags/obfsproxy/'>obfsproxy</a>, <a class='tag' rel='tag' title='查看 代理 標籤的所有文章' href='/blog/tags/proxy/'>代理</a>, <a class='tag' rel='tag' title='查看 鏈接 標籤的所有文章' href='/blog/tags/linked/'>鏈接</a>
 
 
 </span>
 	<span class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">Xinding Ma</a> (<span class="nickname">Shadow Ma</span>)</span>
 	</div>
 	
-	<div class="entry-content"><p>之前放棄了把以前 WordPress 博客的文章轉過來，一是因爲麻煩，還有就是的確沒什麼人看，都是自己的筆記，想着就算原始頁面全404了，也還有 Google 的快照，自己隨便查查沒關係，今天要找段代碼才發現之前收錄的文章都沒剩幾篇了，沒想到 Google 會自動刪死鏈！</p>
+	<div class="entry-content"><p>通過 obfsproxy 混淆 shadowsocks 流量，避免代理被X，其它代理也可以舉一反三在中間加上一層 obfsproxy 來混淆數據，整理下思路：</p>
 
-<!-- more -->
+<ol>
+<li>服務端通過 obfsproxy 混淆轉發代理服務，服務器防火牆只需打開 obfsproxy 的轉發端口即可；</li>
+<li>客戶端用 obfsproxy 接收服務器相應端口的混淆數據並轉發到需要的端口（根據實際情況作爲代理客戶端的服務端口或直接作爲代理端口）使用。</li>
+</ol>
 
 
-<p>現在不能再去把文章導出來了，手裏只有數據庫備份，打開看了下太雜亂，沒辦法，也不是什麼困難的東西，再寫唄。</p>
+<p>在 Amazon Ec2 免費主機上弄了個，用了一個星期，非常穩定，強力推介！</p>
 </div>
 
 
@@ -136,10 +140,10 @@
 </div>
 <section id="alignment">
       
-        <a class="left-alignment left" href="/blog/2012/10/26/script-for-auto-update-chnroutes/" title="前一篇日誌: 自動更新 chnroutes 的腳本">自動更新 chnroutes 的腳本</a>
+        <a class="left-alignment left" href="/blog/2012/12/22/black-style-theme-pack-with-arch-logo/" title="前一篇日誌: 黑色風格的 Arch logo 主題集">黑色風格的 Arch logo 主題集</a>
       
       
-        <a class="right-alignment right" href="/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/" title="後一篇日誌: Linux 下使用 pdnsd 避免 DNS 污染">Linux 下使用 pdnsd 避免 DNS 污染</a>
+	<a class="right">已經是最新</a>        
       
 </section>
 
@@ -168,8 +172,8 @@
 <script type="text/javascript">
       var disqus_shortname = 'shadowma';
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://shadow.ma/blog/2012/10/26/blog-start-over-again/';
-        var disqus_url = 'http://shadow.ma/blog/2012/10/26/blog-start-over-again/';
+        var disqus_identifier = 'http://shadow.ma/blog/2013/01/01/getting-safe-and-high-performance-internet-access-through-shadowsocks-with-obfsproxy/';
+        var disqus_url = 'http://shadow.ma/blog/2013/01/01/getting-safe-and-high-performance-internet-access-through-shadowsocks-with-obfsproxy/';
         var disqus_script = 'embed.js';
     jQuery(document).ready(function(){        
 	    jQuery('#comment .disqus_container').on('click',function(){
