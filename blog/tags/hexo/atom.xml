@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[標籤: 鏈接 | 雨吁]]></title>
-  <link href="http://shadow.ma/blog/tags/linked/atom.xml" rel="self"/>
+  <title><![CDATA[標籤: Hexo | 雨吁]]></title>
+  <link href="http://shadow.ma/blog/tags/hexo/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
   <updated>2013-01-03T20:54:15+08:00</updated>
   <id>http://shadow.ma/</id>
@@ -44,64 +44,6 @@
 
 <p>相比基於 Ruby 的 Jekyll 和 Octopress，使用 Node.js 驅動的 Hexo 網頁生成速度更快（得益於 Google 的 V8 引擎？），而且作者更新給力，現在已經可用，對我來說基本能替代 Octopress 了，不過完全遷移要花點時間（其實從 Octopress 遷移是最簡單的，Hexo 引入了很多 Octopress 的<a href="http://zespia.tw/hexo/zh-TW/docs/tag-plugins.html">標籤外掛</a>，文章都不用怎麼改，只是考慮要不要扔掉現在這渣主題），畢竟 Octopress 也花了好久才調教的差不多，而且現在文章也不多還感受不到 Octopress 的<s>龜速</s>，先放本地慢慢調教，說不好什麼時候真的就遷移到 Hexo 了。</p>
 <a rel="full-article" href="http://shadow.ma/blog/2013/01/03/hexo-node-dot-js-based-blog-framework/">&infin; 文章鏈接</a>]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-	<title type="html"><![CDATA[Blog 鏡像 &infin;]]></title>
-	<link href="http://blog.xind.in/"/>
-    
-    <link href="http://shadow.ma/blog/2013/01/03/blog-mirror/"/>
-    <updated>2013-01-03T01:15:00+08:00</updated>
-    <id>http://shadow.ma/blog/2013/01/03/blog-mirror</id>
-    
-    <content type="html"><![CDATA[<p>用反向代理給博客建了個<a href="http://blog.xind.in/">鏡像</a>，方便牆內的朋友，不指望現在這域名能解封了，爲防側露默認啓用 HTTPS 訪問，實在傷不起，不能再悲劇了。</p>
-
-<p>現在我這沒 VPN 的 WP 手機終於也能在出門時查看 Blog 了。</p>
-<a rel="full-article" href="http://shadow.ma/blog/2013/01/03/blog-mirror/">&infin; 文章鏈接</a>]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-	<title type="html"><![CDATA[使用 obfsproxy 搭配 shadowsocks 安全高效的訪問互聯網 &infin;]]></title>
-	<link href="http://sae.chenshaoju.com/?p=14"/>
-    
-    <link href="http://shadow.ma/blog/2013/01/01/getting-safe-and-high-performance-internet-access-through-shadowsocks-with-obfsproxy/"/>
-    <updated>2013-01-01T18:20:00+08:00</updated>
-    <id>http://shadow.ma/blog/2013/01/01/getting-safe-and-high-performance-internet-access-through-shadowsocks-with-obfsproxy</id>
-    
-    <content type="html"><![CDATA[<p>通過 obfsproxy 混淆 shadowsocks 流量，避免代理被X，其它代理也可以舉一反三在中間加上一層 obfsproxy 來混淆數據，整理下思路：</p>
-
-<ol>
-<li>服務端通過 obfsproxy 混淆轉發代理服務，服務器防火牆只需打開 obfsproxy 的轉發端口即可；</li>
-<li>客戶端用 obfsproxy 接收服務器相應端口的混淆數據並轉發到需要的端口（根據實際情況作爲代理客戶端的服務端口或直接作爲代理端口）使用。</li>
-</ol>
-
-
-<p>在 Amazon EC2 免費主機上弄了個，用了一個星期，非常穩定，強力推介！</p>
-<a rel="full-article" href="http://shadow.ma/blog/2013/01/01/getting-safe-and-high-performance-internet-access-through-shadowsocks-with-obfsproxy/">&infin; 文章鏈接</a>]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-	<title type="html"><![CDATA[Google 你個傻逼 &infin;]]></title>
-	<link href="https://plus.google.com/s/%23%E8%B0%B7%E6%AD%8C%E4%BD%A0%E4%B8%AA%E5%82%BB%E9%80%BC"/>
-    
-    <link href="http://shadow.ma/blog/2012/11/05/google-you-stupid-cunt/"/>
-    <updated>2012-11-05T02:44:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/11/05/google-you-stupid-cunt</id>
-    
-    <content type="html"><![CDATA[<p>臥操！我的書籤！</p>
-
-<p>不能同步 Chrome，還以爲是自己的問題，到頭來就特麼只有那個號不能同步。這麼多天了，每天都試，都一個屌樣，通知什麼的都不給，什麼都不說，完全不知道這號到底怎麼了。</p>
-
-<p>書籤欄空空如也，這幾天遇到東西都不知怎麼存好，操操操操操操操！！</p>
-
-<p>看看這鏈接裏的各種悲劇，我還是先把東西都備份的好，這個帳號重要東西實在太多了，希望不要有真要挖這貼起來鞭屍的時候。</p>
-<a rel="full-article" href="http://shadow.ma/blog/2012/11/05/google-you-stupid-cunt/">&infin; 文章鏈接</a>]]></content>
     
   </entry>
   

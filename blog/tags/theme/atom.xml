@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: 主題 | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/theme/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-03T01:25:46+08:00</updated>
+  <updated>2013-01-03T20:54:15+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+	<title type="html"><![CDATA[Phase：爲 Hexo 和 Octopress 設計的華麗主題 &infin;]]></title>
+	<link href="http://zespia.tw/blog/2012/12/07/hexo-theme-phase/"/>
+    
+    <link href="http://shadow.ma/blog/2013/01/03/phase-theme-for-hexo-and-octopress/"/>
+    <updated>2013-01-03T20:25:00+08:00</updated>
+    <id>http://shadow.ma/blog/2013/01/03/phase-theme-for-hexo-and-octopress</id>
+    
+    <content type="html"><![CDATA[<p>非常漂亮的主題，又是 <a href="http://twitter.com/tommy351" title="tommy351">@tommy351</a> 的作品，<a href="http://zespia.tw/blog/2012/12/07/hexo-theme-phase/" title="Phase — 史上最漂亮也最吃資源的主題">Phase</a> 原本是 <a href="http://twitter.com/tommy351" title="tommy351">@tommy351</a> 的私用主題，現在公開發佈，同時提供 Hexo 和 Octopress 的版本，主題以 <a href="http://zespia.tw/Octopress-Theme-Slash/index_tw.html" title="Slash — 專為 Octopress 設計的極簡主題">Slash</a> 為基礎開發（看看人家的設計，再看看我這個 _(:з」∠)_），最初爲 Octopress 設計，現在移植到了 Hexo ，Hexo 版還擁有更多的特性，作爲 Hexo 的作者往後的主題開發也都會以 Hexo 為主了（是不是可以成爲一個遷移到 Hexo 的理由？）。</p>
+
+<p>就像作者所說，這個主題非常的絢麗，但也非常吃資源，可以打開<a href="http://zespia.tw/hexo-theme-phase/" title="Phase">預覽頁面</a>感受下，感興趣的到作者<a href="http://zespia.tw/blog/2012/12/07/hexo-theme-phase/" title="Phase — 史上最漂亮也最吃資源的主題">發佈頁面</a>查看詳細說明吧。</p>
+<a rel="full-article" href="http://shadow.ma/blog/2013/01/03/phase-theme-for-hexo-and-octopress/">&infin; 文章鏈接</a>]]></content>
+    
+  </entry>
   
   <entry>
     
