@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: VPNC | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/vpnc/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-03T20:54:15+08:00</updated>
+  <updated>2013-01-04T11:54:16+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -24,38 +24,32 @@
     
     <content type="html"><![CDATA[<p>昨晚看到個 VPN 服務 <a href="http://106.187.44.5/home?referral=70588D95C2F9DF00D908B3CC2282F650" title="IQLink">IQLink</a>，免費用戶每月有 100G 流量，測了下速度還不錯，可以留着以備不時之需。</p>
 
-<p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。</p>
-
-<!-- more -->
-
+<p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。
+<!-- more --></p>
 
 <p>IQLink 提供的是 Cisco VPN，Linux 下要用 VPNC 連接，chnroutes 網站上提供了 PPTP 和 OpenVPN 的設置教程，唯獨沒有 VPNC，還好 VPNC 支持連接腳本，默認配置的 <code>/etc/vpnc/vpnc-script</code> 能在執行 <code>pre-init</code>、<code>connect</code>、<code>post-connect</code>、<code>disconnect</code>、<code>post-disconnect</code> 和 <code>reconnect</code> 六種 action 時調用自定義腳本，只要把 <code>python chnroutes.py -p linux</code> 生成的腳本 <code>ip-pre-up</code> 和 <code>ip-down</code> 分別放入 <code>/etc/vpnc/pre-init.d</code> 和 <code>/etc/vpnc/post-disconnect.d</code> 就能在連接 VPN 前後成功添加恢復路由表，但在使用 NetworkManager 連接 VPNC 時，發現這些腳本根本就沒有被執行，NM 的 VPNC 插件用自帶的 <code>nm-vpnc-service-vpnc-helper</code> 替代了 <code>vpnc-script</code>，完全不讀取 <code>/etc/vpnc</code> 下的配置，而且這東西是二進制文件沒法改，試過直接替換成 <code>vpnc-script</code> 也不行，正準備放棄時突然想起 NetworkManager 也支持連接腳本，直接用 NetworkManager 配置的話就不用再爲每種 VPN 都設定路由表了。</p>
 
-<p>把下面的腳本（根據自己實際情況修改）放入 <code>/etc/NetworkManager/dispatcher.d</code>，腳本中在觸發 <code>vpn-down</code> 恢復路由表的操作中我排除了正在配置的 VPNC 連接的 UUID，因爲斷開連接時路由表已經被恢復，導致腳本返回一大串錯誤，這<s>應該是 <code>nm-vpnc-service-vpnc-helper</code> 中有對路由表的操作的原因</s> 是 VPN 服務端設置決定的，VPN 服務有添加網關的話會自動修改路由表，斷開連接後路由表被恢復，chnroutes 的條目也一起被清除，其實是個無傷大雅的問題。</p>
+<p>把下面的腳本（根據自己實際情況修改）放入 <code>/etc/NetworkManager/dispatcher.d</code>，腳本中在觸發 <code>vpn-down</code> 恢復路由表的操作中我排除了正在配置的 VPNC 連接的 UUID，因爲斷開連接時路由表已經被恢復，導致腳本返回一大串錯誤，這<s>應該是 `nm-vpnc-service-vpnc-helper` 中有對路由表的操作的原因</s> 是 VPN 服務端設置決定的，VPN 服務有添加網關的話會自動修改路由表，斷開連接後路由表被恢復，chnroutes 的條目也一起被清除，其實是個無傷大雅的問題。</p>
 
-<p>```bash 99-chnroutes</p>
-
-<h1>!/bin/sh</h1>
+<p>```bash 99-chnroutes
+#!/bin/sh</p>
 
 <p>INTERFACE=$1
 STATUS=$2</p>
 
-<p>case "$STATUS" in</p>
-
-<pre><code>    'vpn-up')
-            exec /etc/chnroutes/vpnup #chnroutes 生成的 ip-pre-up
-            ;;
-    'vpn-down')
-            # if [ "$CONNECTION_UUID" != "1f2c647b-dd70-4f97-8300-0cf6cd4a2e4c" ]; then
-            exec /etc/chnroutes/vpndown #chnroutes 生成的 ip-down
-            # fi
-            ;;
-</code></pre>
-
-<p>esac
+<p>case “$STATUS” in
+        ‘vpn-up’)
+                exec /etc/chnroutes/vpnup #chnroutes 生成的 ip-pre-up
+                ;;
+        ‘vpn-down’)
+                # if [ “$CONNECTION_UUID” != “1f2c647b-dd70-4f97-8300-0cf6cd4a2e4c” ]; then
+                exec /etc/chnroutes/vpndown #chnroutes 生成的 ip-down
+                # fi
+                ;;
+esac
 ```</p>
 
-<p>到此處還不能正常使用，chnroutes 生成的腳本是給 PPTP 用的，默認是要在 PPP 撥號前執行，在 VPN 鏈接前路由表就設置好了，而 NetworkManager 連接腳本中的 <code>vpn-up</code> 要在連接建立後才會被觸發，<s>像我正在配置的 VPNC 因爲之前提到的 <code>nm-vpnc-service-vpnc-helper</code> 中有對路由表的操作</s> VPN 服務有修改路由表的話，腳本中的 <code>OLDGW</code> 得到的值會會是 VPN 網關的地址，路由表會被設成讓所有國內 ip 都走 VPN，解決方法是把 chnroutes 生成的設置腳本 <code>ip-pre-up</code>（上面腳本中的 <code>vpnup</code>）中的：</p>
+<p>到此處還不能正常使用，chnroutes 生成的腳本是給 PPTP 用的，默認是要在 PPP 撥號前執行，在 VPN 鏈接前路由表就設置好了，而 NetworkManager 連接腳本中的 <code>vpn-up</code> 要在連接建立後才會被觸發，<s>像我正在配置的 VPNC 因爲之前提到的 `nm-vpnc-service-vpnc-helper` 中有對路由表的操作</s> VPN 服務有修改路由表的話，腳本中的 <code>OLDGW</code> 得到的值會會是 VPN 網關的地址，路由表會被設成讓所有國內 ip 都走 VPN，解決方法是把 chnroutes 生成的設置腳本 <code>ip-pre-up</code>（上面腳本中的 <code>vpnup</code>）中的：</p>
 
 <pre><code>OLDGW=`ip route show | grep '^default' | sed -e 's/default via \([^ ]*\).*/\1/'`
 </code></pre>
@@ -69,12 +63,10 @@ STATUS=$2</p>
 
 <p>其實沒必要像我一樣把 <code>ip-pre-up</code> 和 <code>ip-down</code> 改成 <code>vpnup</code> 和 <code>vpndown</code>，只是這裏 <code>vpnup</code> 已經不是 pre-up 了，看着不爽而已。</p>
 
-<h2>參考資料</h2>
-
+<h2 id="section">參考資料</h2>
 <ul>
-<li><a href="http://blog.xuming.net/2010/04/openvpn.html" title="Ubuntu 9.10下使用Network-manager 配置openvpn">Ubuntu 9.10下使用Network-manager 配置openvpn</a></li>
+  <li><a href="http://blog.xuming.net/2010/04/openvpn.html" title="Ubuntu 9.10下使用Network-manager 配置openvpn">Ubuntu 9.10下使用Network-manager 配置openvpn</a></li>
 </ul>
-
 ]]></content>
     
   </entry>

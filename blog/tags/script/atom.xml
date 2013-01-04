@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: script | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/script/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-03T20:54:15+08:00</updated>
+  <updated>2013-01-04T11:54:16+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -22,14 +22,12 @@
     <updated>2012-11-21T16:13:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page</id>
     
-    <content type="html"><![CDATA[<p>最近經常在 G+ 上看到通過 <a href="http://wayshine.us/">Apollo Wayne</a> 的音樂<a href="http://music.wayshine.us/">分享服務</a>分享的正在播放音樂，看着不錯想跟風弄，但看了下<a href="http://music.wayshine.us/readme.html">說明</a>發現還不支持 Linux 下的任何播放器（web 不算），想玩只能自己動手。</p>
-
-<!-- more -->
-
+    <content type="html"><![CDATA[<p>最近經常在 G+ 上看到通過 <a href="http://wayshine.us/">Apollo Wayne</a> 的音樂<a href="http://music.wayshine.us/">分享服務</a>分享的正在播放音樂，看着不錯想跟風弄，但看了下<a href="http://music.wayshine.us/readme.html">說明</a>發現還不支持 Linux 下的任何播放器（web 不算），想玩只能自己動手。
+<!-- more --></p>
 
 <p>在 KDE 下一直用 Amarok，知道它是支持腳本擴展的，實現這個簡單的功能應該不難，看了下<a href="http://amarok.kde.org/wiki/Development/Scripting_HowTo_2.0">文檔</a>發現可以用 JS 寫，雖然 JS 只在折騰 Blog 時瞭解過，不過參考現成的<a href="https://userscripts.org/scripts/show/152487" title="Nowplaying Share">用戶腳本</a>沒費多大力氣就拼湊出這腳本，測試無問題，我已經把它上傳到了 <a href="https://opendesktop.org/content/show.php?content=155371">openDesktop.org</a>，現在通過百寶箱就能安裝，也可以下載後手動解壓到 <code>~/.kde4/share/apps/amarok/scripts/</code> 文件夾下，重啓播放器後在工具菜單下就會出現「Share Nowplaying」的選項。</p>
 
-<p>使用截圖：<br/>
+<p>使用截圖：<br />
 <img src="https://static.xind.in/blog/pic/2012/11/install_nowplaying_share.png" alt="安裝" /></p>
 
 <p><img src="https://static.xind.in/blog/pic/2012/11/amarok_share_nowplaying.png" alt="分享" /></p>
@@ -59,22 +57,16 @@
 </code></pre>
 
 <!-- more -->
-
-
 <p>結合<a href="/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/" title="使用 NetworkManager 設置 VPNC 和路由表">上篇</a>，<code>chnroutes.py</code> 已經在 <code>/etc/chnroutes</code> 下，把腳本放到 <code>/etc/cron.weekly</code> 下會每周執行一次。</p>
 
-<p>```bash /etc/cron.weekly/chnroutes</p>
+<p>```bash /etc/cron.weekly/chnroutes
+#!/bin/bash
+cd /etc/chnroutes
+python2 chnroutes.py -p linux 2&gt;&amp;1 &gt;/dev/null
+#echo “Fetching data from apnic.net, it might take a few minutes, please wait…”
+mv ip-pre-up vpnup &amp;&amp; mv ip-down vpndown</p>
 
-<h1>!/bin/bash</h1>
-
-<p>cd /etc/chnroutes
-python2 chnroutes.py -p linux 2>&amp;1 >/dev/null</p>
-
-<h1>echo "Fetching data from apnic.net, it might take a few minutes, please wait..."</h1>
-
-<p>mv ip-pre-up vpnup &amp;&amp; mv ip-down vpndown</p>
-
-<p>sed -i '/<sup>OLDGW/d'</sup> vpnup &amp;&amp; sed -i '/export/a OLDGW=<code>ip route show | sed "/tun*/d"  | grep "^[^d].*proto static" | sed -e "s/.*via \\([^ ]*\\).*/\\1/"</code>' vpnup</p>
+<p>sed -i ‘/^OLDGW/d’ vpnup &amp;&amp; sed -i ‘/export/a OLDGW=<code>ip route show | sed "/tun*/d"  | grep "^[^d].*proto static" | sed -e "s/.*via \\([^ ]*\\).*/\\1/"</code>’ vpnup</p>
 
 <p>chmod +x vpn*
 ```</p>

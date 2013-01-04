@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: obfsproxy | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/obfsproxy/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-03T20:54:15+08:00</updated>
+  <updated>2013-01-04T11:54:16+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -25,10 +25,9 @@
     <content type="html"><![CDATA[<p>通過 obfsproxy 混淆 shadowsocks 流量，避免代理被X，其它代理也可以舉一反三在中間加上一層 obfsproxy 來混淆數據，整理下思路：</p>
 
 <ol>
-<li>服務端通過 obfsproxy 混淆轉發代理服務，服務器防火牆只需打開 obfsproxy 的轉發端口即可；</li>
-<li>客戶端用 obfsproxy 接收服務器相應端口的混淆數據並轉發到需要的端口（根據實際情況作爲代理客戶端的服務端口或直接作爲代理端口）使用。</li>
+  <li>服務端通過 obfsproxy 混淆轉發代理服務，服務器防火牆只需打開 obfsproxy 的轉發端口即可；</li>
+  <li>客戶端用 obfsproxy 接收服務器相應端口的混淆數據並轉發到需要的端口（根據實際情況作爲代理客戶端的服務端口或直接作爲代理端口）使用。</li>
 </ol>
-
 
 <p>在 Amazon EC2 免費主機上弄了個，用了一個星期，非常穩定，強力推介！</p>
 <a rel="full-article" href="http://shadow.ma/blog/2013/01/01/getting-safe-and-high-performance-internet-access-through-shadowsocks-with-obfsproxy/">&infin; 文章鏈接</a>]]></content>

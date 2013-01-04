@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: 鏈接 | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/linked/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-03T20:54:15+08:00</updated>
+  <updated>2013-01-04T11:54:16+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -22,9 +22,20 @@
     <updated>2013-01-03T20:25:00+08:00</updated>
     <id>http://shadow.ma/blog/2013/01/03/phase-theme-for-hexo-and-octopress</id>
     
-    <content type="html"><![CDATA[<p>非常漂亮的主題，又是 <a href="http://twitter.com/tommy351" title="tommy351">@tommy351</a> 的作品，<a href="http://zespia.tw/blog/2012/12/07/hexo-theme-phase/" title="Phase — 史上最漂亮也最吃資源的主題">Phase</a> 原本是 <a href="http://twitter.com/tommy351" title="tommy351">@tommy351</a> 的私用主題，現在公開發佈，同時提供 Hexo 和 Octopress 的版本，主題以 <a href="http://zespia.tw/Octopress-Theme-Slash/index_tw.html" title="Slash — 專為 Octopress 設計的極簡主題">Slash</a> 為基礎開發（看看人家的設計，再看看我這個 _(:з」∠)_），最初爲 Octopress 設計，現在移植到了 Hexo ，Hexo 版還擁有更多的特性，作爲 Hexo 的作者往後的主題開發也都會以 Hexo 為主了（是不是可以成爲一個遷移到 Hexo 的理由？）。</p>
+    <content type="html"><![CDATA[<p>非常漂亮的主題，又是 <a href="http://twitter.com/tommy351" title="tommy351">@tommy351</a> 的作品，<a href="http://zespia.tw/blog/2012/12/07/hexo-theme-phase/" title="Phase — 史上最漂亮也最吃資源的主題">Phase</a> 原本是 <a href="http://twitter.com/tommy351" title="tommy351">@tommy351</a> 的私用主題，現在公開發佈，同時提供 Hexo 和 Octopress 的版本，主題以 <a href="http://zespia.tw/Octopress-Theme-Slash/index_tw.html" title="Slash — 專為 Octopress 設計的極簡主題">Slash</a> 為基礎開發<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，最初爲 Octopress 設計，現在移植到了 Hexo ，Hexo 版還擁有更多的特性，作爲 Hexo 的作者往後的主題開發也都會以 Hexo 為主了<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>。</p>
 
 <p>就像作者所說，這個主題非常的絢麗，但也非常吃資源，可以打開<a href="http://zespia.tw/hexo-theme-phase/" title="Phase">預覽頁面</a>感受下，感興趣的到作者<a href="http://zespia.tw/blog/2012/12/07/hexo-theme-phase/" title="Phase — 史上最漂亮也最吃資源的主題">發佈頁面</a>查看詳細說明吧。</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>看看人家的設計，再看看我這個 _(:з」∠)_<a href="#fnref:1" rel="reference">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>是不是可以成爲一個遷移到 Hexo 的理由？<a href="#fnref:2" rel="reference">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 <a rel="full-article" href="http://shadow.ma/blog/2013/01/03/phase-theme-for-hexo-and-octopress/">&infin; 文章鏈接</a>]]></content>
     
   </entry>
@@ -42,7 +53,18 @@
 
 <p>很早就在作者的 <a href="http://zespia.tw/blog/2012/10/11/hexo-debut/" title="Hexo 颯爽登場！">Blog</a> 上看到這個，只是當時 Octopress 都沒弄好，現在看到 <a href="http://twitter.com/lucifr" title="lucifr">@lucifr</a> 完全<a href="http://lucifr.com/2013/01/02/from-octopress-to-hexo/" title="从 Octopress 到 Hexo">遷移到了 Hexo</a>，就抓來本地試了下。</p>
 
-<p>相比基於 Ruby 的 Jekyll 和 Octopress，使用 Node.js 驅動的 Hexo 網頁生成速度更快（得益於 Google 的 V8 引擎？），而且作者更新給力，現在已經可用，對我來說基本能替代 Octopress 了，不過完全遷移要花點時間（其實從 Octopress 遷移是最簡單的，Hexo 引入了很多 Octopress 的<a href="http://zespia.tw/hexo/zh-TW/docs/tag-plugins.html">標籤外掛</a>，文章都不用怎麼改，只是考慮要不要扔掉現在這渣主題），畢竟 Octopress 也花了好久才調教的差不多，而且現在文章也不多還感受不到 Octopress 的<s>龜速</s>，先放本地慢慢調教，說不好什麼時候真的就遷移到 Hexo 了。</p>
+<p>相比基於 Ruby 的 Jekyll 和 Octopress，使用 Node.js 驅動的 Hexo 網頁生成速度更快<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，而且作者更新給力，現在已經可用，對我來說基本能替代 Octopress 了，不過完全遷移要花點時間<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，畢竟 Octopress 也花了好久才調教的差不多，而且現在文章也不多還感受不到 Octopress 的<s>龜速</s>，先放本地慢慢調教，說不好什麼時候真的就遷移到 Hexo 了。</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>得益於 Google 的 V8 引擎？<a href="#fnref:1" rel="reference">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>其實從 Octopress 遷移是最簡單的，Hexo 引入了很多 Octopress 的<a href="http://zespia.tw/hexo/zh-TW/docs/tag-plugins.html">標籤外掛</a>，文章都不用怎麼改，只是考慮要不要扔掉現在這渣主題<a href="#fnref:2" rel="reference">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 <a rel="full-article" href="http://shadow.ma/blog/2013/01/03/hexo-node-dot-js-based-blog-framework/">&infin; 文章鏈接</a>]]></content>
     
   </entry>
@@ -75,10 +97,9 @@
     <content type="html"><![CDATA[<p>通過 obfsproxy 混淆 shadowsocks 流量，避免代理被X，其它代理也可以舉一反三在中間加上一層 obfsproxy 來混淆數據，整理下思路：</p>
 
 <ol>
-<li>服務端通過 obfsproxy 混淆轉發代理服務，服務器防火牆只需打開 obfsproxy 的轉發端口即可；</li>
-<li>客戶端用 obfsproxy 接收服務器相應端口的混淆數據並轉發到需要的端口（根據實際情況作爲代理客戶端的服務端口或直接作爲代理端口）使用。</li>
+  <li>服務端通過 obfsproxy 混淆轉發代理服務，服務器防火牆只需打開 obfsproxy 的轉發端口即可；</li>
+  <li>客戶端用 obfsproxy 接收服務器相應端口的混淆數據並轉發到需要的端口（根據實際情況作爲代理客戶端的服務端口或直接作爲代理端口）使用。</li>
 </ol>
-
 
 <p>在 Amazon EC2 免費主機上弄了個，用了一個星期，非常穩定，強力推介！</p>
 <a rel="full-article" href="http://shadow.ma/blog/2013/01/01/getting-safe-and-high-performance-internet-access-through-shadowsocks-with-obfsproxy/">&infin; 文章鏈接</a>]]></content>
@@ -98,7 +119,7 @@
 
 <p>不能同步 Chrome，還以爲是自己的問題，到頭來就特麼只有那個號不能同步。這麼多天了，每天都試，都一個屌樣，通知什麼的都不給，什麼都不說，完全不知道這號到底怎麼了。</p>
 
-<p>書籤欄空空如也，這幾天遇到東西都不知怎麼存好，操操操操操操操！！</p>
+<p>書籤欄空空如也，這幾天遇到東西都不知怎麼存好，操操操操操操操！！  </p>
 
 <p>看看這鏈接裏的各種悲劇，我還是先把東西都備份的好，這個帳號重要東西實在太多了，希望不要有真要挖這貼起來鞭屍的時候。</p>
 <a rel="full-article" href="http://shadow.ma/blog/2012/11/05/google-you-stupid-cunt/">&infin; 文章鏈接</a>]]></content>

@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Gem | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/gem/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-03T20:54:15+08:00</updated>
+  <updated>2013-01-04T11:54:16+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -24,10 +24,8 @@
     
     <content type="html"><![CDATA[<p>開始折騰 Octopress 後接觸到了 Ruby，相關的內容也記一下。</p>
 
-<p>gem 命令可以使用 <code>--user-install</code> 的選項把套件安裝到主目錄下，但使用 <code>bundle install</code> 安裝套件時並不讀取在 <code>.gemrc</code> 中設置的選項，仍然會詢問 root 密碼要將套件安裝到系統中，雖然用 gem 可以很方便的管理安裝的套件，但沒有用系統的包管理工具而安裝到系統中那麼多東西，讓人很不舒服，而且剛開始使用 gem 時我就設置了 <code>--user-install</code> 的選項，之前安裝的套件包括 bundler 本身都在主目錄中，所以得讓 bundler 把套件也安裝到相同的地方，便於管理。</p>
-
-<!-- more -->
-
+<p>gem 命令可以使用 <code>--user-install</code> 的選項把套件安裝到主目錄下，但使用 <code>bundle install</code> 安裝套件時並不讀取在 <code>.gemrc</code> 中設置的選項，仍然會詢問 root 密碼要將套件安裝到系統中，雖然用 gem 可以很方便的管理安裝的套件，但沒有用系統的包管理工具而安裝到系統中那麼多東西，讓人很不舒服，而且剛開始使用 gem 時我就設置了 <code>--user-install</code> 的選項，之前安裝的套件包括 bundler 本身都在主目錄中，所以得讓 bundler 把套件也安裝到相同的地方，便於管理。
+<!-- more --></p>
 
 <p>方法很簡單，可以在執行 <code>bundle install</code> 時加上 <code>--path PATH</code> 的選項，其中參數 <code>PATH</code> 指定安裝目錄，也可以設置 <code>BUNDLE_PATH</code> 的環境變量，比如：</p>
 

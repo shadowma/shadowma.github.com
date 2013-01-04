@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Arch Linux | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/arch-linux/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-03T20:54:15+08:00</updated>
+  <updated>2013-01-04T11:54:16+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -26,29 +26,24 @@
 
 <p><img src="https://static.xind.in/blog/pic/2012/12/arch-black-preview.png" alt="Arch logo black preview" /></p>
 
-<p>最初是因爲安裝了源中的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a>，其所帶的兩個主題都非常簡潔，非常喜歡其中的黑色主題 Simply Black，所以想找到此風格的系統其餘部件的主題。</p>
+<p>最初是因爲安裝了源中的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a>，其所帶的兩個主題都非常簡潔，非常喜歡其中的黑色主題 Simply Black，所以想找到此風格的系統其餘部件的主題。
+<!-- more --></p>
 
-<!-- more -->
-
-
-<h2>KSplash</h2>
-
+<h2 id="ksplash">KSplash</h2>
 <p>相同風格的 KSplash 主題 kde-look 上就有，不過原始源掛了，不能直接搜索安裝，還好其<a href="http://kde-look.org/content/show.php?content=98805" title="OxyArch Splash Screen">頁面</a>評論裏還有人共享，可以從 AUR 安裝 <a href="https://aur.archlinux.org/packages/ksplash-oxyarch/">ksplash-oxyarch</a> 這個包。</p>
 
-<p>除了上面提到的，我還修改了 Charak 的默認 KSplash 主題 <a href="http://malcer.deviantart.com/art/Dharma-KSplash-QML-theme-323176827" title="Dharma KSplash-QML theme">Dharma KSplash-QML</a>，預覽如下：</p>
+<p>除了上面提到的，我還修改了 Charak 的默認 KSplash 主題 <a href="http://malcer.deviantart.com/art/Dharma-KSplash-QML-theme-323176827" title="Dharma KSplash-QML theme">Dharma KSplash-QML</a>，預覽如下： </p>
 
 <p><img src="https://static.xind.in/blog/pic/2012/12/ksplash-dharma-arch-preview.png" alt="Dharma Arch KSplash preview" /></p>
 
 <p>這風火輪會讓我有啓動時間縮短的錯覺。這個我上傳到了 <a href="http://kde-look.org/content/show.php/Dharma+Arch?content=155983" title="Dharma Arch">kde-look</a> 上，AUR 上的包叫 <a href="https://aur.archlinux.org/packages/ksplash-dharma-arch/">ksplash-dharma-arch</a>。</p>
 
-<h2>Plymouth</h2>
-
+<h2 id="plymouth">Plymouth</h2>
 <p>之前一直用的 Fbsplash，AUR 上的 <a href="https://aur.archlinux.org/packages.php?ID=26966" title="fbsplash-themes-arch-banner">arch-banner</a> 主題就挺好的，但自從 systemd 取代 SysVinit 後就有些小問題，前段時間升級系統後直接不顯示了，所以就轉到了 Plymouth。</p>
 
 <p>Gnome-look 上有個差不多符合我要求的主題 <a href="http://gnome-look.org/content/show.php?content=141697" title="Arch-logo plymouth">Arch-logo plymouth</a>，就是 logo 有點那啥，我直接替換了它，這東西我沒法截圖，所以沒能像上面一樣共享，感興趣的在文章後下載吧。</p>
 
-<h2>Grub2</h2>
-
+<h2 id="grub2">Grub2</h2>
 <p>主題修改自 <a href="https://github.com/Generator/Grub2-themes">Archinox</a>，換了 logo 和圖標，背景改成了黑色的，這個也和上面一樣在文章後下載吧。</p>
 
 <p>以上除了源中已經有的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a> 我都打包在了一起，歡迎<a href="https://static.xind.in/blog/attachment/2012/12/arch-logo-block-themes.tar.gz">下載</a>拍磚。</p>
@@ -65,15 +60,13 @@
     <updated>2012-10-06T19:35:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd</id>
     
-    <content type="html"><![CDATA[<p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。</p>
-
-<!-- more -->
-
+    <content type="html"><![CDATA[<p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。
+<!-- more --></p>
 
 <p>照着 wiki 來，選擇了純 systemd 安裝，完全替代了 sysvinit 和 initscripts，因爲 systemd 有自帶 journal 所以幹掉了 syslog-ng，服務配置完後還啓用了 readahead。</p>
 
 <p><code>
-$ systemd-analyze
+$ systemd-analyze 
 Startup finished in 3608ms (kernel) + 3562ms (userspace) = 7170ms
 </code></p>
 

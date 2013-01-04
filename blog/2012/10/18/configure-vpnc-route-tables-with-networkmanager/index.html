@@ -110,49 +110,46 @@
 	
 	<div class="entry-content"><p>昨晚看到個 VPN 服務 <a href="http://106.187.44.5/home?referral=70588D95C2F9DF00D908B3CC2282F650" title="IQLink">IQLink</a>，免費用戶每月有 100G 流量，測了下速度還不錯，可以留着以備不時之需。</p>
 
-<p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。</p>
-
-<!-- more -->
-
+<p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。
+<!-- more --></p>
 
 <p>IQLink 提供的是 Cisco VPN，Linux 下要用 VPNC 連接，chnroutes 網站上提供了 PPTP 和 OpenVPN 的設置教程，唯獨沒有 VPNC，還好 VPNC 支持連接腳本，默認配置的 <code>/etc/vpnc/vpnc-script</code> 能在執行 <code>pre-init</code>、<code>connect</code>、<code>post-connect</code>、<code>disconnect</code>、<code>post-disconnect</code> 和 <code>reconnect</code> 六種 action 時調用自定義腳本，只要把 <code>python chnroutes.py -p linux</code> 生成的腳本 <code>ip-pre-up</code> 和 <code>ip-down</code> 分別放入 <code>/etc/vpnc/pre-init.d</code> 和 <code>/etc/vpnc/post-disconnect.d</code> 就能在連接 VPN 前後成功添加恢復路由表，但在使用 NetworkManager 連接 VPNC 時，發現這些腳本根本就沒有被執行，NM 的 VPNC 插件用自帶的 <code>nm-vpnc-service-vpnc-helper</code> 替代了 <code>vpnc-script</code>，完全不讀取 <code>/etc/vpnc</code> 下的配置，而且這東西是二進制文件沒法改，試過直接替換成 <code>vpnc-script</code> 也不行，正準備放棄時突然想起 NetworkManager 也支持連接腳本，直接用 NetworkManager 配置的話就不用再爲每種 VPN 都設定路由表了。</p>
 
-<p>把下面的腳本（根據自己實際情況修改）放入 <code>/etc/NetworkManager/dispatcher.d</code>，腳本中在觸發 <code>vpn-down</code> 恢復路由表的操作中我排除了正在配置的 VPNC 連接的 UUID，因爲斷開連接時路由表已經被恢復，導致腳本返回一大串錯誤，這<s>應該是 <code>nm-vpnc-service-vpnc-helper</code> 中有對路由表的操作的原因</s> 是 VPN 服務端設置決定的，VPN 服務有添加網關的話會自動修改路由表，斷開連接後路由表被恢復，chnroutes 的條目也一起被清除，其實是個無傷大雅的問題。</p>
+<p>把下面的腳本（根據自己實際情況修改）放入 <code>/etc/NetworkManager/dispatcher.d</code>，腳本中在觸發 <code>vpn-down</code> 恢復路由表的操作中我排除了正在配置的 VPNC 連接的 UUID，因爲斷開連接時路由表已經被恢復，導致腳本返回一大串錯誤，這<s>應該是 `nm-vpnc-service-vpnc-helper` 中有對路由表的操作的原因</s> 是 VPN 服務端設置決定的，VPN 服務有添加網關的話會自動修改路由表，斷開連接後路由表被恢復，chnroutes 的條目也一起被清除，其實是個無傷大雅的問題。</p>
 
-<figure class='code'><figcaption><span>99-chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">INTERFACE</span><span class="o">=</span><span class="nv">$1</span>
-</span><span class='line'><span class="nv">STATUS</span><span class="o">=</span><span class="nv">$2</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$STATUS&quot;</span> in
-</span><span class='line'>        <span class="s1">&#39;vpn-up&#39;</span><span class="o">)</span>
-</span><span class='line'>                <span class="nb">exec</span> /etc/chnroutes/vpnup <span class="c">#chnroutes 生成的 ip-pre-up</span>
-</span><span class='line'>                ;;
-</span><span class='line'>        <span class="s1">&#39;vpn-down&#39;</span><span class="o">)</span>
-</span><span class='line'>                <span class="c"># if [ &quot;$CONNECTION_UUID&quot; != &quot;1f2c647b-dd70-4f97-8300-0cf6cd4a2e4c&quot; ]; then</span>
-</span><span class='line'>                <span class="nb">exec</span> /etc/chnroutes/vpndown <span class="c">#chnroutes 生成的 ip-down</span>
-</span><span class='line'>                <span class="c"># fi</span>
-</span><span class='line'>                ;;
-</span><span class='line'><span class="k">esac</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>99-chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c">#!/bin/sh</span>
+</span><span class="line">
+</span><span class="line"><span class="nv">INTERFACE</span><span class="o">=</span><span class="nv">$1</span>
+</span><span class="line"><span class="nv">STATUS</span><span class="o">=</span><span class="nv">$2</span>
+</span><span class="line">
+</span><span class="line"><span class="k">case</span> <span class="s2">&quot;$STATUS&quot;</span> in
+</span><span class="line">        <span class="s1">&#39;vpn-up&#39;</span><span class="o">)</span>
+</span><span class="line">                <span class="nb">exec</span> /etc/chnroutes/vpnup <span class="c">#chnroutes 生成的 ip-pre-up</span>
+</span><span class="line">                ;;
+</span><span class="line">        <span class="s1">&#39;vpn-down&#39;</span><span class="o">)</span>
+</span><span class="line">                <span class="c"># if [ &quot;$CONNECTION_UUID&quot; != &quot;1f2c647b-dd70-4f97-8300-0cf6cd4a2e4c&quot; ]; then</span>
+</span><span class="line">                <span class="nb">exec</span> /etc/chnroutes/vpndown <span class="c">#chnroutes 生成的 ip-down</span>
+</span><span class="line">                <span class="c"># fi</span>
+</span><span class="line">                ;;
+</span><span class="line"><span class="k">esac</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>到此處還不能正常使用，chnroutes 生成的腳本是給 PPTP 用的，默認是要在 PPP 撥號前執行，在 VPN 鏈接前路由表就設置好了，而 NetworkManager 連接腳本中的 <code>vpn-up</code> 要在連接建立後才會被觸發，<s>像我正在配置的 VPNC 因爲之前提到的 <code>nm-vpnc-service-vpnc-helper</code> 中有對路由表的操作</s> VPN 服務有修改路由表的話，腳本中的 <code>OLDGW</code> 得到的值會會是 VPN 網關的地址，路由表會被設成讓所有國內 ip 都走 VPN，解決方法是把 chnroutes 生成的設置腳本 <code>ip-pre-up</code>（上面腳本中的 <code>vpnup</code>）中的：</p>
+<p>到此處還不能正常使用，chnroutes 生成的腳本是給 PPTP 用的，默認是要在 PPP 撥號前執行，在 VPN 鏈接前路由表就設置好了，而 NetworkManager 連接腳本中的 <code>vpn-up</code> 要在連接建立後才會被觸發，<s>像我正在配置的 VPNC 因爲之前提到的 `nm-vpnc-service-vpnc-helper` 中有對路由表的操作</s> VPN 服務有修改路由表的話，腳本中的 <code>OLDGW</code> 得到的值會會是 VPN 網關的地址，路由表會被設成讓所有國內 ip 都走 VPN，解決方法是把 chnroutes 生成的設置腳本 <code>ip-pre-up</code>（上面腳本中的 <code>vpnup</code>）中的：</p>
 
 <pre><code>OLDGW=`ip route show | grep '^default' | sed -e 's/default via \([^ ]*\).*/\1/'`
 </code></pre>
@@ -166,12 +163,10 @@
 
 <p>其實沒必要像我一樣把 <code>ip-pre-up</code> 和 <code>ip-down</code> 改成 <code>vpnup</code> 和 <code>vpndown</code>，只是這裏 <code>vpnup</code> 已經不是 pre-up 了，看着不爽而已。</p>
 
-<h2>參考資料</h2>
-
+<h2 id="section">參考資料</h2>
 <ul>
-<li><a href="http://blog.xuming.net/2010/04/openvpn.html" title="Ubuntu 9.10下使用Network-manager 配置openvpn">Ubuntu 9.10下使用Network-manager 配置openvpn</a></li>
+  <li><a href="http://blog.xuming.net/2010/04/openvpn.html" title="Ubuntu 9.10下使用Network-manager 配置openvpn">Ubuntu 9.10下使用Network-manager 配置openvpn</a></li>
 </ul>
-
 </div>
 
 

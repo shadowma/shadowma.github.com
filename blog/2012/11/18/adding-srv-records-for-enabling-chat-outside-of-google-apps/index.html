@@ -108,29 +108,26 @@
 	<span class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">Xinding Ma</a> (<span class="nickname">Shadow Ma</span>)</span>
 	</div>
 	
-	<div class="entry-content"><p>雖然一直把託管在 Google Apps 的域名郵箱和 Gtalk 放聯繫方式裏，卻一直沒怎麼用，尤其是 Gtalk，最近要用它加個羣時才發現默認情況下只能添加 Gtalk 網絡中的用戶爲好友，要和網絡外的 XMPP 用戶聊天需要爲域名設置 SRV 記錄，參照 <a href="https://support.google.com/a/bin/answer.py?hl=zh-Hant&amp;answer=34143" title="在 Google Apps 之外啟用即時通訊">Google Apps 說明文檔</a>添加就行。</p>
-
-<!-- more -->
-
+	<div class="entry-content"><p>雖然一直把託管在 Google Apps 的域名郵箱和 Gtalk 放聯繫方式裏，卻一直沒怎麼用，尤其是 Gtalk，最近要用它加個羣時才發現默認情況下只能添加 Gtalk 網絡中的用戶爲好友，要和網絡外的 XMPP 用戶聊天需要爲域名設置 SRV 記錄，參照 <a href="https://support.google.com/a/bin/answer.py?hl=zh-Hant&amp;answer=34143" title="在 Google Apps 之外啟用即時通訊">Google Apps 說明文檔</a>添加就行。
+<!-- more --></p>
 
 <p>對於像我一樣使用 CloudFlare 管理 DNS 的，因爲 CloudFlare 不提供快速添加 Google Apps 相關記錄的工具和嚮導，如果覺得手動添加很麻煩，可以創建如下文件，然後在 DNS 設置中選擇附加這個 zone 文件就能快速添加好。</p>
 
-<figure class='code'><figcaption><span>google_apps_srv_records&#46;zone </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>; SRV
-</span><span class='line'>_xmpp-server._tcp.@   1   IN  SRV 5   0   5269    xmpp-server.l.google.com
-</span><span class='line'>_xmpp-server._tcp.@   1   IN  SRV 20  0   5269    alt1.xmpp-server.l.google.com
-</span><span class='line'>_xmpp-server._tcp.@   1   IN  SRV 20  0   5269    alt2.xmpp-server.l.google.com
-</span><span class='line'>_xmpp-server._tcp.@   1   IN  SRV 20  0   5269    alt3.xmpp-server.l.google.com
-</span><span class='line'>_xmpp-server._tcp.@   1   IN  SRV 20  0   5269    alt4.xmpp-server.l.google.com</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>google_apps_srv_records&#46;zone </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">; SRV
+</span><span class="line">_xmpp-server._tcp.@	1	IN	SRV	5	0	5269	xmpp-server.l.google.com
+</span><span class="line">_xmpp-server._tcp.@	1	IN	SRV	20	0	5269	alt1.xmpp-server.l.google.com
+</span><span class="line">_xmpp-server._tcp.@	1	IN	SRV	20	0	5269	alt2.xmpp-server.l.google.com
+</span><span class="line">_xmpp-server._tcp.@	1	IN	SRV	20	0	5269	alt3.xmpp-server.l.google.com
+</span><span class="line">_xmpp-server._tcp.@	1	IN	SRV	20	0	5269	alt4.xmpp-server.l.google.com</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>手動的話如圖把記錄都添加上就行：<br/>
+<p>手動的話如圖把記錄都添加上就行：<br />
 <img src="https://static.xind.in/blog/pic/2012/11/cloudflare-srv-record.png" alt="CloudFlare SRV Record" /></p>
 
 <p>等 DNS 生效就能讓此域名的 Gtalk 用戶和公共 XMPP 網絡用戶聊天了。</p>
