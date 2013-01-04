@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Octopress | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/octopress/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-04T11:54:16+08:00</updated>
+  <updated>2013-01-05T00:38:31+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -82,14 +82,16 @@ categories:  隨筆{essay}
 
 <p>但這裏存在兩個問題，一是每次建立分類時都必須加上後面的分類目錄名稱，不然在 generate 時會報錯，二是爲了規範 url 原來的插件會先把分類中的大寫轉換爲小寫、空格替換爲「-」才作爲目錄名，但這個字符串處理也被作者去除了，雖然指定目錄名時稍加注意就好，但增強健壯性的話，就算以後隨意些也沒問題。</p>
 
-<p>第一個問題，在調用分類的地方加上條件判斷，指定了目錄名時先作相應處理，沒有指定目錄名就像原來一樣使用這個分類，比如:
-<code>ruby
+<p>第一個問題，在調用分類的地方加上條件判斷，指定了目錄名時先作相應處理，沒有指定目錄名就像原來一樣使用這個分類，比如:</p>
+
+<p><code>ruby
 self.data['title']       = "#{title_prefix}#{if (/.*{.*}$/ === category) then "#{category[/[^{]*/]}" else "#{category}" end}"
 </code>
 在指定了目錄名時分類會變成 <code>&lt;分類顯示名稱&gt;{&lt;分類目錄名稱&gt;}</code> 的格式，需要用正則表達式 <code>category[/[ ^ { ]*/]</code> 取出 <code>&lt;分類顯示名稱&gt;</code> 這一部分用於顯示，沒有指定目錄名時直接就是 <code>&lt;分類顯示名稱&gt;</code>，這樣只有在分類是中文時才需要指定目錄名。</p>
 
-<p>目錄名的部分也作相應修改，比如：
-<code>ruby
+<p>目錄名的部分也作相應修改，比如：</p>
+
+<p><code>ruby
 self.write_category_index(File.join(dir, "#{if (/.*{.*}$/ === category) then "#{category[/(?&lt;={)[^}]*/]}" else "#{category}" end}".gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase), category)
 </code>
 正則表達式 <code>category[/(?&lt;={)[^}]*/]</code> 用於取出大括號中的分類目錄名稱，這裏保留 gsub 和 downcase 的字符串處理，在指定目錄名稱時可以不用在意空格和大小寫。</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: PulseAudio | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/pulseaudio/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-04T11:54:16+08:00</updated>
+  <updated>2013-01-05T00:38:31+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -31,11 +31,13 @@
 
 <p>去年的<a href="https://bbs.archlinux.org/viewtopic.php?id=132765" title="KDE + Pulseaudio: delay after kdm login">帖子</a>了，原因是 <code>/etc/xdg/autostart/</code> 下有兩個自啓動 PulseAudio 的啓動器 <code>pulseaudio.desktop</code> 和 <code>pulseaudio-kde.desktop</code> 都會在 KDE 啓動時被啓用導致了那個延遲，刪除一個就能解決，在另外一個<a href="https://bbs.archlinux.org/viewtopic.php?id=149057" title="Long delay on KDE login caused by Pulseaudio">帖子</a>中有貼出一個來自 Ubuntu 的補丁給 <code>pulseaudio.desktop</code> 添加 <code>NotShowIn=KDE;</code> 的選項讓它不在 KDE 中被啓用，我覺得這個方法更好些。</p>
 
-<p>可以添加到文件最後：
-<code>bash
+<p>可以添加到文件最後：</p>
+
+<p><code>bash
 echo 'echo "NotShowIn=KDE;" &gt;&gt; /etc/xdg/autostart/pulseaudio.desktop' | sudo sh
-</code>
-話說 <code>pulseaudio-kde.desktop</code> 中有 <code>OnlyShowIn=KDE;</code> 的選項，不會給其它環境造成問題。</p>
+</code></p>
+
+<p>話說 <code>pulseaudio-kde.desktop</code> 中有 <code>OnlyShowIn=KDE;</code> 的選項，不會給其它環境造成問題。</p>
 ]]></content>
     
   </entry>

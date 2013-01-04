@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-04T11:54:16+08:00</updated>
+  <updated>2013-01-05T00:38:31+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -180,11 +180,13 @@
 
 <p>去年的<a href="https://bbs.archlinux.org/viewtopic.php?id=132765" title="KDE + Pulseaudio: delay after kdm login">帖子</a>了，原因是 <code>/etc/xdg/autostart/</code> 下有兩個自啓動 PulseAudio 的啓動器 <code>pulseaudio.desktop</code> 和 <code>pulseaudio-kde.desktop</code> 都會在 KDE 啓動時被啓用導致了那個延遲，刪除一個就能解決，在另外一個<a href="https://bbs.archlinux.org/viewtopic.php?id=149057" title="Long delay on KDE login caused by Pulseaudio">帖子</a>中有貼出一個來自 Ubuntu 的補丁給 <code>pulseaudio.desktop</code> 添加 <code>NotShowIn=KDE;</code> 的選項讓它不在 KDE 中被啓用，我覺得這個方法更好些。</p>
 
-<p>可以添加到文件最後：
-&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;figcaption&gt;<span></span>&lt;/figcaption&gt;&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class="bash"><span class="line"><span class="nb">echo</span> <span class="s1">&#39;echo &quot;NotShowIn=KDE;&quot; &gt;&gt; /etc/xdg/autostart/pulseaudio.desktop&#39;</span> | sudo sh
-</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;
-話說 <code>pulseaudio-kde.desktop</code> 中有 <code>OnlyShowIn=KDE;</code> 的選項，不會給其它環境造成問題。</p>
+<p>可以添加到文件最後：</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nb">echo</span> <span class="s1">&#39;echo &quot;NotShowIn=KDE;&quot; &gt;&gt; /etc/xdg/autostart/pulseaudio.desktop&#39;</span> | sudo sh
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>話說 <code>pulseaudio-kde.desktop</code> 中有 <code>OnlyShowIn=KDE;</code> 的選項，不會給其它環境造成問題。</p>
 ]]></content>
     
   </entry>
@@ -239,17 +241,19 @@
 
 <p>但這裏存在兩個問題，一是每次建立分類時都必須加上後面的分類目錄名稱，不然在 generate 時會報錯，二是爲了規範 url 原來的插件會先把分類中的大寫轉換爲小寫、空格替換爲「-」才作爲目錄名，但這個字符串處理也被作者去除了，雖然指定目錄名時稍加注意就好，但增強健壯性的話，就算以後隨意些也沒問題。</p>
 
-<p>第一個問題，在調用分類的地方加上條件判斷，指定了目錄名時先作相應處理，沒有指定目錄名就像原來一樣使用這個分類，比如:
-&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;figcaption&gt;<span></span>&lt;/figcaption&gt;&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class="ruby"><span class="line"><span class="nb">self</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;title&#39;</span><span class="o">]</span>       <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">title_prefix</span><span class="si">}#{</span><span class="k">if</span> <span class="p">(</span><span class="sr">/.*{.*}$/</span> <span class="o">===</span> <span class="n">category</span><span class="p">)</span> <span class="k">then</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="o">[</span><span class="sr">/[^{]*/</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">end</span><span class="si">}</span><span class="s2">&quot;</span>
-</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;
-在指定了目錄名時分類會變成 <code>&lt;分類顯示名稱&gt;{&lt;分類目錄名稱&gt;}</code> 的格式，需要用正則表達式 <code>category[/[ ^ { ]*/]</code> 取出 <code>&lt;分類顯示名稱&gt;</code> 這一部分用於顯示，沒有指定目錄名時直接就是 <code>&lt;分類顯示名稱&gt;</code>，這樣只有在分類是中文時才需要指定目錄名。</p>
+<p>第一個問題，在調用分類的地方加上條件判斷，指定了目錄名時先作相應處理，沒有指定目錄名就像原來一樣使用這個分類，比如:</p>
 
-<p>目錄名的部分也作相應修改，比如：
-&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;figcaption&gt;<span></span>&lt;/figcaption&gt;&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class="ruby"><span class="line"><span class="nb">self</span><span class="o">.</span><span class="n">write_category_index</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="k">if</span> <span class="p">(</span><span class="sr">/.*{.*}$/</span> <span class="o">===</span> <span class="n">category</span><span class="p">)</span> <span class="k">then</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="o">[</span><span class="sr">/(?&lt;={)[^}]*/</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">end</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/_|\P{Word}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/-{2,}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span><span class="p">),</span> <span class="n">category</span><span class="p">)</span>
-</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;
-正則表達式 <code>category[/(?&lt;={)[^}]*/]</code> 用於取出大括號中的分類目錄名稱，這裏保留 gsub 和 downcase 的字符串處理，在指定目錄名稱時可以不用在意空格和大小寫。</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">self</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;title&#39;</span><span class="o">]</span>       <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">title_prefix</span><span class="si">}#{</span><span class="k">if</span> <span class="p">(</span><span class="sr">/.*{.*}$/</span> <span class="o">===</span> <span class="n">category</span><span class="p">)</span> <span class="k">then</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="o">[</span><span class="sr">/[^{]*/</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">end</span><span class="si">}</span><span class="s2">&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>在指定了目錄名時分類會變成 <code>&lt;分類顯示名稱&gt;{&lt;分類目錄名稱&gt;}</code> 的格式，需要用正則表達式 <code>category[/[ ^ { ]*/]</code> 取出 <code>&lt;分類顯示名稱&gt;</code> 這一部分用於顯示，沒有指定目錄名時直接就是 <code>&lt;分類顯示名稱&gt;</code>，這樣只有在分類是中文時才需要指定目錄名。</p>
+
+<p>目錄名的部分也作相應修改，比如：</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">self</span><span class="o">.</span><span class="n">write_category_index</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="k">if</span> <span class="p">(</span><span class="sr">/.*{.*}$/</span> <span class="o">===</span> <span class="n">category</span><span class="p">)</span> <span class="k">then</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="o">[</span><span class="sr">/(?&lt;={)[^}]*/</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">end</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/_|\P{Word}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/-{2,}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span><span class="p">),</span> <span class="n">category</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>正則表達式 <code>category[/(?&lt;={)[^}]*/]</code> 用於取出大括號中的分類目錄名稱，這裏保留 gsub 和 downcase 的字符串處理，在指定目錄名稱時可以不用在意空格和大小寫。</p>
 
 <p>其它部分可以參考我修改的標籤插件。</p>
 <div><script src="https://gist.github.com/4109451.js"></script>
@@ -933,10 +937,11 @@ end
 <p>使用本地的轉發服務查詢 twitter.com 返回正確 ip，說明在服務器最前列的國內的 DNS 的確沒查詢列表外的域名。</p>
 
 <h2 id="section-4">疑難解答</h2>
-<p>###系統啓動時不可用
-因爲 pdnsd 服務啓動時網絡還沒連接上，服務器無法通過檢測被忽略，導致無服務器可進行查詢，請將至少將一組服務器中的 <code>uptest</code> 設爲 none，並設置 <code>preset</code> 爲 on，讓服務器初始爲可用。</p>
 
-<h2 id="section-5">後記</h2>
+<h3 id="section-5">系統啓動時不可用</h3>
+<p>因爲 pdnsd 服務啓動時網絡還沒連接上，服務器無法通過檢測被忽略，導致無服務器可進行查詢，請將至少將一組服務器中的 <code>uptest</code> 設爲 none，並設置 <code>preset</code> 爲 on，讓服務器初始爲可用。</p>
+
+<h2 id="section-6">後記</h2>
 <p>從之後的測試來看上面的方案並不可靠，原本優先使用 tcp 的原因是希望有更好的速度，但爲了預防查詢失敗仍然不得不把支持非標準端口查詢但在我這兒速度較慢的服務器放在前列，這樣還不如直接用非標準端口的 udp 方式從這些服務器查詢，而且在 tcp_udp 模式下，tcp 查詢超時就會轉而使用 udp 方式，但 tcp 請求被重置，會被當作 negative 結果返回，這樣的話就要把 <code>neg_domain_pol</code> 設爲 off，不緩存 negative 結果，要不很長一段時間都無法訪問這域名，但所有的 negative 結果都不緩存的話，會增加不必要的查詢請求，耗費資源。</p>
 
 <p>總之，現階段最好的方案是直接使用非標準端口的 udp 查詢，把 <code>query_method</code> 設成 udp_only，刪去不支持非標準端口查詢的服務器，要是自已有境外的服務器資源的話，可以把自己要用的 DNS 服務器轉發到非標準端口來用。</p>
@@ -999,7 +1004,11 @@ end
 </span><span class="line">chmod +x vpn*
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>最後別忘記 <code>chmod +x /etc/cron.weekly/chnroutes</code>。</p>
+<p>最後別忘記</p>
+
+<pre><code>chmod +x /etc/cron.weekly/chnroutes
+</code></pre>
+
 ]]></content>
     
   </entry>
