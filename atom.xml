@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-05T01:18:54+08:00</updated>
+  <updated>2013-01-13T21:49:17+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -119,8 +119,9 @@
 
 <p><img src="https://static.xind.in/blog/pic/2012/12/arch-black-preview.png" alt="Arch logo black preview" /></p>
 
-<p>最初是因爲安裝了源中的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a>，其所帶的兩個主題都非常簡潔，非常喜歡其中的黑色主題 Simply Black，所以想找到此風格的系統其餘部件的主題。
-<!-- more --></p>
+<p>最初是因爲安裝了源中的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a>，其所帶的兩個主題都非常簡潔，非常喜歡其中的黑色主題 Simply Black，所以想找到此風格的系統其餘部件的主題。</p>
+
+<!-- more -->
 
 <h2 id="ksplash">KSplash</h2>
 <p>相同風格的 KSplash 主題 kde-look 上就有，不過原始源掛了，不能直接搜索安裝，還好其<a href="http://kde-look.org/content/show.php?content=98805" title="OxyArch Splash Screen">頁面</a>評論裏還有人共享，可以從 AUR 安裝 <a href="https://aur.archlinux.org/packages/ksplash-oxyarch/">ksplash-oxyarch</a> 這個包。</p>
@@ -153,9 +154,11 @@
     <updated>2012-12-15T19:06:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/12/15/fixing-octopress-embed-gist-was-broken-caused-by-gist-changes</id>
     
-    <content type="html"><![CDATA[<p>翻以前的文章時發現嵌入的 Gist 代碼都沒了，第一反應就是 Github 悲劇了，設置全局代理再刷新還是一樣，測試了下發現網頁中引用 Gist 代碼的 JS 並沒有返回代碼內容，去掉 JS URL 後面的文件名參數才正常，看來是 Gist 前幾天的<a href="https://github.com/blog/1276-welcome-to-a-new-gist" title="Welcome to a New Gist">改版</a>導致的。
+    <content type="html"><![CDATA[<p>翻以前的文章時發現嵌入的 Gist 代碼都沒了，第一反應就是 Github 悲劇了，設置全局代理再刷新還是一樣，測試了下發現網頁中引用 Gist 代碼的 JS 並沒有返回代碼內容，去掉 JS URL 後面的文件名參數才正常，看來是 Gist 前幾天的<a href="https://github.com/blog/1276-welcome-to-a-new-gist" title="Welcome to a New Gist">改版</a>導致的。</p>
+
 <!-- more -->
-之前引用 Gist 代碼時都沒指定文件名，Octopress 的 Gist 插件在沒指定文件名時仍然會加上一個文件名參數，這個空的文件名導致了這個問題，到 Octopress 的 Github 上看了下已經有人給出了解決方法，參照這個 <a href="https://github.com/imathis/octopress/pull/849" title="Fix broken gist plugin">pull request</a> 修改插件後不指定文件名也能正常引用到代碼了，但內容是有了樣式卻錯亂了，因爲引用的 Gist 代碼塊的 HTML 結構和樣式也發生了改變，同樣也已經有一個 <a href="https://github.com/imathis/octopress/issues/847" title="GitHub gist changes break gist plugin formatting">issues</a> 在討論這個問題，雖然只是樣式的問題，但模板不同細節會有一些差異，參照嵌入的 Gist 代碼所引用的 <a href="https://gist.github.com/assets/embed-3634f6c602e8992c754bcfc7dad0a593.css">css</a> 很快就能找出問題，行號出現了並排的情況是因爲沒有清除浮動，代碼區域的大片空白以及不能對齊行號是因爲字體大小不同導致，疊加的 <code>font-size</code> 屬性造成了這個問題。</p>
+
+<p>之前引用 Gist 代碼時都沒指定文件名，Octopress 的 Gist 插件在沒指定文件名時仍然會加上一個文件名參數，這個空的文件名導致了這個問題，到 Octopress 的 Github 上看了下已經有人給出了解決方法，參照這個 <a href="https://github.com/imathis/octopress/pull/849" title="Fix broken gist plugin">pull request</a> 修改插件後不指定文件名也能正常引用到代碼了，但內容是有了樣式卻錯亂了，因爲引用的 Gist 代碼塊的 HTML 結構和樣式也發生了改變，同樣也已經有一個 <a href="https://github.com/imathis/octopress/issues/847" title="GitHub gist changes break gist plugin formatting">issues</a> 在討論這個問題，雖然只是樣式的問題，但模板不同細節會有一些差異，參照嵌入的 Gist 代碼所引用的 <a href="https://gist.github.com/assets/embed-3634f6c602e8992c754bcfc7dad0a593.css">css</a> 很快就能找出問題，行號出現了並排的情況是因爲沒有清除浮動，代碼區域的大片空白以及不能對齊行號是因爲字體大小不同導致，疊加的 <code>font-size</code> 屬性造成了這個問題。</p>
 
 <p>問題雖然解決，但就像在這個 <a href="https://github.com/imathis/octopress/issues/847" title="GitHub gist changes break gist plugin formatting">issues</a> 中作者所<a href="https://github.com/imathis/octopress/issues/847#issuecomment-11386079">說</a>的，在網頁中嵌入外部內容存在很多弊端，Octopress 中插入本地代碼可以設置標題而且可以指定鏈接，以後儘量用這種方式吧。</p>
 ]]></content>
@@ -171,8 +174,9 @@
     <updated>2012-11-23T01:27:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/11/23/delay-after-kde-login-caused-by-pulseaudio</id>
     
-    <content type="html"><![CDATA[<p>準確來說是在 KDE 啓動的 Splash 結束後，桌面會僵住大約十秒鍾啓動音效才響起，托盤的 KMix 圖標最後出現才啓動完成，其間任何操作都沒響應。
-<!-- more --></p>
+    <content type="html"><![CDATA[<p>準確來說是在 KDE 啓動的 Splash 結束後，桌面會僵住大約十秒鍾啓動音效才響起，托盤的 KMix 圖標最後出現才啓動完成，其間任何操作都沒響應。</p>
+
+<!-- more -->
 
 <p>很早就遇到這個問題，一直找不到根源，每次啓動都得多等十多秒，前段時間重裝系統後變正常了就以爲只是個人配置文件的問題，直到用 VirtualBox 遇到聲卡獨佔的老問題，裝上 Pulse 後延遲又出現了，試了幾次確定是 Pulse 的問題，但當時沒找到解決方案，不得不棄用它，Alsa 聲卡獨佔也不是總會出現，而且虛擬機只是網銀會用到沒聲音也沒關係，但那個延遲實在忍不了。</p>
 
@@ -200,8 +204,9 @@
     <updated>2012-11-21T16:13:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page</id>
     
-    <content type="html"><![CDATA[<p>最近經常在 G+ 上看到通過 <a href="http://wayshine.us/">Apollo Wayne</a> 的音樂<a href="http://music.wayshine.us/">分享服務</a>分享的正在播放音樂，看着不錯想跟風弄，但看了下<a href="http://music.wayshine.us/readme.html">說明</a>發現還不支持 Linux 下的任何播放器（web 不算），想玩只能自己動手。
-<!-- more --></p>
+    <content type="html"><![CDATA[<p>最近經常在 G+ 上看到通過 <a href="http://wayshine.us/">Apollo Wayne</a> 的音樂<a href="http://music.wayshine.us/">分享服務</a>分享的正在播放音樂，看着不錯想跟風弄，但看了下<a href="http://music.wayshine.us/readme.html">說明</a>發現還不支持 Linux 下的任何播放器（web 不算），想玩只能自己動手。</p>
+
+<!-- more -->
 
 <p>在 KDE 下一直用 Amarok，知道它是支持腳本擴展的，實現這個簡單的功能應該不難，看了下<a href="http://amarok.kde.org/wiki/Development/Scripting_HowTo_2.0">文檔</a>發現可以用 JS 寫，雖然 JS 只在折騰 Blog 時瞭解過，不過參考現成的<a href="https://userscripts.org/scripts/show/152487" title="Nowplaying Share">用戶腳本</a>沒費多大力氣就拼湊出這腳本，測試無問題，我已經把它上傳到了 <a href="https://opendesktop.org/content/show.php?content=155371">openDesktop.org</a>，現在通過百寶箱就能安裝，也可以下載後手動解壓到 <code>~/.kde4/share/apps/amarok/scripts/</code> 文件夾下，重啓播放器後在工具菜單下就會出現「Share Nowplaying」的選項。</p>
 
@@ -227,8 +232,9 @@
     <updated>2012-11-19T15:46:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category</id>
     
-    <content type="html"><![CDATA[<p>雖然講的是分類（Category），但現在我這兒沒有分類只有標籤（Tag），Octopress 自帶的分類根本就是當作標籤用，再加上自己很少用分類，就把所有分類相關的字樣全改成了標籤，這樣看着不那麼彆扭，插件什麼的全改了，改動過程十分蛋疼就不說了，這裏還是按本來的 Category 來說。
-<!-- more --></p>
+    <content type="html"><![CDATA[<p>雖然講的是分類（Category），但現在我這兒沒有分類只有標籤（Tag），Octopress 自帶的分類根本就是當作標籤用，再加上自己很少用分類，就把所有分類相關的字樣全改成了標籤，這樣看着不那麼彆扭，插件什麼的全改了，改動過程十分蛋疼就不說了，這裏還是按本來的 Category 來說。</p>
+
+<!-- more -->
 
 <p>Octopress 自帶的分類生成插件「category_generator.rb」不能處理非 ASCII 字符分類，Google 到兩種修改插件方法，一種是<a href="https://geron.heroku.com/blog/2012/03/octo-cate-cn-spo" title="Octopress博客分类添加中文支持">直接把分類目錄名轉換爲 url 編碼</a>，另一種是<a href="http://blog.sprabbit.com/blog/2012/03/23/octopress/" title="关于在64位 Windows 7 中部署中文化的Octopress">分離分類顯示名和路徑名</a>，對比之後決定採用後一種方案，避免 url 中包含辨識度低的編碼。</p>
 
@@ -457,8 +463,9 @@ end
     <updated>2012-11-18T17:17:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps</id>
     
-    <content type="html"><![CDATA[<p>雖然一直把託管在 Google Apps 的域名郵箱和 Gtalk 放聯繫方式裏，卻一直沒怎麼用，尤其是 Gtalk，最近要用它加個羣時才發現默認情況下只能添加 Gtalk 網絡中的用戶爲好友，要和網絡外的 XMPP 用戶聊天需要爲域名設置 SRV 記錄，參照 <a href="https://support.google.com/a/bin/answer.py?hl=zh-Hant&amp;answer=34143" title="在 Google Apps 之外啟用即時通訊">Google Apps 說明文檔</a>添加就行。
-<!-- more --></p>
+    <content type="html"><![CDATA[<p>雖然一直把託管在 Google Apps 的域名郵箱和 Gtalk 放聯繫方式裏，卻一直沒怎麼用，尤其是 Gtalk，最近要用它加個羣時才發現默認情況下只能添加 Gtalk 網絡中的用戶爲好友，要和網絡外的 XMPP 用戶聊天需要爲域名設置 SRV 記錄，參照 <a href="https://support.google.com/a/bin/answer.py?hl=zh-Hant&amp;answer=34143" title="在 Google Apps 之外啟用即時通訊">Google Apps 說明文檔</a>添加就行。</p>
+
+<!-- more -->
 
 <p>對於像我一樣使用 CloudFlare 管理 DNS 的，因爲 CloudFlare 不提供快速添加 Google Apps 相關記錄的工具和嚮導，如果覺得手動添加很麻煩，可以創建如下文件，然後在 DNS 設置中選擇附加這個 zone 文件就能快速添加好。</p>
 
@@ -495,8 +502,9 @@ end
     
     <content type="html"><![CDATA[<p>開始折騰 Octopress 後接觸到了 Ruby，相關的內容也記一下。</p>
 
-<p>gem 命令可以使用 <code>--user-install</code> 的選項把套件安裝到主目錄下，但使用 <code>bundle install</code> 安裝套件時並不讀取在 <code>.gemrc</code> 中設置的選項，仍然會詢問 root 密碼要將套件安裝到系統中，雖然用 gem 可以很方便的管理安裝的套件，但沒有用系統的包管理工具而安裝到系統中那麼多東西，讓人很不舒服，而且剛開始使用 gem 時我就設置了 <code>--user-install</code> 的選項，之前安裝的套件包括 bundler 本身都在主目錄中，所以得讓 bundler 把套件也安裝到相同的地方，便於管理。
-<!-- more --></p>
+<p>gem 命令可以使用 <code>--user-install</code> 的選項把套件安裝到主目錄下，但使用 <code>bundle install</code> 安裝套件時並不讀取在 <code>.gemrc</code> 中設置的選項，仍然會詢問 root 密碼要將套件安裝到系統中，雖然用 gem 可以很方便的管理安裝的套件，但沒有用系統的包管理工具而安裝到系統中那麼多東西，讓人很不舒服，而且剛開始使用 gem 時我就設置了 <code>--user-install</code> 的選項，之前安裝的套件包括 bundler 本身都在主目錄中，所以得讓 bundler 把套件也安裝到相同的地方，便於管理。</p>
+
+<!-- more -->
 
 <p>方法很簡單，可以在執行 <code>bundle install</code> 時加上 <code>--path PATH</code> 的選項，其中參數 <code>PATH</code> 指定安裝目錄，也可以設置 <code>BUNDLE_PATH</code> 的環境變量，比如：</p>
 
@@ -538,8 +546,9 @@ end
     <updated>2012-11-04T02:46:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd</id>
     
-    <content type="html"><![CDATA[<p>使用公共 DNS 服務可以避免運營商的 DNS 劫持，但除了這個外在兲朝還存在着 <a href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93#.E9.98.B2.E7.81.AB.E9.95.B7.E5.9F.8E.E7.9A.84.E7.B7.A9.E5.AD.98.E6.B1.A1.E6.9F.93.E6.94.BB.E6.93.8A">DNS 緩存污染</a>的問題，以前使用 GoAgent 等工具時沒有注意到這個，一直在運行着的 dnsmasq 也只用來作簡單的緩存服務，最近開始長時間掛着 VPN 有時卻打不開 Twitter，才發現是這個問題在作怪。
-<!-- more --></p>
+    <content type="html"><![CDATA[<p>使用公共 DNS 服務可以避免運營商的 DNS 劫持，但除了這個外在兲朝還存在着 <a href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93#.E9.98.B2.E7.81.AB.E9.95.B7.E5.9F.8E.E7.9A.84.E7.B7.A9.E5.AD.98.E6.B1.A1.E6.9F.93.E6.94.BB.E6.93.8A">DNS 緩存污染</a>的問題，以前使用 GoAgent 等工具時沒有注意到這個，一直在運行着的 dnsmasq 也只用來作簡單的緩存服務，最近開始長時間掛着 VPN 有時卻打不開 Twitter，才發現是這個問題在作怪。</p>
+
+<!-- more -->
 
 <h2 id="section">分析</h2>
 <blockquote>
@@ -958,9 +967,11 @@ end
     <updated>2012-10-26T22:12:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/10/26/blog-start-over-again</id>
     
-    <content type="html"><![CDATA[<p>之前放棄了把以前 WordPress 博客的文章轉過來，一是因爲麻煩，還有就是的確沒什麼人看，都是自己的筆記，想着就算原始頁面全404了，也還有 Google 的快照，自己隨便查查沒關係，今天要找段代碼才發現之前收錄的文章都沒剩幾篇了，沒想到 Google 會自動刪死鏈！
+    <content type="html"><![CDATA[<p>之前放棄了把以前 WordPress 博客的文章轉過來，一是因爲麻煩，還有就是的確沒什麼人看，都是自己的筆記，想着就算原始頁面全404了，也還有 Google 的快照，自己隨便查查沒關係，今天要找段代碼才發現之前收錄的文章都沒剩幾篇了，沒想到 Google 會自動刪死鏈！</p>
+
 <!-- more -->
-現在不能再去把文章導出來了，手裏只有數據庫備份，打開看了下太雜亂，沒辦法，也不是什麼困難的東西，再寫唄。</p>
+
+<p>現在不能再去把文章導出來了，手裏只有數據庫備份，打開看了下太雜亂，沒辦法，也不是什麼困難的東西，再寫唄。</p>
 ]]></content>
     
   </entry>
@@ -1024,8 +1035,9 @@ end
     
     <content type="html"><![CDATA[<p>昨晚看到個 VPN 服務 <a href="http://106.187.44.5/home?referral=70588D95C2F9DF00D908B3CC2282F650" title="IQLink">IQLink</a>，免費用戶每月有 100G 流量，測了下速度還不錯，可以留着以備不時之需。</p>
 
-<p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。
-<!-- more --></p>
+<p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。</p>
+
+<!-- more -->
 
 <p>IQLink 提供的是 Cisco VPN，Linux 下要用 VPNC 連接，chnroutes 網站上提供了 PPTP 和 OpenVPN 的設置教程，唯獨沒有 VPNC，還好 VPNC 支持連接腳本，默認配置的 <code>/etc/vpnc/vpnc-script</code> 能在執行 <code>pre-init</code>、<code>connect</code>、<code>post-connect</code>、<code>disconnect</code>、<code>post-disconnect</code> 和 <code>reconnect</code> 六種 action 時調用自定義腳本，只要把 <code>python chnroutes.py -p linux</code> 生成的腳本 <code>ip-pre-up</code> 和 <code>ip-down</code> 分別放入 <code>/etc/vpnc/pre-init.d</code> 和 <code>/etc/vpnc/post-disconnect.d</code> 就能在連接 VPN 前後成功添加恢復路由表，但在使用 NetworkManager 連接 VPNC 時，發現這些腳本根本就沒有被執行，NM 的 VPNC 插件用自帶的 <code>nm-vpnc-service-vpnc-helper</code> 替代了 <code>vpnc-script</code>，完全不讀取 <code>/etc/vpnc</code> 下的配置，而且這東西是二進制文件沒法改，試過直接替換成 <code>vpnc-script</code> 也不行，正準備放棄時突然想起 NetworkManager 也支持連接腳本，直接用 NetworkManager 配置的話就不用再爲每種 VPN 都設定路由表了。</p>
 
@@ -1094,8 +1106,9 @@ end
     <updated>2012-10-06T19:35:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd</id>
     
-    <content type="html"><![CDATA[<p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。
-<!-- more --></p>
+    <content type="html"><![CDATA[<p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。</p>
+
+<!-- more -->
 
 <p>照着 wiki 來，選擇了純 systemd 安裝，完全替代了 sysvinit 和 initscripts，因爲 systemd 有自帶 journal 所以幹掉了 syslog-ng，服務配置完後還啓用了 readahead。</p>
 
@@ -1118,8 +1131,9 @@ end
     <updated>2012-10-02T14:48:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/10/02/bought-hellohost-vps</id>
     
-    <content type="html"><![CDATA[<p>快用了一年 Hellohost 的主機，這個月就要到期，轉到 Octopress 後，這 PHP 主機就沒必要再續費了，現在 Blog 放 GitHub 上最大的缺點就是隻支持綁定一個域名，以前 RSS 定閱的子域名必須用其它主機反向代理或重定向，還有很多鏈接也要重定向，而且只要不直接在 GitHub 上綁定域名的話，就可以直接使用 Page 的鏈接訪問，正好可以讓牆內的朋友用這個。
-<!-- more --></p>
+    <content type="html"><![CDATA[<p>快用了一年 Hellohost 的主機，這個月就要到期，轉到 Octopress 後，這 PHP 主機就沒必要再續費了，現在 Blog 放 GitHub 上最大的缺點就是隻支持綁定一個域名，以前 RSS 定閱的子域名必須用其它主機反向代理或重定向，還有很多鏈接也要重定向，而且只要不直接在 GitHub 上綁定域名的話，就可以直接使用 Page 的鏈接訪問，正好可以讓牆內的朋友用這個。</p>
+
+<!-- more -->
 
 <p>之前幫朋友弄了個阿里雲主機，就試着把域名先解析到這主機上，解析成功後這被封的域名竟然能在牆內訪問不再被重置了，當時着實讓我興奮了一把，以爲這麼簡單就解封了，但之後用 Cloudflare 的 CDN 確顯示「 Website unreachable」，掛着 VPN 試了一下發現被重置，才明白根本就沒解封，牆是雙向的，把被封的域名解析到國內 ip 是能讓牆內正常訪問，但反過來會封鎖牆外的訪問，得不償失，看來還得弄個牆外的主機。</p>
 
@@ -1151,8 +1165,9 @@ end
     <updated>2012-09-26T17:16:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/09/26/hello-octopress</id>
     
-    <content type="html"><![CDATA[<p>近幾個月一真沒更新過博客，也沒登錄過，上一次登錄還是因爲升級 Wordpress ，懶得再折騰 Wordpress 了，最近收到了主機的續費通知就想換個平臺，很久以前就想試試 Octopress，在主機到期前正好嘗試下。
-<!-- more --></p>
+    <content type="html"><![CDATA[<p>近幾個月一真沒更新過博客，也沒登錄過，上一次登錄還是因爲升級 Wordpress ，懶得再折騰 Wordpress 了，最近收到了主機的續費通知就想換個平臺，很久以前就想試試 Octopress，在主機到期前正好嘗試下。</p>
+
+<!-- more -->
 
 <p>花兩天改造了下模板，佈局弄得和以前一樣了，之前的文章因爲以前的爛習慣鏈接格式亂七八糟的，全部處理太麻煩所以不想轉過來了，先用段時間看吧。</p>
 

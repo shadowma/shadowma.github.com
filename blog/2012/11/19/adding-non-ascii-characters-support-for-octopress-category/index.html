@@ -110,8 +110,9 @@
 	<span class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">Xinding Ma</a> (<span class="nickname">Shadow Ma</span>)</span>
 	</div>
 	
-	<div class="entry-content"><p>雖然講的是分類（Category），但現在我這兒沒有分類只有標籤（Tag），Octopress 自帶的分類根本就是當作標籤用，再加上自己很少用分類，就把所有分類相關的字樣全改成了標籤，這樣看着不那麼彆扭，插件什麼的全改了，改動過程十分蛋疼就不說了，這裏還是按本來的 Category 來說。
-<!-- more --></p>
+	<div class="entry-content"><p>雖然講的是分類（Category），但現在我這兒沒有分類只有標籤（Tag），Octopress 自帶的分類根本就是當作標籤用，再加上自己很少用分類，就把所有分類相關的字樣全改成了標籤，這樣看着不那麼彆扭，插件什麼的全改了，改動過程十分蛋疼就不說了，這裏還是按本來的 Category 來說。</p>
+
+<!-- more -->
 
 <p>Octopress 自帶的分類生成插件「category_generator.rb」不能處理非 ASCII 字符分類，Google 到兩種修改插件方法，一種是<a href="https://geron.heroku.com/blog/2012/03/octo-cate-cn-spo" title="Octopress博客分类添加中文支持">直接把分類目錄名轉換爲 url 編碼</a>，另一種是<a href="http://blog.sprabbit.com/blog/2012/03/23/octopress/" title="关于在64位 Windows 7 中部署中文化的Octopress">分離分類顯示名和路徑名</a>，對比之後決定採用後一種方案，避免 url 中包含辨識度低的編碼。</p>
 

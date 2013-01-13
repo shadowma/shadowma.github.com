@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: PulseAudio | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/pulseaudio/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-05T01:18:54+08:00</updated>
+  <updated>2013-01-13T21:49:17+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -22,8 +22,9 @@
     <updated>2012-11-23T01:27:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/11/23/delay-after-kde-login-caused-by-pulseaudio</id>
     
-    <content type="html"><![CDATA[<p>準確來說是在 KDE 啓動的 Splash 結束後，桌面會僵住大約十秒鍾啓動音效才響起，托盤的 KMix 圖標最後出現才啓動完成，其間任何操作都沒響應。
-<!-- more --></p>
+    <content type="html"><![CDATA[<p>準確來說是在 KDE 啓動的 Splash 結束後，桌面會僵住大約十秒鍾啓動音效才響起，托盤的 KMix 圖標最後出現才啓動完成，其間任何操作都沒響應。</p>
+
+<!-- more -->
 
 <p>很早就遇到這個問題，一直找不到根源，每次啓動都得多等十多秒，前段時間重裝系統後變正常了就以爲只是個人配置文件的問題，直到用 VirtualBox 遇到聲卡獨佔的老問題，裝上 Pulse 後延遲又出現了，試了幾次確定是 Pulse 的問題，但當時沒找到解決方案，不得不棄用它，Alsa 聲卡獨佔也不是總會出現，而且虛擬機只是網銀會用到沒聲音也沒關係，但那個延遲實在忍不了。</p>
 

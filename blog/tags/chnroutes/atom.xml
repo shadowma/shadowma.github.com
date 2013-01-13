@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: chnroutes | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/chnroutes/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-05T01:18:54+08:00</updated>
+  <updated>2013-01-13T21:49:17+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -64,8 +64,9 @@ mv ip-pre-up vpnup &amp;&amp; mv ip-down vpndown</p>
     
     <content type="html"><![CDATA[<p>昨晚看到個 VPN 服務 <a href="http://106.187.44.5/home?referral=70588D95C2F9DF00D908B3CC2282F650" title="IQLink">IQLink</a>，免費用戶每月有 100G 流量，測了下速度還不錯，可以留着以備不時之需。</p>
 
-<p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。
-<!-- more --></p>
+<p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。</p>
+
+<!-- more -->
 
 <p>IQLink 提供的是 Cisco VPN，Linux 下要用 VPNC 連接，chnroutes 網站上提供了 PPTP 和 OpenVPN 的設置教程，唯獨沒有 VPNC，還好 VPNC 支持連接腳本，默認配置的 <code>/etc/vpnc/vpnc-script</code> 能在執行 <code>pre-init</code>、<code>connect</code>、<code>post-connect</code>、<code>disconnect</code>、<code>post-disconnect</code> 和 <code>reconnect</code> 六種 action 時調用自定義腳本，只要把 <code>python chnroutes.py -p linux</code> 生成的腳本 <code>ip-pre-up</code> 和 <code>ip-down</code> 分別放入 <code>/etc/vpnc/pre-init.d</code> 和 <code>/etc/vpnc/post-disconnect.d</code> 就能在連接 VPN 前後成功添加恢復路由表，但在使用 NetworkManager 連接 VPNC 時，發現這些腳本根本就沒有被執行，NM 的 VPNC 插件用自帶的 <code>nm-vpnc-service-vpnc-helper</code> 替代了 <code>vpnc-script</code>，完全不讀取 <code>/etc/vpnc</code> 下的配置，而且這東西是二進制文件沒法改，試過直接替換成 <code>vpnc-script</code> 也不行，正準備放棄時突然想起 NetworkManager 也支持連接腳本，直接用 NetworkManager 配置的話就不用再爲每種 VPN 都設定路由表了。</p>
 

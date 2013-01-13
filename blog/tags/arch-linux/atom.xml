@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Arch Linux | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/arch-linux/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-05T01:18:54+08:00</updated>
+  <updated>2013-01-13T21:49:17+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -26,8 +26,9 @@
 
 <p><img src="https://static.xind.in/blog/pic/2012/12/arch-black-preview.png" alt="Arch logo black preview" /></p>
 
-<p>最初是因爲安裝了源中的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a>，其所帶的兩個主題都非常簡潔，非常喜歡其中的黑色主題 Simply Black，所以想找到此風格的系統其餘部件的主題。
-<!-- more --></p>
+<p>最初是因爲安裝了源中的 <a href="https://www.archlinux.org/packages/extra/any/archlinux-themes-kdm/" title="archlinux-themes-kdm">archlinux-themes-kdm</a>，其所帶的兩個主題都非常簡潔，非常喜歡其中的黑色主題 Simply Black，所以想找到此風格的系統其餘部件的主題。</p>
+
+<!-- more -->
 
 <h2 id="ksplash">KSplash</h2>
 <p>相同風格的 KSplash 主題 kde-look 上就有，不過原始源掛了，不能直接搜索安裝，還好其<a href="http://kde-look.org/content/show.php?content=98805" title="OxyArch Splash Screen">頁面</a>評論裏還有人共享，可以從 AUR 安裝 <a href="https://aur.archlinux.org/packages/ksplash-oxyarch/">ksplash-oxyarch</a> 這個包。</p>
@@ -60,8 +61,9 @@
     <updated>2012-10-06T19:35:00+08:00</updated>
     <id>http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd</id>
     
-    <content type="html"><![CDATA[<p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。
-<!-- more --></p>
+    <content type="html"><![CDATA[<p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。</p>
+
+<!-- more -->
 
 <p>照着 wiki 來，選擇了純 systemd 安裝，完全替代了 sysvinit 和 initscripts，因爲 systemd 有自帶 journal 所以幹掉了 syslog-ng，服務配置完後還啓用了 readahead。</p>
 

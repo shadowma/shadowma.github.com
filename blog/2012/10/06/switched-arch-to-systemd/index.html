@@ -108,8 +108,9 @@
 	<span class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">Xinding Ma</a> (<span class="nickname">Shadow Ma</span>)</span>
 	</div>
 	
-	<div class="entry-content"><p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。
-<!-- more --></p>
+	<div class="entry-content"><p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。</p>
+
+<!-- more -->
 
 <p>照着 wiki 來，選擇了純 systemd 安裝，完全替代了 sysvinit 和 initscripts，因爲 systemd 有自帶 journal 所以幹掉了 syslog-ng，服務配置完後還啓用了 readahead。</p>
 
