@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-13T21:49:17+08:00</updated>
+  <updated>2013-01-16T20:09:53+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -12,6 +12,227 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+	<title type="html"><![CDATA[試用 Btrfs]]></title>
+	<link href="http://shadow.ma/blog/2013/01/16/trying-btrfs/"/>
+    
+    <link href="http://shadow.ma/blog/2013/01/16/trying-btrfs/"/>
+    <updated>2013-01-16T19:10:00+08:00</updated>
+    <id>http://shadow.ma/blog/2013/01/16/trying-btrfs</id>
+    
+    <content type="html"><![CDATA[<p>關於 Btrfs 就不再介紹了，早在入 SSD 時就想上了，只是一直擔心不穩定，昨天心血來潮找了些相關資料，看過之後果斷中毒，子卷和快照功能實在太吸引人了，雖然也看到一些血的教訓，不過現在都 2013 年了，網上一大票都是 2010 年時的敢死隊，現在比那時自然沒什麼壓力了，不過在 3.7 內核中 Btrfs 仍然被標記爲 Experimental，若嘗試請注意備份數據！</p>
+
+<h2 id="section">準備</h2>
+<p>雖然 Btrfs 提供了 <code>btrfs-convert</code> 工具來將現有分區轉換爲 Btrfs，不過爲了體驗 Btrfs 的衆多新特性，決定徹底改造分區，使用單個分區，然後將系統安裝到分區子卷中，這樣以後管理起來也更加靈活。</p>
+
+<!-- more -->
+
+<p>先爲當前系統安裝 <code>btrfs-progs</code></p>
+
+<pre><code>yaourt -S btrfs-progs
+</code></pre>
+
+<p>我目前的分區情況</p>
+
+<pre><code>NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 59.6G  0 disk 
+├─sda1   8:1    0    2M  0 part 
+├─sda2   8:2    0   15G  0 part /
+├─sda3   8:3    0    1G  0 part [SWAP]
+└─sda4   8:3    0 43.6G  0 part /home
+</code></pre>
+
+<p>計劃將 root 和 home 放到同一分區的不同子卷中，也就是說除去 BIOS boot 和 swap 只留一個分區 。</p>
+
+<h2 id="section-1">備份</h2>
+<p>選擇自己喜歡的方式備份系統，我直接在 Arch Linux Install medium 的 live CD 環境中用 tar 將系統備份到掛載在 <code>/media</code> 下的移動硬盤裏。</p>
+
+<p>掛載<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>並備份 root，根據需要用 <code>--exclude</code> 排除不想備份的目錄或文件</p>
+
+<pre><code>mount -o defaults,noatime,discard /dev/sda2 /mnt
+tar cvpzf /media/backup/arch-root.tgz /mnt --exclude=/mnt/var/cache --exclude=/mnt/var/tmp
+</code></pre>
+
+<p>掛載並備份 home</p>
+
+<pre><code>mount -o defaults,noatime,discard /dev/sda4 /mnt/home
+tar cvpzf /media/backup/arch-home.tgz /mnt/home
+</code></pre>
+
+<h2 id="section-2">遷移</h2>
+<p>卸載因爲備份而掛載的分區</p>
+
+<pre><code>umount /mnt/home /mnt
+</code></pre>
+
+<p>用 <code>gdisk</code> 重新分區，步驟略</p>
+
+<pre><code>gdisk /dev/sda
+</code></pre>
+
+<p>我的分區情況</p>
+
+<pre><code>Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048            6143   2.0 MiB     EF02  BIOS boot partition
+   2            6144         2103295   1024.0 MiB  8200  Linux swap
+   3         2103296       125045390   58.6 GiB    8300  Linux filesystem
+</code></pre>
+
+<p>刷新分區表</p>
+
+<pre><code>partprobe /dev/sda 
+</code></pre>
+
+<p>掛載分區</p>
+
+<pre><code>mount -o defaults,ssd,discard,noatime,compress=lzo,space_cache,autodefrag /dev/sda3 /mnt
+</code></pre>
+
+<p>創建子卷</p>
+
+<pre><code>cd /mnt
+btrfs subvolume create arch
+btrfs subvolume create home
+</code></pre>
+
+<p>卸載分區</p>
+
+<pre><code>umount /mnt
+</code></pre>
+
+<p>掛載剛創建的子卷</p>
+
+<pre><code>mount -o subvol=arch,defaults,ssd,discard,noatime,compress=lzo,space_cache,autodefrag /dev/sda3 /mnt
+mount -o subvol=home,defaults,ssd,discard,noatime,compress=lzo,space_cache,autodefrag /dev/sda3 /mnt/home
+</code></pre>
+
+<p>恢復備份</p>
+
+<pre><code>cd /media/backup
+tar xvpzf arch-root.tgz -C /
+tar xvpzf arch-home.tgz -C /
+</code></pre>
+
+<h2 id="section-3">修改配置</h2>
+<p>使用 <code>genfstab</code> 生成新的配置並添加到 fstab 文件末尾</p>
+
+<pre><code>genfstab -p /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+
+<p>chroot 到系統中</p>
+
+<pre><code>arch-chroot /mnt
+</code></pre>
+
+<p>修改 fstab，刪除其中過時的部分</p>
+
+<pre><code>vim /etc/fstab
+</code></pre>
+
+<p>修改 mkinitcpio.conf</p>
+
+<pre><code>vim /etc/mkinitcpio.conf
+</code></pre>
+
+<p>可以參考我的配置</p>
+
+<pre><code>MODULES="i915 ahci btrfs"
+BINARIES="btrfsck"
+HOOKS="base udev plymouth modconf block resume btrfs"
+</code></pre>
+
+<p><code>MODULES</code> 中添加 <code>btrfs</code>，<code>BINARIE</code> 行添加 <code>btrfsck</code> 將其打包進 initramfs 用於系統急救，<code>HOOKS</code> 刪除 <code>fsck</code> 並添加 <code>btrfs</code>。</p>
+
+<p>創建新的 initramfs</p>
+
+<pre><code>mkinitcpio -p linux
+</code></pre>
+
+<p>安裝 grub</p>
+
+<pre><code>grub-install --no-floppy /dev/sda
+</code></pre>
+
+<p>生成 grub 菜單</p>
+
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>請檢查 <code>/boot/grub/grub.cfg</code> 中菜單的 linux 行中是否自動添加了 rootflags 選項，如果沒有請修改 <code>/etc/default/grub</code>，添加 <code>rootflags=subvol=arch</code> 到 GRUB_CMDLINE_LINUX_DEFAULT 行中，然後用上面的命令再次生成菜單。</p>
+
+<p>重啓</p>
+
+<pre><code>reboot
+</code></pre>
+
+<h2 id="section-4">應用</h2>
+<p>先掛載根結點</p>
+
+<pre><code>mount -o subvolid=0 /dev/sda3 /mnt
+</code></pre>
+
+<p>列出所有子卷</p>
+
+<pre><code>btrfs subvolume list /mnt
+</code></pre>
+
+<p>得到如下輸出</p>
+
+<pre><code>ID 256 gen 1755 top level 5 path arch
+ID 258 gen 1755 top level 5 path home
+</code></pre>
+
+<p>爲子卷 arch 創建一個名爲 arch-backup 的快照</p>
+
+<pre><code>cd /mnt
+btrfs subvolume snapshot arch arch-backup
+</code></pre>
+
+<h3 id="section-5">備份恢復</h3>
+<p>Btrfs 的快照本身就是一個子卷，可以掛載和讀寫，掛載後很容易就能從中恢復需要的文件。</p>
+
+<h3 id="section-6">災難恢復</h3>
+<p>掛載爲 root 創建的快照的子卷</p>
+
+<pre><code>mount -o subvol=arch-backup,defaults,ssd,discard,noatime,compress=lzo,space_cache,autodefrag /dev/sda3 /mnt
+</code></pre>
+
+<p>修改 <code>fstab</code> 中的 root 掛載選項中的子卷名爲快照名</p>
+
+<pre><code>cd /mnt
+vim etc/fstab
+</code></pre>
+
+<p>然後在系統被破壞無法引導時，只要修改 grub 菜單中 linux 行的 rootflags 選項的子卷名爲快照名，比如改爲 <code>rootflags=subvol=arch-backup</code>，啓動後 root 即爲 arch-backup 快照的子卷。</p>
+
+<p>因爲 Btrfs 的寫時複製（copy-on-write）特性，快照剛建立時幾乎不佔用硬盤空間，隨着系統的使用才因爲快照和系統的差異增大而慢慢增大，對敢死隊來說非常有用的特性，在對系統大手術前創建的快照，幾乎可以說是最低成本的備份、恢復方案。</p>
+
+<p>刪除快照</p>
+
+<pre><code>btrfs subvolume delete arch-backup
+</code></pre>
+
+<p>直接刪除相應子卷就好。</p>
+
+<h2 id="section-7">參考資料</h2>
+<ul>
+  <li><a href="https://wiki.archlinux.org/index.php/Btrfs" title="Btrfs">Btrfs</a></li>
+  <li><a href="https://wiki.archlinux.org/index.php/Installing_on_Btrfs_root" title="Installing on Btrfs root">Installing on Btrfs root</a></li>
+  <li><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=374774" title="Arch实战btrfs">Arch实战btrfs</a></li>
+</ul>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>關於掛載選項，<code>notime</code> 用於禁用「最近訪問」時間戳，減少磁盤讀寫，<code>discard</code> 用於打開 SSD 的 Trim 功能。<a href="#fnref:1" rel="reference">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
