@@ -77,8 +77,49 @@
 </div>
 </div>
 	
-	<div id="ajax-container"><div id="ajax-inner">
 	<div id="content" class="right-col">
+
+
+    <article class="post">
+	
+	 	<h1 class="title"><a href="/blog/2013/01/22/cjktty-kernel-patch-for-linux-console-with-cjk-characters-support/">CJKTTY：linux 控制台 CJK 字符顯示補丁</a></h1>
+	
+	
+	<div class="meta">
+	<span class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<abbr class="published" title="2013-01-22T01:43:00+08:00">2013年01月22日</abbr></span>
+	<span class="tags">
+
+
+	<a class='tag' rel='tag' title='查看 CJK 標籤的所有文章' href='/blog/tags/cjk/'>CJK</a>, <a class='tag' rel='tag' title='查看 CJKTTY 標籤的所有文章' href='/blog/tags/cjktty/'>CJKTTY</a>, <a class='tag' rel='tag' title='查看 Kernel 標籤的所有文章' href='/blog/tags/kernel/'>Kernel</a>
+
+
+</span>
+	</div>
+	
+	<div class="entry-content">
+		<p>Linux 控制台支持漢字等 CJK 字符顯示除了借助 zhcon 和 fbterm 之類的工具，<a href="http://linuxsir.org/">LinuxSir.Org</a> 的冲天飞豹（Youbest）曾製作了控制台顯示 UTF-8 字符的內核補丁，並一直在自己的 <a href="http://blog.chinaunix.net/uid-436750-id-2123586.html" title="内核补丁：字符终端下显示UTF-8字符">Blog</a> 上發佈更新，在以前自己編譯內核時這幾乎是必備補丁，相比借助外部程序，給內核打上補丁得到原生的中文顯示可靠性更高，但自從 2012 年春節後補丁就再沒更新過。</p>
+
+<p>最近久違的折騰了一下 Gentoo，在 <a href="https://code.google.com/p/gentoo-zh/">Gentoo-zh</a> Overlay 的 <a href="https://github.com/Gentoo-zh/gentoo-zh/tree/master/sys-kernel/e-sources">e-sources</a> 中發現了 Youbest 補丁的繼任者 CJKTTY，可能是我孤陋寡聞了，我覺得這東西真的是低調，除了 IBM developerWorks 上的<a href="http://www.ibm.com/developerworks/cn/linux/l-cn-termi-hanzi/" title="如何改造 Linux 虚拟终端显示文字">這篇文章</a>相關資料真的非常少、非常零散，本想做個 <a href="/blog/tags/linked/">link post</a> 都找不到適合的項目頁面。</p>
+
+
+		  
+		    
+		    <a href="/blog/2013/01/22/cjktty-kernel-patch-for-linux-console-with-cjk-characters-support/" class="more-link"><i class="icon-arrow-right"></i>閱讀全文</a>
+		  
+	</div>
+</article>
 
 
     <article class="post">
@@ -458,48 +499,6 @@
 	</div>
 </article>
 
-
-    <article class="post">
-	
-	 	<h1 class="title"><a href="/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category/">爲 Octopress 分類添加中文支持</a></h1>
-	
-	
-	<div class="meta">
-	<span class="date">
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-<abbr class="published" title="2012-11-19T15:46:00+08:00">2012年11月19日</abbr></span>
-	<span class="tags">
-
-
-	<a class='tag' rel='tag' title='查看 Octopress 標籤的所有文章' href='/blog/tags/octopress/'>Octopress</a>
-
-
-</span>
-	</div>
-	
-	<div class="entry-content">
-		<p>雖然講的是分類（Category），但現在我這兒沒有分類只有標籤（Tag），Octopress 自帶的分類根本就是當作標籤用，再加上自己很少用分類，就把所有分類相關的字樣全改成了標籤，這樣看着不那麼彆扭，插件什麼的全改了，改動過程十分蛋疼就不說了，這裏還是按本來的 Category 來說。</p>
-
-
-		  
-		    
-		    <a href="/blog/2012/11/19/adding-non-ascii-characters-support-for-octopress-category/" class="more-link"><i class="icon-arrow-right"></i>閱讀全文</a>
-		  
-	</div>
-</article>
-
 <nav id="pagenavi" class="right-con">
     
 	<a class="left">已經是最新</a>
@@ -515,7 +514,6 @@
     	jQuery('#header nav ul li a:first').addClass("active_menu");
   });
 </script></div>
-	</div></div>
 	<footer id="footer" class="right-col">
 </footer>
 	<script src="/javascripts/shadow.js"></script>

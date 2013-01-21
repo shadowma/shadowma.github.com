@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-16T20:09:53+08:00</updated>
+  <updated>2013-01-22T02:45:50+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+	<title type="html"><![CDATA[CJKTTY：linux 控制台 CJK 字符顯示補丁]]></title>
+	<link href="http://shadow.ma/blog/2013/01/22/cjktty-kernel-patch-for-linux-console-with-cjk-characters-support/"/>
+    
+    <link href="http://shadow.ma/blog/2013/01/22/cjktty-kernel-patch-for-linux-console-with-cjk-characters-support/"/>
+    <updated>2013-01-22T01:43:00+08:00</updated>
+    <id>http://shadow.ma/blog/2013/01/22/cjktty-kernel-patch-for-linux-console-with-cjk-characters-support</id>
+    
+    <content type="html"><![CDATA[<p>Linux 控制台支持漢字等 CJK 字符顯示除了借助 zhcon 和 fbterm 之類的工具，<a href="http://linuxsir.org/">LinuxSir.Org</a> 的冲天飞豹（Youbest）曾製作了控制台顯示 UTF-8 字符的內核補丁，並一直在自己的 <a href="http://blog.chinaunix.net/uid-436750-id-2123586.html" title="内核补丁：字符终端下显示UTF-8字符">Blog</a> 上發佈更新，在以前自己編譯內核時這幾乎是必備補丁，相比借助外部程序，給內核打上補丁得到原生的中文顯示可靠性更高，但自從 2012 年春節後補丁就再沒更新過。</p>
+
+<p>最近久違的折騰了一下 Gentoo，在 <a href="https://code.google.com/p/gentoo-zh/">Gentoo-zh</a> Overlay 的 <a href="https://github.com/Gentoo-zh/gentoo-zh/tree/master/sys-kernel/e-sources">e-sources</a> 中發現了 Youbest 補丁的繼任者 CJKTTY，可能是我孤陋寡聞了，我覺得這東西真的是低調，除了 IBM developerWorks 上的<a href="http://www.ibm.com/developerworks/cn/linux/l-cn-termi-hanzi/" title="如何改造 Linux 虚拟终端显示文字">這篇文章</a>相關資料真的非常少、非常零散，本想做個 <a href="http://shadow.ma/blog/tags/linked/">link post</a> 都找不到適合的項目頁面。</p>
+
+<!-- more -->
+
+<p>感興趣的可以從 CJKTTY 的 <a href="http://repo.or.cz/w/linux-2.6/cjktty.git">git 倉庫</a>獲取 <code>-utf8</code> 分支內核源碼或是從項目的 SourceForge <a href="http://sourceforge.net/projects/cjktty/">主頁</a>獲取補丁，編譯過程可以參考這個 <a href="https://code.google.com/p/ttyim/wiki/install">Wiki</a><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。</p>
+
+<p>Archlinux 下的效果，中文輸入使用 uim-fep<br />
+<img src="https://static.xind.in/blog/pic/2013/01/console.png" alt="Linux Console with CJK characters support" /></p>
+
+<p>控制台下使用 w3m 查看本站文章<br />
+<img src="https://static.xind.in/blog/pic/2013/01/w3m.png" alt="w3m under CJK console" /></p>
+
+<p>關於控制台的中文支持，這東西其實見仁見智，對於我來說因爲故障恢復等原因仍然不時需要面對控制台，這時因爲中文 locale 的原因會遇到一串串的方塊，要查些資料也離不開 X，內核支持中文顯示確實省了不少心。</p>
+
+<p>最後感謝 Youbest、microcai 等無私貢獻者。</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>有些內容已經過時，需要注意的是 Framebuffer 的相關設置。<a href="#fnref:1" rel="reference">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1372,25 +1410,6 @@ end
 </span><span class="line">Swap:            0          0          0</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>用的 Nginx，只拿來作重定向和反向代理的確是有點浪費。</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-	<title type="html"><![CDATA[Hello Octopress!]]></title>
-	<link href="http://shadow.ma/blog/2012/09/26/hello-octopress/"/>
-    
-    <link href="http://shadow.ma/blog/2012/09/26/hello-octopress/"/>
-    <updated>2012-09-26T17:16:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/09/26/hello-octopress</id>
-    
-    <content type="html"><![CDATA[<p>近幾個月一真沒更新過博客，也沒登錄過，上一次登錄還是因爲升級 Wordpress ，懶得再折騰 Wordpress 了，最近收到了主機的續費通知就想換個平臺，很久以前就想試試 Octopress，在主機到期前正好嘗試下。</p>
-
-<!-- more -->
-
-<p>花兩天改造了下模板，佈局弄得和以前一樣了，之前的文章因爲以前的爛習慣鏈接格式亂七八糟的，全部處理太麻煩所以不想轉過來了，先用段時間看吧。</p>
 
 ]]></content>
     
