@@ -82,6 +82,59 @@
 
     <article class="post">
 	
+	 	<h1 class="title"><a href="/blog/2013/01/25/share-own-use-kernel/">自用內核分享</a></h1>
+	
+	
+	<div class="meta">
+	<span class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<abbr class="published" title="2013-01-25T01:53:00+08:00">2013年01月25日</abbr></span>
+	<span class="tags">
+
+
+	<a class='tag' rel='tag' title='查看 Arch Linux 標籤的所有文章' href='/blog/tags/arch-linux/'>Arch Linux</a>, <a class='tag' rel='tag' title='查看 Kernel 標籤的所有文章' href='/blog/tags/kernel/'>Kernel</a>
+
+
+</span>
+	</div>
+	
+	<div class="entry-content">
+		<p>自已編譯打包的內核，差不多就是 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 加上了 CJKTTY 和 <a href="http://kerneldedup.org/projects/uksm/">UKSM</a> 補丁</p>
+
+<p><img src="https://static.xind.in/blog/pic/2013/01/uname-linux-shadow.png" alt="uname in linux-shadow" /></p>
+
+<p>一月二十二日編譯，版本 3.7.4-1。</p>
+
+<p>需要注意的配置：</p>
+
+<pre><code>CONFIG_MCORE2=y
+CONFIG_HZ_1000=y
+CONFIG_HZ=1000
+CONFIG_DEFAULT_BFQ=y
+# CONFIG_FRAMEBUFFER_CONSOLE_ROTATION is not set
+</code></pre>
+
+
+		  
+		    
+		    <a href="/blog/2013/01/25/share-own-use-kernel/" class="more-link"><i class="icon-arrow-right"></i>閱讀全文</a>
+		  
+	</div>
+</article>
+
+
+    <article class="post">
+	
 	 	<h1 class="title"><a href="/blog/2013/01/22/cjktty-kernel-patch-for-linux-console-with-cjk-characters-support/">CJKTTY：linux 控制台 CJK 字符顯示補丁</a></h1>
 	
 	
@@ -455,46 +508,6 @@
 		  
 		    
 		    <a href="/blog/2012/11/23/delay-after-kde-login-caused-by-pulseaudio/" class="more-link"><i class="icon-arrow-right"></i>閱讀全文</a>
-		  
-	</div>
-</article>
-
-
-    <article class="post">
-	
-	 	<h1 class="title"><a href="/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/">通過「Nowplaying Share Page」分享音樂的 Amarok 腳本</a></h1>
-	
-	
-	<div class="meta">
-	<span class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<abbr class="published" title="2012-11-21T16:13:00+08:00">2012年11月21日</abbr></span>
-	<span class="tags">
-
-
-	<a class='tag' rel='tag' title='查看 Amarok 標籤的所有文章' href='/blog/tags/amarok/'>Amarok</a>, <a class='tag' rel='tag' title='查看 Nowplaying 標籤的所有文章' href='/blog/tags/nowplaying/'>Nowplaying</a>, <a class='tag' rel='tag' title='查看 script 標籤的所有文章' href='/blog/tags/script/'>script</a>
-
-
-</span>
-	</div>
-	
-	<div class="entry-content">
-		<p>最近經常在 G+ 上看到通過 <a href="http://wayshine.us/">Apollo Wayne</a> 的音樂<a href="http://music.wayshine.us/">分享服務</a>分享的正在播放音樂，看着不錯想跟風弄，但看了下<a href="http://music.wayshine.us/readme.html">說明</a>發現還不支持 Linux 下的任何播放器（web 不算），想玩只能自己動手。</p>
-
-
-		  
-		    
-		    <a href="/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/" class="more-link"><i class="icon-arrow-right"></i>閱讀全文</a>
 		  
 	</div>
 </article>

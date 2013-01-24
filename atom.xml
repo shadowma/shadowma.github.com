@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-22T17:41:00+08:00</updated>
+  <updated>2013-01-25T02:57:51+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+	<title type="html"><![CDATA[自用內核分享]]></title>
+	<link href="http://shadow.ma/blog/2013/01/25/share-own-use-kernel/"/>
+    
+    <link href="http://shadow.ma/blog/2013/01/25/share-own-use-kernel/"/>
+    <updated>2013-01-25T01:53:00+08:00</updated>
+    <id>http://shadow.ma/blog/2013/01/25/share-own-use-kernel</id>
+    
+    <content type="html"><![CDATA[<p>自已編譯打包的內核，差不多就是 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 加上了 CJKTTY 和 <a href="http://kerneldedup.org/projects/uksm/">UKSM</a> 補丁</p>
+
+<p><img src="https://static.xind.in/blog/pic/2013/01/uname-linux-shadow.png" alt="uname in linux-shadow" /></p>
+
+<p>一月二十二日編譯，版本 3.7.4-1。</p>
+
+<p>需要注意的配置：</p>
+
+<pre><code>CONFIG_MCORE2=y
+CONFIG_HZ_1000=y
+CONFIG_HZ=1000
+CONFIG_DEFAULT_BFQ=y
+# CONFIG_FRAMEBUFFER_CONSOLE_ROTATION is not set
+</code></pre>
+
+<!-- more -->
+
+<p>因爲是自用內核所以依自己的機器作了優化，<strong>要使用此內核需要 Intel Core 2 家族<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>或更新處理器</strong>，內核時鐘頻率設爲 1000Hz，默認 I/O 調度器爲 BFQ<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，因爲 CJKTTY 而禁用了 Framebuffer Console Rotation<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>。</p>
+
+<p>發布這東西主要想讓懶得自己編譯內核的 Arch 用戶也能體驗 CJKTTY，雖然因爲硬件限制可能受衆面非常窄，要是真有需求的話會考慮編譯通用平臺，只要上游沒問題，我會一直放出更新，最後聲明一下，此內核<strong>未經測試，風險自擔</strong>。</p>
+
+<p>下載地址:</p>
+
+<ul>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.4-1-x86_64.pkg.tar.xz">linux-shadow-3.7.4-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.7.4-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.7.4-1-x86_64.pkg.tar.xz</a></li>
+</ul>
+
+<p>安裝後別忘了更新 grub 菜單</p>
+
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>包含 Core 2 Duo/Quad, Xeon 51xx/53xx/54xx/3360, Pentium Dual-Core T23xx+/Exxxx, Celeron M 5xx, Celeron Dual-Core 等。<a href="#fnref:1" rel="reference">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>如果要使用其它調度器比如 noop，請使用 <code>elevator=noop</code> 的内核參數。<a href="#fnref:2" rel="reference">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>詳情：<a href="https://code.google.com/p/ttyim/wiki/install">https://code.google.com/p/ttyim/wiki/install</a> 。<a href="#fnref:3" rel="reference">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1377,40 +1436,6 @@ end
 </span><span class="line">Startup finished in 3608ms (kernel) + 3562ms (userspace) = 7170ms</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>效果顯著，fbsplash 一閃而過，進度都沒走完 KDM 就出來了。</p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-	<title type="html"><![CDATA[買了 Hellohost 的 VPS]]></title>
-	<link href="http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/"/>
-    
-    <link href="http://shadow.ma/blog/2012/10/02/bought-hellohost-vps/"/>
-    <updated>2012-10-02T14:48:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/02/bought-hellohost-vps</id>
-    
-    <content type="html"><![CDATA[<p>快用了一年 Hellohost 的主機，這個月就要到期，轉到 Octopress 後，這 PHP 主機就沒必要再續費了，現在 Blog 放 GitHub 上最大的缺點就是隻支持綁定一個域名，以前 RSS 定閱的子域名必須用其它主機反向代理或重定向，還有很多鏈接也要重定向，而且只要不直接在 GitHub 上綁定域名的話，就可以直接使用 Page 的鏈接訪問，正好可以讓牆內的朋友用這個。</p>
-
-<!-- more -->
-
-<p>之前幫朋友弄了個阿里雲主機，就試着把域名先解析到這主機上，解析成功後這被封的域名竟然能在牆內訪問不再被重置了，當時着實讓我興奮了一把，以爲這麼簡單就解封了，但之後用 Cloudflare 的 CDN 確顯示「 Website unreachable」，掛着 VPN 試了一下發現被重置，才明白根本就沒解封，牆是雙向的，把被封的域名解析到國內 ip 是能讓牆內正常訪問，但反過來會封鎖牆外的訪問，得不償失，看來還得弄個牆外的主機。</p>
-
-<p>虛擬主機不太適合了，VPS 也只需要低階的就行，看 Hellohost 有賣就先買了一個月試試，用了她這一年的虛擬主機還算穩定，只買了個 64M 的，其實若是不再搞其它東西的話，只是純靜態的 Octopress 放上來也是夠的 ，但爲了方便管理還是放 GitHub 上吧。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class=""><span class="line"># free -m
-</span><span class="line">             total       used       free     shared    buffers     cached
-</span><span class="line">Mem:            64         10         53          0          0          0
-</span><span class="line">-/+ buffers/cache:         10         53
-</span><span class="line">Swap:            0          0          0</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>用的 Nginx，只拿來作重定向和反向代理的確是有點浪費。</p>
-
 ]]></content>
     
   </entry>

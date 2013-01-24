@@ -3,19 +3,23 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>CJKTTY：linux 控制台 CJK 字符顯示補丁 - 雨吁</title>
+	<title>自用內核分享 - 雨吁</title>
 	<meta name="author" content="Xinding Ma">
 
 	
-	<meta name="description" content="Linux 控制台支持漢字等 CJK 字符顯示除了借助 zhcon 和 fbterm 之類的工具，LinuxSir.Org 的冲天飞豹（Youbest）曾製作了控制台顯示 UTF-8 字符的內核補丁，並一直在自己的 Blog 上發佈更新，在以前自己編譯內核時這幾乎是必備補丁，相比借助外部程序， &hellip;">
-	<meta name="keywords" content="CJK, CJKTTY, Kernel">
+	<meta name="description" content="自已編譯打包的內核，差不多就是 Linux-ck 加上了 CJKTTY 和 UKSM 補丁 一月二十二日編譯，版本 3.7.4-1。 需要注意的配置： CONFIG_MCORE2=y
+CONFIG_HZ_1000=y
+CONFIG_HZ=1000
+CONFIG_DEFAULT_BFQ=y
+# &hellip;">
+	<meta name="keywords" content="Arch Linux, Kernel">
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="480">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	
-	<link rel="canonical" href="http://shadow.ma/blog/2013/01/22/cjktty-kernel-patch-for-linux-console-with-cjk-characters-support/">
+	<link rel="canonical" href="http://shadow.ma/blog/2013/01/25/share-own-use-kernel/">
 	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
 	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	<link href="/favicon.gif" rel="icon" type="image/gif">
@@ -80,7 +84,7 @@
 	<div id="content" class="right-col"><div class="hfeed">
 <article class="hentry post">
 	
-	      <h1 class="title entry-title">CJKTTY：linux 控制台 CJK 字符顯示補丁</h1>
+	      <h1 class="title entry-title">自用內核分享</h1>
 	
 	
 	<div class="meta">
@@ -96,39 +100,60 @@
   
 
 
-<abbr class="published" title="2013-01-22T01:43:00+08:00">2013年01月22日</abbr></span>
+<abbr class="published" title="2013-01-25T01:53:00+08:00">2013年01月25日</abbr></span>
 	<span class="tags">
 
 
-	<a class='tag' rel='tag' title='查看 CJK 標籤的所有文章' href='/blog/tags/cjk/'>CJK</a>, <a class='tag' rel='tag' title='查看 CJKTTY 標籤的所有文章' href='/blog/tags/cjktty/'>CJKTTY</a>, <a class='tag' rel='tag' title='查看 Kernel 標籤的所有文章' href='/blog/tags/kernel/'>Kernel</a>
+	<a class='tag' rel='tag' title='查看 Arch Linux 標籤的所有文章' href='/blog/tags/arch-linux/'>Arch Linux</a>, <a class='tag' rel='tag' title='查看 Kernel 標籤的所有文章' href='/blog/tags/kernel/'>Kernel</a>
 
 
 </span>
 	<span class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn">Xinding Ma</a> (<span class="nickname">Shadow Ma</span>)</span>
 	</div>
 	
-	<div class="entry-content"><p>Linux 控制台支持漢字等 CJK 字符顯示除了借助 zhcon 和 fbterm 之類的工具，<a href="http://linuxsir.org/">LinuxSir.Org</a> 的冲天飞豹（Youbest）曾製作了控制台顯示 UTF-8 字符的內核補丁，並一直在自己的 <a href="http://blog.chinaunix.net/uid-436750-id-2123586.html" title="内核补丁：字符终端下显示UTF-8字符">Blog</a> 上發佈更新，在以前自己編譯內核時這幾乎是必備補丁，相比借助外部程序，給內核打上補丁得到原生的中文顯示可靠性更高，但自從 2012 年春節後補丁就再沒更新過。</p>
+	<div class="entry-content"><p>自已編譯打包的內核，差不多就是 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 加上了 CJKTTY 和 <a href="http://kerneldedup.org/projects/uksm/">UKSM</a> 補丁</p>
 
-<p>最近久違的折騰了一下 Gentoo，在 <a href="https://code.google.com/p/gentoo-zh/">Gentoo-zh</a> Overlay 的 <a href="https://github.com/Gentoo-zh/gentoo-zh/tree/master/sys-kernel/e-sources">e-sources</a> 中發現了 Youbest 補丁的繼任者 CJKTTY，可能是我孤陋寡聞了，我覺得這東西真的是低調，除了 IBM developerWorks 上的<a href="http://www.ibm.com/developerworks/cn/linux/l-cn-termi-hanzi/" title="如何改造 Linux 虚拟终端显示文字">這篇文章</a>相關資料真的非常少、非常零散，本想做個 <a href="/blog/tags/linked/">link post</a> 都找不到適合的項目頁面。</p>
+<p><img src="https://static.xind.in/blog/pic/2013/01/uname-linux-shadow.png" alt="uname in linux-shadow" /></p>
+
+<p>一月二十二日編譯，版本 3.7.4-1。</p>
+
+<p>需要注意的配置：</p>
+
+<pre><code>CONFIG_MCORE2=y
+CONFIG_HZ_1000=y
+CONFIG_HZ=1000
+CONFIG_DEFAULT_BFQ=y
+# CONFIG_FRAMEBUFFER_CONSOLE_ROTATION is not set
+</code></pre>
 
 <!-- more -->
 
-<p>感興趣的可以從 CJKTTY 的 <a href="http://repo.or.cz/w/linux-2.6/cjktty.git">git 倉庫</a>獲取 <code>-utf8</code> 分支內核源碼或是從項目的 SourceForge <a href="http://sourceforge.net/projects/cjktty/">主頁</a>獲取補丁，編譯過程可以參考這個 <a href="https://code.google.com/p/ttyim/wiki/install">Wiki</a><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。</p>
+<p>因爲是自用內核所以依自己的機器作了優化，<strong>要使用此內核需要 Intel Core 2 家族<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>或更新處理器</strong>，內核時鐘頻率設爲 1000Hz，默認 I/O 調度器爲 BFQ<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，因爲 CJKTTY 而禁用了 Framebuffer Console Rotation<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>。</p>
 
-<p>Archlinux 下的效果，中文輸入使用 uim-fep<br />
-<img src="https://static.xind.in/blog/pic/2013/01/console.png" alt="Linux Console with CJK characters support" /></p>
+<p>發布這東西主要想讓懶得自己編譯內核的 Arch 用戶也能體驗 CJKTTY，雖然因爲硬件限制可能受衆面非常窄，要是真有需求的話會考慮編譯通用平臺，只要上游沒問題，我會一直放出更新，最後聲明一下，此內核<strong>未經測試，風險自擔</strong>。</p>
 
-<p>控制台下使用 w3m 查看本站文章<br />
-<img src="https://static.xind.in/blog/pic/2013/01/w3m.png" alt="w3m under CJK console" /></p>
+<p>下載地址:</p>
 
-<p>關於控制台的中文支持，這東西其實見仁見智，對於我來說因爲故障恢復等原因仍然不時需要面對控制台，這時因爲中文 locale 的原因會遇到一串串的方塊，要查些資料也離不開 X，內核支持中文顯示確實省了不少心。</p>
+<ul>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.4-1-x86_64.pkg.tar.xz">linux-shadow-3.7.4-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.7.4-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.7.4-1-x86_64.pkg.tar.xz</a></li>
+</ul>
 
-<p>最後感謝 Youbest、microcai 等無私貢獻者。</p>
+<p>安裝後別忘了更新 grub 菜單</p>
+
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
 
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>有些內容已經過時，需要注意的是 Framebuffer 的相關設置。<a href="#fnref:1" rel="reference">&#8617;</a></p>
+      <p>包含 Core 2 Duo/Quad, Xeon 51xx/53xx/54xx/3360, Pentium Dual-Core T23xx+/Exxxx, Celeron M 5xx, Celeron Dual-Core 等。<a href="#fnref:1" rel="reference">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>如果要使用其它調度器比如 noop，請使用 <code>elevator=noop</code> 的内核參數。<a href="#fnref:2" rel="reference">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>詳情：<a href="https://code.google.com/p/ttyim/wiki/install">https://code.google.com/p/ttyim/wiki/install</a> 。<a href="#fnref:3" rel="reference">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -154,10 +179,10 @@
 </div>
 <section id="alignment">
       
-        <a class="left-alignment left" href="/blog/2013/01/16/trying-btrfs/" title="前一篇日誌: 試用 Btrfs">試用 Btrfs</a>
+        <a class="left-alignment left" href="/blog/2013/01/22/cjktty-kernel-patch-for-linux-console-with-cjk-characters-support/" title="前一篇日誌: CJKTTY：linux 控制台 CJK 字符顯示補丁">CJKTTY：linux 控制台 CJK 字符顯示補丁</a>
       
       
-        <a class="right-alignment right" href="/blog/2013/01/25/share-own-use-kernel/" title="後一篇日誌: 自用內核分享">自用內核分享</a>
+	<a class="right">已經是最新</a>        
       
 </section>
 
@@ -185,8 +210,8 @@
 <script type="text/javascript">
       var disqus_shortname = 'shadowma';
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://shadow.ma/blog/2013/01/22/cjktty-kernel-patch-for-linux-console-with-cjk-characters-support/';
-        var disqus_url = 'http://shadow.ma/blog/2013/01/22/cjktty-kernel-patch-for-linux-console-with-cjk-characters-support/';
+        var disqus_identifier = 'http://shadow.ma/blog/2013/01/25/share-own-use-kernel/';
+        var disqus_url = 'http://shadow.ma/blog/2013/01/25/share-own-use-kernel/';
         var disqus_script = 'embed.js';
     jQuery(document).ready(function(){        
 	    jQuery('#comment .disqus_container').on('click',function(){

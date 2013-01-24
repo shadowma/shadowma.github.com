@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Kernel | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/kernel/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-22T17:41:00+08:00</updated>
+  <updated>2013-01-25T02:57:51+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+	<title type="html"><![CDATA[自用內核分享]]></title>
+	<link href="http://shadow.ma/blog/2013/01/25/share-own-use-kernel/"/>
+    
+    <link href="http://shadow.ma/blog/2013/01/25/share-own-use-kernel/"/>
+    <updated>2013-01-25T01:53:00+08:00</updated>
+    <id>http://shadow.ma/blog/2013/01/25/share-own-use-kernel</id>
+    
+    <content type="html"><![CDATA[<p>自已編譯打包的內核，差不多就是 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 加上了 CJKTTY 和 <a href="http://kerneldedup.org/projects/uksm/">UKSM</a> 補丁</p>
+
+<p><img src="https://static.xind.in/blog/pic/2013/01/uname-linux-shadow.png" alt="uname in linux-shadow" /></p>
+
+<p>一月二十二日編譯，版本 3.7.4-1。</p>
+
+<p>需要注意的配置：</p>
+
+<pre><code>CONFIG_MCORE2=y
+CONFIG_HZ_1000=y
+CONFIG_HZ=1000
+CONFIG_DEFAULT_BFQ=y
+# CONFIG_FRAMEBUFFER_CONSOLE_ROTATION is not set
+</code></pre>
+
+<!-- more -->
+
+<p>因爲是自用內核所以依自己的機器作了優化，<strong>要使用此內核需要 Intel Core 2 家族<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>或更新處理器</strong>，內核時鐘頻率設爲 1000Hz，默認 I/O 調度器爲 BFQ<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，因爲 CJKTTY 而禁用了 Framebuffer Console Rotation<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>。</p>
+
+<p>發布這東西主要想讓懶得自己編譯內核的 Arch 用戶也能體驗 CJKTTY，雖然因爲硬件限制可能受衆面非常窄，要是真有需求的話會考慮編譯通用平臺，只要上游沒問題，我會一直放出更新，最後聲明一下，此內核<strong>未經測試，風險自擔</strong>。</p>
+
+<p>下載地址:</p>
+
+<ul>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.4-1-x86_64.pkg.tar.xz">linux-shadow-3.7.4-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.7.4-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.7.4-1-x86_64.pkg.tar.xz</a></li>
+</ul>
+
+<p>安裝後別忘了更新 grub 菜單</p>
+
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>包含 Core 2 Duo/Quad, Xeon 51xx/53xx/54xx/3360, Pentium Dual-Core T23xx+/Exxxx, Celeron M 5xx, Celeron Dual-Core 等。<a href="#fnref:1" rel="reference">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>如果要使用其它調度器比如 noop，請使用 <code>elevator=noop</code> 的内核參數。<a href="#fnref:2" rel="reference">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>詳情：<a href="https://code.google.com/p/ttyim/wiki/install">https://code.google.com/p/ttyim/wiki/install</a> 。<a href="#fnref:3" rel="reference">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
