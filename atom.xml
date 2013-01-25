@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-25T02:57:51+08:00</updated>
+  <updated>2013-01-25T12:23:33+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -22,7 +22,10 @@
     <updated>2013-01-25T01:53:00+08:00</updated>
     <id>http://shadow.ma/blog/2013/01/25/share-own-use-kernel</id>
     
-    <content type="html"><![CDATA[<p>自已編譯打包的內核，差不多就是 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 加上了 CJKTTY 和 <a href="http://kerneldedup.org/projects/uksm/">UKSM</a> 補丁</p>
+    <content type="html"><![CDATA[
+<p><abbr class="updated" title="2013-01-26T12:20:00+08:00">2013年01月26日 更新：</abbr> 添加 PKGBUILD tarball 下載</p>
+
+<p>自已編譯打包的內核，差不多就是 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 加上了 CJKTTY 和 <a href="http://kerneldedup.org/projects/uksm/">UKSM</a> 補丁</p>
 
 <p><img src="https://static.xind.in/blog/pic/2013/01/uname-linux-shadow.png" alt="uname in linux-shadow" /></p>
 
@@ -48,6 +51,7 @@ CONFIG_DEFAULT_BFQ=y
 <ul>
   <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.4-1-x86_64.pkg.tar.xz">linux-shadow-3.7.4-1-x86_64.pkg.tar.xz</a></li>
   <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.7.4-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.7.4-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.4-1.src.tar.gz">linux-shadow-3.7.4-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
 
 <p>安裝後別忘了更新 grub 菜單</p>
@@ -65,6 +69,9 @@ CONFIG_DEFAULT_BFQ=y
     </li>
     <li id="fn:3">
       <p>詳情：<a href="https://code.google.com/p/ttyim/wiki/install">https://code.google.com/p/ttyim/wiki/install</a> 。<a href="#fnref:3" rel="reference">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>包含 PKGBUILD，給想自己編譯的用戶。<a href="#fnref:4" rel="reference">&#8617;</a></p>
     </li>
   </ol>
 </div>
