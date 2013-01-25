@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Kernel | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/kernel/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-25T12:27:04+08:00</updated>
+  <updated>2013-01-25T12:30:59+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -80,7 +80,7 @@ CONFIG_DEFAULT_BFQ=y
       <p>詳情：<a href="https://code.google.com/p/ttyim/wiki/install">https://code.google.com/p/ttyim/wiki/install</a> 。<a href="#fnref:3" rel="reference">&#8617;</a></p>
     </li>
     <li id="fn:4">
-      <p>包含 PKGBUILD，給其它平臺用戶。<a href="#fnref:4" rel="reference">&#8617;</a></p>
+      <p>包含 PKGBUILD，其它平臺用戶，用這個自己編譯吧。<a href="#fnref:4" rel="reference">&#8617;</a></p>
     </li>
   </ol>
 </div>
