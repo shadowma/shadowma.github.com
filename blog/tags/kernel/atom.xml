@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Kernel | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/kernel/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-01-25T12:32:46+08:00</updated>
+  <updated>2013-01-29T20:20:24+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -32,7 +32,8 @@
 
 
 
-false 添加 PKGBUILD tarball 下載</p>
+false 3.7.5-1<br />
+2013年01月26日 更新： 添加 PKGBUILD tarball 下載</p>
 
 <p>自已編譯打包的內核，差不多就是 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 加上了 CJKTTY 和 <a href="http://kerneldedup.org/projects/uksm/">UKSM</a> 補丁</p>
 
@@ -58,9 +59,9 @@ CONFIG_DEFAULT_BFQ=y
 <p>下載地址:</p>
 
 <ul>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.4-1-x86_64.pkg.tar.xz">linux-shadow-3.7.4-1-x86_64.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.7.4-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.7.4-1-x86_64.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.4-1.src.tar.gz">linux-shadow-3.7.4-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.5-1-x86_64.pkg.tar.xz">linux-shadow-3.7.5-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.7.5-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.7.5-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.5-1.src.tar.gz">linux-shadow-3.7.5-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
 
 <p>安裝後別忘了更新 grub 菜單</p>
