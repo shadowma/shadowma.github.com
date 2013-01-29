@@ -7,7 +7,6 @@ Disallow: /
 User-agent: *
 Disallow: /404.html
 Disallow: /atom.xml
-Disallow: /feed
 Disallow: /sitemap.xml
 Disallow: /blog/page/
 Disallow: /blog/tags/*/
