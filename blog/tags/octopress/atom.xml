@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Octopress | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/octopress/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-02-01T00:43:38+08:00</updated>
+  <updated>2013-02-03T23:47:52+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -277,6 +277,16 @@ end
 </code></pre></noscript></div>
 </p>
 
+<p>2012年12月22日 更新：<br />
+多個分類時要這樣寫：</p>
+
+<p><code>
+categories: 
+- 随笔{essay}
+</code></p>
+
+<p>寫在方括號中會出問題，看有空能不能修好這個。</p>
+
 <p>
 
 
@@ -288,15 +298,13 @@ end
 
 
 false<br />
-多個分類時要這樣寫：</p>
+ Octopress 將在 2.1 版本支持分類的名稱與索引分離，詳情請查看 <a href="http://puttin.github.com/2013/01/01/octopress-support-slugs-and-titles/">Puttin Wong</a> 提交的這個 <a href="https://github.com/imathis/octopress/issues/902">Issue</a>，2.1 的插件已經可用，替換原來的就行，然後分類改成這樣的形式：</p>
 
 <p><code>
 categories: 
-- 随笔{essay}
-- Octopress{octopress}
+- essay [随笔]
 </code></p>
 
-<p>寫在方括號中會出問題，看有空能不能修好這個。</p>
 ]]></content>
     
   </entry>
