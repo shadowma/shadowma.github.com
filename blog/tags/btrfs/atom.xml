@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Btrfs | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/btrfs/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-02-05T15:20:34+08:00</updated>
+  <updated>2013-02-05T23:41:49+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Xinding Ma]]></name>
@@ -72,6 +72,11 @@ tar cvpzf /media/backup/arch-home.tgz /mnt/home
 <pre><code>gdisk /dev/sda
 </code></pre>
 
+<p>刷新分區表</p>
+
+<pre><code>partprobe /dev/sda 
+</code></pre>
+
 <p>我的分區情況</p>
 
 <pre><code>Number  Start (sector)    End (sector)  Size       Code  Name
@@ -80,9 +85,9 @@ tar cvpzf /media/backup/arch-home.tgz /mnt/home
    3         2103296       125045390   58.6 GiB    8300  Linux filesystem
 </code></pre>
 
-<p>刷新分區表</p>
+<p>格式化分區</p>
 
-<pre><code>partprobe /dev/sda 
+<pre><code>mkfs.btrfs /dev/sda3
 </code></pre>
 
 <p>掛載分區</p>
