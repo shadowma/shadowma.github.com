@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Kernel | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/kernel/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-02-11T14:41:34+08:00</updated>
+  <updated>2013-02-12T17:31:27+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Ma Xinding]]></name>
@@ -46,9 +46,9 @@ CONFIG_DEFAULT_BFQ=y
 <p>下載地址:</p>
 
 <ul>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.6-2-x86_64.pkg.tar.xz">linux-shadow-3.7.6-2-x86_64.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.7.6-2-x86_64.pkg.tar.xz">linux-shadow-headers-3.7.6-2-x86_64.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.6-2.src.tar.gz">linux-shadow-3.7.6-2.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.7-1-x86_64.pkg.tar.xz">linux-shadow-3.7.7-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.7.7-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.7.7-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.7-1.src.tar.gz">linux-shadow-3.7.7-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
 
 <p>安裝後別忘了更新 grub 菜單</p>
@@ -67,7 +67,8 @@ CONFIG_DEFAULT_BFQ=y
 
 
 
-false 3.7.6-2 Update BFQ to v6.<br />
+false 3.7.7-1<br />
+2013年02月08日 更新： 3.7.6-2 Update BFQ to v6.<br />
 2013年02月05日 更新： 3.7.6-1<br />
 2013年01月29日 更新： 3.7.5-1<br />
 2013年01月26日 更新： 添加 PKGBUILD tarball 下載</p>
