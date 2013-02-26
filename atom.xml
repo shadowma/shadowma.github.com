@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-02-26T11:19:46+08:00</updated>
+  <updated>2013-02-26T14:18:34+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Ma Xinding]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+	<title type="html"><![CDATA[Steam for Linux 遊戲體驗]]></title>
+	<link href="http://shadow.ma/blog/2013/02/26/experiencing-steam-for-linux/"/>
+    
+    <link href="http://shadow.ma/blog/2013/02/26/experiencing-steam-for-linux/"/>
+    <updated>2013-02-26T13:34:00+08:00</updated>
+    <id>http://shadow.ma/blog/2013/02/26/experiencing-steam-for-linux</id>
+    
+    <content type="html"><![CDATA[<p><img src="https://static.xind.in/blog/pic/2013/02/steam-for-linux.png" alt="Steam for Linux" /></p>
+
+<p>Valve 在情人節正式<a href="http://store.steampowered.com/news/9943/" title="Steam for Linux Now Available">發布</a>了 Steam for Linux，雖然還在內測時就嘗試過但當時可玩的遊戲不多，客戶端本身也有很多問題，所以沒多久就被我卸載了，直到 Valve <a href="http://steamcommunity.com/games/221410/announcements/detail/1766803738391201366" title="Counter-Strike 1.6 Beta released">發布</a>了支持 Linux 的 CS 1.6 測試版後才真正跳進了這坑裏，<a href="http://store.steampowered.com/app/10/" title="Steam 上的 Counter-Strike">Counter-Strike</a> 也是我在 Steam 上購買的第一個遊戲。</p>
+
+<!-- more -->
+
+<p>說下這段時間的感受吧，現在 Steam 客戶端已經非常穩定，對我來說現在僅有的缺陷是不能激活輸入法<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，在不得不輸入中文的時候只能從別的地方複製粘帖過來，遊戲方面各廠商的支持程度各不相同，基本上共同的問題還是國際化，比如 Half-life 和 CS 1.6 的中文顯示還都是方框；還有就是二進制兼容性，這算 Linux 發行版衆多的一個壞處吧，不少遊戲運行直接 Segfault<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>；最後就是驅動的問題，這是最頭疼的，一直號稱 Linux 下顯卡驅動支持最好的 Intel 這次也被扇了一巴掌，很多遊戲移植到 Linux 後要求 OpenGL 3.0 和 GLSL 1.30，比如基於 Source 引擎的 Team Fortress 2 和 Counter-Strike: Source，但現在 Intel 的顯示驅動只在 Sandy Bridge 和更新的硬件上才支持這些特性，社區在忙於開發新硬件的驅動，根本沒有精力爲老硬件實現特性<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>，而在 Windows 下這些遊戲運行只需要 DirectX 8，因此出現了原生遊戲無法運行，用 Wine 運行 Windows 版確正常的滑稽情況，而且 Wine 對 Steam 的<a href="http://appdb.winehq.org/objectManager.php?sClass=version&amp;iId=19444" title="WineHQ  - Steam Official Release">支持</a>非常好，輸入法正常，遊戲的中文顯示也都正常 _(:з」∠)_。</p>
+
+<p>總體來說，在遊戲方面 Linux 仍然任重道遠，Steam 的出現爲遊戲廠商提供了一個很好的分發平臺，對 Linux 平臺寄予厚望的 Valve 不斷的把旗下產品移植到 Linux，並積極地幫 Linux 解決<a href="http://www.phoronix.com/scan.php?page=news_item&amp;px=MTE0MzQ" title="Valve &amp; Intel Work On Open-Source GPU Drivers">問題</a>，爲其他開發商作了表率，Linux 平臺可玩的<a href="http://store.steampowered.com/search/?snr=1_4_4__12&amp;term=#os=linux&amp;advanced=0&amp;sort_order=ASC&amp;page=1">遊戲</a>正越來越多，作爲一個一直以來不玩遊戲的 Linux 用戶現在也攢了不少遊戲，感謝 Valve 所做的工作，同時期待 64 位版客戶端。</p>
+
+<p>各位使用 Steam for Linux 遇到問題的可以到<a href="https://github.com/ValveSoftware/steam-for-linux/issues">這裏</a>報告，有 Steam 的歡迎加<a href="http://steamcommunity.com/id/shadowma">我</a>一起玩。</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>不知道在官方支持的 Ubuntu 32位下有沒有這問題。<a href="#fnref:1" rel="reference">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Ubuntu 應該支持較好。<a href="#fnref:2" rel="reference">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>詳見 <a href="https://bugs.freedesktop.org/show_bug.cgi?id=59187#c1">https://bugs.freedesktop.org/show_bug.cgi?id=59187#c1</a>，現在看還是有轉機。<a href="#fnref:3" rel="reference">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1439,31 +1477,6 @@ end
 <ul>
   <li><a href="http://blog.xuming.net/2010/04/openvpn.html" title="Ubuntu 9.10下使用Network-manager 配置openvpn">Ubuntu 9.10下使用Network-manager 配置openvpn</a></li>
 </ul>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-	<title type="html"><![CDATA[切換到了 systemd]]></title>
-	<link href="http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd/"/>
-    
-    <link href="http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd/"/>
-    <updated>2012-10-06T19:35:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/06/switched-arch-to-systemd</id>
-    
-    <content type="html"><![CDATA[<p>Arch Linux 的啓動系統正在向 systemd 遷移，現在差不多所有的系統配置都從 <code>/etc/rc.conf</code> 中遷出，完全切換到 systemd 已經沒什麼困難，詳細過程就不說了，<a href="https://wiki.archlinux.org/index.php/Systemd" title="systemd">wiki</a> 寫的非常詳細，這方面文章也一大把。</p>
-
-<!-- more -->
-
-<p>照着 wiki 來，選擇了純 systemd 安裝，完全替代了 sysvinit 和 initscripts，因爲 systemd 有自帶 journal 所以幹掉了 syslog-ng，服務配置完後還啓用了 readahead。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">$ systemd-analyze 
-</span><span class="line">Startup finished in 3608ms (kernel) + 3562ms (userspace) = 7170ms</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>效果顯著，fbsplash 一閃而過，進度都沒走完 KDM 就出來了。</p>
 ]]></content>
     
   </entry>
