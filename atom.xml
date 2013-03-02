@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-02-26T19:46:59+08:00</updated>
+  <updated>2013-03-02T20:04:11+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Ma Xinding]]></name>
@@ -86,9 +86,9 @@ CONFIG_DEFAULT_BFQ=y
 <p>下載地址:</p>
 
 <ul>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.9-2-x86_64.pkg.tar.xz">linux-shadow-3.7.9-2-x86_64.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.7.9-2-x86_64.pkg.tar.xz">linux-shadow-headers-3.7.9-2-x86_64.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.9-2.src.tar.gz">linux-shadow-3.7.9-2.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.10-1-x86_64.pkg.tar.xz">linux-shadow-3.7.10-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.7.10-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.7.10-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.7.10-1.src.tar.gz">linux-shadow-3.7.10-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
 
 <p>安裝後別忘了更新 grub 菜單</p>
@@ -98,7 +98,8 @@ CONFIG_DEFAULT_BFQ=y
 
 <h2 id="section">更新日誌：</h2>
 
-<p><abbr class="updated" title="2013-02-26T11:20:00+08:00">2013年02月26日 更新：</abbr> 3.7.9-2<br />
+<p><abbr class="updated" title="2013-03-02T20:10:00+08:00">2013年03月02日 更新：</abbr> 3.7.10-1<br />
+2013年02月26日 更新： 3.7.9-2<br />
 2013年02月18日 更新： 3.7.9-1<br />
 2013年02月15日 更新： 3.7.8-1<br />
 2013年02月12日 更新： 3.7.7-1<br />
