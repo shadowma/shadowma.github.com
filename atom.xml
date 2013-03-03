@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-03-02T20:04:11+08:00</updated>
+  <updated>2013-03-04T01:48:29+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Ma Xinding]]></name>
@@ -319,6 +319,12 @@ HOOKS="base udev plymouth modconf block resume btrfs"
 </code></pre>
 
 <p>請檢查 <code>/boot/grub/grub.cfg</code> 中菜單的 linux 行中是否自動添加了 rootflags 選項，如果沒有請修改 <code>/etc/default/grub</code>，添加 <code>rootflags=subvol=arch</code> 到 GRUB_CMDLINE_LINUX_DEFAULT 行中，然後用上面的命令再次生成菜單。</p>
+
+<p>檢查無誤後 <code>exit</code> 退出 chroot 環境，卸載剛掛載的子卷</p>
+
+<pre><code>umount /mnt/home
+umount /mnt
+</code></pre>
 
 <p>重啓</p>
 
