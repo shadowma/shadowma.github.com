@@ -3,19 +3,19 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Steam for Linux 遊戲體驗 - 雨吁</title>
+	<title>Octopress 在 Arch Linux 下的一些問題 - 雨吁</title>
 	<meta name="author" content="Ma Xinding">
 
 	
-	<meta name="description" content="Valve 在情人節正式發布了 Steam for Linux，雖然還在內測時就嘗試過但當時可玩的遊戲不多，客戶端本身也有很多問題，所以沒多久就被我卸載了，直到 Valve 發布了支持 Linux 的 CS 1.6 測試版後才真正跳進了這坑裏，Counter-Strike 也是我在 Steam &hellip;">
-	<meta name="keywords" content="遊戲, Steam">
+	<meta name="description" content="因爲一直使用系統提供的 Ruby，隨着 Arch Linux 將系統的 Ruby 版本升級到了 2.0，Octopress 就沒法正常使用，嘗試了 AUR 上的 ruby1.9 也有很多問題，因此決定爲 Octopress 設定一個專用的 Ruby 環境，Ruby 的多版本管理工具我選擇了 &hellip;">
+	<meta name="keywords" content="Octopress">
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="480">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	
-	<link rel="canonical" href="http://shadow.ma/blog/2013/02/26/experiencing-steam-for-linux/">
+	<link rel="canonical" href="http://shadow.ma/blog/2013/04/07/octopress-on-arch-linux/">
 	<link href="http://feed.shadow.ma" rel="alternate" title="雨吁" type="application/atom+xml">
 	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	<link href="/favicon.gif" rel="icon" type="image/gif">
@@ -80,7 +80,7 @@
 	<div id="content" class="right-col"><div class="hfeed">
 <article class="hentry post">
 	
-	      <h1 class="title entry-title">Steam for Linux 遊戲體驗</h1>
+	      <h1 class="title entry-title">Octopress 在 Arch Linux 下的一些問題</h1>
 	
 	
 	<div class="meta">
@@ -96,44 +96,92 @@
   
 
 
-<abbr class="published" title="2013-02-26T13:34:00+08:00">2013年02月26日</abbr></span>
+<abbr class="published" title="2013-04-07T20:07:00+08:00">2013年04月07日</abbr></span>
 	<span class="tags">
 
 
-	<a class='tag' rel='tag' title='查看 遊戲 標籤的所有文章' href='/blog/tags/gaming/'>遊戲</a>, <a class='tag' rel='tag' title='查看 Steam 標籤的所有文章' href='/blog/tags/steam/'>Steam</a>
+	<a class='tag' rel='tag' title='查看 Octopress 標籤的所有文章' href='/blog/tags/octopress/'>Octopress</a>
 
 
 </span>
 	<span class="author vcard hide"><a rel="author" href="http://shadow.ma" class="url fn n"><span class="family-name">Ma</span> <span class="given-name">Xinding</span></a> (<span class="nickname">Shadow Ma</span>)</span>
 	</div>
 	
-	<div class="entry-content"><p><img src="https://static.xind.in/blog/pic/2013/02/steam-for-linux.png" alt="Steam for Linux" /></p>
-
-<p>Valve 在情人節正式<a href="http://store.steampowered.com/news/9943/" title="Steam for Linux Now Available">發布</a>了 Steam for Linux，雖然還在內測時就嘗試過但當時可玩的遊戲不多，客戶端本身也有很多問題，所以沒多久就被我卸載了，直到 Valve <a href="http://steamcommunity.com/games/221410/announcements/detail/1766803738391201366" title="Counter-Strike 1.6 Beta released">發布</a>了支持 Linux 的 CS 1.6 測試版後才真正跳進了這坑裏，<a href="http://store.steampowered.com/app/10/" title="Steam 上的 Counter-Strike">Counter-Strike</a> 也是我在 Steam 上購買的第一個遊戲。</p>
+	<div class="entry-content"><p>因爲一直使用系統提供的 Ruby，隨着 Arch Linux 將系統的 Ruby 版本升級到了 2.0，Octopress 就沒法正常使用，嘗試了 AUR 上的 <a href="https://aur.archlinux.org/packages/ruby1.9/" title="ruby1.9">ruby1.9</a> 也有很多問題，因此決定爲 Octopress 設定一個專用的 Ruby 環境，Ruby 的多版本管理工具我選擇了 <a href="https://github.com/sstephenson/rbenv">rbenv</a>，關於 rbenv 的詳細使用說明可以參照項目主頁的說明<a href="https://github.com/sstephenson/rbenv">文檔</a>或是 Ruby China Wiki 上的使用<a href="http://ruby-china.org/wiki/rbenv-guide" title="rbenv使用指南">指南</a>，當然你也可以選擇使用 <a href="https://rvm.io/" title="RVM: Ruby Version Manager">RVM</a> 管理 Ruby 版本。</p>
 
 <!-- more -->
 
-<p>說下這段時間的感受吧，現在 Steam 客戶端已經非常穩定，對我來說現在僅有的缺陷是不能激活輸入法<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，在不得不輸入中文的時候只能從別的地方複製粘帖過來，遊戲方面各廠商的支持程度各不相同，基本上共同的問題還是國際化，比如 Half-life 和 CS 1.6 的中文顯示還都是方框；還有就是二進制兼容性，這算 Linux 發行版衆多的一個壞處吧，不少遊戲運行直接 Segfault<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>；最後就是驅動的問題，這是最頭疼的，一直號稱 Linux 下顯卡驅動支持最好的 Intel 這次也被扇了一巴掌，很多遊戲移植到 Linux 後要求 OpenGL 3.0 和 GLSL 1.30，比如基於 Source 引擎的 Team Fortress 2 和 Counter-Strike: Source，但現在 Intel 的顯示驅動只在 Sandy Bridge 和更新的硬件上才支持這些特性，社區在忙於開發新硬件的驅動，根本沒有精力爲老硬件實現特性<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>，而在 Windows 下這些遊戲運行只需要 DirectX 8，因此出現了原生遊戲無法運行，用 Wine 運行 Windows 版確正常的滑稽情況，而且 Wine 對 Steam 的<a href="http://appdb.winehq.org/objectManager.php?sClass=version&amp;iId=19444" title="WineHQ  - Steam Official Release">支持</a>非常好，輸入法正常，遊戲的中文顯示也都正常 _(:з」∠)_。</p>
+<p>雖然 AUR 上有提供 rbenv，但強烈建議安裝到用戶目錄就好，安裝：</p>
 
-<p>總體來說，在遊戲方面 Linux 仍然任重道遠，Steam 的出現爲遊戲廠商提供了一個很好的分發平臺，對 Linux 平臺寄予厚望的 Valve 不斷的把旗下產品移植到 Linux，並積極地幫 Linux 解決<a href="http://www.phoronix.com/scan.php?page=news_item&amp;px=MTE0MzQ" title="Valve &amp; Intel Work On Open-Source GPU Drivers">問題</a>，爲其他開發商作了表率，Linux 平臺可玩的<a href="http://store.steampowered.com/search/?snr=1_4_4__12&amp;term=#os=linux&amp;advanced=0&amp;sort_order=ASC&amp;page=1">遊戲</a>正越來越多，作爲一個一直以來不玩遊戲的 Linux 用戶現在也攢了不少遊戲，感謝 Valve 所做的工作，同時期待 64 位版客戶端。</p>
+<pre><code>git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+</code></pre>
 
-<p>各位使用 Steam for Linux 遇到問題的可以到<a href="https://github.com/ValveSoftware/steam-for-linux/issues">這裏</a>報告，有 Steam 的歡迎加<a href="http://steamcommunity.com/id/shadowma">我</a>一起玩。</p>
+<p>推薦安裝的插件：</p>
 
-<p><a href="http://steamcommunity.com/id/shadowma" style="background: url('http://steamsignature.com/status/default/76561198077731354.png') 0 0 no-repeat;width: 225px;height: 48px;display: inline-block;"></a><a href="steam://friends/add/76561198077731354" title="添加好友" style="background: url('http://steamsignature.com/AddFriend.png') 0 0 no-repeat;width: 35px;height: 48px;display: inline-block;"></a></p>
+<pre><code>git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build # 用來編譯安裝 Ruby
+git clone git://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash # 通過 gem 命令安裝完 gem 後無需手動執行 rbenv rehash 命令
+</code></pre>
 
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>不知道在官方支持的 Ubuntu 32位下有沒有這問題。<a href="#fnref:1" rel="reference">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>Ubuntu 應該支持較好。<a href="#fnref:2" rel="reference">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>詳見 <a href="https://bugs.freedesktop.org/show_bug.cgi?id=59187#c1">https://bugs.freedesktop.org/show_bug.cgi?id=59187#c1</a>，現在看還是有轉機。<a href="#fnref:3" rel="reference">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<p>設置環境變量：</p>
+
+<pre><code>echo 'export PATH="$HOME/.rbenv/bin:$PATH"' &gt;&gt; $HOME/.bashrc
+echo 'eval "$(rbenv init -)"' &gt;&gt; $HOME/.bashrc
+</code></pre>
+
+<p>重新登錄終端就能使用 rbenv 了，使用 rbenv 安装需要的 Ruby 版本：</p>
+
+<pre><code>cd octopress # 切換到 Octopress 目錄
+rbenv install $(cat .rbenv-version)
+</code></pre>
+
+<p>因爲是編譯安裝所以需要一些時間，安裝完成後可以設置爲 rbenv 默認使用的 Ruby 版本：</p>
+
+<pre><code>rbenv global $(cat .rbenv-version)
+</code></pre>
+
+<p>也可以在使用 Octopress 時才爲當前 Shell 設置 Ruby 版本：</p>
+
+<pre><code>rbenv shell $(cat .rbenv-version)
+</code></pre>
+
+<p>安裝 Octopress 所需的 gem：</p>
+
+<pre><code>rbenv exec gem install bundler
+rbenv exec bundle install
+rbenv rehash # 每當切換 Ruby 版本和執行 bundle install 之後必須執行該命令
+</code></pre>
+
+<p>至此 Octopress 所需的 Ruby 環境就設置完成，但除此之外 Arch Linux 下還存在一個 Python 版本的問題，因爲 Octopress 使用 Pygments 來高亮代碼，而 Pygments 不支持 Archlinux 默認提供的 Python 3.x，之前我參照 Ruby China 的<a href="http://ruby-china.org/topics/289" title="解决pygments.rb (RubyPython) 找不到libpython的问题">帖子</a>解決了這個問題，但非包管理創建的系統文件總讓人感覺不爽，現在找到了更好的方法就是使用 <a href="https://wiki.archlinux.org/index.php/Python_VirtualEnv#Virtualenvwrapper">python-virtualenvwrapper</a> 創建虛擬的 Python 環境</p>
+
+<pre><code>sudo pacman -S python-virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+mkdir -p $WORKON_HOME
+source /usr/bin/virtualenvwrapper.sh
+mkvirtualenv -p /usr/bin/python2.7 --distribute blog_env
+</code></pre>
+
+<p>使用 <code>workon blog_env</code> 命令進入虛擬環境，使用 <code>deactivate</code> 命令退出，需要先執行 <code>source /usr/bin/virtualenvwrapper.sh</code> 才會有 workon 命令，建議將其加入 <code>.bashrc</code></p>
+
+<pre><code>echo 'export WORKON_HOME=$HOME/.virtualenvs' &gt;&gt; ~/.bashrc
+echo 'source /usr/bin/virtualenvwrapper.sh' &gt;&gt; ~/.bashrc
+</code></pre>
+
+<p>測試：</p>
+
+<pre><code>cd octopress
+source /usr/bin/virtualenvwrapper.sh &amp;&amp; workon blog_env	
+rbenv shell $(cat .rbenv-version) &amp;&amp; rbenv rehash # 如果已經把需要的 Ruby 版本設置爲默認就不需要這步了
+rbenv exec rake generate
+</code></pre>
+
+<p>現在應該能正常使用 Octopress 了，以上。</p>
+
+<h2 id="section">參考資料</h2>
+<ul>
+  <li><a href="http://www.wongdev.com/blog/2013/01/16/octopress-on-archlinux/" title="Octopress on Arch Linux">Octopress on Arch Linux</a></li>
+  <li><a href="http://ruby-china.org/wiki/rbenv-guide" title="rbenv使用指南">rbenv使用指南</a></li>
+</ul>
+
 </div>
 
 
@@ -156,10 +204,10 @@
 </div>
 <section id="alignment">
       
-        <a class="left-alignment left" href="/blog/2013/01/25/share-own-use-kernel/" title="前一篇日誌: 自用內核分享">自用內核分享</a>
+        <a class="left-alignment left" href="/blog/2013/02/26/experiencing-steam-for-linux/" title="前一篇日誌: Steam for Linux 遊戲體驗">Steam for Linux 遊戲體驗</a>
       
       
-        <a class="right-alignment right" href="/blog/2013/04/07/octopress-on-arch-linux/" title="後一篇日誌: Octopress 在 Arch Linux 下的一些問題">Octopress 在 Arch Linux 下的一些問題</a>
+	<a class="right">已經是最新</a>        
       
 </section>
 
@@ -187,8 +235,8 @@
 <script type="text/javascript">
       var disqus_shortname = 'shadowma';
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://shadow.ma/blog/2013/02/26/experiencing-steam-for-linux/';
-        var disqus_url = 'http://shadow.ma/blog/2013/02/26/experiencing-steam-for-linux/';
+        var disqus_identifier = 'http://shadow.ma/blog/2013/04/07/octopress-on-arch-linux/';
+        var disqus_url = 'http://shadow.ma/blog/2013/04/07/octopress-on-arch-linux/';
         var disqus_script = 'embed.js';
     jQuery(document).ready(function(){        
 	    jQuery('#comment .disqus_container').on('click',function(){

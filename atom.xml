@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-03-30T20:10:30+08:00</updated>
+  <updated>2013-04-07T20:44:37+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Ma Xinding]]></name>
@@ -12,6 +12,94 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+	<title type="html"><![CDATA[Octopress 在 Arch Linux 下的一些問題]]></title>
+	<link href="http://shadow.ma/blog/2013/04/07/octopress-on-arch-linux/"/>
+    
+    <link href="http://shadow.ma/blog/2013/04/07/octopress-on-arch-linux/"/>
+    <updated>2013-04-07T20:07:00+08:00</updated>
+    <id>http://shadow.ma/blog/2013/04/07/octopress-on-arch-linux</id>
+    
+    <content type="html"><![CDATA[<p>因爲一直使用系統提供的 Ruby，隨着 Arch Linux 將系統的 Ruby 版本升級到了 2.0，Octopress 就沒法正常使用，嘗試了 AUR 上的 <a href="https://aur.archlinux.org/packages/ruby1.9/" title="ruby1.9">ruby1.9</a> 也有很多問題，因此決定爲 Octopress 設定一個專用的 Ruby 環境，Ruby 的多版本管理工具我選擇了 <a href="https://github.com/sstephenson/rbenv">rbenv</a>，關於 rbenv 的詳細使用說明可以參照項目主頁的說明<a href="https://github.com/sstephenson/rbenv">文檔</a>或是 Ruby China Wiki 上的使用<a href="http://ruby-china.org/wiki/rbenv-guide" title="rbenv使用指南">指南</a>，當然你也可以選擇使用 <a href="https://rvm.io/" title="RVM: Ruby Version Manager">RVM</a> 管理 Ruby 版本。</p>
+
+<!-- more -->
+
+<p>雖然 AUR 上有提供 rbenv，但強烈建議安裝到用戶目錄就好，安裝：</p>
+
+<pre><code>git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+</code></pre>
+
+<p>推薦安裝的插件：</p>
+
+<pre><code>git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build # 用來編譯安裝 Ruby
+git clone git://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash # 通過 gem 命令安裝完 gem 後無需手動執行 rbenv rehash 命令
+</code></pre>
+
+<p>設置環境變量：</p>
+
+<pre><code>echo 'export PATH="$HOME/.rbenv/bin:$PATH"' &gt;&gt; $HOME/.bashrc
+echo 'eval "$(rbenv init -)"' &gt;&gt; $HOME/.bashrc
+</code></pre>
+
+<p>重新登錄終端就能使用 rbenv 了，使用 rbenv 安装需要的 Ruby 版本：</p>
+
+<pre><code>cd octopress # 切換到 Octopress 目錄
+rbenv install $(cat .rbenv-version)
+</code></pre>
+
+<p>因爲是編譯安裝所以需要一些時間，安裝完成後可以設置爲 rbenv 默認使用的 Ruby 版本：</p>
+
+<pre><code>rbenv global $(cat .rbenv-version)
+</code></pre>
+
+<p>也可以在使用 Octopress 時才爲當前 Shell 設置 Ruby 版本：</p>
+
+<pre><code>rbenv shell $(cat .rbenv-version)
+</code></pre>
+
+<p>安裝 Octopress 所需的 gem：</p>
+
+<pre><code>rbenv exec gem install bundler
+rbenv exec bundle install
+rbenv rehash # 每當切換 Ruby 版本和執行 bundle install 之後必須執行該命令
+</code></pre>
+
+<p>至此 Octopress 所需的 Ruby 環境就設置完成，但除此之外 Arch Linux 下還存在一個 Python 版本的問題，因爲 Octopress 使用 Pygments 來高亮代碼，而 Pygments 不支持 Archlinux 默認提供的 Python 3.x，之前我參照 Ruby China 的<a href="http://ruby-china.org/topics/289" title="解决pygments.rb (RubyPython) 找不到libpython的问题">帖子</a>解決了這個問題，但非包管理創建的系統文件總讓人感覺不爽，現在找到了更好的方法就是使用 <a href="https://wiki.archlinux.org/index.php/Python_VirtualEnv#Virtualenvwrapper">python-virtualenvwrapper</a> 創建虛擬的 Python 環境</p>
+
+<pre><code>sudo pacman -S python-virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+mkdir -p $WORKON_HOME
+source /usr/bin/virtualenvwrapper.sh
+mkvirtualenv -p /usr/bin/python2.7 --distribute blog_env
+</code></pre>
+
+<p>使用 <code>workon blog_env</code> 命令進入虛擬環境，使用 <code>deactivate</code> 命令退出，需要先執行 <code>source /usr/bin/virtualenvwrapper.sh</code> 才會有 workon 命令，建議將其加入 <code>.bashrc</code></p>
+
+<pre><code>echo 'export WORKON_HOME=$HOME/.virtualenvs' &gt;&gt; ~/.bashrc
+echo 'source /usr/bin/virtualenvwrapper.sh' &gt;&gt; ~/.bashrc
+</code></pre>
+
+<p>測試：</p>
+
+<pre><code>cd octopress
+source /usr/bin/virtualenvwrapper.sh &amp;&amp; workon blog_env	
+rbenv shell $(cat .rbenv-version) &amp;&amp; rbenv rehash # 如果已經把需要的 Ruby 版本設置爲默認就不需要這步了
+rbenv exec rake generate
+</code></pre>
+
+<p>現在應該能正常使用 Octopress 了，以上。</p>
+
+<h2 id="section">參考資料</h2>
+<ul>
+  <li><a href="http://www.wongdev.com/blog/2013/01/16/octopress-on-archlinux/" title="Octopress on Arch Linux">Octopress on Arch Linux</a></li>
+  <li><a href="http://ruby-china.org/wiki/rbenv-guide" title="rbenv使用指南">rbenv使用指南</a></li>
+</ul>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -88,7 +176,9 @@ CONFIG_DEFAULT_BFQ=y
 <ul>
   <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.8.5-1-x86_64.pkg.tar.xz">linux-shadow-3.8.5-1-x86_64.pkg.tar.xz</a></li>
   <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.8.5-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.8.5-1-x86_64.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.8.5-1.src.tar.gz">linux-shadow-3.8.5-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.8.6-1-i686.pkg.tar.xz">linux-shadow-3.8.6-1-i686.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.8.6-1-i686.pkg.tar.xz">linux-shadow-headers-3.8.6-1-i686.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.8.6-1.src.tar.gz">linux-shadow-3.8.6-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
 
 <p>安裝後別忘了更新 grub 菜單</p>
@@ -98,7 +188,8 @@ CONFIG_DEFAULT_BFQ=y
 
 <h2 id="section">更新日誌：</h2>
 
-<p><abbr class="updated" title="2013-03-30T17:05:00+08:00">2013年03月30日 更新：</abbr> 3.8.5-1<br />
+<p><abbr class="updated" title="2013-04-07T20:40:00+08:00">2013年04月07日 更新：</abbr> 3.8.6-1 因爲手閑將系統<a href="https://wiki.archlinux.org/index.php/Migrating_Between_Architectures_Without_Reinstalling" title="Migrating Between Architectures Without Reinstalling">遷移</a>到了32位，暫時只有32位<br />
+2013年03月30日 更新： 3.8.5-1<br />
 2013年03月21日 更新： 3.8.4-1<br />
 2013年03月19日 更新： 3.8.3-1 已加入 UKSM<br />
 2013年03月04日 更新： 3.8.2-1 暫時沒有 UKSM<br />
@@ -1417,79 +1508,6 @@ end
 <pre><code>chmod +x /etc/cron.weekly/chnroutes
 </code></pre>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-	<title type="html"><![CDATA[使用 NetworkManager 設置 VPNC 和路由表]]></title>
-	<link href="http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/"/>
-    
-    <link href="http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager/"/>
-    <updated>2012-10-18T01:20:00+08:00</updated>
-    <id>http://shadow.ma/blog/2012/10/18/configure-vpnc-route-tables-with-networkmanager</id>
-    
-    <content type="html"><![CDATA[<p>昨晚看到個 VPN 服務 <a href="http://106.187.44.5/home?referral=70588D95C2F9DF00D908B3CC2282F650" title="IQLink">IQLink</a>，免費用戶每月有 100G 流量，測了下速度還不錯，可以留着以備不時之需。</p>
-
-<p>用 VPN 當然得配置路由表，之前用 PPTP VPN 時就配置過 <a href="http://code.google.com/p/chnroutes/" title="chnroutes">chnroutes</a>，用來給國內 ip 添加路由表，用非 VPN 線路高速訪問國內網站，還能節省流量。</p>
-
-<!-- more -->
-
-<p>IQLink 提供的是 Cisco VPN，Linux 下要用 VPNC 連接，chnroutes 網站上提供了 PPTP 和 OpenVPN 的設置教程，唯獨沒有 VPNC，還好 VPNC 支持連接腳本，默認配置的 <code>/etc/vpnc/vpnc-script</code> 能在執行 <code>pre-init</code>、<code>connect</code>、<code>post-connect</code>、<code>disconnect</code>、<code>post-disconnect</code> 和 <code>reconnect</code> 六種 action 時調用自定義腳本，只要把 <code>python chnroutes.py -p linux</code> 生成的腳本 <code>ip-pre-up</code> 和 <code>ip-down</code> 分別放入 <code>/etc/vpnc/pre-init.d</code> 和 <code>/etc/vpnc/post-disconnect.d</code> 就能在連接 VPN 前後成功添加恢復路由表，但在使用 NetworkManager 連接 VPNC 時，發現這些腳本根本就沒有被執行，NM 的 VPNC 插件用自帶的 <code>nm-vpnc-service-vpnc-helper</code> 替代了 <code>vpnc-script</code>，完全不讀取 <code>/etc/vpnc</code> 下的配置，而且這東西是二進制文件沒法改，試過直接替換成 <code>vpnc-script</code> 也不行，正準備放棄時突然想起 NetworkManager 也支持連接腳本，直接用 NetworkManager 配置的話就不用再爲每種 VPN 都設定路由表了。</p>
-
-<p>把下面的腳本（根據自己實際情況修改）放入 <code>/etc/NetworkManager/dispatcher.d</code>，腳本中在觸發 <code>vpn-down</code> 恢復路由表的操作中我排除了正在配置的 VPNC 連接的 UUID，因爲斷開連接時路由表已經被恢復，導致腳本返回一大串錯誤，這<s>應該是 `nm-vpnc-service-vpnc-helper` 中有對路由表的操作的原因</s> 是 VPN 服務端設置決定的，VPN 服務有添加網關的話會自動修改路由表，斷開連接後路由表被恢復，chnroutes 的條目也一起被清除，其實是個無傷大雅的問題。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>99-chnroutes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c">#!/bin/sh</span>
-</span><span class="line">
-</span><span class="line"><span class="nv">INTERFACE</span><span class="o">=</span><span class="nv">$1</span>
-</span><span class="line"><span class="nv">STATUS</span><span class="o">=</span><span class="nv">$2</span>
-</span><span class="line">
-</span><span class="line"><span class="k">case</span> <span class="s2">&quot;$STATUS&quot;</span> in
-</span><span class="line">        <span class="s1">&#39;vpn-up&#39;</span><span class="o">)</span>
-</span><span class="line">                <span class="nb">exec</span> /etc/chnroutes/vpnup <span class="c">#chnroutes 生成的 ip-pre-up</span>
-</span><span class="line">                ;;
-</span><span class="line">        <span class="s1">&#39;vpn-down&#39;</span><span class="o">)</span>
-</span><span class="line">                <span class="c"># if [ &quot;$CONNECTION_UUID&quot; != &quot;1f2c647b-dd70-4f97-8300-0cf6cd4a2e4c&quot; ]; then</span>
-</span><span class="line">                <span class="nb">exec</span> /etc/chnroutes/vpndown <span class="c">#chnroutes 生成的 ip-down</span>
-</span><span class="line">                <span class="c"># fi</span>
-</span><span class="line">                ;;
-</span><span class="line"><span class="k">esac</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>到此處還不能正常使用，chnroutes 生成的腳本是給 PPTP 用的，默認是要在 PPP 撥號前執行，在 VPN 鏈接前路由表就設置好了，而 NetworkManager 連接腳本中的 <code>vpn-up</code> 要在連接建立後才會被觸發，<s>像我正在配置的 VPNC 因爲之前提到的 `nm-vpnc-service-vpnc-helper` 中有對路由表的操作</s> VPN 服務有修改路由表的話，腳本中的 <code>OLDGW</code> 得到的值會會是 VPN 網關的地址，路由表會被設成讓所有國內 ip 都走 VPN，解決方法是把 chnroutes 生成的設置腳本 <code>ip-pre-up</code>（上面腳本中的 <code>vpnup</code>）中的：</p>
-
-<pre><code>OLDGW=`ip route show | grep '^default' | sed -e 's/default via \([^ ]*\).*/\1/'`
-</code></pre>
-
-<p>修改爲：</p>
-
-<pre><code>OLDGW=`ip route show | sed '/tun*/d'  | grep '^[^d].*proto static' | sed -e 's/.*via \([^ ]*\).*/\1/'`
-</code></pre>
-
-<p>重新連接，測試成功。現在用 NetworkManager 連接的 VPN 都會自動設置路由表，以前給 PPTP 設置的撥號腳本可以移除了。</p>
-
-<p>其實沒必要像我一樣把 <code>ip-pre-up</code> 和 <code>ip-down</code> 改成 <code>vpnup</code> 和 <code>vpndown</code>，只是這裏 <code>vpnup</code> 已經不是 pre-up 了，看着不爽而已。</p>
-
-<h2 id="section">參考資料</h2>
-<ul>
-  <li><a href="http://blog.xuming.net/2010/04/openvpn.html" title="Ubuntu 9.10下使用Network-manager 配置openvpn">Ubuntu 9.10下使用Network-manager 配置openvpn</a></li>
-</ul>
 ]]></content>
     
   </entry>
