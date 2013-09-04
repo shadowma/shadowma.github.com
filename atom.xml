@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-04-07T20:44:37+08:00</updated>
+  <updated>2013-09-04T15:58:25+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Ma Xinding]]></name>
@@ -150,7 +150,10 @@ rbenv exec rake generate
     <updated>2013-01-25T01:53:00+08:00</updated>
     <id>http://shadow.ma/blog/2013/01/25/share-own-use-kernel</id>
     
-    <content type="html"><![CDATA[<p>自已編譯打包的內核，差不多就是 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 加上了 CJKTTY 和 <a href="http://kerneldedup.org/projects/uksm/">UKSM</a> 補丁</p>
+    <content type="html"><![CDATA[
+<p><abbr class="updated" title="2013-09-04T16:00:00+08:00">2013年09月04日 更新：</abbr> 3.10.10-1 可能是跟進 3.11 前最後一發，更新一下，扔了都快五個月了，我的機器也升級了，針對 Ivy Bridge 優化，可能受衆面更窄了，以後看心情發吧。</p>
+
+<p>自已編譯打包的內核，差不多就是 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 加上了 CJKTTY 和 <a href="http://kerneldedup.org/projects/uksm/">UKSM</a> 補丁</p>
 
 <p><img src="https://static.xind.in/blog/pic/2013/01/uname-linux-shadow.png" alt="uname in linux-shadow" /></p>
 
@@ -174,11 +177,11 @@ CONFIG_DEFAULT_BFQ=y
 <p>下載地址:</p>
 
 <ul>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.8.5-1-x86_64.pkg.tar.xz">linux-shadow-3.8.5-1-x86_64.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.8.5-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.8.5-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.10.10-1-x86_64.pkg.tar.xz">linux-shadow-3.10.10-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.10.10-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.10.10-1-x86_64.pkg.tar.xz</a></li>
   <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.8.6-1-i686.pkg.tar.xz">linux-shadow-3.8.6-1-i686.pkg.tar.xz</a></li>
   <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.8.6-1-i686.pkg.tar.xz">linux-shadow-headers-3.8.6-1-i686.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.8.6-1.src.tar.gz">linux-shadow-3.8.6-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.10.10-1.src.tar.gz">linux-shadow-3.10.10-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
 
 <p>安裝後別忘了更新 grub 菜單</p>
@@ -187,8 +190,7 @@ CONFIG_DEFAULT_BFQ=y
 </code></pre>
 
 <h2 id="section">更新日誌：</h2>
-
-<p><abbr class="updated" title="2013-04-07T20:40:00+08:00">2013年04月07日 更新：</abbr> 3.8.6-1 因爲手閑將系統<a href="https://wiki.archlinux.org/index.php/Migrating_Between_Architectures_Without_Reinstalling" title="Migrating Between Architectures Without Reinstalling">遷移</a>到了32位，暫時只有32位<br />
+<p>2013年04月07日 更新： 3.8.6-1 因爲手閑將系統<a href="https://wiki.archlinux.org/index.php/Migrating_Between_Architectures_Without_Reinstalling" title="Migrating Between Architectures Without Reinstalling">遷移</a>到了32位，暫時只有32位<br />
 2013年03月30日 更新： 3.8.5-1<br />
 2013年03月21日 更新： 3.8.4-1<br />
 2013年03月19日 更新： 3.8.3-1 已加入 UKSM<br />
@@ -930,7 +932,7 @@ end
 <p>寫在方括號中會出問題，看有空能不能修好這個。</p>
 
 <p><abbr class="updated" title="2013-02-03T23:48:00+08:00">2013年02月03日 更新：</abbr><br />
- Octopress 將在 2.1 版本支持分類的名稱與索引分離，詳情請查看 <a href="http://puttin.github.com/2013/01/01/octopress-support-slugs-and-titles/">Puttin Wong</a> 提交的這個 <a href="https://github.com/imathis/octopress/issues/902">Issue</a>，2.1 的插件已經可用，替換原來的就行，然後分類改成這樣的形式：</p>
+Octopress 將在 2.1 版本支持分類的名稱與索引分離，詳情請查看 <a href="http://puttin.github.com/2013/01/01/octopress-support-slugs-and-titles/">Puttin Wong</a> 提交的這個 <a href="https://github.com/imathis/octopress/issues/902">Issue</a>，2.1 的插件已經可用，替換原來的就行，然後分類改成這樣的形式：</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
