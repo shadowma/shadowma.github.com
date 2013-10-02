@@ -4,7 +4,7 @@
   <title><![CDATA[雨吁]]></title>
   <link href="http://shadow.ma/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-09-28T18:03:03+08:00</updated>
+  <updated>2013-10-02T19:22:22+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Ma Xinding]]></name>
@@ -176,7 +176,7 @@ rbenv exec rake generate
     <id>http://shadow.ma/blog/2013/01/25/share-own-use-kernel</id>
     
     <content type="html"><![CDATA[
-<p><abbr class="updated" title="2013-09-28T18:00:00+08:00">2013年09月28日 更新：</abbr> 3.11.2-1</p>
+<p><abbr class="updated" title="2013-10-02T19:30:00+08:00">2013年10月02日 更新：</abbr> 3.11.3-1</p>
 
 <p>自已編譯打包的內核，差不多就是 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 加上了 CJKTTY 和 <a href="http://kerneldedup.org/projects/uksm/">UKSM</a> 補丁</p>
 
@@ -202,11 +202,11 @@ CONFIG_DEFAULT_BFQ=y
 <p>下載地址:</p>
 
 <ul>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.11.2-1-x86_64.pkg.tar.xz">linux-shadow-3.11.2-1-x86_64.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.11.2-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.11.2-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.11.3-1-x86_64.pkg.tar.xz">linux-shadow-3.11.3-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.11.3-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.11.3-1-x86_64.pkg.tar.xz</a></li>
   <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.8.6-1-i686.pkg.tar.xz">linux-shadow-3.8.6-1-i686.pkg.tar.xz</a></li>
   <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.8.6-1-i686.pkg.tar.xz">linux-shadow-headers-3.8.6-1-i686.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.11.2-1.src.tar.gz">linux-shadow-3.11.2-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.11.3-1.src.tar.gz">linux-shadow-3.11.3-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
 
 <p>安裝後別忘了更新 grub 菜單</p>
@@ -215,7 +215,8 @@ CONFIG_DEFAULT_BFQ=y
 </code></pre>
 
 <h2 id="section">更新日誌：</h2>
-<p>2013年09月18日 更新： 3.11.1-1<br />
+<p>2013年09月28日 更新： 3.11.2-1<br />
+2013年09月18日 更新： 3.11.1-1<br />
 2013年09月14日 更新： 3.11-1<br />
 2013年09月04日 更新： 3.10.10-1 可能是跟進 3.11 前最後一發，更新一下，扔了都快五個月了，我的機器也升級了，針對 Ivy Bridge 優化，可能受衆面更窄了，以後看心情發吧。<br />
 2013年04月07日 更新： 3.8.6-1 因爲手閑將系統<a href="https://wiki.archlinux.org/index.php/Migrating_Between_Architectures_Without_Reinstalling" title="Migrating Between Architectures Without Reinstalling">遷移</a>到了32位，暫時只有32位<br />
