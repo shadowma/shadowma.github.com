@@ -4,7 +4,7 @@
   <title><![CDATA[標籤: Kernel | 雨吁]]></title>
   <link href="http://shadow.ma/blog/tags/kernel/atom.xml" rel="self"/>
   <link href="http://shadow.ma/"/>
-  <updated>2013-12-10T15:48:22+08:00</updated>
+  <updated>2013-12-13T04:55:07+08:00</updated>
   <id>http://shadow.ma/</id>
   <author>
     <name><![CDATA[Ma Xinding]]></name>
@@ -32,7 +32,7 @@
 
 
 
-false 3.12.4-1</p>
+false 3.12.5-1</p>
 
 <p>自已編譯打包的內核，差不多就是 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 加上了 CJKTTY 和 <a href="http://kerneldedup.org/projects/uksm/">UKSM</a> 補丁</p>
 
@@ -58,11 +58,11 @@ CONFIG_DEFAULT_BFQ=y
 <p>下載地址:</p>
 
 <ul>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.12.4-1-x86_64.pkg.tar.xz">linux-shadow-3.12.4-1-x86_64.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.12.4-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.12.4-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.12.5-1-x86_64.pkg.tar.xz">linux-shadow-3.12.5-1-x86_64.pkg.tar.xz</a></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.12.5-1-x86_64.pkg.tar.xz">linux-shadow-headers-3.12.5-1-x86_64.pkg.tar.xz</a></li>
   <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.8.6-1-i686.pkg.tar.xz">linux-shadow-3.8.6-1-i686.pkg.tar.xz</a></li>
   <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-headers-3.8.6-1-i686.pkg.tar.xz">linux-shadow-headers-3.8.6-1-i686.pkg.tar.xz</a></li>
-  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.12.4-1.src.tar.gz">linux-shadow-3.12.4-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
+  <li><a href="https://static.xind.in/blog/file/package/arch/linux-shadow-3.12.5-1.src.tar.gz">linux-shadow-3.12.5-1.src.tar.gz</a><sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
 </ul>
 
 <p>安裝後別忘了更新 grub 菜單</p>
@@ -71,7 +71,8 @@ CONFIG_DEFAULT_BFQ=y
 </code></pre>
 
 <h2 id="section">更新日誌：</h2>
-<p>2013年12月05日 更新： 3.12.3-1<br />
+<p>2013年12月10日 更新： 3.12.4-1<br />
+2013年12月05日 更新： 3.12.3-1<br />
 2013年11月30日 更新： 3.12.2-1<br />
 2013年11月28日 更新： 3.12.1-2 跟隨 <a href="https://aur.archlinux.org/packages/Linux-ck/">Linux-ck</a> 添加 btrfs 的補丁以及升級 x86_64 的配置<br />
 2013年11月21日 更新： 3.12.1-1<br />
