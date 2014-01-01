@@ -28,7 +28,7 @@
     </url>
     <url>
         <loc>http://shadow.ma/blog/2012/11/04/solve-dns-spoofing-in-linux-with-pdnsd/</loc>
-        <lastmod>2013-04-08T18:09:21+08:00</lastmod>
+        <lastmod>2014-01-01T19:57:15+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2012/11/05/google-you-stupid-cunt/</loc>
@@ -42,7 +42,7 @@
         <loc>
             http://shadow.ma/blog/2012/11/18/adding-srv-records-for-enabling-chat-outside-of-google-apps/
         </loc>
-        <lastmod>2013-01-17T15:07:44+08:00</lastmod>
+        <lastmod>2014-01-01T19:56:18+08:00</lastmod>
     </url>
     <url>
         <loc>
@@ -54,7 +54,7 @@
         <loc>
             http://shadow.ma/blog/2012/11/21/amarok-script-to-share-nowplaying-music-throuth-waynes-nowplaying-share-page/
         </loc>
-        <lastmod>2013-01-17T15:07:44+08:00</lastmod>
+        <lastmod>2014-01-01T19:55:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2012/11/23/delay-after-kde-login-caused-by-pulseaudio/</loc>
@@ -68,7 +68,7 @@
     </url>
     <url>
         <loc>http://shadow.ma/blog/2012/12/22/black-style-theme-pack-with-arch-logo/</loc>
-        <lastmod>2013-02-03T23:16:59+08:00</lastmod>
+        <lastmod>2014-01-01T19:53:15+08:00</lastmod>
     </url>
     <url>
         <loc>
@@ -96,15 +96,15 @@
         <loc>
             http://shadow.ma/blog/2013/01/22/cjktty-kernel-patch-for-linux-console-with-cjk-characters-support/
         </loc>
-        <lastmod>2013-01-22T02:42:38+08:00</lastmod>
+        <lastmod>2014-01-01T20:00:32+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2013/01/25/share-own-use-kernel/</loc>
-        <lastmod>2013-12-21T16:21:26+08:00</lastmod>
+        <lastmod>2014-01-01T19:54:56+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2013/02/26/experiencing-steam-for-linux/</loc>
-        <lastmod>2013-11-23T04:48:52+08:00</lastmod>
+        <lastmod>2014-01-01T19:59:48+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/2013/04/07/octopress-on-arch-linux/</loc>
@@ -116,7 +116,7 @@
     </url>
     <url>
         <loc>http://shadow.ma/</loc>
-        <lastmod>2013-12-21T16:21:26+08:00</lastmod>
+        <lastmod>2014-01-01T20:00:32+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/links/</loc>
@@ -124,7 +124,7 @@
     </url>
     <url>
         <loc>http://shadow.ma/blog/archives/</loc>
-        <lastmod>2013-12-21T16:21:26+08:00</lastmod>
+        <lastmod>2014-01-01T20:00:32+08:00</lastmod>
     </url>
     <url>
         <loc>http://shadow.ma/blog/about/</loc>
@@ -132,6 +132,6 @@
     </url>
     <url>
         <loc>http://shadow.ma/blog/tags/</loc>
-        <lastmod>2013-12-21T16:21:26+08:00</lastmod>
+        <lastmod>2014-01-01T20:00:32+08:00</lastmod>
     </url>
 </urlset>
